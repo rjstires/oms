@@ -1,0 +1,2 @@
+class PlayStyle < Option
+end

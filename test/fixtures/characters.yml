@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  spec: MyString
+  armor_type_id: 
+  classification_id: 
+  primary_stat_id: 
+  tier_toke_id: 
+
+two:
+  spec: MyString
+  armor_type_id: 
+  classification_id: 
+  primary_stat_id: 
+  tier_toke_id: 

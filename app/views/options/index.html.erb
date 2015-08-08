@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing <%= "#{@type}" %></h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @options.each do |option| %>
+      <tr>
+        <td><%= option.name %></td>
+        <td><%= option.type.titleize %></td>
+        <td><%= link_to 'Show', sti_option_path(option.type, option) %></td>
+        <td><%= link_to 'Edit', sti_option_path(option.type, option, :edit) %></td>
+        <td><%= link_to 'Destroy', option, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to "New #{@type.titleize}", sti_option_path(@type, nil, :new) %>
+<br>
+<%= link_to "See all #{@type.pluralize.titleize}", sti_option_path(@type) %>

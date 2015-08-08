@@ -1,0 +1,2 @@
+class PaymentStatus < Option
+end

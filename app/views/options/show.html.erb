@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @option.name.titleize %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @option.type.titleize %>
+</p>
+
+<%= link_to 'Edit', sti_option_path(@option.type, @option, :edit) %>
+<br>
+<%= link_to 'Back', :back %>
+<br>
+<%= link_to "See all #{@type.pluralize.titleize}", sti_option_path(@type) %>

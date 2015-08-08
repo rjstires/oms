@@ -1,0 +1,2 @@
+class PrimaryStat < Option
+end

@@ -1,0 +1,2 @@
+class TierToken < Option
+end

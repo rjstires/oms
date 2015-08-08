@@ -1,0 +1,2 @@
+class Region < Option
+end

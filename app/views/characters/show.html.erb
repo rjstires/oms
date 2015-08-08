@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Spec:</strong>
+  <%= @character.display_name %>
+</p>
+
+<p>
+  <strong>Armor type:</strong>
+  <%= @character.armor_type.display_name %>
+</p>
+
+<p>
+  <strong>Classification:</strong>
+  <%= @character.classification.display_name %>
+</p>
+
+<p>
+  <strong>Primary stat:</strong>
+  <%= @character.primary_stat.display_name %>
+</p>
+
+<p>
+  <strong>Tier token:</strong>
+  <%= @character.tier_token.try(:display_name) %>
+</p>
+
+<%= link_to 'Edit', edit_character_path(@character) %> |
+<%= link_to 'Back', characters_path %>

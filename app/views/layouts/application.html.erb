@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Oms" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Oms" %>">
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="containter-fluid">
+      <header>
+        <%= render 'layouts/navigation' %>
+      </header>
+      <main role="main">
+        <%= render 'layouts/messages' %>
+        <%= yield %>
+      </main>
+      <footer>
+        <% if params.has_key?(:debug) %>
+        <%= debug current_user.try(:team_ids) %>
+        <%= debug current_user %>
+        <%= debug params %>
+        <% end %>
+      </footer>
+    </div>
+  </body>
+</html>

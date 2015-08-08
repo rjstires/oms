@@ -1,0 +1,2 @@
+class Classification < Option
+end

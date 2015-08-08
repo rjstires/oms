@@ -1,0 +1,2 @@
+class LootOption < Option
+end

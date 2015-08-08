@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @order_line.order %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @order_line.product.display_name %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @order_line.customer.display_name %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @order_line.team.display_name %>
+</p>
+
+<p>
+  <strong>Character:</strong>
+  <%= @order_line.character.display_name %>
+</p>
+
+<p>
+  <strong>Order line status:</strong>
+  <%= @order_line.order_line_status.display_name %>
+</p>
+
+<p>
+  <strong>Payment status:</strong>
+  <%= @order_line.payment_status.display_name %>
+</p>
+
+<p>
+  <strong>Sale:</strong>
+  <%= @order_line.sale %>
+</p>
+
+<p>
+  <strong>Merchant fee:</strong>
+  <%= @order_line.merchant_fee %>
+</p>
+
+<p>
+  <strong>Site fee:</strong>
+  <%= @order_line.site_fee %>
+</p>
+
+<p>
+  <strong>Contractor payment:</strong>
+  <%= @order_line.contractor_payment %>
+</p>
+
+<%= link_to 'Edit', edit_team_order_line_path(@order_line.team, @order_line) %> |
+<%= link_to 'Back', :back %>

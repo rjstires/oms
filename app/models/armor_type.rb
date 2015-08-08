@@ -1,0 +1,2 @@
+class ArmorType < Option
+end

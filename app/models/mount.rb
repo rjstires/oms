@@ -1,0 +1,2 @@
+class Mount < Option
+end

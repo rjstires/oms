@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order: 1
+  product_id: 
+  team_id: 
+  character_id: 
+  order_line_status_id: 
+  payment_status_id: 
+  sale: 
+  merchant_fee: 9.99
+  site_fee: 9.99
+  contractor_payment: 9.99
+
+two:
+  order: 1
+  product_id: 
+  team_id: 
+  character_id: 
+  order_line_status_id: 
+  payment_status_id: 
+  sale: 
+  merchant_fee: 9.99
+  site_fee: 9.99
+  contractor_payment: 9.99
