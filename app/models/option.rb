@@ -9,7 +9,7 @@ class Option < ActiveRecord::Base
   end
 
   def self.types
-    %w(ArmorType Category Classification Difficulty Faction LootOption Mount OrderLineStatus PaymentStatus PlayStyle PrimaryStat Region TierToken Zone)
+    %w(ArmorType Category Classification Difficulty Faction LootOption Mount OrderLineStatus PaymentStatus PaymentType PlayStyle PrimaryStat Region TeamStatus TierToken Zone)
   end
 
  def display_name

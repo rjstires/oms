@@ -1,10 +1,11 @@
-<%= simple_form_for(@membership) do |f| %>
+<%= simple_form_for([@team, @membership]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <%= f.association :user %>
     <%= f.association :team %>
     <%= f.input :confirmed %>
+    <%= f.input :owner %>
   </div>
 
   <div class="form-actions">

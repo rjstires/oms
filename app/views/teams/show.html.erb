@@ -1,14 +1,72 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6">
+    <h3><%= @team.name %></h3>
+    <table class="table table-striped">
+      <tr>
+        <td>Owner</td>
+        <td><%= @team.owner.name %></td>
+      </tr>
+      <tr>
+        <td>Alias</td>
+        <td><%= @team.name_alias %></td>
+      </tr>
+      <tr>
+        <td>Realm</td>
+        <td><%= @team.region.display_name %>-<%= @team.realm %></td>
+      </tr>
+      <tr>
+        <td>Faction</td>
+        <td><%= @team.faction.display_name %></td>
+      </tr>
+      <tr>
+        <td>Payment</td>
+        <td><%= @team.payment_type.display_name %>: <%= @team.payment_address %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <h3>Current Members</h3>
+    <table class="table table-striped">
+      <% @team.approved_memberships.each do |membership| %>
+      <tr>
+        <td><%= membership.user.name %></td>
+        <td><%= mail_to membership.user.email %></td>
+        <td><%= link_to('<li class="fa fa-trash-o"></li>'.html_safe,
+  team_membership_path(membership.team, membership.id), method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, membership unless membership.user == current_user %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
 
-<p>
-  <strong>Name:</strong>
-  <%= @team.name %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @team.user.name %>
-</p>
-
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <h3>More stuff!</h3>
+    <div class="well text-center">Neat stuff coming...</div>
+  </div>
+  <div class="col-md-6">
+    <h3>Pending Members</h3>
+    <table class="table table-striped">
+      <% @team.pending_memberships.each do |membership| %>
+      <tr>
+        <td><%= membership.user.name %></td>
+        <td><%= mail_to membership.user.email %></td>
+        <td>
+          <%= form_for([@team, membership]) do |f| %>
+          <%= f.hidden_field :confirmed, value: true %>
+          <%= f.submit %>
+          <% end %>
+          <%= link_to('<li class="fa fa-check fa-lg"></li>'.html_safe, ) %> 
+        </td>
+        <td>
+          <%= link_to('<li class="fa fa-trash-o fa-lg"></li>'.html_safe,
+  team_membership_path(membership.team, membership.id), method: :delete, data: { confirm: 'Are you sure?' }) if can? :delete, membership %>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>

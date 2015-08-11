@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150806020221) do
+ActiveRecord::Schema.define(version: 20150811085212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,11 +25,6 @@ ActiveRecord::Schema.define(version: 20150806020221) do
     t.integer  "primary_stat_id"
     t.integer  "tier_token_id"
   end
-
-  add_index "characters", ["armor_type_id"], name: "index_characters_on_armor_type_id", using: :btree
-  add_index "characters", ["classification_id"], name: "index_characters_on_classification_id", using: :btree
-  add_index "characters", ["primary_stat_id"], name: "index_characters_on_primary_stat_id", using: :btree
-  add_index "characters", ["tier_token_id"], name: "index_characters_on_tier_token_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
     t.string   "email",      null: false
@@ -54,14 +49,15 @@ ActiveRecord::Schema.define(version: 20150806020221) do
     t.boolean  "confirmed",  default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.boolean  "owner",      default: false
   end
 
   add_index "memberships", ["team_id"], name: "index_memberships_on_team_id", using: :btree
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
 
   create_table "options", force: :cascade do |t|
-    t.string   "name"
-    t.string   "type"
+    t.string   "name",       null: false
+    t.string   "type",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,6 +76,8 @@ ActiveRecord::Schema.define(version: 20150806020221) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.integer  "customer_id"
+    t.datetime "completed_at"
+    t.datetime "scheduled_at"
   end
 
   add_index "order_lines", ["character_id"], name: "index_order_lines_on_character_id", using: :btree
@@ -88,12 +86,6 @@ ActiveRecord::Schema.define(version: 20150806020221) do
   add_index "order_lines", ["payment_status_id"], name: "index_order_lines_on_payment_status_id", using: :btree
   add_index "order_lines", ["product_id"], name: "index_order_lines_on_product_id", using: :btree
   add_index "order_lines", ["team_id"], name: "index_order_lines_on_team_id", using: :btree
-
-  create_table "orders", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "products", force: :cascade do |t|
     t.string   "description",    null: false
@@ -115,17 +107,26 @@ ActiveRecord::Schema.define(version: 20150806020221) do
   add_index "products", ["zone_id"], name: "index_products_on_zone_id", using: :btree
 
   create_table "teams", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",            null: false
+    t.string   "name_alias",      null: false
+    t.string   "realm",           null: false
+    t.string   "payment_address", null: false
+    t.integer  "region_id",       null: false
+    t.integer  "faction_id",      null: false
+    t.integer  "team_status_id",  null: false
+    t.integer  "payment_type_id", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
-  add_index "teams", ["user_id"], name: "index_teams_on_user_id", using: :btree
+  add_index "teams", ["faction_id"], name: "index_teams_on_faction_id", using: :btree
+  add_index "teams", ["payment_type_id"], name: "index_teams_on_payment_type_id", using: :btree
+  add_index "teams", ["region_id"], name: "index_teams_on_region_id", using: :btree
+  add_index "teams", ["team_status_id"], name: "index_teams_on_team_status_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -142,9 +143,22 @@ ActiveRecord::Schema.define(version: 20150806020221) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.integer  "role"
+    t.string   "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer  "invitation_limit"
+    t.integer  "invited_by_id"
+    t.string   "invited_by_type"
+    t.integer  "invitations_count",      default: 0
+    t.string   "battle_tag"
+    t.string   "skype"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
+  add_index "users", ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
+  add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "events", "teams"
@@ -154,5 +168,4 @@ ActiveRecord::Schema.define(version: 20150806020221) do
   add_foreign_key "order_lines", "customers"
   add_foreign_key "order_lines", "products"
   add_foreign_key "order_lines", "teams"
-  add_foreign_key "teams", "users"
 end

@@ -1,16 +1,7 @@
-<%= simple_form_for([@team, @order_line]) do |f| %>
+<%= simple_form_for(@lead) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <div class='input-group date' id='datetimepicker1'>
-      <%= f.input :scheduled_at, :as => :string, :input_html => {class: 'form-control datetimepicker'} %>
-      <span class="input-group-addon">
-        <span class="glyphicon glyphicon-calendar"></span>
-      </span>
-    </div>
-    
-    
-    
     <%= f.input :order %>
     <%= f.association :product,
                   prompt: 'Select a Product',
@@ -21,9 +12,9 @@
     <%= f.association :character,
                   prompt: 'Select a Character',
                   input_html: { class: 'chosen-select' }  %>
-    <%= f.association :order_line_status,
-                  prompt: 'Select a Order Status',
-                  input_html: { class: 'chosen-select' }  %>
+    
+    
+    
     <%= f.association :payment_status,
                   prompt: 'Select a Payment Status',
                   input_html: { class: 'chosen-select' }  %>

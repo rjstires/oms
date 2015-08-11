@@ -1,13 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>User:</strong>
-  <%= @membership.user %>
+  <%= @membership.user.display_name %>
 </p>
 
 <p>
   <strong>Team:</strong>
-  <%= @membership.team %>
+  <%= @membership.team.display_name %>
 </p>
 
 <p>
@@ -15,5 +13,5 @@
   <%= @membership.confirmed %>
 </p>
 
-<%= link_to 'Edit', edit_membership_path(@membership) %> |
-<%= link_to 'Back', memberships_path %>
+<%= link_to 'Edit', edit_team_membership_path(@team, @membership) %> |
+<%= link_to 'Back', team_memberships_path(@team) %>

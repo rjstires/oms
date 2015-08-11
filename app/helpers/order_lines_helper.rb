@@ -1,2 +1,35 @@
 module OrderLinesHelper
+  def date_column_header
+        
+    case params[:status]
+    when 'completed'
+      title = 'Completed On'
+    when 'scheduled'
+      title = 'Scheduled For'
+    when 'paid'
+      title = 'Paid On'
+    when 'lead'
+      title = 'Created On'
+    end
+    
+    "<th>#{title}</th>".html_safe
+  end
+  
+  def date_value(order)
+    
+    case params[:status]
+    when 'completed'
+      date = order.completed_at
+    when 'scheduled'
+      date = order.scheduled_at
+    when 'paid'
+      date = order.created_at
+    when 'lead'
+      date = order.created_at
+    end
+    
+    "<td>#{date.to_s(:scheduled_for)}</td>".html_safe
+  end
+  
+
 end

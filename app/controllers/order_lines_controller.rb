@@ -5,8 +5,7 @@ class OrderLinesController < ApplicationController
   # GET /order_lines
   # GET /order_lines.json
   def index
-    @order_lines = OrderLine.includes(:product, :team, :customer, :order_line_status, :payment_status, character: [:classification], ).accessible_by(current_ability)
-    @order_lines = @order_lines.by_team(params[:team_id]) if params.has_key?(:team_id)
+    @order_lines = @team.order_lines.includes(:product, :team, :customer, :order_line_status, :payment_status, character: [:classification]).accessible_by(current_ability)
     @order_lines = @order_lines.by_status(params[:status]) if params.has_key?(:status)
 
     authorize! :read, OrderLine
@@ -19,7 +18,7 @@ class OrderLinesController < ApplicationController
 
   # GET /order_lines/new
   def new
-    @order_line = OrderLine.new
+    @order_line = @team.order_lines.new
     @products = Product.includes(:category, :zone, :play_style, :loot_option, :difficulty, :mount).all
     
     @options = Option.pluck(:id, :name, :type)
@@ -38,17 +37,22 @@ class OrderLinesController < ApplicationController
   end
   # get /team/sales/1/complete
   def complete
-    @order_line.order_line_status.complete!
+    @order_line = @team.order_lines.find(params[:order_line_id])
+    @order_line.complete
+    authorize! :complete, @order_line
+    
+    redirect_to team_order_lines_path(@team), notice: 'Order completed, thank you!'
   end
   
   # POST /order_lines
   # POST /order_lines.json
   def create
-    @order_line = OrderLine.new(order_line_params)
+    
+    @order_line = @team.order_lines.new(order_line_params)
 
     respond_to do |format|
       if @order_line.save
-        format.html { redirect_to team_order_line_path(@order_line.team, @order_line), notice: 'Order line was successfully created.' }
+        format.html { redirect_to team_order_lines_path(@order_line.team), notice: 'Order line was successfully created.' }
         format.json { render :show, status: :created, location: @order_line }
       else
         format.html { render :new }
@@ -95,6 +99,7 @@ class OrderLinesController < ApplicationController
         :sale,
         :merchant_fee,
         :site_fee,
-        :contractor_payment)
+        :contractor_payment,
+        :scheduled_at)
     end
 end

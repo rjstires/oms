@@ -1,13 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Teams</h1>
-
+<%= link_to 'New Team', new_team_path %>
+<br />
 <table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Name</th>
       <th>User</th>
-      <th colspan="4"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -15,16 +13,35 @@
     <% @teams.each do |team| %>
       <tr>
         <td><%= team.name %></td>
-        <td><%= team.user.name %></td>
-        <td><%= link_to 'Sales', team_order_lines_path(team) %></td>
-        <td><%= link_to 'Show', team %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= team.owner.name %></td>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <i class="glyphicon glyphicon-cog"></i> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              
+              <% if can? :read, team %>
+              <li><%= link_to 'Sales', team_order_lines_path(team) %></li>
+              <li><%= link_to 'Show', team %></li>
+              <% end %>
+              
+              <% if cannot? :read, team %>
+              <li><%= link_to 'Join Team', new_team_membership_path(team) unless team.pending_members.include?(current_user) %></li>
+              <li><%= link_to 'Pending...', '#' if team.pending_members.include?(current_user) %></li>      
+              <% end %>
+              
+              <% if can? :edit, team %>
+              <li><%= link_to 'Edit', edit_team_path(team) %></li>
+              <% end %>
+              
+              <% if can? :destroy, team %>
+              <li><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+              <% end %>
+            </ul>
+          </div>
+          </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Team', new_team_path %>

@@ -1,9 +1,10 @@
 class TeamsController < ApplicationController
-  load_and_authorize_resource
+  load_and_authorize_resource :except => [:index, :join]
 
   # GET /teams
   # GET /teams.json
   def index
+    @teams = Team.includes(:owner, :approved_members, :pending_members, :region, :faction, :team_status).all
   end
 
   # GET /teams/1
@@ -13,17 +14,18 @@ class TeamsController < ApplicationController
 
   # GET /teams/new
   def new
-    @team = current_user.owned_teams.new
+    @team = Team.new
   end
-
+    
   # GET /teams/1/edit
   def edit
   end
-
+  
   # POST /teams
   # POST /teams.json
   def create
-    @team = current_user.owned_teams.new(team_params)
+    @team = Team.new(team_params)
+    @team.user = current_user
 
     respond_to do |format|
       if @team.save
@@ -63,6 +65,14 @@ class TeamsController < ApplicationController
   private
   
     def team_params
-      params.require(:team).permit(:name)
+      params.require(:team).permit(:name,
+        :name_alias,
+        :realm,
+        :region_id,
+        :faction_id,
+        :realm_id,
+        :team_status_id,
+        :payment_type_id,
+        :payment_address)
     end
 end

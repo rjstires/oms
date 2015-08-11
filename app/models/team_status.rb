@@ -1,0 +1,2 @@
+class TeamStatus < Option
+end

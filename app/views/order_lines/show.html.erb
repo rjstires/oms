@@ -56,4 +56,5 @@
 </p>
 
 <%= link_to 'Edit', edit_team_order_line_path(@order_line.team, @order_line) %> |
-<%= link_to 'Back', :back %>
+<%= link_to 'Back', :back %> |
+<%= link_to 'Team Sales', team_order_lines_path(@order_line.team) %>

@@ -1,0 +1,2 @@
+class PaymentType < Option
+end

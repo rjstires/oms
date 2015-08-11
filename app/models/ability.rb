@@ -9,24 +9,38 @@ class Ability
       can :manage, :all
     end
     
-    if user.registered?
-      cannot :read, :all
-    end
-    
     if user.approved?
+      
       # OrderLine (C R U D) + Complete
-      cannot :create, OrderLine
-      can [:read, :complete], OrderLine, :team => { :id => user.team_ids }
-      cannot [:update, :destroy], OrderLine
-
-      # Team (C R U D)
+      can [:read, :complete], OrderLine, :team_id => user.teams_id_list
+      
+      # Team (C R U D) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       can :create, Team
-      can :read, Team, :id => user.team_ids
-      can [:update, :destroy], Team, :user_id => user.id
+      
+      can :read, Team, :id => user.teams_id_list
+      can [:update, :destroy], Team, :id => user.owned_teams_id_list
       
       # Option (C R U D)
       can :read, Option
       cannot [:create, :update, :destory], Option
+      
+      # Membership (CRUD)
+      can :create, Membership
+      can [:read, :update], Membership, :team_id => user.owned_teams_id_list
+      cannot [:destroy], Membership, :team_id => user.owned_teams_id_list
+ 
+      
+      # Customer (C R U D)
+      cannot [:read, :index], Customer
+      
+      # Lead
+      cannot [:create, :update, :destory], Lead
+      can :read, Lead
     end
+    
+    if user.registered?
+      cannot [:read, :index], :all
+    end
+    
   end
 end

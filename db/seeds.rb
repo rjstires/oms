@@ -1,144 +1,74 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 user = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << user.email
-num_teams = 20
-num_users = 20
-num_memberships = 20
-num_order_lines = 100
-num_products = 10
-num_characters = 15
-num_customers = 25
 
-Category.create!(name: 'raiding')
+ArmorType.find_or_create_by!(name: 'cloth')
+ArmorType.find_or_create_by!(name: 'leather')
+ArmorType.find_or_create_by!(name: 'mail')
+ArmorType.find_or_create_by!(name: 'plate')
 
-Difficulty.create!(name: 'normal')
-Difficulty.create!(name: 'heroic')
-Difficulty.create!(name: 'mythic')
+Category.find_or_create_by!(name: 'challenge mode')
+Category.find_or_create_by!(name: 'character services')
+Category.find_or_create_by!(name: 'dungeons')
+Category.find_or_create_by!(name: 'other services')
+Category.find_or_create_by!(name: 'proving grounds')
+Category.find_or_create_by!(name: 'raiding')
 
-LootOption.create!(name: 'none')
-LootOption.create!(name: 'personal')
-LootOption.create!(name: 'master')
+Classification.find_or_create_by!(name: 'druid')
+Classification.find_or_create_by!(name: 'death knight')
+Classification.find_or_create_by!(name: 'demon hunter')
+Classification.find_or_create_by!(name: 'hunter')
+Classification.find_or_create_by!(name: 'mage')
+Classification.find_or_create_by!(name: 'monk')
+Classification.find_or_create_by!(name: 'priest')
+Classification.find_or_create_by!(name: 'paladin')
+Classification.find_or_create_by!(name: 'rogue')
+Classification.find_or_create_by!(name: 'shaman')
+Classification.find_or_create_by!(name: 'warlock')
+Classification.find_or_create_by!(name: 'warrior')
 
-Mount.create!(name: 'none')
+Difficulty.find_or_create_by!(name: 'normal')
+Difficulty.find_or_create_by!(name: 'heroic')
+Difficulty.find_or_create_by!(name: 'mythic')
 
-PlayStyle.create!(name: 'self-play')
-PlayStyle.create!(name: 'pilotted')
+Faction.find_or_create_by!(name: 'horde')
+Faction.find_or_create_by!(name: 'alliance')
 
-Zone.create!(name: 'highmaul')
-Zone.create!(name: 'blackrock foundry')
-Zone.create!(name: 'hellfire citadel')
+LootOption.find_or_create_by!(name: 'none')
+LootOption.find_or_create_by!(name: 'personal')
+LootOption.find_or_create_by!(name: 'master')
 
-Faction.create!(name: 'horde')
-Faction.create!(name: 'alliance')
+Mount.find_or_create_by!(name: 'none')
 
-Region.create!(name: 'us')
-Region.create!(name: 'eu')
+OrderLineStatus.find_or_create_by!(name: 'paid')
+OrderLineStatus.find_or_create_by!(name: 'lead')
+OrderLineStatus.find_or_create_by!(name: 'scheduled')
+OrderLineStatus.find_or_create_by!(name: 'completed')
 
-ArmorType.create!(name: 'cloth')
+PaymentStatus.find_or_create_by!(name: 'paid')
+PaymentStatus.find_or_create_by!(name: 'unpaid')
 
-Classification.create!(name: 'priest')
+PaymentType.find_or_create_by!(name: 'gold')
+PaymentType.find_or_create_by!(name: 'paypal')
+PaymentType.find_or_create_by!(name: 'skrill')
 
-PrimaryStat.create!(name: 'intellect')
+PlayStyle.find_or_create_by!(name: 'self-play')
+PlayStyle.find_or_create_by!(name: 'pilotted')
 
-TierToken.create!(name: 'conqueror')
+PrimaryStat.find_or_create_by!(name: 'agility')
+PrimaryStat.find_or_create_by!(name: 'intellect')
+PrimaryStat.find_or_create_by!(name: 'strength')
 
-OrderLineStatus.create!(name: 'pending scheduling')
-OrderLineStatus.create!(name: 'lead')
-OrderLineStatus.create!(name: 'scheduled')
-OrderLineStatus.create!(name: 'completed')
+Region.find_or_create_by!(name: 'us')
+Region.find_or_create_by!(name: 'eu')
 
+TeamStatus.find_or_create_by!(name: 'pending')
+TeamStatus.find_or_create_by!(name: 'active')
+TeamStatus.find_or_create_by!(name: 'inactive')
 
-PaymentStatus.create!(name: 'paid')
-PaymentStatus.create!(name: 'unpaid')
+TierToken.find_or_create_by!(name: 'conqueror')
+TierToken.find_or_create_by!(name: 'protector')
+TierToken.find_or_create_by!(name: 'vanquisher')
 
-num_customers.times do
-  Customer.create!(
-    email: Faker::Internet.email,
-    battle_tag: 'battle#1234',
-    skype: Faker::Internet.user_name
-    )
-end
-num_customers = Customer.count
-
-num_characters.times do
-  Character.create!(
-    spec: Faker::Lorem.word,
-    armor_type: ArmorType.order("RANDOM()").first,
-    classification: Classification.order("RANDOM()").first,
-    primary_stat: PrimaryStat.order("RANDOM()").first,
-    tier_token: TierToken.order("RANDOM()").first,
-    )  
-end
-num_characters = Character.count
-
-num_users.times do
-  name = Faker::Name.name
-  User.create!(
-    name: name,
-    email: Faker::Internet.email,
-    password: 'password',
-    confirmed_at: DateTime.now
-    )
-  puts "Created user: #{name}"
-end
-num_users = User.count
-
-num_teams.times do
-  name = Faker::Team.name.titleize
-  user = User.order("RANDOM()").first
-  Team.create!(
-    name: name,
-    user: user,
-    )
-  puts "Created team: #{name}"
-end
-num_teams = Team.count
-
-num_memberships.times do
-  user = User.order("RANDOM()").first
-  team = Team.order("RANDOM()").first
-  Membership.create!(
-    user: user,
-    team: team,
-    confirmed: true,
-    )
-  puts "Membership created #{user.name}@#{team.name}"
-end
-num_memberships = Membership.count
-
-num_products.times do
-  Product.create!(
-    description: Faker::Lorem.word,
-    category: Category.order("RANDOM()").first,
-    difficulty: Difficulty.order("RANDOM()").first,
-    loot_option: LootOption.order("RANDOM()").first,
-    mount: Mount.order("RANDOM()").first,
-    play_style: PlayStyle.order("RANDOM()").first,
-    zone: Zone.order("RANDOM()").first,
-    )
-end
-num_products = Product.count
-
-num_order_lines.times do
-  OrderLine.create!(
-    order: Faker::Number.number(4),
-    product: Product.order("RANDOM()").first,
-    customer: Customer.order("RANDOM()").first,
-    team: Team.order("RANDOM()").first,
-    character: Character.order("RANDOM()").first,
-    order_line_status: OrderLineStatus.order("RANDOM()").first,    
-    payment_status: PaymentStatus.order("RANDOM()").first,
-    sale: 9999.99,
-    merchant_fee: 999.99,
-    site_fee: 99.99,
-    contractor_payment: 9.99
-  )
-  puts 'Created order line.'
-end
-num_order_lines = OrderLine.count
+Zone.find_or_create_by!(name: 'highmaul')
+Zone.find_or_create_by!(name: 'blackrock foundry')
+Zone.find_or_create_by!(name: 'hellfire citadel')

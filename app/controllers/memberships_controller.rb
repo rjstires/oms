@@ -1,10 +1,11 @@
 class MembershipsController < ApplicationController
-  before_action :set_membership, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource :team, :except => :new
+  load_and_authorize_resource :membership, :through => :team, :except => :new
 
   # GET /memberships
   # GET /memberships.json
   def index
-    @memberships = Membership.all
+    @memberships = @team.memberships.all
   end
 
   # GET /memberships/1
@@ -14,7 +15,19 @@ class MembershipsController < ApplicationController
 
   # GET /memberships/new
   def new
-    @membership = Membership.new
+    @team = Team.find(params[:team_id])
+    @membership = Membership.new(team: @team, user: current_user)
+    
+    respond_to do |format|
+      if @membership.save
+        format.html { redirect_to teams_path, notice: 'Membership request was successfully sent.' }
+        format.json { render :show, status: :created, location: @membership }
+        # Send email here.
+      else
+        format.html { render :new }
+        format.json { render json: @membership.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /memberships/1/edit
@@ -42,7 +55,7 @@ class MembershipsController < ApplicationController
   def update
     respond_to do |format|
       if @membership.update(membership_params)
-        format.html { redirect_to @membership, notice: 'Membership was successfully updated.' }
+        format.html { redirect_to team_membership_path(@team, @membership), notice: 'Membership was successfully updated.' }
         format.json { render :show, status: :ok, location: @membership }
       else
         format.html { render :edit }
@@ -56,19 +69,14 @@ class MembershipsController < ApplicationController
   def destroy
     @membership.destroy
     respond_to do |format|
-      format.html { redirect_to memberships_url, notice: 'Membership was successfully destroyed.' }
+      format.html { redirect_to team_memberships_path(@team), notice: 'Membership was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_membership
-      @membership = Membership.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def membership_params
-      params.require(:membership).permit(:user_id, :team_id, :confirmed)
+      params.require(:membership).permit(:user_id, :team_id, :confirmed, :owner)
     end
 end
