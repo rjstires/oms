@@ -1,22 +1,20 @@
 module OrderLinesHelper
   def date_column_header
-        
     case params[:status]
     when 'completed'
       title = 'Completed On'
     when 'scheduled'
       title = 'Scheduled For'
     when 'paid'
-      title = 'Paid On'
+      title = 'Created On'
     when 'lead'
       title = 'Created On'
     end
-    
-    "<th>#{title}</th>".html_safe
+
+    "<th>#{title}</th>".html_safe unless title.nil?
   end
-  
+
   def date_value(order)
-    
     case params[:status]
     when 'completed'
       date = order.completed_at
@@ -27,9 +25,11 @@ module OrderLinesHelper
     when 'lead'
       date = order.created_at
     end
-    
-    "<td>#{date.to_s(:scheduled_for)}</td>".html_safe
-  end
-  
 
+    "<td>#{date.to_s(:scheduled_for)}</td>".html_safe unless date.nil?
+  end
+
+  def status_link_text(o)
+    "#{o[0].titleize} <span class=\"badge\">#{o[1]}</span>".html_safe
+  end
 end

@@ -73,6 +73,7 @@ class LeadsController < OrderLinesController
   # DELETE /lead/1
   # DELETE /lead/1.json
   def destroy
+    @lead = Lead.find(params[:id])
     @lead.destroy
     respond_to do |format|
       format.html { redirect_to leads_url, notice: 'Order line was successfully destroyed.' }

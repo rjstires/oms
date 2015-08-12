@@ -61,6 +61,11 @@ class CustomersController < ApplicationController
     end
   end
 
+  def upload
+    Customer.importJSON( params[:file] )
+    redirect_to customers_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer

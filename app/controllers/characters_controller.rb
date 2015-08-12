@@ -1,10 +1,16 @@
 class CharactersController < ApplicationController
   before_action :set_character, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /characters
   # GET /characters.json
   def index
-    @characters = Character.all
+    @characters = Character
+    .includes(:armor_type,
+      :classification,
+      :primary_stat,
+      :tier_token)
+    .order(classification_id: :asc)
+    .all
   end
 
   # GET /characters/1

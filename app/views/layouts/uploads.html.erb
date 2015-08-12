@@ -1,0 +1,20 @@
+<h3>Upload customers</h3>
+<%= form_tag({controller: "customers", action: "upload"}, multipart: true) do %>
+<%= file_field_tag 'file' %>
+<%= submit_tag 'Upload' %>
+<% end %>
+<h3>Upload teams</h3>
+<%= form_tag({controller: "teams", action: "upload"}, multipart: true) do %>
+<%= file_field_tag 'file' %>
+<%= submit_tag 'Upload' %>
+<% end %>
+<h3>Upload users</h3>
+<%= form_tag({controller: "users", action: "upload"}, multipart: true) do %>
+<%= file_field_tag 'file' %>
+<%= submit_tag 'Upload' %>
+<% end %>
+<h3>Upload order lines</h3>
+<%= form_tag({controller: "order_lines", action: "upload"}, multipart: true) do %>
+<%= file_field_tag 'file' %>
+<%= submit_tag 'Upload' %>
+<% end %>

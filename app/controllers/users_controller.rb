@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_only, :except => :show
   skip_load_and_authorize_resource
-  
+
   def index
     @users = User.all
   end
@@ -29,6 +29,11 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.destroy
     redirect_to users_path, :notice => "User deleted."
+  end
+
+  def upload
+    User.importJSON( params[:file] )
+    redirect_to users_path
   end
 
   private

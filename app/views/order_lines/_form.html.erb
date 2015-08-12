@@ -9,9 +9,13 @@
       </span>
     </div>
     
-    
-    
     <%= f.input :order %>
+    <%= f.association :region,
+                  prompt: 'Select a Region',
+                  input_html: {class: 'chosen-select'} %>
+    <%= f.association :faction,
+                  prompt: 'Select a Region',
+                  input_html: {class: 'chosen-select'} %>
     <%= f.association :product,
                   prompt: 'Select a Product',
                   input_html: { class: 'chosen-select' } %>

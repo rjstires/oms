@@ -1,12 +1,29 @@
 <br>
+<% if @order_lines.count > 0 %>
 <div class="col-md-2">
-  <%= active_link_to 'All', url_for(params.except(:status)), :active => :exact, class: 'btn btn-default btn-md btn-block'%>
-  <%= active_link_to 'Scheduled', safe_params(:status => 'scheduled'), :active => :exact, class: 'btn btn-default btn-md btn-block'%>
-  <%= active_link_to 'Completed', safe_params(:status => 'completed'), :active => :exact, class: 'btn btn-default btn-md btn-block' %>
-  <%= active_link_to 'Lead', safe_params(:status => 'lead'), :active => :exact, class: 'btn btn-default btn-md btn-block'%>
-  <%= active_link_to 'Paid', safe_params(:status => 'paid'), :active => :exact, class: 'btn btn-default btn-md btn-block'%>
+  <% @categories.each do |category| %>
+  <%= active_link_to category.display_name,
+        safe_params(:category => category.name),
+        :active => :exact,
+        class: 'btn btn-primary btn-md btn-block'
+  %>
+  <% end %>
+  <br />
+  <%= active_link_to 'All',
+        url_for(params.except(:status)),
+        :active => :exact,
+        class: 'btn btn-primary btn-md btn-block'
+  %>
+  <% @order_line_statuses.each do |order_line_status| %>
+  <%= active_link_to status_link_text(order_line_status),
+        safe_params(:status => order_line_status[0]),
+        :active => :exact,
+        class: 'btn btn-primary btn-md btn-block'
+  %>
+  <% end %>
 </div>
-<div class="col-md-10">
+<% end %>
+<div class="col-md-<%= @order_lines.count > 0 ? 10 : 12 %>">
   <%= link_to 'New Order line', new_team_order_line_path(@team) %>
   <table class="table table-striped table-hover order-lines">
     <thead>
@@ -46,7 +63,7 @@
             <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
               <%= content_tag :li, (link_to 'Show', team_order_line_path(order_line.team, order_line)) if can? :read, order_line %>
               <%= content_tag :li, (link_to 'Edit', edit_team_order_line_path(order_line.team, order_line)) if can? :update, order_line  %>
-              <%= content_tag :li, (link_to 'Mark Completed', team_order_line_complete_path(order_line.team, order_line)) if can? :complete, order_line unless order_line.order_line_status == OrderLineStatus.completed %>
+              <%= content_tag :li, (link_to 'Mark Completed', team_order_line_complete_path(order_line.team, order_line)) if can? :complete, order_line if order_line.order_line_status == OrderLineStatus.scheduled %>
               <%= content_tag :li, (link_to 'Destroy', team_order_line_path(order_line.team, order_line), method: :delete, data: { confirm: 'Are you sure?' }) if can? :destroy, order_line  %>
             </ul>
           </div>

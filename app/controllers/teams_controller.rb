@@ -16,11 +16,11 @@ class TeamsController < ApplicationController
   def new
     @team = Team.new
   end
-    
+
   # GET /teams/1/edit
   def edit
   end
-  
+
   # POST /teams
   # POST /teams.json
   def create
@@ -62,17 +62,22 @@ class TeamsController < ApplicationController
     end
   end
 
+  def upload
+    Team.importJSON( params[:file] )
+    redirect_to teams_path
+  end
+
   private
-  
-    def team_params
-      params.require(:team).permit(:name,
-        :name_alias,
-        :realm,
-        :region_id,
-        :faction_id,
-        :realm_id,
-        :team_status_id,
-        :payment_type_id,
-        :payment_address)
-    end
+
+  def team_params
+    params.require(:team).permit(:name,
+      :name_alias,
+      :realm,
+      :region_id,
+      :faction_id,
+      :realm_id,
+      :team_status_id,
+      :payment_type_id,
+      :payment_address)
+  end
 end

@@ -5,13 +5,13 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
   # safe url parameters to use instead of params.merge
-  
+
   def safe_params unsafe = {}
     params.merge(unsafe).merge(only_path: true)
   end
-  
+
   helper_method :safe_params
-  
+
   protected
 
   def configure_permitted_parameters
