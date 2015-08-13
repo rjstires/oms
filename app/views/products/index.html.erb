@@ -23,7 +23,7 @@
         <td><%= product.category.display_name %></td>
         <td><%= product.zone.display_name %></td>
         <td><%= product.play_style.display_name %></td>
-        <td><%= product.try(:loot_option) %></td>
+        <td><%= product.try(:loot_option).display_name %></td>
         <td><%= product.mount.display_name %></td>
         <td><%= product.difficulty.display_name %></td>
         <td><%= link_to 'Show', product %></td>
