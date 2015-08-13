@@ -1,6 +1,3 @@
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
-
 @armor_type_cloth = ArmorType.find_or_create_by!(name: 'cloth')
 @armor_type_leather = ArmorType.find_or_create_by!(name: 'leather')
 @armor_type_mail = ArmorType.find_or_create_by!(name: 'mail')
