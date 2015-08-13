@@ -1,0 +1,36 @@
+The following email serves to confirm that you were matched with a team for the service listed in this email. Please note if you purchased multiple items, not in a package, you will receive a scheduling email for each item. The following information is what we've provided to the team. Review this information and please notify us of any errors by replying to this email.
+
+Normal Raid, Heroic Raid, Mythic Raid, and Challenge Modes have static schedules and you will be serviced on the date listed below. If you've ordered Proving Grounds, Brawler’s Guild, a dungeon service, or package item, the “service date” will be the date you placed your order and you should contact your team directly to discuss scheduling.
+
+Scheduled For: <%= @order_line.scheduled_at %>
+
+Service Details
+Category: <%= @order_line.product.category.display_name %>
+Zone: <%= @order_line.product.zone.display_name %>
+Description: <%= @order_line.product.display_name %>
+Difficulty: <%= @order_line.product.difficulty.display_name %>
+Play Style: <%= @order_line.product.play_style.display_name %>
+Loot Option: <%= @order_line.product.loot_option.display_name %>
+Mount: <%= @order_line.product.mount.display_name %>
+
+Client Details
+Email: <%= @order_line.customer.email %>
+<%= "Battle Tag: #{ @order_line.customer.battle_tag }" unless @order_line.customer.battle_tag == "" %>
+<%= "Skype: #{ @order_line.customer.skype }" unless @order_line.customer.skype == "" %>
+Character: <%= @order_line.character.display_name %>
+
+Guild Details
+Team: <%= @order_line.team.display_name %>
+Realm: <%= @order_line.team.region.display_name %>-<%= @order_line.team.realm.titleize %>
+Faction: <%= @order_line.team.faction.display_name %>
+
+Guild Contacts
+Email | Battle Tag | Skype
+<% @order_line.team.approved_members.each do |m| %>
+<%= m.try(:email) %> | <%= m.try(:battle_tag) %> | <%= m.try(:skype) %>
+<% end %>
+
+And finally!
+A reminder that we will never discuss content sales with you in game. Under no circumstances should you discuss sales or real world currency within the game or Battle.net chat system. Feel free to utilize Skype or E-mail for these discussions.
+
+As always if you have any question please contact us, our details are at the bottom of this email. Remember to have a great time, and thank you so much for choosing BoostingEdge.com!

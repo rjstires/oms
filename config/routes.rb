@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :teams do
     resources :order_lines, :path => :sales do
       get 'complete', to: 'order_lines#complete'
+      get 'send_confirmation', to: 'order_lines#send_confirmation'
     end
     resources :memberships
   end
@@ -37,6 +38,6 @@ Rails.application.routes.draw do
   resources :tier_tokens, controller: 'options', type: 'TierToken'
   resources :team_statuses, controller: 'options', type: 'TeamStatus'
   resources :zones, controller: 'options', type: 'Zone'
-  
+
   get 'uploads', to: 'pages#uploads'
 end

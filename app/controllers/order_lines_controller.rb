@@ -1,6 +1,7 @@
 class OrderLinesController < ApplicationController
-  load_and_authorize_resource :team, :except => :upload
-  load_and_authorize_resource :order_line, :through => :team, :except => :upload
+  load_and_authorize_resource :team, :except => [:upload, :send_confirmation]
+  load_and_authorize_resource :order_line, :except => [:upload, :send_confirmation], :through => :team
+
   before_filter :set_default_category, :only => :index
 
   # GET /order_lines
@@ -32,12 +33,11 @@ class OrderLinesController < ApplicationController
     authorize! :read, OrderLine
   end
 
-  # GET /order_lines/1
-  # GET /order_lines/1.json
+  # GET /teams/1/sales/1
   def show
   end
 
-  # GET /order_lines/new
+  # GET /teams/1/sales/new
   def new
     @order_line = @team.order_lines.new
     @products = Product.includes(:category, :zone, :play_style, :loot_option, :difficulty, :mount).all
@@ -53,9 +53,10 @@ class OrderLinesController < ApplicationController
     authorize! :create, OrderLine
   end
 
-  # GET /order_lines/1/edit
+  # GET /teams/1/sales/1/edit
   def edit
   end
+
   # get /team/sales/1/complete
   def complete
     @order_line = @team.order_lines.find(params[:order_line_id])
@@ -109,6 +110,13 @@ class OrderLinesController < ApplicationController
   def upload
     OrderLine.importJSON( params[:file] )
     redirect_to root_path
+  end
+
+  # GET /team/1/sales/1/send_confirmation
+  def send_confirmation
+    @team = Team.find(params[:team_id])
+    OrderMailer.confirmation_email(params[:order_line_id]).deliver_now
+    redirect_to team_order_lines_path(@team), notice: 'Email confirmation sent!'
   end
 
   private

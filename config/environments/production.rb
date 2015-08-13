@@ -73,17 +73,17 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
     address: "mail.boostingedge.com",
-    port: 465,
-    domain:' boostingedge.com',
+    port: 25,
+    domain: 'boostingedge.com',
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: 'noreply@boostingedge.com'
+    user_name: 'noreply@boostingedge.com',
     password: 'password'
   }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
+  config.action_mailer.perform_deliveries = false
   config.action_mailer.raise_delivery_errors = false
 
 
