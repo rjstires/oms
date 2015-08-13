@@ -46,7 +46,12 @@ class User < ActiveRecord::Base
     members = json['members']
 
     members.each do |row|
-      row.map(&:downcase)
+      row['email'].downcase!
+      row['username'].downcase!
+      row['battletag'].downcase!
+      row['skype'].downcase!
+      row['team'].downcase!
+
       @user = User.find_or_create_by!(email: row['email']) do |customer|
         customer.name = row['username']
         customer.battle_tag = row['battletag']
