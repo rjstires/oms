@@ -60,7 +60,7 @@ class OrderLine < ActiveRecord::Base
 
       @order_number = row['order_number'] == "" ? 9999 : row['order_number']
 
-      @completed_at, @scheduled_at = DateTime.strptime(row['service_date'], '%m/%d/%Y')
+      @date = DateTime.strptime(row['service_date'], '%m/%d/%Y')
 
       raise "Service date can not be empty when bulk uplodating." if @date == ""
 
@@ -124,8 +124,8 @@ class OrderLine < ActiveRecord::Base
         o.merchant_fee = @sale_merchant
         o.site_fee = @sale_site
         o.contractor_payment = @sale_contractor
-        o.completed_at = @completed_at
-        o.scheduled_at = @scheduled_at
+        o.completed_at = @date
+        o.scheduled_at = @date
         }
     end
   end
