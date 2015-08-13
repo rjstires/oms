@@ -52,11 +52,17 @@ class Team < ActiveRecord::Base
     teams = json['teams']
     Team.delete_all
     teams.each do |row|
-      row.map(&:downcase)
-      @team = Team.find_or_create_by!(name: row['name'].downcase) do |t|
+      row['name'].downcase!
+      row['alias'].downcase!
+      row['faction'].downcase!
+      row['region'].downcase!
+      row['realm'].downcase!
+      row['address'].downcase!
+
+      @team = Team.find_or_create_by!(name: row['name']) do |t|
         t.name_alias = row['alias']
-        t.faction = Faction.find_or_create_by!(name: row['faction'].downcase)
-        t.region = Region.find_or_create_by!(name: row['region'].downcase)
+        t.faction = Faction.find_or_create_by!(name: row['faction'])
+        t.region = Region.find_or_create_by!(name: row['region'])
         t.realm = row['realm']
         t.payment_type = PaymentType.find_by(name: 'paypal')
         t.payment_address = row['address']

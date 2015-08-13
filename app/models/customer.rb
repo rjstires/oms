@@ -15,9 +15,9 @@ class Customer < ActiveRecord::Base
     customers = json['customers']
     Customer.delete_all
     customers.each do |row|
-      row.['email'].downcase!
-      row.['battle_tag'].downcase!
-      row.['skype'].downcase!
+      row['email'].downcase!
+      row['battle_tag'].downcase!
+      row['skype'].downcase!
       Customer.find_or_create_by(email: row['email']) do |customer|
         customer.battle_tag = row['battle_tag']
         customer.skype = row['skype']
