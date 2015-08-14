@@ -1,0 +1,2 @@
+module PrimaryStatsHelper
+end

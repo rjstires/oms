@@ -1,5 +1,22 @@
 Rails.application.routes.draw do
 
+  resources :tier_tokens
+  resources :payment_types
+  resources :team_statuses
+  resources :regions
+  resources :factions
+  resources :payment_statuses
+  resources :order_line_statuses
+  resources :zones
+  resources :play_styles
+  resources :mounts
+  resources :loot_options
+  resources :difficulties
+  resources :categories
+  resources :primary_stats
+  resources :classifications
+  resources :armor_types
+  resources :armor_types
   root to: 'visitors#index'
 
   post 'customers/upload', to: 'customers#upload'

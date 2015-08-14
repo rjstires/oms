@@ -1,5 +1,15 @@
-class Category < Option
-  def self.raiding
-    find_by(name: 'raiding')
-  end
+class Category < ActiveRecord::Base
+	before_save :downcase_fields
+	include OptionMethods
+
+	validates :name, presence: true
+
+  # Scopes
+  scope :by_name,->(v) { find_by name: v }
+
+	def downcase_fields
+		self.name.downcase
+	end
+
+	default_scope { order(name: :asc) }
 end

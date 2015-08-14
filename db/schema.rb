@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812015557) do
+ActiveRecord::Schema.define(version: 20150814074622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "armor_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "characters", force: :cascade do |t|
     t.string   "spec",              null: false
@@ -26,10 +38,22 @@ ActiveRecord::Schema.define(version: 20150812015557) do
     t.integer  "tier_token_id"
   end
 
+  create_table "classifications", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string   "email",      null: false
     t.string   "battle_tag", null: false
     t.string   "skype",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "difficulties", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,6 +67,18 @@ ActiveRecord::Schema.define(version: 20150812015557) do
 
   add_index "events", ["team_id"], name: "index_events_on_team_id", using: :btree
 
+  create_table "factions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "loot_options", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "team_id"
@@ -55,9 +91,21 @@ ActiveRecord::Schema.define(version: 20150812015557) do
   add_index "memberships", ["team_id"], name: "index_memberships_on_team_id", using: :btree
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
 
+  create_table "mounts", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "options", force: :cascade do |t|
     t.string   "name",       null: false
     t.string   "type",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_line_statuses", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -89,6 +137,30 @@ ActiveRecord::Schema.define(version: 20150812015557) do
   add_index "order_lines", ["product_id"], name: "index_order_lines_on_product_id", using: :btree
   add_index "order_lines", ["team_id"], name: "index_order_lines_on_team_id", using: :btree
 
+  create_table "payment_statuses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payment_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "play_styles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "primary_stats", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string   "description",    null: false
     t.integer  "category_id",    null: false
@@ -108,6 +180,18 @@ ActiveRecord::Schema.define(version: 20150812015557) do
   add_index "products", ["play_style_id"], name: "index_products_on_play_style_id", using: :btree
   add_index "products", ["zone_id"], name: "index_products_on_zone_id", using: :btree
 
+  create_table "regions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "team_statuses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string   "name",            null: false
     t.string   "name_alias",      null: false
@@ -125,6 +209,12 @@ ActiveRecord::Schema.define(version: 20150812015557) do
   add_index "teams", ["payment_type_id"], name: "index_teams_on_payment_type_id", using: :btree
   add_index "teams", ["region_id"], name: "index_teams_on_region_id", using: :btree
   add_index "teams", ["team_status_id"], name: "index_teams_on_team_status_id", using: :btree
+
+  create_table "tier_tokens", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -162,6 +252,12 @@ ActiveRecord::Schema.define(version: 20150812015557) do
   add_index "users", ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
   add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "zones", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   add_foreign_key "events", "teams"
   add_foreign_key "memberships", "teams"

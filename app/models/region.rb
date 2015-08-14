@@ -1,8 +1,15 @@
-class Region < Option
-  def to_label
-    self.name.upcase
-  end
-  def display_name
-    self.name.upcase
-  end
+class Region < ActiveRecord::Base
+	before_save :downcase_fields
+	include OptionMethods
+
+	validates :name, presence: true
+
+  # Scopes
+  scope :by_name,->(v) { find_by name: v }
+
+	def downcase_fields
+		self.name.downcase
+	end
+
+	default_scope { order(name: :asc) }
 end

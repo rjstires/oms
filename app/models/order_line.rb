@@ -1,4 +1,5 @@
 class OrderLine < ActiveRecord::Base
+  include Filterable
   belongs_to :product
   belongs_to :team
   belongs_to :character
@@ -11,8 +12,16 @@ class OrderLine < ActiveRecord::Base
   has_one :category, through: :product
 
   scope :by_team,->(team) { where(team: team) }
-  scope :by_status,->(status) { includes(:order_line_status).where(:order_line_status => OrderLineStatus.name_is(status)) }
-  scope :by_category,->(category) { includes(:product).where(products: {category_id: Category.find_by(name: category).id} ) }
+
+  scope :status,->(id) {
+    joins(:order_line_status)
+    .where(:order_line_status => id)
+    }
+
+  scope :category,->(id) {
+    joins(:product)
+    .where(:products => {:category_id => id})
+    }
 
   validates :product, presence: true
   validates :character, presence: true
@@ -30,12 +39,27 @@ class OrderLine < ActiveRecord::Base
   validates :team, presence: true, unless: :is_lead
   validates :payment_status, presence: true, unless: :is_lead
 
-  def is_lead
-    self.class.name == 'Lead'
+  def is_completed?
+    self.order_line_status.name.downcase == 'completed'
   end
 
   def complete
     self.update_attributes(order_line_status: OrderLineStatus.completed, completed_at: DateTime.now)
+  end
+
+  def self.date_sort(status)
+    return self.order(created_at: :desc) if status.nil?
+
+    @status = OrderLineStatus.find(status).name
+
+    case @status
+    when 'completed'
+      order(completed_at: :desc)
+    when 'scheduled'    #compare to 2
+      order(scheduled_at: :desc)
+    else
+      order(created_at: :desc)
+    end
   end
 
   def self.importJSON(file)

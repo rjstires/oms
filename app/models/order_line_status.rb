@@ -1,14 +1,19 @@
-class OrderLineStatus < Option
-  has_many :order_lines
+class OrderLineStatus < ActiveRecord::Base
+  before_save :downcase_fields
+  include OptionMethods
+
+  validates :name, presence: true
+
+  # Scopes
+  scope :by_name,->(v) { find_by name: v }
+
+  def downcase_fields
+    self.name.downcase
+  end
+
+  default_scope { order(name: :asc) }
+
   def self.lead
-    find_by(name: 'lead')
-  end
-
-  def self.completed
-    find_by(name: 'completed')
-  end
-
-  def self.scheduled
-    find_by(name: 'scheduled')
+     find_by(name: 'lead')
   end
 end

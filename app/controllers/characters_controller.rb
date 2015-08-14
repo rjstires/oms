@@ -1,6 +1,6 @@
 class CharactersController < ApplicationController
   before_action :set_character, only: [:show, :edit, :update, :destroy]
-  
+
   # GET /characters
   # GET /characters.json
   def index
@@ -9,7 +9,7 @@ class CharactersController < ApplicationController
       :classification,
       :primary_stat,
       :tier_token)
-    .order(classification_id: :asc)
+    .order('classifications.name ASC, characters.spec ASC')
     .all
   end
 

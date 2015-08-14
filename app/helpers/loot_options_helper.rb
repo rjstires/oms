@@ -1,0 +1,2 @@
+module LootOptionsHelper
+end

@@ -7,28 +7,21 @@ class OrderLinesController < ApplicationController
   # GET /order_lines
   # GET /order_lines.json
   def index
-    @order_lines = @team.order_lines
-    .includes(:team,
-      :customer,
+    @order_lines = @team
+    .order_lines
+    .includes(
       :order_line_status,
       :payment_status,
-      character: [:classification],
-      product: [:category])
+      :customer,
+      :character => [:classification],
+      :product => [:difficulty, :zone]
+      )
+    .filter( params.slice(:status, :category, :difficulty) )
+    .date_sort(params[:status])
     .accessible_by(current_ability)
 
-    @order_lines = @order_lines.by_status(params[:status]) if params.has_key?(:status)
-    @order_lines = @order_lines.by_category(params[:category]) if params.has_key?(:category)
-
-    if params[:status] == 'completed'
-      @order_lines = @order_lines.order('order_lines.completed_at DESC')
-    elsif params[:status] == 'scheduled'
-      @order_lines = @order_lines.order('order_lines.scheduled_at DESC')
-    else
-      @order_lines = @order_lines.order('order_lines.created_at DESC')
-    end
-
-    @categories = @team.categories
-    @order_line_statuses = OrderLine.by_team(@team).by_category(params[:category]).select('options.name as name').joins(:order_line_status).group('name').count('order_lines.id')
+    @categories = Category.all
+    @order_line_statuses = OrderLineStatus.all
 
     authorize! :read, OrderLine
   end
@@ -139,6 +132,6 @@ class OrderLinesController < ApplicationController
   end
 
   def set_default_category
-    redirect_to :category => Category.raiding.display_name.downcase if params[:category].blank?
+    redirect_to :category => Category.find_by(name: 'raiding').id if params[:category].blank?
   end
 end

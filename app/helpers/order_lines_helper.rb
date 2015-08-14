@@ -30,6 +30,6 @@ module OrderLinesHelper
   end
 
   def status_link_text(o)
-    "#{o[0].titleize} <span class=\"badge\">#{o[1]}</span>".html_safe
+    "#{o.name.titleize} <span class=\"badge\"></span>".html_safe
   end
 end

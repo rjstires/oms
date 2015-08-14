@@ -4,7 +4,15 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.includes(:owner, :approved_members, :pending_members, :region, :faction, :team_status).all
+    @teams = Team.includes(
+      :owner,
+      :approved_members,
+      :pending_members,
+      :region,
+      :faction,
+      :team_status)
+    .order(name_alias: :asc)
+    .all
   end
 
   # GET /teams/1
