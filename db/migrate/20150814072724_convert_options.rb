@@ -38,8 +38,8 @@ class ConvertOptions < ActiveRecord::Migration
     existing_armor_types.each do |e|
       @new_value = ArmorType.find_or_create_by!(name: e[1])
       Character
-      .where(:aromr_type_id => e[0])
-      .update_all(:aromr_type_id => @new_value)
+      .where(:armor_type_id => e[0])
+      .update_all(:armor_type_id => @new_value)
     end
 
     ## Categories
