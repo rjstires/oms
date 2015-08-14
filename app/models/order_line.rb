@@ -51,19 +51,8 @@ class OrderLine < ActiveRecord::Base
     self.update_attributes(order_line_status: OrderLineStatus.by_name('completed'), completed_at: DateTime.now)
   end
 
-  def self.date_sort(status)
-    return self.order(created_at: :desc) if status.nil?
-
-    @status = OrderLineStatus.find(status).name
-
-    case @status
-    when 'completed'
-      order(completed_at: :desc)
-    when 'scheduled'    #compare to 2
-      order(scheduled_at: :desc)
-    else
-      order(created_at: :desc)
-    end
+  def self.date_sort()
+    order(completed_at: :desc, scheduled_at: :desc, created_at: :desc)
   end
 
   def self.importJSON(file)
