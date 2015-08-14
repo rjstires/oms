@@ -15,25 +15,24 @@
 ## TierToken.pluck(:id, :name)
 ## Zone.pluck(:id, :name)
 
-existing_armor_types = [[7, "undefined"], [6, "plate"], [5, "mail"], [4, "leather"], [3, "cloth"]]
-existing_categories = [[13, "raiding"], [12, "proving grounds"], [11, "other services"], [63, "mythic dungeons"], [10, "dungeons"], [9, "character services"], [8, "challenge mode"], [78, "brawler's guild"]]
-existing_classifications = [[25, "warrior"], [24, "warlock"], [26, "undefined"], [23, "shaman"], [22, "rogue"], [20, "priest"], [21, "paladin"], [19, "monk"], [18, "mage"], [17, "hunter"], [15, "druid"], [16, "demon hunter"], [14, "death knight"]]
-existing_difficulty = [[27, "normal"], [29, "mythic"], [28, "heroic"]]
-existing_factions = [[1, "horde"], [61, "any"], [30, "alliance"]]
-existing_loot_options = [[68, "yes (personal)"], [65, "yes (master loot)"], [31, "none"]]
-existing_mounts = [[74, "yes (achievement)"], [73, "yes"], [66, "no"]]
-existing_order_line_statuses = [[37, "scheduled"], [35, "paid"], [36, "lead"], [38, "completed"]]
-existing_payment_statuses = [[40, "unpaid"], [39, "paid"]]
-existing_payment_types = [[43, "skrill"], [42, "paypal"], [41, "gold"]]
-existing_play_styles = [[44, "self-play"], [70, "piloted"]]
-existing_primary_stats = [[49, "undefined"], [48, "strength"], [47, "intellect"], [46, "agility"]]
-existing_regions = [[2, "us"], [50, "eu"], [62, "any"]]
-existing_team_statuses = [[51, "pending"], [53, "inactive"], [52, "active"]]
-existing_tier_token = [[56, "vanquisher"], [57, "undefined"], [55, "protector"], [54, "conqueror"]]
-existing_zones = [[80, "throne of thunder"], [67, "skyreach"], [77, "siege of orgrimmar"], [71, "proving grounds"], [64, "package"], [69, "leveling"], [58, "highmaul"], [60, "hellfire citadel"],[75, "dungeons"], [79, "brawler's arena"], [76, "bloodmaul slag mines"], [59, "blackrock foundry"]]
-
 class ConvertOptions < ActiveRecord::Migration
   def change
+    existing_armor_types = [[7, "undefined"], [6, "plate"], [5, "mail"], [4, "leather"], [3, "cloth"]]
+    existing_categories = [[13, "raiding"], [12, "proving grounds"], [11, "other services"], [63, "mythic dungeons"], [10, "dungeons"], [9, "character services"], [8, "challenge mode"], [78, "brawler's guild"]]
+    existing_classifications = [[25, "warrior"], [24, "warlock"], [26, "undefined"], [23, "shaman"], [22, "rogue"], [20, "priest"], [21, "paladin"], [19, "monk"], [18, "mage"], [17, "hunter"], [15, "druid"], [16, "demon hunter"], [14, "death knight"]]
+    existing_difficulty = [[27, "normal"], [29, "mythic"], [28, "heroic"]]
+    existing_factions = [[1, "horde"], [61, "any"], [30, "alliance"]]
+    existing_loot_options = [[68, "yes (personal)"], [65, "yes (master loot)"], [31, "none"]]
+    existing_mounts = [[74, "yes (achievement)"], [73, "yes"], [66, "no"]]
+    existing_order_line_statuses = [[37, "scheduled"], [35, "paid"], [36, "lead"], [38, "completed"]]
+    existing_payment_statuses = [[40, "unpaid"], [39, "paid"]]
+    existing_payment_types = [[43, "skrill"], [42, "paypal"], [41, "gold"]]
+    existing_play_styles = [[44, "self-play"], [70, "piloted"]]
+    existing_primary_stats = [[49, "undefined"], [48, "strength"], [47, "intellect"], [46, "agility"]]
+    existing_regions = [[2, "us"], [50, "eu"], [62, "any"]]
+    existing_team_statuses = [[51, "pending"], [53, "inactive"], [52, "active"]]
+    existing_tier_token = [[56, "vanquisher"], [57, "undefined"], [55, "protector"], [54, "conqueror"]]
+    existing_zones = [[80, "throne of thunder"], [67, "skyreach"], [77, "siege of orgrimmar"], [71, "proving grounds"], [64, "package"], [69, "leveling"], [58, "highmaul"], [60, "hellfire citadel"],[75, "dungeons"], [79, "brawler's arena"], [76, "bloodmaul slag mines"], [59, "blackrock foundry"]]
 
     ## Armor Types
     existing_armor_types.each do |e|
