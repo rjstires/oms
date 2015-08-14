@@ -4,8 +4,9 @@ class LeadsController < OrderLinesController
   # GET /leads.json
   def index
     @leads = Lead.includes(:product, :order_line_status, :payment_status, character: [:classification], ).accessible_by(current_ability)
-    @leads = @leads.by_team(params[:team_id]) if params.has_key?(:team_id)
-    @leads = @leads.by_status(params[:status]) if params.has_key?(:status)
+    @statuses = OrderLineStatus.where('name IN (?)', ['lead', 'paid'])
+    @leads = @leads.team(params[:team_id]) if params.has_key?(:team_id)
+    @leads = @leads.status(params[:status]) if params.has_key?(:status)
   end
 
   # GET /leads/1
@@ -18,7 +19,7 @@ class LeadsController < OrderLinesController
   def new
     @lead = Lead.new
     @products = Product.includes(:category, :zone, :play_style, :loot_option, :difficulty, :mount).all
-    
+
     @options = Option.pluck(:id, :name, :type)
     @categories = Array.new(@options).keep_if {|o| o[2] == 'Category'}
     @difficulties = Array.new(@options).keep_if {|o| o[2] == 'Difficulty'}
@@ -26,7 +27,7 @@ class LeadsController < OrderLinesController
     @mounts = Array.new(@options).keep_if {|o| o[2] == 'Mount'}
     @play_styles = Array.new(@options).keep_if {|o| o[2] == 'PlayStyle'}
     @zones = Array.new(@options).keep_if {|o| o[2] == 'Zone'}
-    
+
     authorize! :create, OrderLine
   end
 
@@ -38,7 +39,7 @@ class LeadsController < OrderLinesController
   def complete
     @lead.order_line_status.complete!
   end
-  
+
   # POST /leads
   # POST /leads.json
   def create
@@ -80,20 +81,20 @@ class LeadsController < OrderLinesController
       format.json { head :no_content }
     end
   end
- 
-  
+
+
   private  
-    # Never trust parameters from the scary internet, only allow the white list through.
+  # Never trust parameters from the scary internet, only allow the white list through.
   def lead_params
     params.require(:lead).permit(:order,
-        :product_id,
-        :customer_id,
-        :team_id,
-        :character_id,
-        :payment_status_id,
-        :sale,
-        :merchant_fee,
-        :site_fee,
-        :contractor_payment)
-    end
+      :product_id,
+      :customer_id,
+      :team_id,
+      :character_id,
+      :payment_status_id,
+      :sale,
+      :merchant_fee,
+      :site_fee,
+      :contractor_payment)
+  end
 end

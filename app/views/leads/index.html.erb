@@ -1,8 +1,13 @@
 <br>
 <div class="col-md-2">
-  <%= active_link_to 'All', url_for(params.except(:status)), :active => :exact, class: 'btn btn-default btn-md btn-block'%>
-  <%= active_link_to 'Lead', safe_params(:status => 'lead'), :active => :exact, class: 'btn btn-default btn-md btn-block'%>
-  <%= active_link_to 'Paid', safe_params(:status => 'pending scheduling'), :active => :exact, class: 'btn btn-default btn-md btn-block'%>
+  <%= active_link_to 'All', url_for(params.except(:status)), :active => :exact, class: 'btn btn-primary btn-md btn-block'%>
+  <% @statuses.each do |status| %>
+  <%= active_link_to status.display_name,
+    safe_params(:status => status.id),
+    :active => :exact,
+    class: 'btn btn-primary btn-md btn-block'
+  %>
+  <% end %>
 </div>
 <div class="col-md-10">
   <%= link_to 'New Lead', new_lead_path if can? :create, Lead %>
