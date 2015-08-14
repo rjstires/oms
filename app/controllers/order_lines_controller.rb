@@ -16,6 +16,7 @@ class OrderLinesController < ApplicationController
       :character => [:classification],
       :product => [:difficulty, :zone]
       )
+    .date_sort
     .filter( params.slice(:status, :category, :difficulty) )
     .accessible_by(current_ability)
 

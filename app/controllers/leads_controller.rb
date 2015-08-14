@@ -3,7 +3,7 @@ class LeadsController < OrderLinesController
   # GET /leads
   # GET /leads.json
   def index
-    @leads = Lead.includes(:product, :order_line_status, :payment_status, character: [:classification], ).accessible_by(current_ability)
+    @leads = Lead.includes(:product, :order_line_status, :payment_status, character: [:classification], ).date_sort.accessible_by(current_ability)
     @statuses = OrderLineStatus.where('name IN (?)', ['lead', 'paid'])
     @leads = @leads.team(params[:team_id]) if params.has_key?(:team_id)
     @leads = @leads.status(params[:status]) if params.has_key?(:status)

@@ -11,6 +11,11 @@ class Lead < OrderLine
     self.order_line_status.name == 'lead'
   end
 
+  def self.date_sort
+    order(completed_at: :desc, scheduled_at: :desc, created_at: :desc)
+  end
+
+  ## Why is this here???
   def complete!
     compelte = OrderLine.find_by(name: 'completed')
     self.update_attributes(order_line_status: complete)
