@@ -1,5 +1,5 @@
 class OrderMailer < ApplicationMailer
-  default from: 'noreply@boostingedge.com'
+  default from: 'Scheduling <noreply@boostingedge.com>'
 
   def confirmation_email(order_line_id)
     @order_line = OrderLine
