@@ -34,7 +34,7 @@ class OrderLinesController < ApplicationController
   def new
     @order_line = @team.order_lines.new
     @products = Product.includes(:category, :zone, :play_style, :loot_option, :difficulty, :mount).all
-
+    @characters = Character.includes(:classification).all
     @categories = Category.all
     @difficulties = Difficulty.all
     @loot_options = LootOption.all
