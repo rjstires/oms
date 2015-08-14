@@ -20,7 +20,7 @@
 
 $(document).on("page:load ready", function(){
     $('#order_line_scheduled_at').datetimepicker({
-      format: 'DD/MM/YYYY HH:mm',
+      format: 'YYYY-MM-DD HH:mm:ss',
     });
 });
 
@@ -33,6 +33,5 @@ $(document).on("page:load ready", function(){
         $("#order_line_merchant_fee").val(merchant_fee.toFixed(2));
         $("#order_line_site_fee").val(site_fee.toFixed(2));
         $("#order_line_contractor_payment").val(contractor_payment.toFixed(2));
-      
     }
     $(document).on("change, keyup", "#order_line_sale", updatePrice);

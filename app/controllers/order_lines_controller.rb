@@ -33,8 +33,6 @@ class OrderLinesController < ApplicationController
   # GET /teams/1/sales/new
   def new
     @order_line = @team.order_lines.new
-    @products = Product.includes(:category, :zone, :play_style, :loot_option, :difficulty, :mount).all
-    @characters = Character.includes(:classification).all
     @categories = Category.all
     @difficulties = Difficulty.all
     @loot_options = LootOption.all
@@ -126,6 +124,7 @@ class OrderLinesController < ApplicationController
       :site_fee,
       :contractor_payment,
       :scheduled_at,
+      :completed_at,
       :region_id,
       :faction_id)
   end

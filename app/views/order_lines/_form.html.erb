@@ -17,13 +17,13 @@
   prompt: 'Select a Region',
   input_html: {class: 'chosen-select'} %>
     <%= f.association :product,
-  prompt: 'Select a Product', collection: @products,
+prompt: 'Select a Product', collection: Product.select_list,
   input_html: { class: 'chosen-select' } %>
     <%= f.association :customer,
   prompt: 'Select a Customer',
   input_html: { class: 'chosen-select' } %>
     <%= f.association :character,
-  prompt: 'Select a Character', collection: @characters,
+prompt: 'Select a Character', collection: Character.select_list,
   input_html: { class: 'chosen-select' }  %>
     <%= f.association :order_line_status,
   prompt: 'Select a Order Status',

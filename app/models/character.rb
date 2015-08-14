@@ -13,4 +13,8 @@ class Character < ActiveRecord::Base
   def to_label
     "#{self.classification.display_name} (#{self.spec.titleize})"
   end
+
+  def self.select_list
+    includes(:classification).all
+  end
 end

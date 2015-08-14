@@ -48,7 +48,7 @@ class OrderLine < ActiveRecord::Base
   end
 
   def complete
-    self.update_attributes(order_line_status: OrderLineStatus.completed, completed_at: DateTime.now)
+    self.update_attributes(order_line_status: OrderLineStatus.by_name('completed'), completed_at: DateTime.now)
   end
 
   def self.date_sort(status)
