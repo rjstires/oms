@@ -19,7 +19,7 @@ class LeadsController < OrderLinesController
   def new
     @lead = Lead.new
     @products = Product.includes(:category, :zone, :play_style, :loot_option, :difficulty, :mount).all
-
+    @characters = Character.includes(:classification).all
     @categories = Category.all
     @difficulties = Difficulty.all
     @loot_options = LootOption.all

@@ -3,18 +3,15 @@
 
   <div class="form-inputs">
     <%= f.input :order %>
-    <%= f.association :product,
+    <%= f.association :product, collection: @products,
                   prompt: 'Select a Product',
                   input_html: { class: 'chosen-select' } %>
     <%= f.association :customer,
                   prompt: 'Select a Customer',
                   input_html: { class: 'chosen-select' } %>
-    <%= f.association :character,
+    <%= f.association :character, collection: @characters,
                   prompt: 'Select a Character',
                   input_html: { class: 'chosen-select' }  %>
-    
-    
-    
     <%= f.association :payment_status,
                   prompt: 'Select a Payment Status',
                   input_html: { class: 'chosen-select' }  %>
