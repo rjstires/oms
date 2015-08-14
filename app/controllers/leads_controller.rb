@@ -17,7 +17,7 @@ class LeadsController < OrderLinesController
 
   # GET /leads/new
   def new
-    @lead = @team.order_lines.new
+    @lead = Lead.new
     @products = Product.includes(:category, :zone, :play_style, :loot_option, :difficulty, :mount).all
 
     @categories = Category.all
