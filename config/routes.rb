@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :loot_options
   resources :tier_tokens
   resources :payment_types
   resources :team_statuses
