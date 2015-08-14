@@ -2,7 +2,7 @@ The following email serves to confirm that you were matched with a team for the 
 
 Normal Raid, Heroic Raid, Mythic Raid, and Challenge Modes have static schedules and you will be serviced on the date listed below. If you've ordered Proving Grounds, Brawler’s Guild, a dungeon service, or package item, the “service date” will be the date you placed your order and you should contact your team directly to discuss scheduling.
 
-Scheduled For: <%= @order_line.scheduled_at %>
+Scheduled For: <%= @order_line.scheduled_at.to_s(:scheduled_for) %>
 
 Service Details
 Category: <%= @order_line.product.category.display_name %>
