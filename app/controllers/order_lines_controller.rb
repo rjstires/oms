@@ -35,13 +35,12 @@ class OrderLinesController < ApplicationController
     @order_line = @team.order_lines.new
     @products = Product.includes(:category, :zone, :play_style, :loot_option, :difficulty, :mount).all
 
-    @options = Option.pluck(:id, :name, :type)
-    @categories = Array.new(@options).keep_if {|o| o[2] == 'Category'}
-    @difficulties = Array.new(@options).keep_if {|o| o[2] == 'Difficulty'}
-    @loot_options = Array.new(@options).keep_if {|o| o[2] == 'LootOption'}
-    @mounts = Array.new(@options).keep_if {|o| o[2] == 'Mount'}
-    @play_styles = Array.new(@options).keep_if {|o| o[2] == 'PlayStyle'}
-    @zones = Array.new(@options).keep_if {|o| o[2] == 'Zone'}
+    @categories = Category.all
+    @difficulties = Difficulty.all
+    @loot_options = LootOption.all
+    @mounts = Mount.all
+    @play_styles = PlayStyle.all
+    @zones = Zone.all
 
     authorize! :create, OrderLine
   end
