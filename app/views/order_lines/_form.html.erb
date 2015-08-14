@@ -1,4 +1,4 @@
-<%= simple_form_for([@team, @order_line]) do |f| %>
+  <%= simple_form_for([@team, @order_line]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -8,29 +8,29 @@
         <span class="glyphicon glyphicon-calendar"></span>
       </span>
     </div>
-    
+
     <%= f.input :order %>
     <%= f.association :region,
-                  prompt: 'Select a Region',
-                  input_html: {class: 'chosen-select'} %>
+  prompt: 'Select a Region',
+  input_html: {class: 'chosen-select'} %>
     <%= f.association :faction,
-                  prompt: 'Select a Region',
-                  input_html: {class: 'chosen-select'} %>
+  prompt: 'Select a Region',
+  input_html: {class: 'chosen-select'} %>
     <%= f.association :product,
-                  prompt: 'Select a Product', collection: @products,
-                  input_html: { class: 'chosen-select' } %>
+  prompt: 'Select a Product', collection: @products,
+  input_html: { class: 'chosen-select' } %>
     <%= f.association :customer,
-                  prompt: 'Select a Customer',
-                  input_html: { class: 'chosen-select' } %>
+  prompt: 'Select a Customer',
+  input_html: { class: 'chosen-select' } %>
     <%= f.association :character,
-                  prompt: 'Select a Character', collection: @characters,
-                  input_html: { class: 'chosen-select' }  %>
+  prompt: 'Select a Character', collection: @characters,
+  input_html: { class: 'chosen-select' }  %>
     <%= f.association :order_line_status,
-                  prompt: 'Select a Order Status',
-                  input_html: { class: 'chosen-select' }  %>
+  prompt: 'Select a Order Status',
+  input_html: { class: 'chosen-select' }  %>
     <%= f.association :payment_status,
-                  prompt: 'Select a Payment Status',
-                  input_html: { class: 'chosen-select' }  %>
+  prompt: 'Select a Payment Status',
+  input_html: { class: 'chosen-select' }  %>
     <%= f.input :sale %>
     <%= f.input :merchant_fee %>
     <%= f.input :site_fee %>
@@ -39,4 +39,4 @@
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
-<% end %>
+  <% end %>

@@ -35,9 +35,13 @@ class OrderLine < ActiveRecord::Base
   validates :faction_id, presence: true
   validates :region_id, presence: true
 
-  validates :order, presence: true, unless: :is_lead
-  validates :team, presence: true, unless: :is_lead
-  validates :payment_status, presence: true, unless: :is_lead
+  validates :order, presence: true, unless: :is_lead?
+  validates :team, presence: true, unless: :is_lead?
+  validates :payment_status, presence: true, unless: :is_lead?
+
+  def is_lead?
+    self.order_line_status.name == 'lead'
+  end
 
   def is_completed?
     self.order_line_status.name.downcase == 'completed'
