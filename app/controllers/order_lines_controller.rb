@@ -2,7 +2,7 @@ class OrderLinesController < ApplicationController
   load_and_authorize_resource :team, :except => [:upload, :send_confirmation]
   load_and_authorize_resource :order_line, :except => [:upload, :send_confirmation], :through => :team
 
-  before_filter :set_default_category, :only => :index
+  before_filter :set_default_category_and_status, :only => :index
 
   # GET /order_lines
   # GET /order_lines.json
@@ -130,6 +130,18 @@ class OrderLinesController < ApplicationController
   end
 
   def set_default_category
-    redirect_to :category => Category.find_by(name: 'raiding').id if params[:category].blank?
+    params[:category] ||= Category.by_name('raiding').id if params[:category].blank?
+  end
+
+  def set_default_status
+    params[:status] ||= OrderLineStatus.by_name('scheduled').id if params[:status].blank?
+  end
+
+  def set_default_category_and_status
+    if (params[:category].blank? || params[:status].blank?)
+      set_default_category
+      set_default_status
+      redirect_to url_for(params)
+    end
   end
 end
