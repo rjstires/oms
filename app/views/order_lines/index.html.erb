@@ -30,6 +30,8 @@ safe_params(:category => category.id),
         <th>Order</th>
         <th>Difficulty</th>
         <th>Zone</th>
+        <th>Play Style</th>
+        <th>Loot</th>
         <th>Service</th>
         <th>Customer</th>
         <th>Character</th>
@@ -46,6 +48,8 @@ safe_params(:category => category.id),
         <td><%= order_line.order %></td>
         <td><%= order_line.product.difficulty.display_name %></td>
         <td><%= order_line.product.zone.display_name %></td>
+        <td><%= order_line.product.play_style.display_name %></td>
+        <td><%= order_line.product.loot_option.display_name %></td>
         <td><%= order_line.product.display_name %></td>
         <td><%= order_line.customer.display_name %></td>
         <td><%= order_line.character.display_name %></td>
