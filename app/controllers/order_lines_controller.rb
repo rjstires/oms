@@ -24,6 +24,7 @@ class OrderLinesController < ApplicationController
     @order_line_statuses = OrderLineStatus.all
 
     authorize! :read, OrderLine
+    store_location
   end
 
   # GET /teams/1/sales/1
@@ -52,8 +53,8 @@ class OrderLinesController < ApplicationController
     @order_line = @team.order_lines.find(params[:order_line_id])
     @order_line.complete
     authorize! :complete, @order_line
-
-    redirect_to team_order_lines_path(@team), notice: 'Order completed, thank you!'
+    flash[:notice] = "Order has been completed, thank you!"
+    redirect_back_or team_order_lines_path(@team)
   end
 
   # POST /order_lines
@@ -106,7 +107,8 @@ class OrderLinesController < ApplicationController
   def send_confirmation
     @team = Team.find(params[:team_id])
     OrderMailer.confirmation_email(params[:order_line_id]).deliver_now
-    redirect_to team_order_lines_path(@team), notice: 'Email confirmation sent!'
+    flash[:notice] = 'Email confirmation sent!'
+    redirect_back_or team_order_lines_path(@team)
   end
 
   private
