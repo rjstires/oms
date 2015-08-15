@@ -20,10 +20,10 @@ class Team < ActiveRecord::Base
   has_many :pending_members, through: :pending_memberships, source: :user
   has_many :approved_members, through: :approved_memberships, source: :user
 
+  has_many :order_lines
   has_many :categories,-> {distinct()}, through: :order_lines
   has_many :order_line_statuses, through: :order_lines
 
-  has_many :order_lines
 
   validates :name, :name_alias, presence: true, uniqueness: true
 

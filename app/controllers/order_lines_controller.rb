@@ -20,7 +20,7 @@ class OrderLinesController < ApplicationController
     .filter( params.slice(:status, :category, :difficulty) )
     .accessible_by(current_ability)
 
-    @categories = Category.all
+    @categories = @team.categories
     @order_line_statuses = OrderLineStatus.all
 
     authorize! :read, OrderLine
