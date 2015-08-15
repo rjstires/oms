@@ -1,34 +1,19 @@
 class MembershipsController < ApplicationController
-  load_and_authorize_resource :team, :only => [:index]
-  load_and_authorize_resource :membership, :through => :team, :only => [:index]
+  load_and_authorize_resource :team, :except => :create
   before_filter :check_existing, :only => :create
 
   # GET /memberships
   # GET /memberships.json
   def index
     @memberships = @team.memberships.all
+
   end
 
   # GET /memberships/1
   # GET /memberships/1.json
   def show
-  end
-
-  # GET /memberships/new
-  def new
     @team = Team.find(params[:team_id])
-    @membership = Membership.new(team: @team, user: current_user)
-
-    respond_to do |format|
-      if @membership.save
-        format.html { redirect_to teams_path, notice: 'Membership request was successfully sent.' }
-        format.json { render :show, status: :created, location: @membership }
-        # Send email here.
-      else
-        format.html { render :new }
-        format.json { render json: @membership.errors, status: :unprocessable_entity }
-      end
-    end
+    authorize! :update, @team
   end
 
   # GET /memberships/1/edit
@@ -39,7 +24,6 @@ class MembershipsController < ApplicationController
   # POST /memberships.json
   def create
     @membership = Membership.new(membership_params)
-
     respond_to do |format|
       if @membership.save
         format.html {
@@ -71,6 +55,7 @@ class MembershipsController < ApplicationController
   # DELETE /memberships/1
   # DELETE /memberships/1.json
   def destroy
+    @membership = Membership.find(params[:id])
     @membership.destroy
     respond_to do |format|
       format.html { redirect_to team_memberships_path(@team), notice: 'Membership was successfully destroyed.' }

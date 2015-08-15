@@ -19,8 +19,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update ) { |u| u.permit(:name, :email, :battle_tag, :skype) }
   end
 
+  def is_admin?
+    current_user.admin?
+  end
+
   private
-    def is_admin?
-      current_user.admin?
-    end
 end

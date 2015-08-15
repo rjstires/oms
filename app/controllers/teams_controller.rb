@@ -1,10 +1,10 @@
 class TeamsController < ApplicationController
-  load_and_authorize_resource :except => [:index, :join]
+  load_and_authorize_resource
 
   # GET /teams
   # GET /teams.json
   def index
-    @teams = current_user.approved_teams.includes(
+    @teams = @teams.includes(
       :owner,
       :approved_members,
       :pending_members,
