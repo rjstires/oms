@@ -26,7 +26,7 @@ safe_params(:category => category.id),
   <table class="table table-striped table-hover order-lines">
     <thead>
       <tr>
-        <%= date_column_header %>
+        <th>Date</th>
         <th>Order</th>
         <th>Difficulty</th>
         <th>Zone</th>
@@ -44,7 +44,17 @@ safe_params(:category => category.id),
     <tbody>
       <% @order_lines.each do |order_line| %>
       <tr>
-        <%= date_value order_line %>
+        <td>
+          <% if order_line.completed_at.blank? && order_line.scheduled_at.blank? %>
+            <%= order_line.created_at %>
+          <% else %>
+          <% if order_line.completed_at.blank? %>
+              <%= order_line.scheduled_at %>
+            <% else %>
+              <%= order_line.completed_at %>
+            <% end %>
+          <% end %>
+        </td>
         <td><%= order_line.order %></td>
         <td><%= order_line.product.difficulty.display_name %></td>
         <td><%= order_line.product.zone.display_name %></td>
