@@ -1,13 +1,13 @@
 module OrderLinesHelper
   def date_column_header
     case params[:status]
-    when 'completed'
+    when 4
       title = 'Completed On'
-    when 'scheduled'
+    when 1
       title = 'Scheduled For'
-    when 'paid'
+    when 2
       title = 'Created On'
-    when 'lead'
+    when 3
       title = 'Created On'
     end
 
@@ -16,13 +16,13 @@ module OrderLinesHelper
 
   def date_value(order)
     case params[:status]
-    when 'completed'
+    when 4
       date = order.completed_at
-    when 'scheduled'
+    when 1
       date = order.scheduled_at
-    when 'paid'
+    when 2
       date = order.created_at
-    when 'lead'
+    when 3
       date = order.created_at
     end
 
