@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
-  load_and_authorize_resource :team, :except => :new
-  load_and_authorize_resource :membership, :through => :team, :except => :new
+  load_and_authorize_resource :team, :only => [:index]
+  load_and_authorize_resource :membership, :through => :team, :only => [:index]
 
   # GET /memberships
   # GET /memberships.json
@@ -17,7 +17,7 @@ class MembershipsController < ApplicationController
   def new
     @team = Team.find(params[:team_id])
     @membership = Membership.new(team: @team, user: current_user)
-    
+
     respond_to do |format|
       if @membership.save
         format.html { redirect_to teams_path, notice: 'Membership request was successfully sent.' }

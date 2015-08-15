@@ -75,4 +75,8 @@ class Team < ActiveRecord::Base
   def self.parseJSON(f)
     ActiveSupport::JSON.decode( File.read( f.path ) )
   end
+
+  def alias_display_name
+    self.name_alias.titleize
+  end
 end
