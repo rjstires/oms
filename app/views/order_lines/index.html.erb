@@ -36,6 +36,7 @@ safe_params(:category => category.id),
         <th>Customer</th>
         <th>Character</th>
         <th>Sale</th>
+        <th>Payment</th>
         <th>Status</th>
         <th colspan="3"></th>
       </tr>
@@ -64,6 +65,7 @@ safe_params(:category => category.id),
         <td><%= order_line.customer.display_name %></td>
         <td><%= order_line.character.display_name %></td>
         <td><%= number_to_currency(order_line.sale) %></td>
+        <td><%= number_to_currency(order_line.contractor_payment) %></td>
         <td><%= order_line.payment_status.display_name %></td>
         <td>
           <div class="dropdown">
