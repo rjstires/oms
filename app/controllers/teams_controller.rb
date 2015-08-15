@@ -4,7 +4,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.includes(
+    @teams = current_user.approved_teams.includes(
       :owner,
       :approved_members,
       :pending_members,
