@@ -56,9 +56,8 @@
         <td>
           <%= form_for([@team, membership]) do |f| %>
           <%= f.hidden_field :confirmed, value: true %>
-          <%= f.submit %>
+          <%= f.submit 'Approve', class: 'btn btn-primary btn-xs' %>
           <% end %>
-          <%= link_to('<li class="fa fa-check fa-lg"></li>'.html_safe, ) %> 
         </td>
         <td>
           <%= link_to('<li class="fa fa-trash-o fa-lg"></li>'.html_safe,

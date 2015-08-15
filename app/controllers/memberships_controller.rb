@@ -6,18 +6,17 @@ class MembershipsController < ApplicationController
   # GET /memberships.json
   def index
     @memberships = @team.memberships.all
-
   end
 
   # GET /memberships/1
   # GET /memberships/1.json
   def show
-    @team = Team.find(params[:team_id])
-    authorize! :update, @team
+    @membership = Membership.find(params[:id])
   end
 
   # GET /memberships/1/edit
   def edit
+    @membership = Membership.find(params[:id])
   end
 
   # POST /memberships
@@ -41,9 +40,13 @@ class MembershipsController < ApplicationController
   # PATCH/PUT /memberships/1
   # PATCH/PUT /memberships/1.json
   def update
+    @membership = Membership.find(params[:id])
     respond_to do |format|
       if @membership.update(membership_params)
-        format.html { redirect_to team_membership_path(@team, @membership), notice: 'Membership was successfully updated.' }
+        format.html {
+          flash[:notice] = 'Membership was successfully updated.'
+          redirect_back_or(root_path)
+          }
         format.json { render :show, status: :ok, location: @membership }
       else
         format.html { render :edit }
