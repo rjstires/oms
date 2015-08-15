@@ -1,6 +1,7 @@
 class MembershipsController < ApplicationController
   load_and_authorize_resource :team, :only => [:index]
   load_and_authorize_resource :membership, :through => :team, :only => [:index]
+  before_filter :check_existing, :only => :create
 
   # GET /memberships
   # GET /memberships.json
@@ -41,7 +42,10 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to @membership, notice: 'Membership was successfully created.' }
+        format.html {
+          flash[:notice] = 'Membership was successfully created'
+          redirect_back_or(root_path)
+          }
         format.json { render :show, status: :created, location: @membership }
       else
         format.html { render :new }
@@ -71,6 +75,16 @@ class MembershipsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to team_memberships_path(@team), notice: 'Membership was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def check_existing
+    team = params[:membership][:team_id]
+    user = params[:membership][:user_id]
+    @membership = Membership.find_by(team_id: team, user_id: user)
+    unless @membership.nil?
+      flash[:warning] = "That membership already exists."
+      redirect_back_or root_url
     end
   end
 

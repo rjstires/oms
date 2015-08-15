@@ -13,6 +13,7 @@ class TeamsController < ApplicationController
       :team_status)
     .order(name_alias: :asc)
     .all
+    store_location
   end
 
   # GET /teams/1

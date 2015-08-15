@@ -1,4 +1,6 @@
 class Membership < ActiveRecord::Base
+  validates :user, uniqueness: {scope: :team}
+
   before_save do |t|
     Membership.where(:team_id => t.team).update_all(:owner => false) if t.owner == true
   end

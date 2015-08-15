@@ -7,7 +7,11 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for(Membership.new) do |f| %>
-        <%= f.association :team, collection: Team.order(name_alias: :asc).all, label_method: :alias_display_name %>
+        <%= f.association :team,
+            collection: Team.order(name_alias: :asc).all,
+            label_method: :alias_display_name ,
+            prompt: 'Select a Team'
+        %>
         <%= f.hidden_field :user_id, value: current_user.id %>
       </div>
       <div class="modal-footer">
