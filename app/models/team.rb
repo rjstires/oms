@@ -28,7 +28,7 @@ class Team < ActiveRecord::Base
   validates :name, :name_alias, presence: true, uniqueness: true
 
   def display_name
-    "#{self.name.titleize} (#{self.id})"
+    self.name.titleize
   end
 
   def name=(val)
