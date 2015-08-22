@@ -1,0 +1,8 @@
+      <tr>
+        <td><%= customer.email %></td>
+        <td><%= customer.try(:battle_tag) %></td>
+        <td><%= customer.try(:skype) %></td>
+        <td><%= link_to 'Edit', edit_admin_customer_path(customer) %></td>
+        <td><%= link_to 'Destroy', admin_customer_path(customer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr
+      

@@ -1,61 +1,57 @@
 Rails.application.routes.draw do
-
-  resources :loot_options
-  resources :tier_tokens
-  resources :payment_types
-  resources :team_statuses
-  resources :regions
-  resources :factions
-  resources :payment_statuses
-  resources :order_line_statuses
-  resources :zones
-  resources :play_styles
-  resources :mounts
-  resources :loot_options
-  resources :difficulties
   resources :categories
-  resources :primary_stats
-  resources :classifications
-  resources :armor_types
-  resources :armor_types
+  get 'memberships/index'
+
   root to: 'visitors#index'
 
-  post 'customers/upload', to: 'customers#upload'
-  post 'order_lines/upload', to: 'order_lines#upload'
-  post 'teams/upload', to: 'teams#upload'
-  post 'users/upload', to: 'users#upload'
+  devise_for :users
+  resources :users
 
-  resources :armor_types, controller: 'options', type: 'ArmorType'
-  resources :categories, controller: 'options', type: 'Category'
-  resources :classifications, controller: 'options', type: 'Classification'
-  resources :characters
-  resources :customers
-  resources :difficulties, controller: 'options', type: 'Difficulty'
-  resources :events
-  resources :factions, controller: 'options', type: 'Faction'
-  resources :leads
-  resources :loot_options, controller: 'options', type: 'LootOption'
-  resources :memberships
-  resources :mounts, controller: 'options', type: 'Mount'
-  resources :order_line_statuses, controller: 'options', type: 'OrderLineStatus'
-  resources :payment_statuses, controller: 'options', type: 'PaymentStatus'
-  resources :payment_types, controller: 'options', type: 'PaymentType'
-  resources :play_styles, controller: 'options', type: 'PlayStyle'
-  resources :primary_stats, controller: 'options', type: 'PrimaryStat'
-  resources :products
-  resources :regions, controller: 'options', type: 'Region'
+  resources :memberships do
+    patch 'approve', to: 'memberships#approve'
+    patch 'remove', to: 'memberships#remove'
+  end
+
   resources :teams do
     resources :order_lines, :path => :sales do
       get 'complete', to: 'order_lines#complete'
+    end
+  end
+
+  namespace :admin do
+    get '', to: 'dashboard#index', as: '/'
+
+    get 'uploads', to: 'pages#uploads'
+    post 'customers/upload', to: 'customers#upload'
+    post 'order_lines/upload', to: 'order_lines#upload'
+    post 'teams/upload', to: 'teams#upload'
+    post 'users/upload', to: 'users#upload'
+
+    resources :armor_types
+    resources :categories
+    resources :classifications
+    resources :characters
+    resources :customers
+    resources :difficulties
+    resources :factions
+    resources :loot_options
+    resources :memberships
+    resources :mounts
+    resources :order_line_statuses
+    resources :order_lines do
       get 'send_confirmation', to: 'order_lines#send_confirmation'
     end
-    resources :memberships
+    
+    resources :payment_statuses
+    resources :payment_types
+    resources :play_styles
+    resources :primary_stats
+    resources :products
+    resources :regions
+    resources :team_statuses
+    resources :teams
+    resources :tier_tokens
+    resources :users
+    resources :zones
   end
-  devise_for :users
-  resources :users
-  resources :tier_tokens, controller: 'options', type: 'TierToken'
-  resources :team_statuses, controller: 'options', type: 'TeamStatus'
-  resources :zones, controller: 'options', type: 'Zone'
-
-  get 'uploads', to: 'pages#uploads'
 end

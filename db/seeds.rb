@@ -37,14 +37,10 @@ LootOption.find_or_create_by!(name: 'personal')
 LootOption.find_or_create_by!(name: 'master')
 
 Mount.find_or_create_by!(name: 'none')
-
-OrderLineStatus.find_or_create_by!(name: 'paid')
-OrderLineStatus.find_or_create_by!(name: 'lead')
-OrderLineStatus.find_or_create_by!(name: 'scheduled')
-OrderLineStatus.find_or_create_by!(name: 'completed')
-
-PaymentStatus.find_or_create_by!(name: 'paid')
-PaymentStatus.find_or_create_by!(name: 'unpaid')
+Mount.find_or_create_by!(name: 'ironhoof destoryer')
+Mount.find_or_create_by!(name: 'kor\'kron juggernaut')
+Mount.find_or_create_by!(name: 'kor\'kron war wolf')
+Mount.find_or_create_by!(name: 'none')
 
 PaymentType.find_or_create_by!(name: 'gold')
 PaymentType.find_or_create_by!(name: 'paypal')
@@ -281,3 +277,42 @@ Character.find_or_create_by!(spec: 'protection',
   classification: @classification_warrior,
   primary_stat: @primary_stat_strength,
   tier_token: @tier_token_protector)
+
+15.times do 
+  Customer.create!(
+    email: Faker::Internet.safe_email,
+    battle_tag: 'battle#1234',
+    skype: 'skype.address'
+    )
+
+  100.times do
+    OrderLine.create!(
+      order: Faker::Number.number(4),
+
+      )
+
+=begin
+    t.integer  "order"
+    
+    t.integer  "product_id",                         null: false
+    
+    t.integer  "team_id"
+    
+    t.intseger  "character_id",                       null: false
+    
+    t.decimal  "sale",                               null: false
+    t.decimal  "merchant_fee",                       null: false
+    t.decimal  "site_fee",                           null: false
+    t.decimal  "contractor_payment",                 null: false
+    
+    
+    t.integer  "customer_id"
+    t.datetime "completed_at"
+    t.datetime "scheduled_at"
+    t.integer  "faction_id",                         null: false
+    t.integer  "region_id",                          null: false
+    t.boolean  "team_paid",          default: false, null: false
+    t.boolean  "order_paid",         default: false, null: false
+=end
+  end
+end

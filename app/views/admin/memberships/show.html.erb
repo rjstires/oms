@@ -1,0 +1,10 @@
+<p>
+  <strong>Name:</strong>
+  <%= @membership.user.name %><br >
+  <%= @membership.team.name %><br >
+  <%= @membership.confirmed %><br >
+  <%= @membership.owner %>
+</p>
+
+<%= link_to 'Edit', edit_admin_membership_path(@membership) %> |
+<%= link_to 'Back', admin_memberships_path %>

@@ -1,0 +1,12 @@
+		<%= simple_form_for([:admin, @membership]) do |f| %>
+		    <div class="form-inputs">
+		    <%= f.association :user %>
+		    <%= f.association :team %>
+		    <%= f.input :confirmed %>
+		    <%= f.input :owner %>
+		  </div>
+			<div class="btn-group">
+				<%= f.button :submit, :class => "btn btn-primary btn-sm" %>
+				<%= yield :buttons %>
+			</div>
+		<% end %>		

@@ -1,33 +1,6 @@
-<h1>Listing Memberships</h1>
-
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Team</th>
-      <th>Confirmed</th>
-      <th>Owner</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @memberships.each do |membership| %>
-      <tr>
-        <td><%= membership.user.name %></td>
-        <td><%= membership.team.name %></td>
-        <td><%= membership.confirmed %></td>
-        <td><%= membership.owner %></td>
-        <td><%= link_to 'Show', team_membership_path(@team, membership) %></td>
-        <td><%= link_to 'Edit', edit_team_membership_path(@team, membership) %></td>
-        <td><%= link_to 'Destroy', team_membership_path(@team, membership), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Membership', new_membership_path %>
-<br>
-<%= link_to 'Back', team_path(@team) %>
+<h1>Memberships#index</h1>
+<p>Find me in app/views/memberships/index.html.erb</p>
+<% @memberships.each do |membership| %>
+<%= membership.team.name %>
+<%= membership.user.name %>
+<% end %>

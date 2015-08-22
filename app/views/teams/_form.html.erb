@@ -1,39 +1,16 @@
-<%= simple_form_for(@team) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :name %>
-  </div>
-
-  <div class="form-inputs">
-    <%= f.input :name_alias %>
-  </div>
-
-  <div class="form-inputs">
-    <%= f.association :region %>
-  </div>
-
-  <div class="form-inputs">
-    <%= f.input :realm %>
-  </div>
-  <div class="form-inputs">
-    <%= f.association :faction %>
-  </div>
-
-  
-    <%= content_tag :div, (f.association :team_status), :class => 'form-inputs' if current_user.admin? %>
-<%= content_tag :div, (f.hidden_field :team_status_id, value: TeamStatus.find_by(name: 'pending').id), :class => 'form-inputs' unless current_user.admin? %>
-  
-
-  <div class="form-inputs">
-    <%= f.association :payment_type %>
-  </div>
-
-  <div class="form-inputs">
-    <%= f.input :payment_address%>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+<% @modal ||= false %>
+<% @remote ||= false %>
+<%= simple_form_for(@team, remote: @remote) do |f| %>
+<div class="form-inputs">
+	<%= f.input :name %>
+	<%= f.input :name_alias %>
+	<%= f.association :region %>
+	<%= f.input :realm %>
+	<%= f.association :faction %>
+	<%= f.input :payment_address %>
+	<%= f.association :payment_type %>
+	<%= f.association :team_status %>
+	<%= f.hidden_field :modal, :value => @modal if @modal %>
+	<%= f.button :submit, 'Save' %>
+</div>
 <% end %>

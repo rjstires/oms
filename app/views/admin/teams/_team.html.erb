@@ -1,0 +1,20 @@
+<tr>
+  <td><%= team.display_name %></td>
+  <td><%= team.display_alias %></td>
+  <td><%= team.region.display_name %>-<%= team.display_realm %></td>
+  <td><%= team.faction.display_name %></td>
+  <td><%= team.payment_type.display_name %>: <%= team.payment_address %></td>
+  <td><%= team.try(:owner).try(:display_name) %></td>
+  <td>
+    <div class="dropdown">
+      <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default btn-xs">
+        <i class="fa fa-cog"></i>
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dLabel">
+        <li><%= link_to 'Edit', edit_admin_team_path(team) %></li>
+        <li><%= link_to 'Destroy', admin_team_path(team), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      </ul>
+    </div>
+  </td>
+</tr>

@@ -1,0 +1,5 @@
+<%= simple_form_for(remove_button, remote: true, html: {style: "display:inline;"}) do |f| %>
+		<%= f.hidden_field :id, :value => remove_button.id %>
+		<%= f.hidden_field :confirmed, :value => false %>
+		<%= f.submit "Remove", class: 'btn btn-default btn-sm' %>
+<% end %>

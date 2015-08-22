@@ -1,29 +1,28 @@
 class OrderLinesController < ApplicationController
-  load_and_authorize_resource :team, :except => [:upload, :send_confirmation]
-  load_and_authorize_resource :order_line, :except => [:upload, :send_confirmation], :through => :team
+  load_and_authorize_resource :team
+  load_and_authorize_resource :order_line, :through => :team
 
-  before_filter :set_default_category_and_status, :only => :index
+  before_filter :set_default_category, :only => [:index]
 
   # GET /order_lines
   # GET /order_lines.json
   def index
-    @order_lines = @team
+    @dispatched_orders = @team
     .order_lines
-    .includes(
-      :order_line_status,
-      :payment_status,
-      :customer,
-      :character => [:classification],
-      :product => [:difficulty, :zone]
-      )
+    .index_join
     .date_sort
     .filter( params.slice(:status, :category, :difficulty) )
+    .dispatched
     .accessible_by(current_ability)
 
-    @categories = @team.categories
-    @order_line_statuses = OrderLineStatus.all
-
-    authorize! :read, OrderLine
+    @completed_orders = @team
+    .order_lines
+    .index_join
+    .date_sort
+    .filter( params.slice(:status, :category, :difficulty) )
+    .where_completed
+    .accessible_by(current_ability)
+    
     store_location
   end
 
@@ -31,118 +30,11 @@ class OrderLinesController < ApplicationController
   def show
   end
 
-  # GET /teams/1/sales/new
-  def new
-    @order_line = @team.order_lines.new
-    @categories = Category.all
-    @difficulties = Difficulty.all
-    @loot_options = LootOption.all
-    @mounts = Mount.all
-    @play_styles = PlayStyle.all
-    @zones = Zone.all
-
-    authorize! :create, OrderLine
-  end
-
-  # GET /teams/1/sales/1/edit
-  def edit
-  end
-
-  # get /team/sales/1/complete
-  def complete
-    @order_line = @team.order_lines.find(params[:order_line_id])
-    @order_line.complete
-    authorize! :complete, @order_line
-    flash[:notice] = "Order has been completed, thank you!"
-    redirect_back_or team_order_lines_path(@team)
-  end
-
-  # POST /order_lines
-  # POST /order_lines.json
-  def create
-
-    @order_line = @team.order_lines.new(order_line_params)
-
-    respond_to do |format|
-      if @order_line.save
-        format.html { redirect_to team_order_lines_path(@order_line.team), notice: 'Order line was successfully created.' }
-        format.json { render :show, status: :created, location: @order_line }
-      else
-        format.html { render :new }
-        format.json { render json: @order_line.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /order_lines/1
-  # PATCH/PUT /order_lines/1.json
-  def update
-    respond_to do |format|
-      if @order_line.update(order_line_params)
-        format.html { redirect_to team_order_line_path(@order_line.team, @order_line), notice: 'Order line was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order_line }
-      else
-        format.html { render :edit }
-        format.json { render json: @order_line.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /order_lines/1
-  # DELETE /order_lines/1.json
-  def destroy
-    @order_line.destroy
-    respond_to do |format|
-      format.html { redirect_to team_order_lines_path(@team), notice: 'Order line was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  def upload
-    OrderLine.importJSON( params[:file] )
-    redirect_to root_path
-  end
-
-  # GET /team/1/sales/1/send_confirmation
-  def send_confirmation
-    @team = Team.find(params[:team_id])
-    OrderMailer.confirmation_email(params[:order_line_id]).deliver_now
-    flash[:notice] = 'Email confirmation sent!'
-    redirect_back_or team_order_lines_path(@team)
-  end
-
   private
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def order_line_params
-    params.require(:order_line).permit(:order,
-      :product_id,
-      :customer_id,
-      :team_id,
-      :character_id,
-      :order_line_status_id,
-      :payment_status_id,
-      :sale,
-      :merchant_fee,
-      :site_fee,
-      :contractor_payment,
-      :scheduled_at,
-      :completed_at,
-      :region_id,
-      :faction_id)
-  end
 
   def set_default_category
-    params[:category] ||= Category.by_name('raiding').id if params[:category].blank?
-  end
-
-  def set_default_status
-    params[:status] ||= OrderLineStatus.by_name('scheduled').id if params[:status].blank?
-  end
-
-  def set_default_category_and_status
-    if (params[:category].blank? || params[:status].blank?)
-      set_default_category
-      set_default_status
+    if params[:category].blank?
+      params[:category] = Category.by_name('raiding').id
       redirect_to url_for(params)
     end
   end

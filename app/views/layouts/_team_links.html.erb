@@ -1,0 +1,19 @@
+      <% if user_signed_in? %>
+      <!-- Begin team links -->
+      <li><a href="#"><i class="fa fa-trophy"></i> Teams</a>
+        <ul class="list-unstyled">
+          <% if current_user.admin? %>
+          <li class="sub-nav"><%= link_to 'Create Team', new_admin_team_path %></li>
+          <li class="sub-nav"><%= link_to 'All Teams', admin_teams_path %></li>
+          <li class="sub-nav"><%= link_to 'Memberships', admin_memberships_path %></li>
+          <% else %>            
+          <li class="sub-nav"><%= link_to 'Create Team', new_team_path %></li>
+            <% current_user.approved_teams.each do |team| %>
+          <li class="sub-nav"><%= link_to team.display_name, team %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </li>
+      <!-- End team links -->
+      <% end %>
+    

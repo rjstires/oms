@@ -27,14 +27,9 @@ class Ability
       # Membership (CRUD)
       can :create, Membership
       can [:read, :update], Membership, :team_id => user.owned_teams_id_list
-      cannot [:destroy], Membership, :team_id => user.owned_teams_id_list
 
       # Customer (C R U D)
       cannot [:read, :index], Customer
-
-      # Lead
-      cannot [:create, :update, :destory], Lead
-      can :read, Lead
     end
 
     if user.registered?

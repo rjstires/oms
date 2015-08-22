@@ -1,0 +1,24 @@
+        <div class="list-group-item">
+          <p class="list-group-item-text">Name</p>
+          <h4 class="list-group-item-heading"><%= team.display_name %></h4>
+        </div>
+        <div class="list-group-item">
+          <p class="list-group-item-text">Alias</p>
+          <h4 class="list-group-item-heading"><%= team.display_alias %></h4>
+        </div>
+        <div class="list-group-item">
+          <p class="list-group-item-text">Owner</p>
+          <h4 class="list-group-item-heading"><%= team.owner.email %></h4>
+        </div>
+        <div class="list-group-item">
+          <p class="list-group-item-text">Faction</p>
+          <h4 class="list-group-item-heading"><%= team.faction.display_name %></h4>
+        </div>
+        <div class="list-group-item">
+          <p class="list-group-item-text">Realm</p>
+          <h4 class="list-group-item-heading"><%= team.region.display_name %>-<%= team.display_realm %></h4>
+        </div>
+        <div class="list-group-item">
+          <p class="list-group-item-text">Payment</p>
+          <h4 class="list-group-item-heading"><%= team.payment_type.display_name %> to <%= team.payment_address %></h4>
+        </div>

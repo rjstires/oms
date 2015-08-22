@@ -1,0 +1,1187 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"diff",
+				"difficulty"
+			],
+			[
+				"class",
+				"classification	(_character.html.erb)"
+			],
+			[
+				"arm",
+				"armor_type	(show.html.erb)"
+			],
+			[
+				"prim",
+				"primary_stat	(_form.html.erb)"
+			],
+			[
+				"admin",
+				"admin_armor_types_path"
+			],
+			[
+				"admin_",
+				"admin_armor_types_path	(show.html.erb)"
+			],
+			[
+				"armor",
+				"armor_types"
+			],
+			[
+				"fac",
+				"factory_girl	(factory_girl.rb)"
+			],
+			[
+				"order",
+				"order_line"
+			],
+			[
+				"order_line",
+				"order_line_status_id"
+			],
+			[
+				"order_",
+				"order_line_status	(_order_line.html.erb)"
+			],
+			[
+				"order_l",
+				"order_line_status_id"
+			],
+			[
+				"par",
+				"partial"
+			],
+			[
+				"approve",
+				"approve_button"
+			],
+			[
+				"approve_",
+				"approve_membership	(memberships_controller.rb)"
+			],
+			[
+				"if",
+				"if	if … end"
+			],
+			[
+				"rp",
+				"rpo	render (partial, object)"
+			],
+			[
+				"display",
+				"display_name"
+			],
+			[
+				"loo",
+				"loot_option"
+			],
+			[
+				"ca",
+				"category_id"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"submit",
+				"Snippet: form_for submit"
+			],
+			[
+				"package inst",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"remove ",
+				"Package Control: Remove Package"
+			],
+			[
+				"isntall",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"form",
+				"Snippet: form_for"
+			],
+			[
+				"render",
+				"Snippet: ERB Render Tag"
+			],
+			[
+				"tag",
+				"Snippet: def_delegator .."
+			],
+			[
+				"partial",
+				"Snippet: render partial"
+			],
+			[
+				"insert partial",
+				"Snippet: insert a rails view password_field_tag helper"
+			],
+			[
+				"open",
+				"View: Toggle Open Files in Side Bar"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/db",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/db/migrate"
+	],
+	"file_history":
+	[
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/db/migrate/20150821212709_drop_sort_from_order_line_statuses.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/_order_line.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/order_line.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/products/show.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/products/_form.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/products_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/products/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/products/edit.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/products/_product.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/products/show.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/products/new.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/products/index.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/edit.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/_form.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/_customer.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/show.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/show.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/new.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/index.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/customers_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/_character.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/characters_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/order_lines/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/order_lines_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/helpers/application_helper.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/helpers/order_lines_helper.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/helpers/admin/user_helper.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/helpers/admin/armor_types_helper.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/helpers/sessions_helper.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/helpers/armor_types_helper.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/helpers/categories_helper.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/helpers/memberships_helper.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/order_lines/_order_line.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/teams/show.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/teams_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/teams_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/mounts_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/layouts/_team_links.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/teams/_team.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/memberships/edit.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/memberships/_membership.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/memberships/_form.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/memberships_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/memberships/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/memberships/new.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/memberships/show.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/memberships/show.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/memberships/index.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/teams/show.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/teams/_form.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/teams/index.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/teams/show.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/teams/new.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/teams/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/teams/edit.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/teams/_form.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/teams/_team.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/zones_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/zones/_zone.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/zones/edit.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/zones/index.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/zones/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/zones/new.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/zones/show.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/zones/show.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/zones/_form.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/tier_tokens_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/tier_tokens/_tier_token.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/tier_tokens/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/tier_tokens/edit.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/tier_tokens/index.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/tier_tokens/new.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/tier_tokens/show.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/tier_tokens/show.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/tier_tokens/_form.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/team_statuses_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/team_statuses/_team_status.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/team_statuses/edit.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/team_statuses/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/team_statuses/index.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/team_statuses/new.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/team_statuses/show.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/team_statuses/show.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/team_statuses/_form.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/regions_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/regions/_region.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/regions/edit.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/regions/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/regions/index.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/regions/show.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/regions/show.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/regions/new.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/regions/_form.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/armor_types_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/order_lines_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/order_line_statuses_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/payment_statuses_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/payment_types_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/categories_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/play_styles_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/difficulties_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/factions_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/classifications_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/loot_options_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/_form.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/show.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/show.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/new.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/index.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/edit.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/_play_style.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/primary_stats_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/edit.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/index.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/show.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/show.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/new.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/_play_style.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/_form.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/payment_types/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/payment_types/index.json.jbuilder",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/payment_types/new.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/payment_types/show.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/payment_types/show.json.jbuilder"
+	],
+	"find":
+	{
+		"height": 46.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"<open files>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			">\n",
+			"%>\n",
+			"region",
+			"Region",
+			"_Customers_",
+			"character",
+			"characters",
+			"Character",
+			"::Team",
+			"mount",
+			"Mount",
+			"mount",
+			"Mount",
+			"mount",
+			"Mount",
+			"mount",
+			"Mount",
+			"mount",
+			"Mount",
+			"mount",
+			"Mount",
+			"mounts",
+			"Mounts",
+			"mount",
+			"Mount",
+			"play_style",
+			"Play Style",
+			"Armor type",
+			"armor_type",
+			"ArmorType",
+			"Armor type",
+			"Armor Type",
+			"Armor Types",
+			"ArmorType",
+			"armor_type",
+			"ArmorTypes",
+			"Armor Type",
+			"Armor Types",
+			"Armor type",
+			"ArmorType",
+			"armor_type",
+			"armor_types",
+			"ArmorTypes",
+			"PaymentType",
+			"Payment type",
+			"type",
+			"Payment Type",
+			"Payment Types",
+			"payment_type",
+			"payment_types",
+			"Armor Type",
+			"Armor",
+			"armor",
+			"Armor Types",
+			"Armor type",
+			"armor_type",
+			"ArmorType",
+			"armor_types",
+			"ArmorTypes",
+			"Armor Type",
+			"Armor Types",
+			"ArmorType",
+			"Armor type",
+			"armor_type",
+			"armor_types",
+			"ArmorTypes",
+			"statuss",
+			"armor",
+			"Statuss",
+			"Armor Type",
+			"Armor type",
+			"armor_type",
+			"ArmorType",
+			"ArmorTypes",
+			"ArmorType",
+			"Armor type",
+			"Armor Type",
+			"Armor Types",
+			"armor_type",
+			"armor_types",
+			"Faction",
+			"faction",
+			"factions",
+			"Armor type",
+			"armor_type",
+			"ArmorType",
+			"armor_types",
+			"ArmorTypes",
+			"Fation",
+			"Armor type",
+			"Armor Type",
+			"armor_type",
+			"armor_types",
+			"ArmorType",
+			"ArmorTypes",
+			"Difficulties",
+			"classification",
+			"classifications",
+			"Classification",
+			"Classifications",
+			"Armor Type",
+			"Armor type",
+			"armor_type",
+			"armor_types",
+			"::classification",
+			"Armor type",
+			"ArmorType",
+			"ArmorTypes",
+			"armor_type",
+			"armor_types",
+			"armor_type",
+			"armor_types",
+			"display_name",
+			"%>\n",
+			"category",
+			"categories",
+			"category",
+			"categories",
+			"category",
+			"Category",
+			"categories",
+			"Categories",
+			"armor_type",
+			"armor_types",
+			"armor_type",
+			"category",
+			"armor_type",
+			"armor_types"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"product",
+			"Product",
+			"_customers_",
+			"customer",
+			"character",
+			"Customers",
+			"Customer",
+			"Team",
+			"team",
+			"Team",
+			"membership",
+			"Membership",
+			"team",
+			"Team",
+			"zone",
+			"Zone",
+			"tier_token",
+			"TierToken",
+			"team_status",
+			"TeamStatus",
+			"team_statuses",
+			"TeamStatuses",
+			"region",
+			"Region",
+			"primary_stat",
+			"Primary Stat",
+			"Primary stat",
+			"primary_stat",
+			"PrimaryStat",
+			"Play style",
+			"Play Style",
+			"Play Styles",
+			"Play Style",
+			"Play Styles",
+			"PlayStyle",
+			"play_style",
+			"PlayStyles",
+			"Payment Type",
+			"Payment Types",
+			"Payment type",
+			"PaymentType",
+			"payment_type",
+			"payment_types",
+			"PaymentTypes",
+			"PaymentStatus",
+			"Payment status",
+			"Payment Status",
+			"Payment Statuses",
+			"payment_status",
+			"payment_statuses",
+			"Payment Type",
+			"Payment Types",
+			"Payment type",
+			"payment_type",
+			"PaymentType",
+			"payment_types",
+			"PaymentStatuses",
+			"Order Line Status",
+			"Order Line Statuses",
+			"OrderLineStatus",
+			"Order line status",
+			"order_line_status",
+			"order_line_statuses",
+			"OrderLineStatuses",
+			"status",
+			"Status",
+			"Order Line Status",
+			"Order line status",
+			"order_line_status",
+			"OrderLineStatus",
+			"OrderLineStatuses",
+			"Mount",
+			"Mounts",
+			"mount",
+			"mounts",
+			"Loot Option",
+			"loot_option",
+			"loot_options",
+			"Loot option",
+			"loot_option",
+			"LootOption",
+			"loot_options",
+			"LootOptions",
+			"Faction",
+			"faction",
+			"factions",
+			"Faction",
+			"Factions",
+			"difficulty",
+			"Difficulties",
+			"Difficulty",
+			"Difficulties",
+			"Difficulty",
+			"difficulty",
+			"difficulties",
+			"classification",
+			"classifications",
+			"classification",
+			"classifications",
+			"classification",
+			"classifications",
+			"character",
+			"characters",
+			"@",
+			"hideItem"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/Ruby/Ruby.sublime-build",
+	"project": "oms.sublime-project",
+	"replace":
+	{
+		"height": 86.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"viewsadminprodshow",
+				"app\\views\\admin\\products\\show.html.erb"
+			],
+			[
+				"viewsadminproductshow",
+				"app\\views\\admin\\products\\show.html.erb"
+			],
+			[
+				"adminproductscontr",
+				"app\\controllers\\admin\\products_controller.rb"
+			],
+			[
+				"viewsadminproductsform",
+				"app\\views\\admin\\products\\_form.html.erb"
+			],
+			[
+				"controlleradminprod",
+				"app\\controllers\\admin\\products_controller.rb"
+			],
+			[
+				"orderlinescontr",
+				"app\\controllers\\order_lines_controller.rb"
+			],
+			[
+				"orderlinesinde",
+				"app\\views\\order_lines\\index.html.erb"
+			],
+			[
+				"adminorderlinesorderline",
+				"app\\views\\admin\\order_lines\\_order_line.html.erb"
+			],
+			[
+				"teamscon",
+				"app\\controllers\\teams_controller.rb"
+			],
+			[
+				"teamsshow",
+				"app\\views\\teams\\show.html.erb"
+			],
+			[
+				"layoutsteam",
+				"app\\views\\layouts\\_team_links.html.erb"
+			],
+			[
+				"adminteamscontr",
+				"app\\controllers\\admin\\teams_controller.rb"
+			],
+			[
+				"adminteams_team",
+				"app\\views\\admin\\teams\\_team.html.erb"
+			],
+			[
+				"admin_membership",
+				"app\\views\\admin\\memberships\\_membership.html.erb"
+			],
+			[
+				"membershipcon",
+				"app\\controllers\\admin\\memberships_controller.rb"
+			],
+			[
+				"mountcon",
+				"app\\controllers\\admin\\mounts_controller.rb"
+			],
+			[
+				"layouts",
+				"app\\views\\layouts\\_team_links.html.erb"
+			],
+			[
+				"adminteamsshow",
+				"app\\views\\admin\\teams\\show.html.erb"
+			],
+			[
+				"adminteamsteam",
+				"app\\views\\admin\\teams\\_team.html.erb"
+			],
+			[
+				"adminteamsc",
+				"app\\controllers\\admin\\teams_controller.rb"
+			],
+			[
+				"adminteamscon",
+				"app\\controllers\\admin\\teams_controller.rb"
+			],
+			[
+				"adminteamsform",
+				"app\\views\\admin\\teams\\_form.html.erb"
+			],
+			[
+				"teamsform",
+				"app\\views\\teams\\_form.html.erb"
+			],
+			[
+				"teamsteam",
+				"app\\views\\teams\\_team.html.erb"
+			],
+			[
+				"mountscon",
+				"app\\controllers\\admin\\mounts_controller.rb"
+			],
+			[
+				"zonescon",
+				"app\\controllers\\admin\\zones_controller.rb"
+			],
+			[
+				"tiertokencont",
+				"app\\controllers\\admin\\tier_tokens_controller.rb"
+			],
+			[
+				"teamstatuscon",
+				"app\\controllers\\admin\\team_statuses_controller.rb"
+			],
+			[
+				"regionscon",
+				"app\\controllers\\admin\\regions_controller.rb"
+			],
+			[
+				"armortypescon",
+				"app\\controllers\\admin\\armor_types_controller.rb"
+			],
+			[
+				"primarycon",
+				"app\\controllers\\admin\\primary_stats_controller.rb"
+			],
+			[
+				"armortypecon",
+				"app\\controllers\\admin\\armor_types_controller.rb"
+			],
+			[
+				"playstylescon",
+				"app\\controllers\\admin\\play_styles_controller.rb"
+			],
+			[
+				"paymenttypecon",
+				"app\\controllers\\admin\\payment_types_controller.rb"
+			],
+			[
+				"paymentstat",
+				"app\\controllers\\admin\\payment_statuses_controller.rb"
+			],
+			[
+				"orderlinestatuscont",
+				"app\\controllers\\admin\\order_line_statuses_controller.rb"
+			],
+			[
+				"armortypescontrol",
+				"app\\controllers\\admin\\armor_types_controller.rb"
+			],
+			[
+				"controlladminmou",
+				"app\\controllers\\admin\\mounts_controller.rb"
+			],
+			[
+				"controladminarmor",
+				"app\\controllers\\admin\\armor_types_controller.rb"
+			],
+			[
+				"viewsadmindiffinde",
+				"app\\views\\admin\\difficulties\\index.html.erb"
+			],
+			[
+				"controlladmindiff",
+				"app\\controllers\\admin\\difficulties_controller.rb"
+			],
+			[
+				"controladminclass",
+				"app\\controllers\\admin\\classifications_controller.rb"
+			],
+			[
+				"controlladminarmo",
+				"app\\controllers\\admin\\armor_types_controller.rb"
+			],
+			[
+				"controlladminchara",
+				"app\\controllers\\admin\\characters_controller.rb"
+			],
+			[
+				"viewsadminchara",
+				"app\\views\\admin\\characters\\_character.html.erb"
+			],
+			[
+				"controllersadmincharac",
+				"app\\controllers\\admin\\characters_controller.rb"
+			],
+			[
+				"viewsadmincharacter",
+				"app\\views\\admin\\characters\\_form.html.erb"
+			],
+			[
+				"viewsadmincharacterschar",
+				"app\\views\\admin\\characters\\_character.html.erb"
+			],
+			[
+				"viewsadmincharac",
+				"app\\views\\admin\\characters\\_form.html.erb"
+			],
+			[
+				"controlladmincharac",
+				"app\\controllers\\admin\\characters_controller.rb"
+			],
+			[
+				"viewsadmincateshow",
+				"app\\views\\admin\\categories\\show.html.erb"
+			],
+			[
+				"admincatecon",
+				"app\\controllers\\admin\\categories_controller.rb"
+			],
+			[
+				"viewsadmincatecate",
+				"app\\views\\admin\\categories\\_category.html.erb"
+			],
+			[
+				"viewsadmincatin",
+				"app\\views\\admin\\categories\\index.html.erb"
+			],
+			[
+				"viewsadmincateinde",
+				"app\\views\\admin\\categories\\index.html.erb"
+			],
+			[
+				"admincategories",
+				"app\\controllers\\admin\\categories_controller.rb"
+			],
+			[
+				"viewsadminarmortypesind",
+				"app\\views\\admin\\armor_types\\index.html.erb"
+			],
+			[
+				"adminarmortypescontr",
+				"app\\controllers\\admin\\armor_types_controller.rb"
+			],
+			[
+				"adminarmortypescont",
+				"app\\controllers\\admin\\armor_types_controller.rb"
+			],
+			[
+				"models/armor",
+				"app\\models\\armor_type.rb"
+			],
+			[
+				"spec/mo",
+				"spec\\models\\armor_type_spec.rb"
+			],
+			[
+				"gem",
+				"Gemfile"
+			],
+			[
+				"gemfil",
+				"Gemfile"
+			],
+			[
+				"gemf",
+				"Gemfile"
+			],
+			[
+				"rails_helper",
+				"spec\\rails_helper.rb"
+			],
+			[
+				"rails_hel",
+				"spec\\rails_helper.rb"
+			],
+			[
+				"gemfile",
+				"Gemfile"
+			],
+			[
+				"armor_",
+				"spec\\armor_type_spec.rb"
+			],
+			[
+				"admindashboard",
+				"app\\views\\admin\\dashboard\\index.html.erb"
+			],
+			[
+				"modelsuser",
+				"app\\models\\user.rb"
+			],
+			[
+				"viewsadminmembers",
+				"app\\views\\admin\\memberships\\_form.html.erb"
+			],
+			[
+				"modelsteam",
+				"app\\models\\team.rb"
+			],
+			[
+				"controllersadminmember",
+				"app\\controllers\\admin\\memberships_controller.rb"
+			],
+			[
+				"viewsadminmemberships",
+				"app\\views\\admin\\memberships\\_form.html.erb"
+			],
+			[
+				"dashboard",
+				"app\\views\\admin\\dashboard\\index.html.erb"
+			],
+			[
+				"viewsadmindash",
+				"app\\views\\admin\\dashboard\\_team_row.html.erb"
+			],
+			[
+				"viewsadminteamsfo",
+				"app\\views\\admin\\teams\\_form.html.erb"
+			],
+			[
+				"controllersadminteam",
+				"app\\controllers\\admin\\teams_controller.rb"
+			],
+			[
+				"adminteamscont",
+				"app\\controllers\\admin\\teams_controller.rb"
+			],
+			[
+				"viewsteams",
+				"app\\views\\teams\\_member.html.erb"
+			],
+			[
+				"viewsadminteam",
+				"app\\views\\admin\\teams\\_team.html.erb"
+			],
+			[
+				"viewsteamshow",
+				"app\\views\\teams\\show.html.erb"
+			],
+			[
+				"viewsadmindashboardin",
+				"app\\views\\admin\\dashboard\\index.html.erb"
+			],
+			[
+				"admindashb",
+				"app\\controllers\\admin\\dashboard_controller.rb"
+			],
+			[
+				"javasc",
+				"app\\assets\\javascripts\\application.js"
+			],
+			[
+				"routes",
+				"config\\routes.rb"
+			],
+			[
+				"modlesteam",
+				"app\\models\\team.rb"
+			],
+			[
+				"viewsadminteamsform",
+				"app\\views\\admin\\teams\\_form.html.erb"
+			],
+			[
+				"viewsadminteamstea",
+				"app\\views\\admin\\teams\\_team.html.erb"
+			],
+			[
+				"adminorderlinesc",
+				"app\\controllers\\admin\\order_lines_controller.rb"
+			],
+			[
+				"viewsadminorderlinesor",
+				"app\\views\\admin\\order_lines\\_order_line.html.erb"
+			],
+			[
+				"viewsadminorderlines",
+				"app\\views\\admin\\order_lines\\index.html.erb"
+			],
+			[
+				"javascriptapp",
+				"app\\assets\\javascripts\\application.js"
+			],
+			[
+				"viewsadminorderlinesform",
+				"app\\views\\admin\\order_lines\\_form.html.erb"
+			],
+			[
+				"adminorderlinescon",
+				"app\\controllers\\admin\\order_lines_controller.rb"
+			],
+			[
+				"modal",
+				"app\\views\\teams\\_modal.html.erb"
+			],
+			[
+				"adminorderlinescont",
+				"app\\controllers\\admin\\order_lines_controller.rb"
+			],
+			[
+				"adminorder_lines",
+				"app\\views\\admin\\order_lines\\_form.html.erb"
+			],
+			[
+				"viewsadminorder_linesorder",
+				"app\\views\\admin\\order_lines\\_order_line.html.erb"
+			],
+			[
+				"viewsadminorder_linesind",
+				"app\\views\\admin\\order_lines\\index.html.erb"
+			],
+			[
+				"viewsadminorder_lineind",
+				"app\\views\\admin\\order_line_statuses\\index.html.erb"
+			],
+			[
+				"modelsorderline",
+				"app\\models\\order_line.rb"
+			],
+			[
+				"viewsadminorderlinesind",
+				"app\\views\\admin\\order_lines\\index.html.erb"
+			],
+			[
+				"viewsadminorderinde",
+				"app\\views\\admin\\order_lines\\index.html.erb"
+			],
+			[
+				"viewsadminorder_ine",
+				"app\\views\\admin\\order_lines\\_order_line.html.erb"
+			],
+			[
+				"adminorder",
+				"app\\controllers\\admin\\order_lines_controller.rb"
+			],
+			[
+				"adminorder_linesfor",
+				"app\\views\\admin\\order_lines\\_form.html.erb"
+			],
+			[
+				"teamscont",
+				"app\\controllers\\teams_controller.rb"
+			],
+			[
+				"adminorder_linecon",
+				"app\\controllers\\admin\\order_lines_controller.rb"
+			],
+			[
+				"adminordercon",
+				"app\\controllers\\admin\\order_lines_controller.rb"
+			],
+			[
+				"adminorder_linesind",
+				"app\\views\\admin\\order_lines\\index.html.erb"
+			],
+			[
+				"adminorder_linesorder",
+				"app\\views\\admin\\order_lines\\_order_line.html.erb"
+			],
+			[
+				"adminorder_linesform",
+				"app\\views\\admin\\order_lines\\_form.html.erb"
+			],
+			[
+				"order_lineform",
+				"app\\views\\order_lines\\_form.html.erb"
+			],
+			[
+				"teamform",
+				"app\\views\\teams\\_form.html.erb"
+			],
+			[
+				"adminorder_lineform",
+				"app\\views\\admin\\order_line_statuses\\_form.html.erb"
+			],
+			[
+				"layoutsale",
+				"app\\views\\layouts\\_sales_links.html.erb"
+			],
+			[
+				"layoutappl",
+				"app\\views\\layouts\\application.html.erb"
+			],
+			[
+				"layout",
+				"app\\views\\layouts\\application.html.erb"
+			],
+			[
+				"teamli",
+				"app\\views\\layouts\\_team_links.html.erb"
+			],
+			[
+				"layouttea",
+				"app\\views\\layouts\\_team_links.html.erb"
+			],
+			[
+				"team.rb",
+				"app\\models\\team.rb"
+			],
+			[
+				"teamscontr",
+				"app\\controllers\\teams_controller.rb"
+			],
+			[
+				"teammod",
+				"app\\views\\teams\\_modal.html.erb"
+			],
+			[
+				"teamshow",
+				"app\\views\\teams\\show.html.erb"
+			],
+			[
+				"adminteamin",
+				"app\\views\\admin\\team_statuses\\index.html.erb"
+			],
+			[
+				"teammo",
+				"app\\views\\teams\\_modal.html.erb"
+			],
+			[
+				"teamsup",
+				"app\\views\\teams\\update.js.erb"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"last_automatic_layout":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		]
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 400.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 1
+	}
+}

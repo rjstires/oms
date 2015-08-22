@@ -1,0 +1,57 @@
+<h1>Order Lines</h1>
+<div class="row bottom-buffer">
+  <div class="col-md-12">
+    <%= link_to '<i class="fa fa-plus"></i> New'.html_safe, new_admin_order_line_path, :class => 'btn btn-primary btn-sm' %>
+  </div>
+</div>
+<div class="row bottom-buffer">
+  <div class="col-md-4 col-md-offset-4 bottom-buffer" id="task-form" style="display:none;"></div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table" id="scheduled_order_lines">
+    <tbody>
+      <th></th>
+      <th>Scheduled</th>
+      <th>Order</th>
+      <th>Customer</th>
+      <th>Region</th>
+      <th>Faction</th>
+      <th>Character</th>
+      <th>Category</th>
+      <th>Zone</th>
+      <th>Difficulty</th>
+      <th>Service</th>
+      <th>Team</th>
+      <th>Sale</th>
+      <th>Commission</th>
+      <th>Team</th>
+      <%= render @scheduled_order_lines %>
+    </tbody>
+  </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table" id="scheduled_order_lines">
+    <tbody>
+      <th></th>
+      <th>Completed</th>
+      <th>Order</th>
+      <th>Customer</th>
+      <th>Region</th>
+      <th>Faction</th>
+      <th>Character</th>
+      <th>Category</th>
+      <th>Zone</th>
+      <th>Difficulty</th>
+      <th>Service</th>
+      <th>Team</th>
+      <th>Sale</th>
+      <th>Commission</th>
+      <th>Team</th>
+      <%= render @completed_order_lines %>
+    </tbody>
+  </table>
+  </div>
+</div>

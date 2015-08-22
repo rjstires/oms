@@ -1,42 +1,7 @@
-  <%= simple_form_for([@team, @order_line]) do |f| %>
-  <%= f.error_notification %>
 
+<%= simple_form_for([:admin, @order_line_status], remote: true) do |f| %>
   <div class="form-inputs">
-    <div class='input-group date' id='datetimepicker1'>
-      <%= f.input :scheduled_at, :as => :string, :input_html => {class: 'form-control datetimepicker'} %>
-      <span class="input-group-addon">
-        <span class="glyphicon glyphicon-calendar"></span>
-      </span>
-    </div>
-
-    <%= f.input :order %>
-    <%= f.association :region,
-  prompt: 'Select a Region',
-  input_html: {class: 'chosen-select'} %>
-    <%= f.association :faction,
-  prompt: 'Select a Region',
-  input_html: {class: 'chosen-select'} %>
-    <%= f.association :product,
-prompt: 'Select a Product', collection: Product.select_list,
-  input_html: { class: 'chosen-select' } %>
-    <%= f.association :customer,
-  prompt: 'Select a Customer',
-  input_html: { class: 'chosen-select' } %>
-    <%= f.association :character,
-prompt: 'Select a Character', collection: Character.select_list,
-  input_html: { class: 'chosen-select' }  %>
-    <%= f.association :order_line_status,
-  prompt: 'Select a Order Status',
-  input_html: { class: 'chosen-select' }  %>
-    <%= f.association :payment_status,
-  prompt: 'Select a Payment Status',
-  input_html: { class: 'chosen-select' }  %>
-    <%= f.input :sale %>
-    <%= f.input :merchant_fee %>
-    <%= f.input :site_fee %>
-    <%= f.input :contractor_payment %>
+    <%= f.input :name, class: "col-sm-6" %>
+    <%= f.button :submit, 'Save' %>
   </div>
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-  <% end %>
+<% end %>

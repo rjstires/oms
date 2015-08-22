@@ -1,0 +1,5 @@
+<%= simple_form_for(promote_button, remote: true, html: {style: "display:inline;"}) do |f| %>
+		<%= f.hidden_field :id, :value => promote_button.id %>
+		<%= f.hidden_field :owner, :value => true %>
+		<%= f.submit "Promote", class: 'btn btn-primary btn-sm' %>
+<% end %>

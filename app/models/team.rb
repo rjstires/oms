@@ -1,9 +1,9 @@
 class Team < ActiveRecord::Base
   after_create do |t|
-    Membership.create!(team: t, user: t.user, confirmed: true, owner: true)
+    Membership.create!(team: t, user_id: t.user_id, confirmed: true, owner: true)
   end
 
-  attr_accessor(:user)
+  attr_accessor(:user_id)
 
   belongs_to :region
   belongs_to :faction
@@ -25,9 +25,14 @@ class Team < ActiveRecord::Base
   has_many :order_line_statuses, through: :order_lines
 
 
-  validates :name, :name_alias, presence: true, uniqueness: true
+  validates :name, :name_alias, :region, :faction, :realm, :payment_type, :payment_address, :team_status, presence: true
+  validates :name, :name_alias, uniqueness: true
 
   def display_name
+    self.name.titleize
+  end
+
+  def to_label
     self.name.titleize
   end
 
@@ -76,7 +81,11 @@ class Team < ActiveRecord::Base
     ActiveSupport::JSON.decode( File.read( f.path ) )
   end
 
-  def alias_display_name
+  def display_alias
     self.name_alias.titleize
+  end
+
+  def display_realm
+    self.realm.titleize
   end
 end

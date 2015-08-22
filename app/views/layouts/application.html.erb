@@ -1,25 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BoostingEdge.com - <%= content_for?(:title) ? yield(:title) : "Order Management" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Oms" %>">
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <%= javascript_include_tag 'application' %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-    <div class="containter-fluid">
-      <header>
-        <%= render 'layouts/navigation' %>
-      </header>
-      <main role="main">
-        <%= render 'layouts/messages' %>
-        <%= yield %>
-      </main>
-      <footer>
-      </footer>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BoostingEdge.com - <%= content_for?(:title) ? yield(:title) : "Order Management" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Oms" %>">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootcards/1.1.2/css/bootcards-desktop.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag :application %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav>
+    <ul class="list-unstyled main-menu">
+      <li class="text-right"><a href="#" id="nav-close"></a></li>
+      <%= render partial: '/layouts/admin_links' %>
+      <%= render partial: '/layouts/team_links' %>
+      <%= render partial: '/layouts/sales_links' %>
+      <%= render partial: '/layouts/account_links' %>
+    </ul>
+  </nav>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <a class="navbar-brand" href="#">Boosting Edge, LLC</a>
+    <div class="navbar-header pull-right">
+      <a id="nav-expander" class="nav-expander fixed">
+        <i class="fa fa-bars fa-lg white"></i>
+      </a>
     </div>
-  </body>
+  </div>
+  <div class="container-fluid">
+    <%= render 'layouts/messages' %>
+    <%= yield %>
+    <hr>
+    <footer>
+      <p>&copy; Boosting Edge, LLC 2015</p>  <%= link_to 'Sign out', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } if user_signed_in? %>
+    </footer>
+  </div>
+  <script>
+    $(document).ready(function(){
+
+      //Navigation Menu Slider
+      $('#nav-expander').on('click',function(e){
+        e.preventDefault();
+        $('body').toggleClass('nav-expanded');
+      });
+      $('#nav-close').on('click',function(e){
+        e.preventDefault();
+        $('body').removeClass('nav-expanded');
+      });
+
+
+      // Initialize navgoco with default options
+      $(".main-menu").navgoco({
+        caret: '<span class="caret"></span>',
+        accordion: false,
+        openClass: 'open',
+        save: true,
+        cookie: {
+          name: 'navgoco',
+          expires: false,
+          path: '/'
+        },
+        slide: {
+          duration: 300,
+          easing: 'swing'
+        }
+      });
+    });
+  </script>
+</body>
 </html>

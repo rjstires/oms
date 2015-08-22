@@ -1,0 +1,5 @@
+<%= simple_form_for(approve_button, remote: true, html: {style: "display:inline;"}) do |f| %>
+		<%= f.hidden_field :id, :value => approve_button.id %>
+		<%= f.hidden_field :confirmed, :value => true %>
+		<%= f.submit "Approve", class: 'btn btn-primary btn-sm' %>
+<% end %>

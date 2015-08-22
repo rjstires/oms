@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150814105652) do
+ActiveRecord::Schema.define(version: 20150822072514) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,44 +97,30 @@ ActiveRecord::Schema.define(version: 20150814105652) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "order_line_statuses", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "order_lines", force: :cascade do |t|
     t.integer  "order"
-    t.integer  "product_id",           null: false
+    t.integer  "product_id",                         null: false
     t.integer  "team_id"
-    t.integer  "character_id",         null: false
-    t.integer  "order_line_status_id", null: false
-    t.integer  "payment_status_id",    null: false
-    t.decimal  "sale",                 null: false
-    t.decimal  "merchant_fee",         null: false
-    t.decimal  "site_fee",             null: false
-    t.decimal  "contractor_payment",   null: false
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "character_id",                       null: false
+    t.decimal  "sale",                               null: false
+    t.decimal  "merchant_fee",                       null: false
+    t.decimal  "site_fee",                           null: false
+    t.decimal  "contractor_payment",                 null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "customer_id"
     t.datetime "completed_at"
     t.datetime "scheduled_at"
-    t.integer  "faction_id",           null: false
-    t.integer  "region_id",            null: false
+    t.integer  "faction_id",                         null: false
+    t.integer  "region_id",                          null: false
+    t.boolean  "team_paid",          default: false, null: false
+    t.boolean  "order_paid",         default: false, null: false
   end
 
   add_index "order_lines", ["character_id"], name: "index_order_lines_on_character_id", using: :btree
   add_index "order_lines", ["customer_id"], name: "index_order_lines_on_customer_id", using: :btree
-  add_index "order_lines", ["order_line_status_id"], name: "index_order_lines_on_order_line_status_id", using: :btree
-  add_index "order_lines", ["payment_status_id"], name: "index_order_lines_on_payment_status_id", using: :btree
   add_index "order_lines", ["product_id"], name: "index_order_lines_on_product_id", using: :btree
   add_index "order_lines", ["team_id"], name: "index_order_lines_on_team_id", using: :btree
-
-  create_table "payment_statuses", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "payment_types", force: :cascade do |t|
     t.string   "name"

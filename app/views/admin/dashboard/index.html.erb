@@ -1,0 +1,100 @@
+<div class="row">
+
+  <div class="col-sm-12 bootcards-list">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title pull-left">Scheduled Events</h3>
+      </div>
+      <div class="list-group" id="team_details">
+      <% OrderLine.index_join.dispatched.each do |order_line| %>
+        <%= render :partial => 'admin/order_lines/order_line', locals: {order_line: order_line} %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-4 bootcards-list">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title pull-left">Leads</h3>
+      </div>
+      <div class="list-group" id="team_details">
+      <% OrderLine.index_join.leads.each do |order_line| %>
+        <%= render :partial => 'admin/order_lines/order_line', locals: {order_line: order_line} %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4 bootcards-list">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title pull-left">Pending Scheduling</h3>
+      </div>
+      <div class="list-group" id="team_details">
+      <% OrderLine.index_join.ready_to_dispatch.each do |order_line| %>
+        <%= render :partial => 'admin/order_lines/order_line', locals: {order_line: order_line} %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4 bootcards-list">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title pull-left">Teams Unpaid</h3>
+      </div>
+      <div class="list-group" id="team_details">
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+  <div class="col-sm-4 bootcards-list">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title pull-left">Unowned Teams</h3>
+      </div>
+      <div class="list-group" id="team_details">
+      <% @teams_without_owner.each do |team| %>
+        <%= render :partial => 'team_row', locals: {team: team} %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4 bootcards-list">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title pull-left">Orphaned Teams</h3>
+      </div>
+      <div class="list-group" id="team_details">
+      <% @teams_without_members.each do |team| %>
+        <%= render :partial => 'team_row', locals: {team: team} %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-sm-4 bootcards-list">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h3 class="panel-title pull-left">Unowned Teams</h3>
+      </div>
+      <div class="list-group" id="team_details">
+      <% @teams_without_members.each do |team| %>
+        <%= render :partial => 'team_row', locals: {team: team} %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,11 @@
+<%= simple_form_for([:admin, @user], remote: true) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :email %>
+    <%= f.input :battle_tag %>
+    <%= f.input :skype %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <%= f.button :submit, 'Save' %>
+  </div>
+<% end %>

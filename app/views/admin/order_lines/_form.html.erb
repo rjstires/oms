@@ -1,0 +1,74 @@
+<%= simple_form_for([:admin, @order_line]) do |f| %>
+<div class="row">
+  <div class="col-md-4">
+    <%= f.input :order %>
+  </div>
+  <div class="col-md-4">
+    <%= f.association :customer, prompt: 'Select...', input_html: { class: 'chosen-select' } %>
+  </div>
+  <div class="col-md-4">
+    <%= f.input :order_paid, as: :select %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <%= f.association :character, collection: Character.includes(:classification).all, prompt: 'Select...', input_html: { class: 'chosen-select' } %>
+  </div>
+  <div class="col-md-4">
+    <%= f.association :team, prompt: 'Select...', input_html: { class: 'chosen-select' } %>
+  </div>
+  <div class="col-md-4">
+    <%= f.input :team_paid, as: :select %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <%= f.association :product, collection: Product.includes(
+    :category, :difficulty, :zone, :play_style, :loot_option, :mount), prompt: 'Select...', input_html: { class: 'chosen-select' } %>
+  </div>
+</div>
+  
+
+<div class="row">
+  <div class="col-md-6">
+    <%= f.association :region, prompt: 'Select...', input_html: { class: 'chosen-select' } %>
+  </div>
+  <div class="col-md-6">
+    <%= f.association :faction, prompt: 'Select...', input_html: { class: 'chosen-select' } %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-3">
+    <%= f.input :sale %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :merchant_fee %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :site_fee %>
+  </div>
+  <div class="col-md-3">
+    <%= f.input :contractor_payment %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <%= f.input :completed_at, :as => :string, :input_html => {class: 'form-control datetimepicker'} %>
+  </div>  
+  <div class="col-md-6">
+    <%= f.input :scheduled_at, :as => :string, :input_html => {class: 'form-control datetimepicker'} %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 form-inputs">
+    <%= f.button :submit, 'Save' %>
+  </div>      
+</div>
+
+<% end %>

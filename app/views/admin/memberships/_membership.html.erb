@@ -1,0 +1,8 @@
+      <tr>
+        <td><%= membership.user.email %></td>
+        <td><%= membership.team.display_name %></td>
+        <td><%= membership.confirmed? %></td>
+        <td><%= membership.owner? %></td>
+        <td><%= link_to 'Edit', edit_admin_membership_path(membership) %></td>
+        <td><%= link_to 'Destroy', admin_membership_path(membership), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>

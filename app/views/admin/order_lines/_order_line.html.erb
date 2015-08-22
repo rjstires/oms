@@ -1,0 +1,40 @@
+<tr>
+  <td>
+    <div class="dropdown">
+      <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default btn-xs">
+        <i class="fa fa-cog"></i>
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dLabel">
+      <% if order_line.dispatched? %>
+        <li><%= link_to 'Send Confirmations', admin_order_line_send_confirmation_path(order_line) %></li>
+      <% end %>
+        <li><%= link_to 'Edit', edit_admin_order_line_path(order_line) %></li>
+        <li><%= link_to 'Destroy', admin_order_line_path(order_line), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+      </ul>
+    </div>
+  </td>
+  <td>
+    <% if !order_line.scheduled_at.blank? %>
+    <%= order_line.scheduled_at %>
+    <% elsif !order_line.completed_at.blank? %>
+    <%= order_line.completed_at %>
+    <% else %>
+    <%= order_line.created_at %>
+    <% end %>
+  </td>
+  <td><%= order_line.order %></td>
+  <td><%= link_to order_line.customer.email, '#', :data => {:toggle=> 'modal', :target => "#customer_modal_#{order_line.customer.id}"} %></td>
+  <td><%= order_line.region.display_name %></td>
+  <td><%= order_line.faction.display_name %></td>
+  <td><%= order_line.character.display_name%></td>
+  <td><%= order_line.product.category.display_name %></td>
+  <td><%= order_line.product.zone.display_name %></td>
+  <td><%= order_line.product.difficulty.display_name %></td>
+  <td><%= order_line.product.display_name %></td>
+  <td><%= order_line.try(:team).try(:display_name) %></td>
+  <td><%= number_to_currency order_line.sale%></td>
+  <td><%= number_to_currency order_line.site_fee %></td>
+  <td><%= number_to_currency order_line.contractor_payment %></td>
+  <%= render :partial => "/order_lines/customer_details", locals: {customer: order_line.customer} %>
+</tr>

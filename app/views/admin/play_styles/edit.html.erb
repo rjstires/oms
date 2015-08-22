@@ -1,0 +1,17 @@
+<% content_for :buttons do %>
+	<%= link_to 'Back', admin_play_styles_path, :class => "btn btn-default btn-sm" %>
+	<%= link_to 'Show', admin_play_style_path(@play_style), :class => "btn btn-default btn-sm" %>
+<% end %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+		<h3>Edit Play Style</h3>  
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+		<%= render 'form' %>
+	</div>
+</div>
+<br />
+
+

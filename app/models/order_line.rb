@@ -4,30 +4,14 @@ class OrderLine < ActiveRecord::Base
   belongs_to :team
   belongs_to :character
   belongs_to :customer
-  belongs_to :order_line_status
-  belongs_to :payment_status
   belongs_to :region
   belongs_to :faction
 
   has_one :category, through: :product
 
-  scope :by_team,->(team) { where(team: team) }
-
-  scope :status,->(id) {
-    joins(:order_line_status)
-    .where(:order_line_status => id)
-    }
-
-  scope :category,->(id) {
-    joins(:product)
-    .where(:products => {:category_id => id})
-    }
-
   validates :product, presence: true
   validates :character, presence: true
   validates :customer, presence: true
-
-  validates :order_line_status, presence: true
   validates :sale, presence: true
   validates :merchant_fee, presence: true
   validates :site_fee, presence: true
@@ -35,25 +19,88 @@ class OrderLine < ActiveRecord::Base
   validates :faction_id, presence: true
   validates :region_id, presence: true
 
-  validates :order, presence: true, unless: :is_lead?
-  validates :team, presence: true, unless: :is_lead?
-  validates :payment_status, presence: true, unless: :is_lead?
+  scope :index_join, -> {
+    includes(
+      {:product => [:category, :difficulty, :zone]},
+      :team,
+      {:character => [:classification]},
+      :customer,
+      :region,
+      :faction
+      )
+  }
 
-  def is_lead?
-    self.order_line_status.name == 'lead'
+  scope :by_team, -> (team) { where(team: team) }
+  scope :category, -> (id) { joins(:product).where(:products => {:category_id => id}) }
+
+  scope :where_completed, -> { where.not(completed_at: nil) }
+  scope :where_not_completed, -> { where(completed_at: nil) }
+
+  scope :where_scheduled, -> { where.not(scheduled_at: nil) }
+  scope :where_not_scheduled, -> { where(scheduled_at: nil) }
+
+  scope :where_order_paid, -> { where(order_paid: true) }
+  scope :where_order_not_paid, -> { where(order_paid: false) }
+
+  scope :where_team_paid, -> { where(team_paid: true) }
+  scope :where_team_not_paid, -> { where(team_paid: false) }
+
+  scope :where_assigned_to_team, -> { where.not(team_id: nil) }
+  scope :where_not_assigned_to_team, -> { where(team_id: nil) }
+
+  scope :ready_to_dispatch, -> {
+    where_not_completed
+    .where_order_paid
+    .where_not_assigned_to_team
+  }
+
+  scope :dispatched, -> {
+    where_not_completed
+    .where_order_paid
+    .where_assigned_to_team
+  }
+
+  scope :order_completed_team_not_paid,-> {
+    where_completed
+    .where_team_not_paid
+  }
+
+  scope :leads, -> {
+    where_order_not_paid
+    .where_not_completed
+    .where_not_completed
+}
+
+
+  scope :ready_to_ship, -> { where_scheduled.where_not_completed.where_order_paid }
+
+  def completed?
+    self.completed_at.present?
   end
 
-  def is_completed?
-    self.order_line_status.name.downcase == 'completed'
+  def scheduled?
+    self.scheduled_at.present? && !self.completed?
   end
 
-  def complete
-    self.update_attributes(order_line_status: OrderLineStatus.by_name('completed'), completed_at: DateTime.now)
+  def team_is_paid?
+    self.team_paid
+  end
+
+  def dispatched?
+    self.team.present? && self.completed_at.nil? && self.order_is_paid?
+  end
+
+  def order_is_paid?
+    self.order_paid
+  end
+
+  def mark_order_complete
+    self.update_attributes(completed_at: DateTime.now)
   end
 
   def self.date_sort
     order(completed_at: :desc, scheduled_at: :desc, created_at: :desc)
-  end
+  end 
 
   def self.importJSON(file)
     json = parseJSON file

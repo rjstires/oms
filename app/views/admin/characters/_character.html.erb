@@ -1,0 +1,10 @@
+      <tr>
+        <td><%= character.spec.titleize %></td>
+        <td><%= character.try(:classification).try(:display_name) %></td>
+        <td><%= character.try(:armor_type).try(:display_name) %></td>
+        <td><%= character.try(:tier_token).try(:display_name) %></td>
+        <td><%= character.try(:primary_stat).try(:display_name) %></td>
+        <td><%= link_to 'Edit', edit_admin_character_path(character) %></td>
+        <td><%= link_to 'Destroy', admin_character_path(character), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr
+      

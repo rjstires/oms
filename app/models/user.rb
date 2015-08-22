@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
     :recoverable, :rememberable, :trackable, :validatable
+
   def teams_id_list
     self.approved_memberships.pluck(:team_id)
   end
@@ -34,11 +35,11 @@ class User < ActiveRecord::Base
   end
 
   def display_name
-    self.name
+    self.name.titleize
   end
 
   def to_label
-    self.name
+    self.email
   end
 
   def self.importJSON(file)

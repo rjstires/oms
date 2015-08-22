@@ -12,4 +12,8 @@ class Region < ActiveRecord::Base
 	end
 
 	default_scope { order(name: :asc) }
+
+	def display_name
+		self.name.upcase
+	end
 end

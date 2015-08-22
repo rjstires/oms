@@ -1,0 +1,30 @@
+          <div class="list-group-item">
+            <div class="row">
+              <div class="col-sm-8">
+                <i class="fa fa-camera-retro fa-4x pull-left"></i>
+                <% if membership.owner? %>
+                <p class="list-group-item-text">Owner</p>
+                <% else %>
+                <p class="list-group-item-text">Member</p>
+                <% end %>                
+                <h4 class="list-group-item-heading"><%= membership.user.display_name %>
+                </h4>
+              </div>
+              <div class="col-sm-4">
+              <% if can? :update, membership %>
+                <% if membership.confirmed? %>
+                <% unless membership.owner? %>
+                <%= render :partial => "/memberships/promote_button", :object => membership %>
+                <%= render :partial => "/memberships/remove_button", :object => membership %>
+                <% end %>
+                <div class="button-group">
+                <p class="list-group-item-text">&nbsp;</p>
+                </div>
+                <% else %>
+                <%= render :partial => "/memberships/approve_button", :object => membership %>
+                <%= render :partial => "/memberships/remove_button", :object => membership %>
+                <% end %>
+              <% end %>
+              </div>
+            </div>
+          </div>

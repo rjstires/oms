@@ -1,0 +1,28 @@
+      <tr>
+        <td>
+        <% if !order_line.scheduled_at.blank? %>
+            <%= order_line.scheduled_at %>
+        <% elsif !order_line.completed_at.blank? %>
+            <%= order_line.completed_at %>
+        <% else %>
+            <%= order_line.created_at %>
+        <% end %>
+        </td>
+        <td><%= order_line.order %></td>
+        <td><%= order_line.product.category.display_name %></td>
+        <td><%= order_line.product.zone.display_name %></td>
+        <td><%= order_line.product.difficulty.display_name %></td>
+        <td><%= order_line.product.display_name %></td>
+        <td><%= order_line.product.try(:play_style).try(:display_name) %></td>
+        <td><%= order_line.product.try(:loot_option).try(:display_name) %></td>
+        <td><%= order_line.product.try(:mount).try(:display_name) %></td>
+        <td><%= order_line.sale%></td>
+        <td><%= order_line.site_fee %></td>
+        <td><%= order_line.contractor_payment %></td>
+        <td><%= link_to order_line.customer.email, '#', :data => {:toggle=> 'modal', :target => "#customer_modal_#{order_line.customer.id}"} %></td>
+        <td><%= order_line.character.display_name%></td>
+        <td><%= order_line.region.display_name %></td>
+        <td><%= order_line.faction.display_name %>
+        <%= render :partial => "customer_details", locals: {customer: order_line.customer} %>
+        </td>
+      </tr>

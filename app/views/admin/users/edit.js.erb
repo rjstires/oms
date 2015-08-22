@@ -1,0 +1,6 @@
+$('#task-form').html("<%= j (render 'form') %>");
+$('#task-form').toggle();
+$('user_name').focus();
+var tmpStr = $('user_name').val();
+$('user_name').val('');
+$('user_name').val(tmpStr);

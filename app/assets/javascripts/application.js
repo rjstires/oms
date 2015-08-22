@@ -11,8 +11,8 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require jquery-ui
+//= require jquery_ujs
 //= require bootstrap-sprockets
 //= require moment
 //= require bootstrap-datetimepicker
@@ -21,6 +21,14 @@
 $(document).on("page:load ready", function(){
     $('#order_line_scheduled_at').datetimepicker({
       format: 'YYYY-MM-DD HH:mm:ss',
+      showClose: true,
+    });
+});
+
+$(document).on("page:load ready", function(){
+    $('#order_line_completed_at').datetimepicker({
+      format: 'YYYY-MM-DD HH:mm:ss',
+      showClose: true,
     });
 });
 

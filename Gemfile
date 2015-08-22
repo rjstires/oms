@@ -10,25 +10,28 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 gem 'jbuilder', '~> 2.0'
 gem 'active_link_to'
-
-group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-  gem 'faker'
-end
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'pg'
 gem 'simple_form'
+
+group :development, :test do
+  gem 'byebug'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_21]
-  gem 'hub', :require=>nil
-  gem 'quiet_assets'
-  gem 'rails_layout'
 end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+end
+
 group :production do
   gem 'rails_12factor'
 end
