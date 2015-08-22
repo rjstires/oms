@@ -61,7 +61,7 @@ class Admin::OrderLinesController < AdminController
   def send_confirmation
     OrderMailer.confirmation_email(params[:order_line_id]).deliver_now
     flash[:notice] = 'Email confirmation sent!'
-    redirect_back_or admin_order_lines_path(params[:order_line_id])
+    redirect_to admin_order_lines_path
   end
 
   private
