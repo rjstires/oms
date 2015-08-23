@@ -1,0 +1,11 @@
+  
+  <%= link_to [:admin, order_line], :class => 'list-group-item' do %>
+  <span>
+  <h5 class="list-group-item-heading"><%= order_line.customer.email %></h5>
+  <p class="list-group-item-text">
+    <%= order_line.product.difficulty.display_name unless order_line.product.difficulty == "normal" %>
+    <%= order_line.product.category.display_name %>,
+    <%= order_line.product.zone.display_name %>,
+    <%= order_line.product.description.titleize %>
+    </p>
+ <% end %>
