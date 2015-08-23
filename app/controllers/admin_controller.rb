@@ -1,5 +1,6 @@
 # app/controllers/admin_controller.rb
 class AdminController < ApplicationController
+
   before_filter :authorized?
 
   private

@@ -32,14 +32,20 @@ $(document).on("page:load ready", function(){
     });
 });
 
-    function updatePrice()
-    {
-        var sale = parseFloat($("#order_line_sale").val());
-        var merchant_fee = sale * 0.03;
-        var site_fee = sale * 0.194
-        var contractor_payment = sale * 0.776
-        $("#order_line_merchant_fee").val(merchant_fee.toFixed(2));
-        $("#order_line_site_fee").val(site_fee.toFixed(2));
-        $("#order_line_contractor_payment").val(contractor_payment.toFixed(2));
-    }
-    $(document).on("change, keyup", "#order_line_sale", updatePrice);
+function updatePrice()
+{
+    var sale = parseFloat($("#order_line_sale").val());
+    var merchant_fee = sale * 0.03;
+    var site_fee = sale * 0.194
+    var contractor_payment = sale * 0.776
+    $("#order_line_merchant_fee").val(merchant_fee.toFixed(2));
+    $("#order_line_site_fee").val(site_fee.toFixed(2));
+    $("#order_line_contractor_payment").val(contractor_payment.toFixed(2));
+}
+$(document).on("change, keyup", "#order_line_sale", updatePrice);
+
+$('.chosen-select').chosen({
+		allow_single_deselect: true,
+		no_results_text: "Derp! Nothing found!"
+});
+

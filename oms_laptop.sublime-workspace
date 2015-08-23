@@ -3,10 +3,46 @@
 	{
 		"selected_items":
 		[
+			[
+				"completed",
+				"completed_at"
+			],
+			[
+				"where_not",
+				"where_not_completed"
+			],
+			[
+				"where_r",
+				"where_order_not_paid"
+			],
+			[
+				"wher_team",
+				"where_team_not_paid"
+			],
+			[
+				"schedule",
+				"scheduled_order_lines"
+			]
 		]
 	},
 	"buffers":
 	[
+		{
+			"file": "app/views/admin/dashboard/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 3064,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/admin/dashboard/_lead_row.html.erb",
+			"settings":
+			{
+				"buffer_size": 10,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -42,20 +78,28 @@
 	"expanded_folders":
 	[
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/db"
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/dashboard"
 	],
 	"file_history":
 	[
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/order_line.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/order_lines/index.html.erb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/order_lines_controller.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/order_lines/_order_line.html.erb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/db/seeds.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/dashboard/index.html.erb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/_order_line.html.erb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/dashboard_controller.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/index.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/_form.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/order_lines_controller.rb",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/index.html.erb",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/_order_line.html.erb",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/order_lines_controller.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/javascripts/application.js",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/payment_statuses_controller.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/db/schema.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/db/migrate/20150822070258_remove_statuses_from_order_lines.rb",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/order_line.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/teams_controller.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/edit.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/new.html.erb",
@@ -63,7 +107,7 @@
 	],
 	"find":
 	{
-		"height": 80.0
+		"height": 47.0
 	},
 	"find_in_files":
 	{
@@ -78,6 +122,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"')\n",
+			"status",
+			"team_paid",
+			"order_paid",
 			"paid",
 			"payment_status"
 		],
@@ -97,8 +145,67 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/views/admin/dashboard/index.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3064,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								926,
+								936
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/views/admin/dashboard/_lead_row.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -150,6 +257,22 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"viewsadminorderind",
+				"app\\views\\admin\\order_lines\\index.html.erb"
+			],
+			[
+				"adminorderlinecon",
+				"app\\controllers\\admin\\order_lines_controller.rb"
+			],
+			[
+				"viewsadminorderform",
+				"app\\views\\admin\\order_lines\\_form.html.erb"
+			],
+			[
+				"viewsadminorderline",
+				"app\\views\\admin\\order_lines\\index.html.erb"
+			]
 		],
 		"width": 0.0
 	},

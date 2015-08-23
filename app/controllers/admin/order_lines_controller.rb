@@ -2,7 +2,6 @@ class Admin::OrderLinesController < AdminController
   before_action :set_order_line, only: [:show, :edit, :update, :destroy]
 
   def index
-
     @scheduled_order_lines = ::OrderLine
     .index_join
     .ready_to_ship
@@ -12,6 +11,8 @@ class Admin::OrderLinesController < AdminController
     .index_join
     .where_completed
     .date_sort
+
+    store_location
   end
 
   def show

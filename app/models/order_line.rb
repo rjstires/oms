@@ -51,13 +51,14 @@ class OrderLine < ActiveRecord::Base
   scope :ready_to_dispatch, -> {
     where_not_completed
     .where_order_paid
-    .where_not_assigned_to_team
+    
   }
 
   scope :dispatched, -> {
     where_not_completed
     .where_order_paid
     .where_assigned_to_team
+    .impending
   }
 
   scope :order_completed_team_not_paid,-> {
@@ -71,6 +72,15 @@ class OrderLine < ActiveRecord::Base
     .where_not_completed
 }
 
+scope :impending,-> { where('scheduled_at >= ?', Time.now) }
+scope :past,-> { where('scheduled_at < ?', Time.now) }
+
+scope :past_due,-> {
+  where_not_completed
+  .where_scheduled
+  .where_order_paid
+  .past
+}
 
   scope :ready_to_ship, -> { where_scheduled.where_not_completed.where_order_paid }
 

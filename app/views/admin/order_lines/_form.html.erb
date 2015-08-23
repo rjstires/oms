@@ -4,39 +4,39 @@
     <%= f.input :order %>
   </div>
   <div class="col-md-4">
-    <%= f.association :customer, prompt: 'Select...', input_html: { class: 'chosen-select' } %>
+    <%= f.association :customer, :include_blank => true, input_html: { class: 'chosen-select' } %>
   </div>
   <div class="col-md-4">
-    <%= f.input :order_paid, as: :select %>
+    <%= f.input :order_paid, as: :select, :include_blank => true, input_html: { class: 'chosen-select' } %>
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-4">
-    <%= f.association :character, collection: Character.includes(:classification).all, prompt: 'Select...', input_html: { class: 'chosen-select' } %>
+    <%= f.association :character, collection: Character.includes(:classification).all, :include_blank => true, input_html: { class: 'chosen-select' } %>
   </div>
   <div class="col-md-4">
-    <%= f.association :team, prompt: 'Select...', input_html: { class: 'chosen-select' } %>
+    <%= f.association :team, collection: Team.order(name: :asc).all, :include_blank => true, input_html: { class: 'chosen-select' } %>
   </div>
   <div class="col-md-4">
-    <%= f.input :team_paid, as: :select %>
+    <%= f.input :team_paid, as: :select, :include_blank => true, input_html: { class: 'chosen-select' } %>
   </div>
 </div>
 
 <div class="row">
   <div class="col-md-12">
     <%= f.association :product, collection: Product.includes(
-    :category, :difficulty, :zone, :play_style, :loot_option, :mount), prompt: 'Select...', input_html: { class: 'chosen-select' } %>
+    :category, :difficulty, :zone, :play_style, :loot_option, :mount), :include_blank => true, input_html: { class: 'chosen-select' } %>
   </div>
 </div>
   
 
 <div class="row">
   <div class="col-md-6">
-    <%= f.association :region, prompt: 'Select...', input_html: { class: 'chosen-select' } %>
+    <%= f.association :region, :include_blank => true, input_html: { class: 'chosen-select' } %>
   </div>
   <div class="col-md-6">
-    <%= f.association :faction, prompt: 'Select...', input_html: { class: 'chosen-select' } %>
+    <%= f.association :faction, :include_blank => true, input_html: { class: 'chosen-select' } %>
   </div>
 </div>
 
@@ -58,10 +58,10 @@
 
 <div class="row">
   <div class="col-md-6">
-    <%= f.input :completed_at, :as => :string, :input_html => {class: 'form-control datetimepicker'} %>
+    <%= f.input :scheduled_at, :as => :string, :input_html => {class: 'form-control datetimepicker'} %>
   </div>  
   <div class="col-md-6">
-    <%= f.input :scheduled_at, :as => :string, :input_html => {class: 'form-control datetimepicker'} %>
+    <%= f.input :completed_at, :as => :string, :input_html => {class: 'form-control datetimepicker'} %>
   </div>
 </div>
 

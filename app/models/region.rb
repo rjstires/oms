@@ -16,4 +16,8 @@ class Region < ActiveRecord::Base
 	def display_name
 		self.name.upcase
 	end
+
+	def to_label
+		self.name.upcase
+	end
 end
