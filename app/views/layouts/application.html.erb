@@ -30,18 +30,21 @@
   </div>
   <div class="container-fluid">
     <%= render 'layouts/messages' %>
-    <%= yield %>
-    <hr>
-    <footer>
     <div class="row">
-      <div class="col-md-10 col-md-offset-1">
+      <div class="col-md-12">
+        <%= yield %>
+        <hr>
+      </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-md-12">
         <p>&copy; Boosting Edge, LLC 2015</p>
         <%= link_to 'Sign out', destroy_user_session_path,
         method: :delete,
         data: { confirm: 'Are you sure?' } if user_signed_in? %>
       </div>
     </div>
-    </footer>
   </div>
   <script>
     $(document).ready(function(){
