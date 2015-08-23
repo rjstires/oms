@@ -50,8 +50,8 @@ class OrderLine < ActiveRecord::Base
 
   scope :ready_to_dispatch, -> {
     where_not_completed
+    .where_not_scheduled
     .where_order_paid
-    
   }
 
   scope :dispatched, -> {
