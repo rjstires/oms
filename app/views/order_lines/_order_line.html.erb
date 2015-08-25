@@ -23,6 +23,6 @@
         <td><%= order_line.character.display_name%></td>
         <td><%= order_line.region.display_name %></td>
         <td><%= order_line.faction.display_name %>
-        <%= render :partial => "customer_details", locals: {customer: order_line.customer} %>
+        <%= render :partial => "/order_lines/customer_details", locals: {customer: order_line.customer} %>
         </td>
       </tr>

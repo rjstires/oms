@@ -1,9 +1,41 @@
-<p>
-  <strong>Name:</strong>
-  <%= @customer.email %><br>
-  <%= @customer.try(:battle_tag) %><br>
-  <%= @customer.try(:skype) %><br>
-</p>
+<div class="row">
+	<div class="col-md-2 col-md-offset-1">
+		<h4><%= mail_to @customer.email %></h4>
+	</div>
+	<div class="col-md-2">
+		<h4><%= @customer.try(:battle_tag) %></h4>
+	</div>
+	<div class="col-md-2">
+	<% unless @customer.skype.blank? %>
+		<h4><%= link_to @customer.skype, "skype:#{@customer.skype}?chat" %></h4>
+	<% end %>
+	</div>
+</div>
 
-<%= link_to 'Edit', edit_admin_customer_path(@customer) %> |
-<%= link_to 'Back', admin_customers_path %>
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+	<table class="table table-condensed">
+		<tr>
+				<th colspan="11">Order History</th>
+		</tr>
+		<%= render :partial => "/admin/order_lines/order_line", :collection => @customer.order_lines %>
+		<tr>
+			<th colspan="10"></th>
+			<th>Min: <%= number_to_currency @customer.min_sale %></th>
+			<th>Max: <%= number_to_currency @customer.max_sale %></th>
+			<th>Avg: <%= number_to_currency @customer.avg_sale %></th>
+			<th>Sum: <%= number_to_currency @customer.sum_sale %></th>
+			<th>Count: <%= @customer.count_sale %></th>
+		</tr>
+	</table>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-10 col-md-offset-1">
+		<%= link_to 'Edit', edit_admin_customer_path(@customer) %> |
+		<%= link_to 'Back', admin_customers_path %>
+	</div>
+</div>
+
+

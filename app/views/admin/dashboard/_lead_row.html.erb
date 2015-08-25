@@ -1,5 +1,5 @@
   
-  <%= link_to [:admin, order_line], :class => 'list-group-item' do %>
+  <%= link_to edit_admin_order_line_path(order_line), :class => 'list-group-item' do %>
   <span>
   <h5 class="list-group-item-heading"><%= order_line.customer.email %></h5>
   <p class="list-group-item-text">

@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   get 'memberships/index'
 
-root :to => "dashboard#index", :constraints => {is_admin?}
-root :to => 'visitors#index'
+  root :to => 'visitors#index'
 
   devise_for :users
   resources :users

@@ -41,7 +41,7 @@
 
 <div class="row">
 
-  <% if @orders_lead.count > 0 %>
+<% if @orders_lead.count > 0 %>
   <div class="col-sm-4 bootcards-list">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
@@ -54,9 +54,9 @@
       </div>
     </div>
   </div> 
-  <% end %>
+<% end %>
 
-  <% if @orders_ready_to_dispatch.count > 0 %>
+<% if @orders_ready_to_dispatch.count > 0 %>
   <div class="col-sm-4 bootcards-list">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
@@ -71,9 +71,9 @@
       </div>
     </div>
   </div>  
-  <% end %>
+<% end %>
 
-  <% if @orders_team_payment_outstanding.count > 0 %>
+<% if @orders_team_payment_outstanding.count > 0 %>
   <div class="col-sm-4 bootcards-list">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
@@ -88,9 +88,8 @@
       </div>
     </div>
   </div>
-  <% end %>
+<% end %>
 
-<div class="row">
 <% if @teams_without_owner.count > 0 %>
   <div class="col-sm-4 bootcards-list">
     <div class="panel panel-default">
