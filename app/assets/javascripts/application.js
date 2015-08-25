@@ -44,8 +44,9 @@ function updatePrice()
 }
 $(document).on("change, keyup", "#order_line_sale", updatePrice);
 
-$('.chosen-select').chosen({
-		allow_single_deselect: true,
-		no_results_text: "Derp! Nothing found!"
+$(document).on("page:load ready", function(){
+    $('.chosen-select').chosen({
+        allow_single_deselect: true,
+        no_results_text: "Derp! Nothing found!"
+    });
 });
-
