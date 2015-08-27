@@ -17,4 +17,12 @@ class Character < ActiveRecord::Base
   def self.select_list
     includes(:classification).all
   end
+
+  def css_name
+    spec.parameterize
+  end
+
+  def css_name_with_spec
+    "#{self.classification.css_name}-#{self.spec.parameterize}"
+  end
 end

@@ -11,5 +11,9 @@ class Classification < ActiveRecord::Base
 		self.name.downcase
 	end
 
+	def css_name
+		name.parameterize
+	end
+
 	default_scope { order(name: :asc) }
 end
