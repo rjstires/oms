@@ -4,10 +4,10 @@
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
         <h3 class="panel-title pull-left">Team Details</h3>
-        <a class="btn btn-primary btn-sm pull-right" href="#" data-toggle="modal" data-target="#team_modal">
-          <i class="fa fa-pencil"></i>
-          Edit
-        </a>
+        <%= link_to edit_team_path(@team), class: 'btn btn-primary btn-sm pull-right' do %>
+        <i class="fa fa-pencil"></i>
+        Edit
+        <% end %>
       </div>
       <div class="list-group" id="team_details">
         <%= render :partial => 'team_details', locals: {:team => @team} %>

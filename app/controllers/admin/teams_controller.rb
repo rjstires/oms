@@ -16,6 +16,8 @@ class Admin::TeamsController < AdminController
   end
 
   def show
+    @approved_memberships = @team.approved_memberships.all
+    @pending_memberships = @team.pending_memberships.all
   end
 
   def new

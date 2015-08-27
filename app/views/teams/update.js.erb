@@ -1,7 +1,0 @@
-<% if @modal %>
-$('#teams_table tbody').html("<%= j (render @teams ) %>");
-$('#task-form').toggle();
-<% else %>
-$('#team_details').html("<%= j (render partial: 'team_details', locals: {team: @team} ) %>");
-$('#team_modal').modal('hide')
-<% end %>
