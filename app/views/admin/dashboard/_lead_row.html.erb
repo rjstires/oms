@@ -1,6 +1,18 @@
   
   <%= link_to edit_admin_order_line_path(order_line), :class => 'list-group-item' do %>
   <span>
+	<% if order_line.product.loot_option.name == "yes (master loot)" %>
+	<i class="fa fa-users fa-4x pull-left"></i>
+	<% end %>
+	
+	<% if order_line.product.loot_option.name == "yes (personal)" %>
+	<i class="fa fa-user fa-4x pull-left"></i>
+	<% end %>
+	
+	<% if order_line.product.loot_option.name == "none" %>
+	<i class="fa fa-ban fa-4x pull-left"></i>
+	<% end %>
+
   <h5 class="list-group-item-heading"><%= order_line.customer.email %></h5>
   <p class="list-group-item-text">
     <%= order_line.product.difficulty.display_name unless order_line.product.difficulty == "normal" %>

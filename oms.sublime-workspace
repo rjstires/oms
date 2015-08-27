@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"col",
+				"colspan	Attr"
+			],
+			[
 				"customer",
 				"customer_modal_	(_customer_details.html.erb)"
 			],
@@ -173,15 +177,25 @@
 	"expanded_folders":
 	[
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/concerns"
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app"
 	],
 	"file_history":
 	[
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/layouts/_admin_links.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/javascripts/application.js",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/_customer.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/customers_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/show.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/_order_line.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/Gemfile",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/order_lines/_order_line.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/dashboard/_lead_row.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/dashboard/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/layouts/application.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/order_line_status.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/order_lines_controller.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/config/environments/production.rb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/order_lines/_order_line.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/_order_line.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/product.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/order_lines/index.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/order_lines/_customer_details.html.erb",
@@ -197,15 +211,11 @@
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/products/show.json.jbuilder",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/products/new.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/products/index.json.jbuilder",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/index.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/edit.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/_form.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/_customer.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/show.json.jbuilder",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/show.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/new.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/index.json.jbuilder",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/customers_controller.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/_character.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/characters_controller.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/order_lines_controller.rb",
@@ -298,17 +308,11 @@
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/primary_stats_controller.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/edit.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/index.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/index.json.jbuilder",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/show.json.jbuilder",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/show.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/new.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/_play_style.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/_form.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/payment_types/index.html.erb"
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/play_styles/index.json.jbuilder"
 	],
 	"find":
 	{
-		"height": 46.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -323,6 +327,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"bind",
+			"bing",
+			"6",
 			">\n",
 			"%>\n",
 			"region",
@@ -447,10 +454,7 @@
 			"Categories",
 			"armor_type",
 			"armor_types",
-			"armor_type",
-			"category",
-			"armor_type",
-			"armor_types"
+			"armor_type"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -630,6 +634,42 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"viewsadmincustomercu",
+				"app\\views\\admin\\customers\\_customer.html.erb"
+			],
+			[
+				"viewsadmincustomerind",
+				"app\\views\\admin\\customers\\index.html.erb"
+			],
+			[
+				"viewsadminorderlines",
+				"app\\views\\admin\\order_lines\\_order_line.html.erb"
+			],
+			[
+				"gemfil",
+				"Gemfile"
+			],
+			[
+				"customerscon",
+				"app\\controllers\\admin\\customers_controller.rb"
+			],
+			[
+				"viewsadmincustomers",
+				"app\\views\\admin\\customers\\show.html.erb"
+			],
+			[
+				"viewsadmincustomer",
+				"app\\views\\admin\\customers\\index.html.erb"
+			],
+			[
+				"admincustomercon",
+				"app\\controllers\\admin\\customers_controller.rb"
+			],
+			[
+				"viewsadmindashbo",
+				"app\\views\\admin\\dashboard\\_lead_row.html.erb"
+			],
 			[
 				"production",
 				"config\\environments\\production.rb"
@@ -887,10 +927,6 @@
 				"Gemfile"
 			],
 			[
-				"gemfil",
-				"Gemfile"
-			],
-			[
 				"gemf",
 				"Gemfile"
 			],
@@ -1003,10 +1039,6 @@
 				"app\\views\\admin\\order_lines\\_order_line.html.erb"
 			],
 			[
-				"viewsadminorderlines",
-				"app\\views\\admin\\order_lines\\index.html.erb"
-			],
-			[
 				"javascriptapp",
 				"app\\assets\\javascripts\\application.js"
 			],
@@ -1113,34 +1145,6 @@
 			[
 				"layout",
 				"app\\views\\layouts\\application.html.erb"
-			],
-			[
-				"teamli",
-				"app\\views\\layouts\\_team_links.html.erb"
-			],
-			[
-				"layouttea",
-				"app\\views\\layouts\\_team_links.html.erb"
-			],
-			[
-				"team.rb",
-				"app\\models\\team.rb"
-			],
-			[
-				"teamscontr",
-				"app\\controllers\\teams_controller.rb"
-			],
-			[
-				"teammod",
-				"app\\views\\teams\\_modal.html.erb"
-			],
-			[
-				"teamshow",
-				"app\\views\\teams\\show.html.erb"
-			],
-			[
-				"adminteamin",
-				"app\\views\\admin\\team_statuses\\index.html.erb"
 			]
 		],
 		"width": 0.0
