@@ -50,3 +50,7 @@ $(document).on("page:load ready", function(){
         no_results_text: "Derp! Nothing found!"
     });
 });
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})

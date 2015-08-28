@@ -20,12 +20,9 @@
         <td><%= order_line.site_fee %></td>
         <td><%= order_line.contractor_payment %></td>
         <td><%= link_to order_line.customer.email, '#', :data => {:toggle=> 'modal', :target => "#customer_modal_#{order_line.customer.id}"} %></td>
-        <td>
-          <i class="class-sprite class-sprite-<%= order_line.character.classification.css_name %>"></i>
-          <i class="class-sprite class-sprite-<%= order_line.character.css_name_with_spec %>"></i>
-        </td>
+        <td><%= character_sprite order_line %></td>
         <td><%= order_line.region.display_name %></td>
-        <td><%= order_line.faction.display_name %>
+        <td><%= faction_sprite order_line %></td>
         <%= render :partial => "/order_lines/customer_details", locals: {customer: order_line.customer} %>
         </td>
       </tr>

@@ -12,4 +12,5 @@ class Faction < ActiveRecord::Base
 	end
 
 	default_scope { order(name: :asc) }
+
 end
