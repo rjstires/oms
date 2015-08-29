@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"proving",
+				"proving-grounds"
+			],
+			[
+				"no",
+				"no-loot"
+			],
+			[
+				"per",
+				"personal-loot"
+			],
+			[
+				"yes",
+				"yes-personal"
+			],
+			[
+				"maste",
+				"master-loot"
+			],
+			[
+				"margin",
+				"margin-left"
+			],
+			[
 				"col",
 				"colspan	Attr"
 			],
@@ -95,22 +119,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/views/admin/order_lines/_order_line.html.erb",
-			"settings":
-			{
-				"buffer_size": 2254,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/C/Users/Robert/Downloads/stylesheet (1).txt",
-			"settings":
-			{
-				"buffer_size": 436,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -195,19 +203,28 @@
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/javascripts"
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/helpers",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views"
 	],
 	"file_history":
 	[
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/javascripts/application.js",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/class-sprite.css.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/order_lines/_order_line.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/helpers/order_lines_helper.rb",
+		"/C/Users/Robert/Downloads/stylesheet.txt",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/options-sprite.css.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/order_lines/index.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/_order_line.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/class-sprite.css.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/framework_and_overrides.css.scss",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/dashboard/_lead_row.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/loot-option-sprite.css.erb",
+		"/C/Users/Robert/Downloads/stylesheet (1).txt",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/zone-sprites.css.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/javascripts/application.js",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/character.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/classification.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/class-sprite.css",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/dashboard/_lead_row.html.erb",
-		"/C/Users/Robert/Downloads/stylesheet.txt",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/layouts/_admin_links.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/_customer.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/index.html.erb",
@@ -220,10 +237,8 @@
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/order_lines_controller.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/config/environments/production.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/product.rb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/order_lines/index.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/order_lines/_customer_details.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/db/migrate/20150821212709_drop_sort_from_order_line_statuses.rb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/index.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/order_line.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/products/show.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/products/_form.html.erb",
@@ -320,13 +335,7 @@
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/factions_controller.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/classifications_controller.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/loot_options_controller.rb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/_form.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/show.json.jbuilder",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/show.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/new.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/index.json.jbuilder",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/index.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/edit.html.erb"
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/primary_stats/_form.html.erb"
 	],
 	"find":
 	{
@@ -345,6 +354,14 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"loot",
+			"class-sprite",
+			"options-sprite",
+			"zone-sprite",
+			"faction-banner",
+			"play_style",
+			"\"\n",
+			"order_line.",
 			"death_knight",
 			"deathknight",
 			"death-knight",
@@ -464,15 +481,7 @@
 			"armor_type",
 			"armor_types",
 			"display_name",
-			"%>\n",
-			"category",
-			"categories",
-			"category",
-			"categories",
-			"category",
-			"Category",
-			"categories",
-			"Categories"
+			"%>\n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -595,73 +604,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/views/admin/order_lines/_order_line.html.erb",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2254,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1302,
-								1302
-							]
-						],
-						"settings":
-						{
-							"apply_syntax_touched": true,
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/C/Users/Robert/Downloads/stylesheet (1).txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 436,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								436
-							]
-						],
-						"settings":
-						{
-							"apply_syntax_touched": true,
-							"incomplete_sync": null,
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -717,6 +661,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"helpers",
+				"app\\helpers\\order_lines_helper.rb"
+			],
 			[
 				"modelschara",
 				"app\\models\\character.rb"
@@ -1224,10 +1172,6 @@
 			[
 				"teamform",
 				"app\\views\\teams\\_form.html.erb"
-			],
-			[
-				"adminorder_lineform",
-				"app\\views\\admin\\order_line_statuses\\_form.html.erb"
 			]
 		],
 		"width": 0.0

@@ -1,23 +1,17 @@
   
-  <%= link_to edit_admin_order_line_path(order_line), :class => 'list-group-item' do %>
-  <span>
-	<% if order_line.product.loot_option.name == "yes (master loot)" %>
-	<i class="fa fa-users fa-4x pull-left"></i>
-	<% end %>
-	
-	<% if order_line.product.loot_option.name == "yes (personal)" %>
-	<i class="fa fa-user fa-4x pull-left"></i>
-	<% end %>
-	
-	<% if order_line.product.loot_option.name == "none" %>
-	<i class="fa fa-ban fa-4x pull-left"></i>
-	<% end %>
+<%= link_to edit_admin_order_line_path(order_line), :class => 'list-group-item' do %>
+<h5 class="list-group-item-heading"><%= order_line.customer.email %></h5>
+<p class="list-group-item-text">
+	<%= order_line.product.description.titleize %>	
+</p>
+<p class="list-group-item-text">
+	<%= faction_sprite order_line.faction %>
+	<%= character_sprite order_line.character %>
+	<%= zone_sprite order_line.product.zone %>
+	<%= difficulty_sprite order_line.product.difficulty %>
+	<%= loot_option_sprite order_line.product.loot_option %>
+	<%= play_style_sprite order_line.product.play_style %>
+</p>
 
-  <h5 class="list-group-item-heading"><%= order_line.customer.email %></h5>
-  <p class="list-group-item-text">
-    <%= order_line.product.difficulty.display_name unless order_line.product.difficulty == "normal" %>
-    <%= order_line.product.category.display_name %>,
-    <%= order_line.product.zone.display_name %>,
-    <%= order_line.product.description.titleize %>
-    </p>
- <% end %>
+
+<% end %>

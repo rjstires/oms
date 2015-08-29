@@ -9,6 +9,14 @@ main {
   margin-top: 51px; // accommodate the navbar
   }
 
+// Bootcard Overrides
+.list-group-item i {
+    opacity: 1;
+    width: 32px;
+    text-align: center;
+    margin-right: 0.5px;
+}
+
 // Chosen Overrides
 select.form-control + .chosen-container.chosen-container-single .chosen-single {
     display: block;
