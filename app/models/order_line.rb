@@ -21,7 +21,7 @@ class OrderLine < ActiveRecord::Base
 
   scope :index_join, -> {
     includes(
-      {:product => [:category, :difficulty, :zone, :play_stype, :loot_option, :mount]},
+      {:product => [:category, :difficulty, :zone, :play_style, :loot_option, :mount]},
       :team,
       {:character => [:classification]},
       :customer,
