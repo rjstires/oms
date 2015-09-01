@@ -69,13 +69,17 @@
 	},
 	"expanded_folders":
 	[
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers"
 	],
 	"file_history":
 	[
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/team.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/teams_controller.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/teams/new.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/teams/_form.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/teams/show.html.erb",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/teams_controller.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/teams/show.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/teams/edit.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/config/routes.rb",

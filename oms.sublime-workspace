@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"order",
+				"order_lines"
+			],
+			[
 				"iron",
 				"ironhoof-destroyer"
 			],
@@ -72,10 +76,6 @@
 				"factory_girl	(factory_girl.rb)"
 			],
 			[
-				"order",
-				"order_line"
-			],
-			[
 				"order_line",
 				"order_line_status_id"
 			],
@@ -124,10 +124,10 @@
 	"buffers":
 	[
 		{
-			"file": "app/models/order_line.rb",
+			"file": "app/views/order_mailer/confirmation_email.html.erb",
 			"settings":
 			{
-				"buffer_size": 6285,
+				"buffer_size": 12122,
 				"line_ending": "Unix"
 			}
 		}
@@ -214,14 +214,24 @@
 	[
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models"
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/order_mailer"
 	],
 	"file_history":
 	[
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/order_lines_controller.rb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/order_line.rb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/options-sprite.css.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/show.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/_skype_list_item.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/helpers/order_lines_helper.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/customers_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/dashboard/_lead_row.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/_customer.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/index.html.erb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/application.css.scss",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/notes",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/order_line.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/customer.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/order_lines_controller.rb",
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/options-sprite.css.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/products/index.html.erb",
 		"/C/Users/Robert/Downloads/stylesheet.txt",
 		"/C/Users/Robert/Downloads/spritesheet.png",
@@ -232,7 +242,6 @@
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/class-sprite.css.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/framework_and_overrides.css.scss",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/index.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/dashboard/_lead_row.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/loot-option-sprite.css.erb",
 		"/C/Users/Robert/Downloads/stylesheet (1).txt",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/zone-sprites.css.erb",
@@ -240,10 +249,6 @@
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/classification.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/class-sprite.css",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/layouts/_admin_links.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/_customer.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/index.html.erb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/customers_controller.rb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/show.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/Gemfile",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/dashboard/index.html.erb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/layouts/application.html.erb",
@@ -341,11 +346,7 @@
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/payment_statuses_controller.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/payment_types_controller.rb",
 		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/categories_controller.rb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/play_styles_controller.rb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/difficulties_controller.rb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/factions_controller.rb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/classifications_controller.rb",
-		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/loot_options_controller.rb"
+		"/C/Users/Robert/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/play_styles_controller.rb"
 	],
 	"find":
 	{
@@ -619,19 +620,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "app/models/order_line.rb",
+					"file": "app/views/order_mailer/confirmation_email.html.erb",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6285,
+						"buffer_size": 12122,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								688,
-								688
+								9664,
+								9664
 							]
 						],
 						"settings":
@@ -640,12 +641,12 @@
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/Rails/Ruby on Rails.tmLanguage",
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1395.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -707,6 +708,26 @@
 		"selected_items":
 		[
 			[
+				"controllersadmincustomer",
+				"app\\controllers\\admin\\customers_controller.rb"
+			],
+			[
+				"viewsadmincutomersho",
+				"app\\views\\admin\\customers\\show.html.erb"
+			],
+			[
+				"viewsadmincustomer",
+				"app\\views\\admin\\customers\\_customer.html.erb"
+			],
+			[
+				"viewsadmincustomerind",
+				"app\\views\\admin\\customers\\index.html.erb"
+			],
+			[
+				"modelscustomer",
+				"app\\models\\customer.rb"
+			],
+			[
 				"controllersadminorderlines",
 				"app\\controllers\\admin\\order_lines_controller.rb"
 			],
@@ -731,10 +752,6 @@
 				"app\\views\\admin\\customers\\_customer.html.erb"
 			],
 			[
-				"viewsadmincustomerind",
-				"app\\views\\admin\\customers\\index.html.erb"
-			],
-			[
 				"viewsadminorderlines",
 				"app\\views\\admin\\order_lines\\_order_line.html.erb"
 			],
@@ -749,10 +766,6 @@
 			[
 				"viewsadmincustomers",
 				"app\\views\\admin\\customers\\show.html.erb"
-			],
-			[
-				"viewsadmincustomer",
-				"app\\views\\admin\\customers\\index.html.erb"
 			],
 			[
 				"admincustomercon",
@@ -1205,18 +1218,6 @@
 			[
 				"adminorder_linesind",
 				"app\\views\\admin\\order_lines\\index.html.erb"
-			],
-			[
-				"adminorder_linesorder",
-				"app\\views\\admin\\order_lines\\_order_line.html.erb"
-			],
-			[
-				"adminorder_linesform",
-				"app\\views\\admin\\order_lines\\_form.html.erb"
-			],
-			[
-				"order_lineform",
-				"app\\views\\order_lines\\_form.html.erb"
 			]
 		],
 		"width": 0.0
