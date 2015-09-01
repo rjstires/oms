@@ -1,5 +1,7 @@
 class Customer < ActiveRecord::Base
   has_many :order_lines
+  has_many :characters, through: :order_lines
+  
   require 'json'
 
   def display_name

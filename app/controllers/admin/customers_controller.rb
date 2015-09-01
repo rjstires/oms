@@ -19,6 +19,7 @@ class Admin::CustomersController < AdminController
       AVG(order_lines.sale) as avg_sale,
       COUNT(order_lines.sale) as count_sale'
    )
+   .where('order_lines.completed_at IS NOT NULL')
    .order('customers.email ASC')
   end
 
@@ -39,8 +40,11 @@ class Admin::CustomersController < AdminController
       AVG(order_lines.sale) as avg_sale,
       COUNT(order_lines.sale) as count_sale'
    )
+   .where('order_lines.completed_at IS NOT NULL')
    .order('customers.email ASC')
    .find(params[:id])
+
+   @completed_orders = @customer.order_lines.where_completed
   end
 
   # GET /Customers/new

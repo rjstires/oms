@@ -19,6 +19,7 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
+    @team.user_id = current_user.id
 
     respond_to do |format|
       if @team.save

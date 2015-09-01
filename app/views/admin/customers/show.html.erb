@@ -1,41 +1,38 @@
-<div class="row">
-	<div class="col-md-2 col-md-offset-1">
-		<h4><%= mail_to @customer.email %></h4>
-	</div>
-	<div class="col-md-2">
-		<h4><%= @customer.try(:battle_tag) %></h4>
-	</div>
-	<div class="col-md-2">
-	<% unless @customer.skype.blank? %>
-		<h4><%= link_to @customer.skype, "skype:#{@customer.skype}?chat" %></h4>
-	<% end %>
+	  <div class="container bootcards-container" id="main">
+	  	<div id="contactCard">
+		  	<div class="panel panel-default">
+	  			<div class="panel-heading clearfix">
+	  				<h3 class="panel-title pull-left">Contact Details</h3>
+	  				<div class="btn-group pull-right visible-xs">
+	  					<a class="btn btn-primary" href="/contacts/eNK2QXWJa8E3/edit"
+	  					data-toggle="modal"
+	  					data-target="#editModal">
+	  					<i class="fa fa-pencil"></i>
+	  					<span>Edit</span>
+	  				</a>
+	  			</div>	
+	  			<%= link_to(edit_admin_customer_path(@customer), class: 'btn btn-primary pull-right hidden-xs') do %>
+	  			
+	  			<i class="fa fa-pencil"></i>
+	  			<span>Edit</span>
+	  		
+	  		<% end %>
+	  	</div>
+	  	<div class="list-group">
+				<%= mail_to(@customer.email, class: 'list-group-item') do %>
+					<label>Email</label>
+					<h4 class="list-group-item-heading"><%= @customer.email %></h4>
+				<% end %>
+
+				<div class="list-group-item">
+					<label>Battle Tag</label>
+					<h4 class="list-group-item-heading"><%= @customer.battle_tag %></h4>
+				</div>
+
+				<%= render :partial => "skype_list_item", locals: {customer: @customer} unless @customer.skype.nil? %>
+
+	  	</div>
+
+	  </div>
 	</div>
 </div>
-
-<div class="row">
-	<div class="col-md-10 col-md-offset-1">
-	<table class="table table-condensed">
-		<tr>
-				<th colspan="11">Order History</th>
-		</tr>
-		<%= render :partial => "/admin/order_lines/order_line", :collection => @customer.order_lines %>
-		<tr>
-			<th colspan="10"></th>
-			<th>Min: <%= number_to_currency @customer.min_sale %></th>
-			<th>Max: <%= number_to_currency @customer.max_sale %></th>
-			<th>Avg: <%= number_to_currency @customer.avg_sale %></th>
-			<th>Sum: <%= number_to_currency @customer.sum_sale %></th>
-			<th>Count: <%= @customer.count_sale %></th>
-		</tr>
-	</table>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-md-10 col-md-offset-1">
-		<%= link_to 'Edit', edit_admin_customer_path(@customer) %> |
-		<%= link_to 'Back', admin_customers_path %>
-	</div>
-</div>
-
-
