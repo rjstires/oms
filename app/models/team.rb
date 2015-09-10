@@ -1,9 +1,4 @@
 class Team < ActiveRecord::Base
-  after_create do |t|
-    Membership.create!(team: t, user_id: t.user_id, confirmed: true, owner: true)
-  end
-
-  attr_accessor(:user_id)
 
   belongs_to :region
   belongs_to :faction
@@ -25,8 +20,13 @@ class Team < ActiveRecord::Base
   has_many :order_line_statuses, through: :order_lines
 
 
-  validates :name, :name_alias, :region, :faction, :realm, :payment_type, :payment_address, :team_status, presence: true
-  validates :name, :name_alias, uniqueness: true
+  validates_presence_of :name, :name_alias, :region, :faction, :realm, :payment_type, :payment_address, :team_status, presence: true, message: "of team must not be blank."
+
+  validates_uniqueness_of :name, message: "%{value} already exists."
+  validates_uniqueness_of :name_alias, message: "%{value} already exists."
+
+
+
 
   def display_name
     self.name.titleize

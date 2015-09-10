@@ -1,5 +1,3 @@
-class PagesController < ActionController::Base
-  def uploads
-    render '/layouts/uploads'
-  end
+class PagesController < ApplicationController
+  skip_load_and_authorize_resource
 end

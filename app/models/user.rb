@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 
 
   validates :name, :battle_tag, presence: true
+  validates_uniqueness_of :battle_tag, message: "%{value} already exists."
+  validates_uniqueness_of :skype, :allow_blank => true, message: "%{value} already exists."
 
   def set_default_role
     self.role ||= :registered

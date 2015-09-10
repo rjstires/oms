@@ -1,6 +1,8 @@
-# spec/factories/armor_types.rb
 FactoryGirl.define do
-  factory :armor_type do |f|
-    f.name "cloth"
-  end
+	factory :armor_type do
+		factory :cloth do
+			name "cloth"
+			initialize_with {ArmorType.first_or_create(name: name)}
+		end
+	end
 end

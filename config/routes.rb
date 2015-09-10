@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   get 'memberships/index'
 
-  root :to => 'visitors#index'
+  root 'landings#index'
 
-  devise_for :users
+  get 'dashboard', :to => 'pages#index'
+  get 'admin/dashboard', :to => 'admin/dashboard#index'
+
+
+  devise_for :users, :controllers => { :registrations => "user/registrations" }
   resources :users
 
   resources :memberships do
@@ -18,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get '', to: 'dashboard#index', as: '/'
+    get 'dashboard', to: 'dashboard#index', as: '/'
 
     get 'uploads', to: 'pages#uploads'
     post 'customers/upload', to: 'customers#upload'

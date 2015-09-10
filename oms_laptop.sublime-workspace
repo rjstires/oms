@@ -31,6 +31,14 @@
 	},
 	"buffers":
 	[
+		{
+			"contents": "",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -75,6 +83,7 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/landings_controller.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/team.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/teams_controller.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/teams/new.html.erb",
@@ -86,7 +95,6 @@
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/layouts/application.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/visitors/index.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/application_controller.rb",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/landings_controller.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/dashboard_controller.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/order_line.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/dashboard/index.html.erb",
@@ -164,8 +172,37 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_name": "",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],

@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
   belongs_to :play_style
   belongs_to :zone
 
-  validates :description, :category, :difficulty, :loot_option, :mount, :play_style, :zone, presence: true
+  validates_presence_of  :description, :category, :difficulty, :loot_option, :mount, :play_style, :zone
 
   before_save :downcase_fields
 

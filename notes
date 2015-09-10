@@ -1,0 +1,6 @@
+# To get an array list of customers characters.
+OrderLine
+	.joins(:character => [:classification])
+	.where(customer: @jeremy)
+	.distinct
+	.pluck('characters.spec, classifications.name')

@@ -2,6 +2,10 @@ class Customer < ActiveRecord::Base
   has_many :order_lines
   has_many :characters, through: :order_lines
   
+  validates_presence_of  :email, :battle_tag, message: "of customer must not be blank."
+  validates_uniqueness_of :email, message: "%{value} already exists."
+
+
   require 'json'
 
   def display_name

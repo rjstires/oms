@@ -26,25 +26,7 @@ class Admin::CustomersController < AdminController
   # GET /Customers/1
   # GET /Customers/1.json
   def show
-   @customer = ::Customer
-   .group('customers.id')
-   .joins(:order_lines)
-   .select('
-      customers.id,
-      customers.email,
-      customers.battle_tag,
-      customers.skype,
-      SUM(order_lines.sale) as sum_sale,
-      MIN(order_lines.sale) as min_sale,
-      MAX(order_lines.sale) as max_sale,
-      AVG(order_lines.sale) as avg_sale,
-      COUNT(order_lines.sale) as count_sale'
-   )
-   .where('order_lines.completed_at IS NOT NULL')
-   .order('customers.email ASC')
-   .find(params[:id])
-
-   @completed_orders = @customer.order_lines.where_completed
+    @completed_orders = @customer.order_lines.where_completed
   end
 
   # GET /Customers/new

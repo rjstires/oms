@@ -23,6 +23,14 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
+        
+        Membership.create!(
+          team: @team, 
+          user: current_user, 
+          confirmed: true, 
+          owner: true
+        )
+
         format.html { redirect_to team_path(@team), notice: 'Team was successfully created.' }
         format.json { render :show, status: :created, location: @team }
       else

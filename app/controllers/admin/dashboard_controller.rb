@@ -6,7 +6,7 @@ class Admin::DashboardController < AdminController
     @orders_ready_to_dispatch = OrderLine.index_join.ready_to_dispatch
     @orders_lead = OrderLine.index_join.leads
     @orders_past_due = OrderLine.index_join.past_due
-    @orders_dispatched = OrderLine.index_join.dispatched
+    @orders_dispatched = OrderLine.index_join.dispatched.order_by_scheduled
     store_location
   end
 end

@@ -9,15 +9,10 @@ class OrderLine < ActiveRecord::Base
 
   has_one :category, through: :product
 
-  validates :product, presence: true
-  validates :character, presence: true
-  validates :customer, presence: true
-  validates :sale, presence: true
-  validates :merchant_fee, presence: true
-  validates :site_fee, presence: true
-  validates :contractor_payment, presence: true
-  validates :faction_id, presence: true
-  validates :region_id, presence: true
+  validates_presence_of :product, :character, :customer,
+                        :sale, :merchant_fee, :site_fee,
+                        :contractor_payment, :faction_id,
+                        :region_id
 
   scope :index_join, -> {
     includes(
@@ -28,6 +23,10 @@ class OrderLine < ActiveRecord::Base
       :region,
       :faction
       )
+  }
+
+  scope :order_by_scheduled, -> {
+    order(scheduled_at: :asc)
   }
 
   scope :by_team, -> (team) { where(team: team) }
@@ -70,7 +69,7 @@ class OrderLine < ActiveRecord::Base
     where_order_not_paid
     .where_not_completed
     .where_not_completed
-}
+  }
 
 scope :impending,-> { where('scheduled_at >= ?', Time.now) }
 scope :past,-> { where('scheduled_at < ?', Time.now) }

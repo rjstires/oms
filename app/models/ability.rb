@@ -20,10 +20,6 @@ class Ability
       can :read, Team, :id => user.teams_id_list
       can [:update, :destroy], Team, :id => user.owned_teams_id_list
 
-      # Option (C R U D)
-      can :read, Option
-      cannot [:create, :update, :destory], Option
-
       # Membership (CRUD)
       can :create, Membership
       can [:read, :update], Membership, :team_id => user.owned_teams_id_list
