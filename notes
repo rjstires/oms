@@ -4,3 +4,25 @@ OrderLine
 	.where(customer: @jeremy)
 	.distinct
 	.pluck('characters.spec, classifications.name')
+
+
+## Count of sales
+scope :count_sales, -> {
+  select('customer.id, COUNT(order_lines.id) as count_sales').
+  group('customers.id').
+  joins(:order_lines)
+}
+
+## Sum of sales
+scope :sum_sales, -> {
+  select('SUM(order_lines.sale) as sum_sales')
+  }
+
+## Average of sales
+scope :sum_sales, -> {
+  select('AVG(order_lines.sale) as sum_sales')
+}
+
+
+## Customer's without orders.
+Customer.joins('LEFT OUTER JOIN order_lines on customers.id = order_lines.customer_id').where('order_lines.id is null') 

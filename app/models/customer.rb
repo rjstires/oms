@@ -5,12 +5,31 @@ class Customer < ActiveRecord::Base
   validates_presence_of  :email, :battle_tag, message: "of customer must not be blank."
   validates_uniqueness_of :email, message: "%{value} already exists."
 
-
   require 'json'
 
-  def display_name
-    self.email
-  end
+  scope :sum_of_sales, -> {
+    joins(:order_lines).
+    select('customers.*, SUM(order_lines.sale) as sum_of_sales').
+    group('customers.id')
+  }
+
+  scope :avg_of_sales, -> {
+    joins(:order_lines).
+    select('customers.*, AVG(order_lines.sale) as avg_of_sales').
+    group('customers.id')
+  }
+
+  scope :count_of_sales, -> {
+    joins(:order_lines).
+    select('customers.*, COUNT(order_lines.sale) as count_of_sales').
+    group('customers.id')
+  }
+
+  scope :with_order_totals, -> {
+    count_of_sales.
+    sum_of_sales.
+    avg_of_sales
+  }
 
   def to_label
     self.email
@@ -19,7 +38,7 @@ class Customer < ActiveRecord::Base
   def self.importJSON(file)
     json = parseJSON file
     customers = json['customers']
-    Customer.delete_all
+    
     customers.each do |row|
       row['email'].downcase!
       row['battle_tag'].downcase!

@@ -5,22 +5,9 @@ class Admin::CustomersController < AdminController
   # GET /Customers.json
   def index
     
-   @customers = ::Customer
-   .group('customers.id')
-   .joins(:order_lines)
-   .select('
-      customers.id,
-      customers.email,
-      customers.battle_tag,
-      customers.skype,
-      SUM(order_lines.sale) as sum_sale,
-      MIN(order_lines.sale) as min_sale,
-      MAX(order_lines.sale) as max_sale,
-      AVG(order_lines.sale) as avg_sale,
-      COUNT(order_lines.sale) as count_sale'
-   )
-   .where('order_lines.completed_at IS NOT NULL')
-   .order('customers.email ASC')
+   @customers = Customer.
+                 with_order_totals.
+                 order('customers.email ASC')
   end
 
   # GET /Customers/1

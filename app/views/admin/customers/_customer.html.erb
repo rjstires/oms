@@ -2,7 +2,9 @@
         <td><%= link_to customer.email, [:admin, customer] %></td>
         <td><%= customer.try(:battle_tag) %></td>
         <td><%= customer.try(:skype) %></td>
-        <td><%= number_to_currency customer.sum_sale %></td>
+        <td><%= customer.count_of_sales %></td>
+        <td><%= number_to_currency customer.sum_of_sales %></td>
+        <td><%= number_to_currency customer.avg_of_sales %></td>
         <td><%= link_to 'Edit', edit_admin_customer_path(customer) %></td>
         <td><%= link_to 'Destroy', admin_customer_path(customer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr

@@ -25,6 +25,10 @@ class OrderLine < ActiveRecord::Base
       )
   }
 
+  scope :sale_total, -> { sum(:sale) }
+  scope :sale_average, -> { avg(:sale) }
+  scope :sale_count, -> { count(:sale) }
+
   scope :order_by_scheduled, -> {
     order(scheduled_at: :asc)
   }
@@ -71,18 +75,20 @@ class OrderLine < ActiveRecord::Base
     .where_not_completed
   }
 
-scope :impending,-> { where('scheduled_at >= ?', Time.now) }
-scope :past,-> { where('scheduled_at < ?', Time.now) }
+  scope :impending,-> { where('scheduled_at >= ?', Time.now) }
+  scope :past,-> { where('scheduled_at < ?', Time.now) }
 
-scope :past_due,-> {
-  where_not_completed
-  .where_scheduled
-  .where_order_paid
-  .past
-}
+  scope :past_due,-> {
+    where_not_completed
+    .where_scheduled
+    .where_order_paid
+    .past
+  }
 
-  scope :ready_to_ship, -> { where_scheduled.where_not_completed.where_order_paid }
-
+  scope :ready_to_ship, -> {
+    where_scheduled.where_not_completed.where_order_paid
+  }
+  
   def completed?
     self.completed_at.present?
   end
@@ -199,7 +205,7 @@ scope :past_due,-> {
         o.contractor_payment = @sale_contractor
         o.completed_at = @date
         o.scheduled_at = @date
-        }
+      }
     end
   end
 
