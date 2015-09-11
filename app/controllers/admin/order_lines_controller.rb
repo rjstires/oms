@@ -54,7 +54,7 @@ class Admin::OrderLinesController < AdminController
   def destroy
     @order_line.destroy
     respond_to do |format|
-      format.html { redirect_to admin_order_lines_url, notice: 'Order line was successfully destroyed.' }
+      format.html { redirect_to admin_dashboard_path, notice: 'Order line was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
