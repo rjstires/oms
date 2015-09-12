@@ -1,11 +1,11 @@
-      <tr>
-        <td><%= link_to customer.email, [:admin, customer] %></td>
-        <td><%= customer.try(:battle_tag) %></td>
-        <td><%= customer.try(:skype) %></td>
-        <td><%= customer.count_of_sales %></td>
-        <td><%= number_to_currency customer.sum_of_sales %></td>
-        <td><%= number_to_currency customer.avg_of_sales %></td>
-        <td><%= link_to 'Edit', edit_admin_customer_path(customer) %></td>
-        <td><%= link_to 'Destroy', admin_customer_path(customer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr
-      
+
+<%= link_to admin_customer_path(customer), class: 'list-group-item' do %>
+    <%= gravatar_tag customer.email, :size => 20, :html => { :class => "gravatar img-rounded pull-left" } %>
+    <h4 class="list-group-item-heading"><%= customer.email %></h4>
+    <% unless customer.battle_tag.blank? %>
+    <p class="list-group-item-text"><%= customer.try(:battle_tag) %> </p>
+    <% else %>
+    <p class="list-group-item-text">undefined</p>
+    <% end %>
+<% end %>
+  

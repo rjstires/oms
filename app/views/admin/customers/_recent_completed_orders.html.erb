@@ -1,0 +1,12 @@
+<tr>
+	<td>
+		<%= link_to "##{recent_completed_orders.order}", admin_order_line_path(recent_completed_orders) %>
+	</td>
+	<td><%= recent_completed_orders.completed_at.to_s(:short_date) %></td>
+	<td>
+		<%= recent_completed_orders.product.category.display_name %>
+		<%= recent_completed_orders.product.difficulty.display_name %>
+		<%= recent_completed_orders.product.display_name %>
+	</td>
+	<td><%= number_to_currency recent_completed_orders.sale %></td>
+</tr>

@@ -15,6 +15,7 @@ gem 'devise'
 gem 'cancancan', '~> 1.10'
 gem 'pg'
 gem 'simple_form'
+gem 'gravatarify', '~> 3.0.0'
 
 group :development, :test do
   gem 'byebug'

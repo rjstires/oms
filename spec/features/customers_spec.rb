@@ -24,6 +24,7 @@ end
 
 		# A new customer should not have an order history.
 		expect(page).to_not have_content("Order History")
+		
 
 	end
 

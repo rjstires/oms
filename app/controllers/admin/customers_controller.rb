@@ -1,24 +1,23 @@
 class Admin::CustomersController < AdminController
-  before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:index, :show, :edit, :update, :destroy]
+  before_action :get_customers, only: [:index, :show]
+  before_action :set_order_totals, only: [:index, :show]
+  before_action :set_recent_orders, only: [:index, :show]
 
   # GET /Customers
   # GET /Customers.json
-  def index
-    
-   @customers = Customer.
-                 with_order_totals.
-                 order('customers.email ASC')
+  def index 
   end
 
   # GET /Customers/1
   # GET /Customers/1.json
   def show
-    @completed_orders = @customer.order_lines.where_completed
+    render 'index'
   end
 
   # GET /Customers/new
   def new
-    @customer = ::Customer.new
+    @customer = Customer.new
   end
 
   # GET /Customers/1/edit
@@ -68,11 +67,33 @@ class Admin::CustomersController < AdminController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
-      @customer = ::Customer.find(params[:id])
+      if params[:id]
+        @customer = Customer.find(params[:id])
+      else
+        @customer = Customer.first        
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
       params.require(:customer).permit(:email, :battle_tag, :skype)
     end
+
+    def get_customers
+      @customers = Customer.all
+   end
+
+   def set_recent_orders
+      @recent_completed_orders = @customer
+        .order_lines
+        .where_completed
+        .order_by_completed
+        .limit(5)
+   end
+
+   def set_order_totals
+      @customer_count_of_sales = @customer.order_lines.where_completed.count(:sale)
+      @customer_sum_of_sales = @customer.order_lines.where_completed.sum(:sale)
+      @customer_average_of_sales = @customer.order_lines.where_completed.average(:sale)
+   end
 end

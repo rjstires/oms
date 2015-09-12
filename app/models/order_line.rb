@@ -33,6 +33,10 @@ class OrderLine < ActiveRecord::Base
     order(scheduled_at: :asc)
   }
 
+  scope :order_by_completed, -> {
+    order(completed_at: :desc)
+  }
+
   scope :by_team, -> (team) { where(team: team) }
   scope :category, -> (id) { joins(:product).where(:products => {:category_id => id}) }
 
