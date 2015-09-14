@@ -12,9 +12,7 @@
     <%= render 'contactCard', object: @customer %>
     <% if @recent_completed_orders.count > 1 %>
       <%= render 'recentOrdersCard', object: @recent_completed_orders %> 
-
       <%= render 'customerTotalsCard' %>
-
     <% end %>
   </div>
 </div>
