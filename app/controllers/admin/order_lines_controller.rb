@@ -30,7 +30,7 @@ class Admin::OrderLinesController < AdminController
 
     respond_to do |format|
       if @order_line.save!
-        format.html { redirect_to admin_order_lines_path, notice: 'Order line was successfully created.' }
+        format.html { redirect_to admin_dashboard_path, notice: 'Order line was successfully created.' }
         format.json { render :show, status: :created, location: @order_line }
       else
         format.html { render :new}
@@ -42,7 +42,7 @@ class Admin::OrderLinesController < AdminController
   def update
     respond_to do |format|
       if @order_line.update(order_line_params)
-        format.html { redirect_to admin_order_line_path(@order_line), notice: 'Order line was successfully updated.' }
+        format.html { redirect_to admin_dashboard_path, notice: 'Order line was successfully updated.' }
         format.json { render :show, status: :ok, location: @order_line }
       else
         format.html { render :edit }
