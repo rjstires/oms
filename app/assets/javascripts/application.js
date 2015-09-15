@@ -44,13 +44,13 @@ function updatePrice()
 }
 $(document).on("change, keyup", "#order_line_sale", updatePrice);
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
 $(document).on("page:load ready", function(){
     $('.chosen-select').chosen({
         allow_single_deselect: true,
         no_results_text: "Derp! Nothing found!"
     });
 });
-
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
