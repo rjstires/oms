@@ -79,11 +79,11 @@
 	],
 	"file_history":
 	[
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/index.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/javascripts/application.js",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/order_lines_controller.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/spec/features/order_lines_spec.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/_customer.html.erb",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/index.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/Gemfile",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/order_line.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/customers_controller.rb",
@@ -300,9 +300,13 @@
 	"select_project":
 	{
 		"height": 1000.0,
-		"last_filter": "",
+		"last_filter": "character",
 		"selected_items":
 		[
+			[
+				"character",
+				"C:\\Users\\Jarvis\\Nitrous\\jarvis-dresden-9588\\ruby-on-rails-118737\\characters\\project.sublime-workspace"
+			],
 			[
 				"",
 				"C:\\Users\\Jarvis\\Nitrous\\jarvis-dresden-9588\\ruby-on-rails-118737\\characters\\project.sublime-workspace"
