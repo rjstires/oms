@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"order",
+				"order_lines"
+			],
+			[
 				"where_not",
 				"where_not_scheduled"
 			],
@@ -31,14 +35,6 @@
 	},
 	"buffers":
 	[
-		{
-			"contents": "",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -47,8 +43,8 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 310.0,
-		"last_filter": "install",
+		"height": 784.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -56,7 +52,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 1280.0
+		"width": 800.0
 	},
 	"console":
 	{
@@ -79,11 +75,35 @@
 	[
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers"
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models"
 	],
 	"file_history":
 	[
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/javascripts/application.js",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/order_lines_controller.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/spec/features/order_lines_spec.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/_customer.html.erb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/customers/index.html.erb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/Gemfile",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/order_line.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/customers_controller.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/customer.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/notes",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/db/migrate/20150806020010_create_customers.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/db/migrate/20150911030417_customer_skype_is_not_required.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/db/migrate/20150822072514_drop_order_line_status_and_payment_status.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/_form.html.erb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/spec/features/customers_spec.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/dashboard_controller.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/landings_controller.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/config/routes.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/pages_controller.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/spec/support/feature_helper.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/spec/requests/landings_spec.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/spec/controllers/landings_spec.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/spec/features/dashboards_spec.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/ability.rb",
+		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/navigation.css",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/team.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/teams_controller.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/teams/new.html.erb",
@@ -91,25 +111,19 @@
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/teams/show.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/teams/show.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/teams/edit.html.erb",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/config/routes.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/layouts/application.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/visitors/index.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/application_controller.rb",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/dashboard_controller.rb",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/order_line.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/dashboard/index.html.erb",
 		"/C/Users/Jarvis/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/C/Users/Jarvis/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
 		"/C/Users/Jarvis/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/region.rb",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/order_lines/_form.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/admin/dashboard/_lead_row.html.erb",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/javascripts/application.js",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/javascripts/chosen.js.coffee",
 		"/C/Users/Jarvis/Downloads/chosen_v1.4.2 (1)/docsupport/prism.js",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/models/product.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/assets/stylesheets/application.css.scss",
-		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin/order_lines_controller.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/admin_controller.rb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/views/order_lines/index.html.erb",
 		"/C/Users/Jarvis/Nitrous/jarvis-dresden-9588/ruby-on-rails-118737/oms/app/controllers/order_lines_controller.rb",
@@ -126,7 +140,7 @@
 	],
 	"find":
 	{
-		"height": 80.0
+		"height": 64.0
 	},
 	"find_in_files":
 	{
@@ -141,6 +155,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"4",
+			">\n",
+			"total",
+			"admin_dashboard_pathd",
+			"Order line was successfully destroyed.",
+			"option",
+			"right:",
 			"admin",
 			"where",
 			" prompt: 'Select...',",
@@ -172,37 +193,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -212,7 +204,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 55.0
 	},
 	"layout":
 	{
@@ -241,6 +233,10 @@
 	{
 		"height": 0.0
 	},
+	"output.unsaved_changes":
+	{
+		"height": 198.0
+	},
 	"pinned_build_system": "",
 	"project": "oms_laptop.sublime-project",
 	"replace":
@@ -254,6 +250,18 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"specsorder",
+				"spec\\features\\order_lines_spec.rb"
+			],
+			[
+				"viewsadmincustomerin",
+				"app\\views\\admin\\customers\\index.html.erb"
+			],
+			[
+				"admincustomerscontro",
+				"app\\controllers\\admin\\customers_controller.rb"
+			],
 			[
 				"viewsteamsshow",
 				"app\\views\\teams\\show.html.erb"
@@ -291,12 +299,16 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 1000.0,
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"",
+				"C:\\Users\\Jarvis\\Nitrous\\jarvis-dresden-9588\\ruby-on-rails-118737\\characters\\project.sublime-workspace"
+			]
 		],
-		"width": 0.0
+		"width": 1279.0
 	},
 	"select_symbol":
 	{
