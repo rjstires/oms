@@ -19,15 +19,14 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-    @team.user_id = current_user.id
 
     respond_to do |format|
       if @team.save
-        
+
         Membership.create!(
-          team: @team, 
-          user: current_user, 
-          confirmed: true, 
+          team: @team,
+          user: current_user,
+          confirmed: true,
           owner: true
         )
 
@@ -76,7 +75,6 @@ class TeamsController < ApplicationController
     :region_id,
     :team_status_id,
     :payment_type_id,
-    :user_id
     )
   end
 end

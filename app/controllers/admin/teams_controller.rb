@@ -29,10 +29,16 @@ class Admin::TeamsController < AdminController
 
   def create
     @team = ::Team.new(team_params)
-    @team.user_id = current_user.id
-
     respond_to do |format|
       if @team.save
+
+        Membership.create!(
+          team: @team,
+          user: current_user,
+          confirmed: true,
+          owner: true
+        )
+
         format.html { redirect_to admin_team_path(@team), notice: 'Team was successfully created.' }
         format.json { render :show, status: :created, location: @team }
       else

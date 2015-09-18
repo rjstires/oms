@@ -24,14 +24,14 @@ end
 
 		# A new customer should not have an order history.
 		expect(page).to_not have_content("Order History")
-		
+
 
 	end
 
 	scenario "Customer with orders has order history" do
 		customer = create(:customer, :with_5_completed_orders)
 		visit admin_customer_path(customer)
-		expect(page).to have_content("Order History")
+		expect(page).to have_content("Recent Orders")
 	end
 end
 
