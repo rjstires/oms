@@ -4,6 +4,7 @@ RSpec.feature "Customer management", :type => :feature do
 before(:each) do
 	login_admin
 end
+
 	scenario "Admin adds customer" do
 
 		visit new_admin_customer_path

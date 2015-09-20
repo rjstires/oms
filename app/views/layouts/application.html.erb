@@ -36,16 +36,12 @@
         <hr>
       </div>
     </div>
-    
-    
     <div class="col-md-12">
       <p>&copy; Boosting Edge, LLC 2015</p>
       <%= link_to 'Sign out', destroy_user_session_path,
       method: :delete,
       data: { confirm: 'Are you sure?' } if user_signed_in? %>
     </div>
-  
-    
   </div>
   <script>
     $(document).ready(function(){

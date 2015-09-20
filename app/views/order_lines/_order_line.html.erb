@@ -1,11 +1,11 @@
 <tr>
   <td>
     <% if !order_line.scheduled_at.blank? %>
-    <%= order_line.scheduled_at %>
+    <%= order_line.scheduled_at.to_s(:datetime) %>
     <% elsif !order_line.completed_at.blank? %>
-    <%= order_line.completed_at %>
+    <%= order_line.completed_at.to_s(:datetime) %>
     <% else %>
-    <%= order_line.created_at %>
+    <%= order_line.created_at.to_s(:datetime)%>
     <% end %>
   </td>
 

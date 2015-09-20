@@ -1,15 +1,15 @@
 <h1>Users</h1>
 <div class="row bottom-buffer">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-12">
     <%= link_to '<i class="fa fa-plus"></i> New'.html_safe, new_admin_user_path, :class => 'btn btn-primary btn-sm', remote: true %>
   </div>
 </div>
 <div class="row bottom-buffer">
-  <div class="col-md-6 col-md-offset-3 bottom-buffer" id="task-form" style="display:none;"></div>
+  <div class="col-md-12 bottom-buffer" id="task-form" style="display:none;"></div>
 </div>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <table class="table" id="users_table">
+  <div class="col-md-12">
+    <table class="table table-hover" id="users_table">
       <tbody>
         <%= render @users %>
       </tbody>

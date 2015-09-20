@@ -4,11 +4,11 @@ FactoryGirl.define do
 
   factory :product do |f|
   	description :description
-  	association :category, factory: :raiding
-    association :zone, factory: :hellfire_citadel
-    association :difficulty, factory: :heroic
-    association :play_style, factory: :self_play
-    association :loot_option, factory: :master_loot
-  	association :mount, factory: :no_mount
+  	association :category
+    association :zone
+    association :difficulty
+    association :play_style
+    association :loot_option
+  	association :mount
   end
 end

@@ -1,3 +1,13 @@
+admin = User.create!(
+  name: "Jarvis Dresden",
+  email: "jarvis.dresden@gmail.com",
+  battle_tag: "uninspired#1955",
+  skype: "jarvis.dresden",
+  confirmed_at: Time.zone.now,
+  role: "admin",
+  password: "password"
+)
+
 @armor_type_cloth = ArmorType.find_or_create_by!(name: 'cloth')
 @armor_type_leather = ArmorType.find_or_create_by!(name: 'leather')
 @armor_type_mail = ArmorType.find_or_create_by!(name: 'mail')
@@ -32,9 +42,10 @@ Difficulty.find_or_create_by!(name: 'mythic')
 Faction.find_or_create_by!(name: 'horde')
 Faction.find_or_create_by!(name: 'alliance')
 
-LootOption.find_or_create_by!(name: 'none')
-LootOption.find_or_create_by!(name: 'personal')
-LootOption.find_or_create_by!(name: 'master')
+LootOption.find_or_create_by!(name: 'no loot')
+LootOption.find_or_create_by!(name: 'tier only')
+LootOption.find_or_create_by!(name: 'yes (personal)')
+LootOption.find_or_create_by!(name: 'yes (master loot)')
 
 Mount.find_or_create_by!(name: 'none')
 Mount.find_or_create_by!(name: 'ironhoof destoryer')
@@ -47,7 +58,7 @@ PaymentType.find_or_create_by!(name: 'paypal')
 PaymentType.find_or_create_by!(name: 'skrill')
 
 PlayStyle.find_or_create_by!(name: 'self-play')
-PlayStyle.find_or_create_by!(name: 'pilotted')
+PlayStyle.find_or_create_by!(name: 'piloted')
 
 @primary_stat_agility = PrimaryStat.find_or_create_by!(name: 'agility')
 @primary_stat_intellect = PrimaryStat.find_or_create_by!(name: 'intellect')
@@ -57,9 +68,9 @@ PlayStyle.find_or_create_by!(name: 'pilotted')
 Region.find_or_create_by!(name: 'us')
 Region.find_or_create_by!(name: 'eu')
 
-TeamStatus.find_or_create_by!(name: 'pending')
-TeamStatus.find_or_create_by!(name: 'active')
-TeamStatus.find_or_create_by!(name: 'inactive')
+team_status_pending = TeamStatus.find_or_create_by!(name: 'pending')
+team_status_active = TeamStatus.find_or_create_by!(name: 'active')
+team_status_inactive = TeamStatus.find_or_create_by!(name: 'inactive')
 
 @tier_token_conqueror = TierToken.find_or_create_by!(name: 'conqueror')
 @tier_token_protector = TierToken.find_or_create_by!(name: 'protector')
@@ -278,41 +289,114 @@ Character.find_or_create_by!(spec: 'protection',
   primary_stat: @primary_stat_strength,
   tier_token: @tier_token_protector)
 
-15.times do 
-  Customer.create!(
-    email: Faker::Internet.safe_email,
-    battle_tag: 'battle#1234',
-    skype: 'skype.address'
+100.times do |n|
+  customer_name = Faker::Name.name
+  customer_username = Faker::Internet.user_name(customer_name, %w(. _ -))
+  customer_email = "#{customer_username}@example.com"
+  customer_battletag = "#{customer_username}##{rand(9999)}"
+  customer_skype = "skype:#{customer_username}"
+
+  customer = Customer.create!(
+    email: customer_email,
+    battle_tag: customer_battletag,
+    skype: customer_skype,
+  )
+  p "Created customer #{customer.id}."
+end
+
+10.times do |n|
+  team_name = "team #{n}"
+  team = Team.create!(
+    name: team_name,
+    name_alias: "#{team_name} alias",
+    realm: Faker::Lorem.word,
+    region: Region.find(rand(1..Region.count)),
+    faction: Faction.find(rand(1..Faction.count)),
+    payment_type: PaymentType.find(rand(1..PaymentType.count)),
+    payment_address: Faker::Internet.email,
+    team_status: team_status_active
     )
 
-  100.times do
-    OrderLine.create!(
-      order: Faker::Number.number(4),
+  user_name = Faker::Name.name
+  user_username = Faker::Internet.user_name(user_name, %w(. _ -))
+  user_email = "#{user_username}@example.com"
+  user_battletag = "#{user_username}##{rand(9999)}"
+  user_skype = "skype:#{user_username}"
 
-      )
+  user = User.create!(
+    name: user_name,
+    skype: user_username,
+    email: user_email,
+    battle_tag: user_battletag,
+    skype: user_skype,
+    confirmed_at: Time.zone.now,
+    role: "approved",
+    password: "password"
+  )
 
-=begin
-    t.integer  "order"
-    
-    t.integer  "product_id",                         null: false
-    
-    t.integer  "team_id"
-    
-    t.intseger  "character_id",                       null: false
-    
-    t.decimal  "sale",                               null: false
-    t.decimal  "merchant_fee",                       null: false
-    t.decimal  "site_fee",                           null: false
-    t.decimal  "contractor_payment",                 null: false
-    
-    
-    t.integer  "customer_id"
-    t.datetime "completed_at"
-    t.datetime "scheduled_at"
-    t.integer  "faction_id",                         null: false
-    t.integer  "region_id",                          null: false
-    t.boolean  "team_paid",          default: false, null: false
-    t.boolean  "order_paid",         default: false, null: false
-=end
+  Membership.create!(
+    team: team,
+    user: user,
+    confirmed: true,
+    owner: true,
+  )
+end
+
+
+50.times do
+  product = Product.create!(
+    description: Faker::Lorem.word,
+    category: Category.find(rand(1..Category.count)),
+    zone: Zone.find(rand(1..Zone.count)),
+    difficulty: Difficulty.find(rand(1..Difficulty.count)),
+    loot_option: LootOption.find(rand(1..LootOption.count)),
+    mount: Mount.find(rand(1..Mount.count)),
+    play_style: PlayStyle.find(rand(1..PlayStyle.count))
+    )
+  p "Created product #{product.id}."
+end
+
+300.times do |n|
+  sale = rand(1499)
+  merchant = sale * 0.07
+  site = sale * 0.194
+  contractor = sale * 0.776
+  order_paid = false
+  team_paid = false
+
+  if sale.to_i.even?
+    order_paid = true
+
+    if n%3==0
+      scheduled_at = Time.zone.now + (rand(1..30)).days
+    else
+      scheduled_at = Time.zone.now - (rand(1..180)).days
+      completed_at = scheduled_at + (rand(1..14)).days
+      
+      if n%2==0
+        team_paid = true
+      end
+    end
   end
+
+  order = OrderLine.create!(
+    order: Faker::Number.number(4),
+    customer: Customer.find(rand(1..Customer.count)),
+    product: Product.find(rand(1..Product.count)),
+    team: Team.find(rand(1..Team.count)),
+    character: Character.find(rand(1..Character.count)),
+    region: Region.find(rand(1..Region.count)),
+    faction: Faction.find(rand(1..Faction.count)),
+
+    sale: sale,
+    merchant_fee: merchant,
+    site_fee: site,
+    contractor_payment: contractor,
+
+    order_paid: order_paid,
+    completed_at: completed_at,
+    scheduled_at: scheduled_at,
+    team_paid: team_paid
+    )
+  p "Created order ##{order.id}."
 end

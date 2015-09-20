@@ -1,8 +1,5 @@
 FactoryGirl.define do
 	factory :armor_type do
-		factory :cloth do
-			name "cloth"
-			initialize_with {ArmorType.first_or_create(name: name)}
-		end
+    sequence(:name) { |n| "person#{n}@example.com" }
 	end
 end

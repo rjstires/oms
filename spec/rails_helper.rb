@@ -10,6 +10,7 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'support/factory_girl'
 require 'support/feature_helper'
+require 'support/database_cleaner'
 
 include Warden::Test::Helpers
 Warden.test_mode!

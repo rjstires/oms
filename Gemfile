@@ -22,6 +22,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'binding_of_caller'
+  gem 'faker'
 end
 
 group :development do
@@ -29,9 +30,9 @@ group :development do
 end
 
 group :test do
-  gem 'faker'
   gem 'capybara'
   gem 'guard-rspec'
+  gem 'database_cleaner'
 end
 
 group :production do

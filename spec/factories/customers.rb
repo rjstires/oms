@@ -3,9 +3,9 @@ FactoryGirl.define do
 
   factory :customer do
 
-  	email "user@example.com"
-  	battle_tag "battle#1234"
-  	skype "skype.address123"
+    sequence(:email) { |n| "user_#{n}@example.com" }
+    sequence(:battle_tag) { |n| "#{n} name" }
+    sequence(:skype) { |n| "#{n} name" }
 
 		trait :with_5_completed_orders do
 			after :create do |customer|

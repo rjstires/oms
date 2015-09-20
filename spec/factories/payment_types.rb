@@ -1,9 +1,5 @@
 FactoryGirl.define do
   factory :payment_type do
-    
-    factory :paypal do
-    	name "paypal"
-    end
+    sequence(:name) { |n| "#{n} name" }
   end
-
 end

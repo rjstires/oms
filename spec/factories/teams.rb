@@ -1,13 +1,12 @@
 FactoryGirl.define do
   factory :team do
-    name "LA"
-    name_alias "Tuna Melt"
-    realm "Stormreaver"
-    payment_address "paypal@example.com"
+    sequence(:name){|n| "team #{n}"}
+    sequence(:name_alias){|n| "team #{n} alias"}
+    sequence(:payment_address){|n| "team_#{n}@paypal.com"}
+    realm "realm"
     region
     faction
     team_status
     payment_type
-    user_id '1'
   end
 end
