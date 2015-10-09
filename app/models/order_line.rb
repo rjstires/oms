@@ -15,7 +15,7 @@ class OrderLine < ActiveRecord::Base
   }
 
   scope :lead,-> {
-    where_order_paid
+    where_order_not_paid
     .where_team_not_paid
     .where_not_scheduled
     .where_not_completed
