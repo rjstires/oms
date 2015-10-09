@@ -1,0 +1,6 @@
+<% @events.each do |event| %>
+<p><%= event.to_s %></p>
+  <% event.slots.each do |slot| %>
+    <p><%= slot.to_s %></p>
+  <% end %>
+<% end %>

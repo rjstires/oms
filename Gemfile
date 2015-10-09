@@ -16,6 +16,8 @@ gem 'cancancan', '~> 1.10'
 gem 'pg'
 gem 'simple_form'
 gem 'gravatarify', '~> 3.0.0'
+gem 'fullcalendar-rails'
+gem 'chosen-rails', git: 'git://github.com/qpowell/chosen-rails.git'
 
 group :development, :test do
   gem 'byebug'

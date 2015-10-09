@@ -37,6 +37,10 @@ class Event < ActiveRecord::Base
     self.start_datetime
   end
 
+  def end_time
+    self.start_datetime + 4.hours
+  end
+
   def cutoff_time
     self.cutoff_datetime
   end
@@ -75,8 +79,28 @@ class Event < ActiveRecord::Base
     slots.where(order_line: nil).count
   end
 
-  private
+  def title
+    "#{self.difficulty.display_name}: #{self.zone.display_name}"
+  end
 
+  def date
+    self.start_datetime.strftime("%A, %B %e %Y")
+  end
+
+  def display_start_time
+    self.start_datetime.strftime("%l:%M %p")
+  end
+
+  def display_end_time
+    end_time = self.start_datetime + 4.hours
+    end_time.strftime("%l:%M %p")
+  end
+
+  def display_tmz
+    self.start_datetime.strftime("%Z")
+  end
+
+  private
     def start_after_cutoff
       self.start_datetime > self.cutoff_datetime
     end
@@ -84,6 +108,7 @@ class Event < ActiveRecord::Base
     def start_in_the_past
       self.start_datetime < DateTime.now
     end
+
 
   protected
 end

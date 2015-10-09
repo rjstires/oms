@@ -6,7 +6,7 @@ admin = User.create!(
   confirmed_at: Time.zone.now,
   role: "admin",
   password: "password"
-)
+  )
 
 @armor_type_cloth = ArmorType.find_or_create_by!(name: 'cloth')
 @armor_type_leather = ArmorType.find_or_create_by!(name: 'leather')
@@ -300,7 +300,7 @@ Character.find_or_create_by!(spec: 'protection',
     email: customer_email,
     battle_tag: customer_battletag,
     skype: customer_skype,
-  )
+    )
   p "Created customer #{customer.id}."
 end
 
@@ -332,14 +332,14 @@ end
     confirmed_at: Time.zone.now,
     role: "approved",
     password: "password"
-  )
+    )
 
   Membership.create!(
     team: team,
     user: user,
     confirmed: true,
     owner: true,
-  )
+    )
 end
 
 
@@ -356,30 +356,26 @@ end
   p "Created product #{product.id}."
 end
 
-300.times do |n|
-  sale = rand(1499)
-  merchant = sale * 0.07
-  site = sale * 0.194
-  contractor = sale * 0.776
-  order_paid = false
-  team_paid = false
 
-  if sale.to_i.even?
-    order_paid = true
 
-    if n%3==0
-      scheduled_at = Time.zone.now + (rand(1..30)).days
-    else
-      scheduled_at = Time.zone.now - (rand(1..180)).days
-      completed_at = scheduled_at + (rand(1..14)).days
-      
-      if n%2==0
-        team_paid = true
-      end
-    end
-  end
+def generate_sale_figures()
+  hsh = {}
+  hsh[:sale] = rand(1999)
+  hsh[:merchant_fee] = hsh[:sale] * 0.07
+  hsh[:site_fee] = hsh[:sale] * 0.194
+  hsh[:contractor_payment] = hsh[:sale] * 0.776
 
-  order = OrderLine.create!(
+  hsh
+end
+
+
+
+# # lead
+# !order_paid, !team_paid, !scheduled_at, !completed_at
+5.times { |n|
+  figures = generate_sale_figures
+
+  OrderLine.create!(
     order: Faker::Number.number(4),
     customer: Customer.find(rand(1..Customer.count)),
     product: Product.find(rand(1..Product.count)),
@@ -388,15 +384,161 @@ end
     region: Region.find(rand(1..Region.count)),
     faction: Faction.find(rand(1..Faction.count)),
 
-    sale: sale,
-    merchant_fee: merchant,
-    site_fee: site,
-    contractor_payment: contractor,
+    sale: figures[:sale],
+    merchant_fee: figures[:merchant_fee],
+    site_fee: figures[:site_fee],
+    contractor_payment: figures[:contractor_payment],
 
-    order_paid: order_paid,
-    completed_at: completed_at,
-    scheduled_at: scheduled_at,
-    team_paid: team_paid
+    order_paid: false,
+    team_paid: false
     )
-  p "Created order ##{order.id}."
-end
+  p "Created lead #{n}"
+}
+
+# # ready_to_schedule
+# order_paid, !team_paid, !scheduled_at, !completed_at
+5.times { |n|
+  figures = generate_sale_figures
+
+  OrderLine.create!(
+    order: Faker::Number.number(4),
+    customer: Customer.find(rand(1..Customer.count)),
+    product: Product.find(rand(1..Product.count)),
+    team: Team.find(rand(1..Team.count)),
+    character: Character.find(rand(1..Character.count)),
+    region: Region.find(rand(1..Region.count)),
+    faction: Faction.find(rand(1..Faction.count)),
+
+    sale: figures[:sale],
+    merchant_fee: figures[:merchant_fee],
+    site_fee: figures[:site_fee],
+    contractor_payment: figures[:contractor_payment],
+
+    order_paid: true,
+    team_paid: false,
+    )
+  p "Created ready to schedule order #{n}"
+}
+
+# # scheduled
+# order_paid, !team_paid, scheduled_at, !completed_at
+5.times { |n|
+  scheduled_at = Faker::Time.forward(rand(1..30), :evening)
+  figures = generate_sale_figures
+
+  OrderLine.create!(
+    order: Faker::Number.number(4),
+    customer: Customer.find(rand(1..Customer.count)),
+    product: Product.find(rand(1..Product.count)),
+    team: Team.find(rand(1..Team.count)),
+    character: Character.find(rand(1..Character.count)),
+    region: Region.find(rand(1..Region.count)),
+    faction: Faction.find(rand(1..Faction.count)),
+
+    sale: figures[:sale],
+    merchant_fee: figures[:merchant_fee],
+    site_fee: figures[:site_fee],
+    contractor_payment: figures[:contractor_payment],
+
+    order_paid: true,
+    team_paid: false,
+    scheduled_at: scheduled_at,
+    )
+  p "Created scheduled order #{n}"
+}
+
+# # completed_pending_team_payment
+# order_paid, !team_paid, scheduled_at, completed_at
+5.times{ |n|
+  scheduled_at = Faker::Time.forward(rand(1..30), :evening)
+  completed_at = scheduled_at + rand(1..14).days
+  figures = generate_sale_figures
+
+  OrderLine.create!(
+    order: Faker::Number.number(4),
+    customer: Customer.find(rand(1..Customer.count)),
+    product: Product.find(rand(1..Product.count)),
+    team: Team.find(rand(1..Team.count)),
+    character: Character.find(rand(1..Character.count)),
+    region: Region.find(rand(1..Region.count)),
+    faction: Faction.find(rand(1..Faction.count)),
+
+    sale: figures[:sale],
+    merchant_fee: figures[:merchant_fee],
+    site_fee: figures[:site_fee],
+    contractor_payment: figures[:contractor_payment],
+
+    order_paid: true,
+    team_paid: false,
+    scheduled_at: scheduled_at,
+    completed_at: completed_at,
+    )
+  p "Created completed order, pending team payment #{n}"
+}
+
+# # completed_order
+# order_paid, team_paid, scheduled_at, completed_at
+50.times{ |n|
+  scheduled_at = Faker::Time.backward(rand(1..3), :evening)
+  completed_at = scheduled_at + rand(3.7).days
+  figures = generate_sale_figures()
+
+  OrderLine.create!(
+    order: Faker::Number.number(4),
+    customer: Customer.find(rand(1..Customer.count)),
+    product: Product.find(rand(1..Product.count)),
+    team: Team.find(rand(1..Team.count)),
+    character: Character.find(rand(1..Character.count)),
+    region: Region.find(rand(1..Region.count)),
+    faction: Faction.find(rand(1..Faction.count)),
+
+    sale: figures[:sale],
+    merchant_fee: figures[:merchant_fee],
+    site_fee: figures[:site_fee],
+    contractor_payment: figures[:contractor_payment],
+
+    order_paid: true,
+    team_paid: true,
+    scheduled_at: scheduled_at,
+    completed_at: completed_at,
+    )
+  p "Created completed order #{n}"
+}
+
+20.times {|n|
+  category = Category.find_by(name: 'raiding')
+  difficulty = Difficulty.find(rand(1..Difficulty.count))
+  zone = Zone.find(rand(1..Zone.count))
+  team = Team.find(rand(1..Team.count))
+  start_datetime = Faker::Time.forward(rand(1..30), :evening)
+  cutoff_datetime = start_datetime - 1.day
+
+  event = Event.create!(
+    category:category,
+    difficulty: difficulty,
+    zone: zone,
+    team: team,
+    start_datetime: start_datetime,
+    cutoff_datetime: cutoff_datetime
+    )
+
+  "Created event #{event.id}"
+
+    rand(1..3).times { |c|
+
+    "Slot #{c}"
+
+      order_line = team.order_lines.order('RANDOM()').first unless c%2==0
+
+      product = Product.where(
+        category: category,
+        difficulty: difficulty,
+        zone: zone
+        ).order('RANDOM()').first
+
+      event.slots.create(
+        order_line: order_line,
+        product: product
+      )
+    }
+}

@@ -4,13 +4,11 @@ class Admin::OrderLinesController < AdminController
   def index
     @scheduled_order_lines = ::OrderLine
     .index_join
-    .ready_to_ship
-    .date_sort
+    .ready_to_schedule
 
     @completed_order_lines = ::OrderLine
     .index_join
     .where_completed
-    .date_sort
 
     store_location
   end

@@ -6,7 +6,7 @@ class Admin::CustomersController < AdminController
 
   # GET /Customers
   # GET /Customers.json
-  def index 
+  def index
   end
 
   # GET /Customers/1
@@ -70,7 +70,7 @@ class Admin::CustomersController < AdminController
       if params[:id]
         @customer = Customer.find(params[:id])
       else
-        @customer = Customer.first        
+        @customer = Customer.first
       end
     end
 
@@ -87,13 +87,11 @@ class Admin::CustomersController < AdminController
       @recent_completed_orders = @customer
         .order_lines
         .where_completed
-        .order_by_completed
+        .completed_at_desc
         .limit(5)
    end
 
-   def set_order_totals
-      @customer_count_of_sales = @customer.order_lines.where_completed.count(:sale)
-      @customer_sum_of_sales = @customer.order_lines.where_completed.sum(:sale)
-      @customer_average_of_sales = @customer.order_lines.where_completed.average(:sale)
-   end
+    def set_order_totals
+      @customers_completed_orders = @customer.order_lines.where_completed
+    end
 end

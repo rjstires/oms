@@ -1,42 +1,88 @@
 class OrderLine < ActiveRecord::Base
   include Filterable
-  belongs_to :product
-  belongs_to :team
-  belongs_to :character
-  belongs_to :customer
-  belongs_to :region
-  belongs_to :faction
 
-  has_one :category, through: :product
+  # DEFAULT SCOPE
 
-  validates_presence_of :product, :character, :customer,
-                        :sale, :merchant_fee, :site_fee,
-                        :contractor_payment, :faction_id,
-                        :region_id
 
+  # MODEL SCOPES
   scope :index_join, -> {
-    includes(
-      {:product => [:category, :difficulty, :zone, :play_style, :loot_option, :mount]},
-      :team,
-      {:character => [:classification]},
-      :customer,
-      :region,
-      :faction
-      )
+    include_product
+    .include_character
+    .include_team
+    .include_customer
+    .include_region
+    .include_faction
   }
 
-  scope :sale_total, -> { sum(:sale) }
-  scope :sale_average, -> { avg(:sale) }
-  scope :sale_count, -> { count(:sale) }
-
-  scope :order_by_scheduled, -> {
-    order(scheduled_at: :asc)
+  scope :lead,-> {
+    where_order_paid
+    .where_team_not_paid
+    .where_not_scheduled
+    .where_not_completed
   }
 
-  scope :order_by_completed, -> {
-    order(completed_at: :desc)
+  scope :ready_to_schedule,-> {
+    where_order_paid
+    .where_team_not_paid
+    .where_not_scheduled
+    .where_not_completed
   }
 
+  scope :scheduled,-> {
+    where_order_paid
+    .where_scheduled
+    .where_not_completed
+  }
+
+  scope :completed_pending_team_payment,-> {
+    where_order_paid
+    .where_team_not_paid
+    .where_scheduled
+    .where_not_scheduled
+  }
+
+  scope :completed_order,-> {
+    where_order_paid
+    .where_team_not_paid
+    .where_scheduled
+    .where_scheduled
+  }
+
+  # Include scopes
+  scope :include_product,-> { includes(:product => [
+    :category,
+    :difficulty,
+    :zone,
+    :play_style,
+    :loot_option,
+    :mount
+    ])
+  }
+
+  scope :include_character,-> { includes(:character => [
+    :armor_type,
+    :classification,
+    :primary_stat,
+    :tier_token
+    ])
+  }
+
+  scope :include_team ,-> { includes(:team) }
+  scope :include_customer ,-> { includes(:customer) }
+  scope :include_region ,-> { includes(:region) }
+  scope :include_faction ,-> { includes(:faction) }
+
+  # Math scopts
+  scope :sale_total, -> { select('order_lines.*, SUM(order_lines.sale) as sale_sum') }
+  scope :sale_average, -> { select('AVG(order_lines.sale) as sale_average') }
+  scope :sale_count, -> { select('COUNT(order_lines.sale) as sale_count') }
+
+  # Sorting Scopes
+  scope :scheduled_at_asc, -> { order(scheduled_at: :asc) }
+  scope :completed_at_desc, -> { order(completed_at: :desc) }
+  scope :created_at_desc, -> { order(created_at: :desc) }
+
+  # Filtering
   scope :by_team, -> (team) { where(team: team) }
   scope :category, -> (id) { joins(:product).where(:products => {:category_id => id}) }
 
@@ -55,44 +101,36 @@ class OrderLine < ActiveRecord::Base
   scope :where_assigned_to_team, -> { where.not(team_id: nil) }
   scope :where_not_assigned_to_team, -> { where(team_id: nil) }
 
-  scope :ready_to_dispatch, -> {
-    where_not_completed
-    .where_not_scheduled
-    .where_order_paid
-  }
+  scope :upcoming_event,-> { where('scheduled_at >= ?', Time.now) }
+  scope :past_event,-> { where('scheduled_at < ?', Time.now) }
 
-  scope :dispatched, -> {
-    where_not_completed
-    .where_order_paid
-    .where_assigned_to_team
-    .impending
-  }
+  # CONSTANTS
 
-  scope :order_completed_team_not_paid,-> {
-    where_completed
-    .where_team_not_paid
-  }
+  # ATTRIBUTE MACROS
 
-  scope :leads, -> {
-    where_order_not_paid
-    .where_not_completed
-    .where_not_completed
-  }
+  # ASSOCIATION MACROS
+  belongs_to :product
+  belongs_to :team
+  belongs_to :character
+  belongs_to :customer
+  belongs_to :region
+  belongs_to :faction
 
-  scope :impending,-> { where('scheduled_at >= ?', Time.now) }
-  scope :past,-> { where('scheduled_at < ?', Time.now) }
+  has_one :category, through: :product
 
-  scope :past_due,-> {
-    where_not_completed
-    .where_scheduled
-    .where_order_paid
-    .past
-  }
 
-  scope :ready_to_ship, -> {
-    where_scheduled.where_not_completed.where_order_paid
-  }
-  
+  # VALIDATION MACROS
+  validates_presence_of :product, :character, :customer,
+                        :sale, :merchant_fee, :site_fee,
+                        :contractor_payment, :faction_id,
+                        :region_id
+  # CALLBACKS
+
+  # OTHER MACROS
+
+  # CLASS METHODS
+
+  # INSTANCE METHODS
   def completed?
     self.completed_at.present?
   end
@@ -113,108 +151,10 @@ class OrderLine < ActiveRecord::Base
     self.order_paid
   end
 
-  def mark_order_complete
-    self.update_attributes(completed_at: DateTime.now)
-  end
-
-  def self.date_sort
-    order(completed_at: :desc, scheduled_at: :desc, created_at: :desc)
-  end 
-
-  def self.importJSON(file)
-    json = parseJSON file
-    events = json['events']
-
-    events.each do |row|
-      row['spec.name'].downcase!
-      row['spec.class'].downcase!
-      row['content_description'].downcase!
-      row['content_category'].downcase!
-      row['team'].downcase!
-      row['customer'].downcase!
-      row['customer.battle_tag'].downcase!
-      row['customer.skype'].downcase!
-      row['content_zone'].downcase!
-      row['payment_status'].downcase!
-      row['order_status'].downcase!
-      row['mount_purchase'].downcase!
-      row['gear_purchase'].downcase!
-      row['play_style'].downcase!
-
-      @order_number = row['order_number'] == "" ? 9999 : row['order_number']
-
-      @date = DateTime.strptime(row['service_date'], '%m/%d/%Y')
-
-      raise "Service date can not be empty when bulk uplodating." if @date == ""
-
-      @sale = row['sale_price'].tr!('$', '').strip
-      @sale_merchant = row['transaction_fee'].tr!('$', '').strip
-      @sale_site = row['commission'].tr!('$', '').strip
-      @sale_contractor = row['team_sale'].tr!('$', '').strip
-
-      @team = Team.find_by!(name: row['team'])
-      @classification = Classification.find_by!(name: row['spec.class'])
-      @character = Character.find_by!(spec: row['spec.name'], classification: @classification)
-      @customer = Customer.find_or_create_by!(
-        email: row['customer'],
-        battle_tag: row['customer.battle_tag'],
-        skype: row['customer.skype'],
-        )
-
-      @order_line_status = OrderLineStatus.find_by!(name: row['order_status'])
-      @payment_status = PaymentStatus.find_by!(name: row['payment_status'])
-      @region = @team.region
-      @faction = @team.faction
-
-      if row['content_category'].include?('raid')
-        @product_category = Category.find_or_create_by!(name: 'raiding')
-      else
-        @product_category = Category.find_or_create_by!(name: row['content_category'])
-      end
-
-      @product_zone = Zone.find_or_create_by!(name: row['content_zone'])
-      @product_play_style = PlayStyle.find_or_create_by!(name: row['play_style'])
-      @product_loot_option = LootOption.find_or_create_by!(name: row['gear_purchase'])
-      @product_mount = Mount.find_or_create_by!(name: row['mount_purchase'])
-      @product_difficulty = Difficulty.find_or_create_by!(name: 'normal')
-
-      difficulties = ['heroic','mythic']
-      difficulties.each do |d|
-        @product_difficulty = Difficulty.find_or_create_by!(name: d) if row['content_category'].include? d
-      end
-
-      @product = Product.find_or_create_by!(
-        description: row['content_description'],
-        category: @product_category,
-        zone: @product_zone,
-        play_style: @product_play_style,
-        loot_option: @product_loot_option,
-        mount: @product_mount,
-        difficulty: @product_difficulty
-        )
-
-      OrderLine.create! { |o|
-        o.order = @order_number
-        o.team = @team
-        o.region = @region
-        o.faction = @faction
-        o.character = @character
-        o.customer = @customer
-        o.order_line_status = @order_line_status
-        o.payment_status = @payment_status
-        o.product = @product
-        o.sale = @sale
-        o.merchant_fee = @sale_merchant
-        o.site_fee = @sale_site
-        o.contractor_payment = @sale_contractor
-        o.completed_at = @date
-        o.scheduled_at = @date
-      }
-    end
-  end
-
-
-  def self.parseJSON(f)
-    ActiveSupport::JSON.decode( File.read( f.path ) )
+  def complete_order
+    self.update_attributes(
+      completed_at: Time.now,
+      team_paid: true
+      )
   end
 end

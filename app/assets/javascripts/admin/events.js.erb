@@ -1,0 +1,19 @@
+$(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#event-calendar').fullCalendar({
+        events: 'events.json',
+        eventClick:  function(event, jsEvent, view) {
+            $('#modalBody #title').html(event.title);
+            $('#modalTitle').html(event.title);
+            $('#modalBody #date').html(event.date);
+            $('#modalBody #team').html(event.team);
+            $('#modalBody #start_time').html(event.display_start_time);
+            $('#modalBody #end_time').html(event.display_end_time);
+            $('#modalBody #tmz').html(event.display_tmz);
+            $('#event-modal').modal();
+        }
+    })
+
+});

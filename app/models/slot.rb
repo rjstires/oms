@@ -11,8 +11,8 @@ class Slot < ActiveRecord::Base
   belongs_to :order_line
 
   # Validations
-  validates_presence_of :product, message: "must have a valid product."
-  validates_presence_of :event, message: "must be associated to an event."
+  validates_presence_of :product, message: "must not be blank."
+  validates_presence_of :event, message: "must not be blank."
 
   # Callbacks
   before_save :compare_slot_and_event_category

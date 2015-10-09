@@ -44,7 +44,9 @@ Rails.application.routes.draw do
     resources :order_lines do
       get 'send_confirmation', to: 'order_lines#send_confirmation'
     end
-    
+    resources :events do
+      resources :slots
+    end
     resources :payment_statuses
     resources :payment_types
     resources :play_styles

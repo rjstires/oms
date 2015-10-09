@@ -18,5 +18,4 @@ end
 		visit new_admin_order_line_path
 		expect(page).to have_content("Create New Order")
 	end
-
 end

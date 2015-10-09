@@ -12,9 +12,15 @@
             <th>Total Sales</th>
           </tr>
           <tr>
-            <td><%= @customer_count_of_sales %></td>
-            <td><%= number_to_currency @customer_average_of_sales %></td>
-            <td><%= number_to_currency @customer_sum_of_sales %></td>
+            <td>
+              <%= @customers_completed_orders.count(:sale) %>
+            </td>
+            <td>
+              <%= number_to_currency @customers_completed_orders.average(:sale) %>
+            </td>
+            <td>
+              <%= number_to_currency @customers_completed_orders.sum(:sale) %>
+            </td>
           </tr>
         </tbody>
       </table>

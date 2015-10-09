@@ -10,17 +10,15 @@ class OrderLinesController < ApplicationController
     @dispatched_orders = @team
     .order_lines
     .index_join
-    .date_sort
     .filter( params.slice(:status, :category, :difficulty) )
-    .dispatched
+    .scheduled
     .accessible_by(current_ability)
 
     @completed_orders = @team
     .order_lines
     .index_join
-    .date_sort
     .filter( params.slice(:status, :category, :difficulty) )
-    .where_completed
+    .where_completed  
     .accessible_by(current_ability)
     
     store_location

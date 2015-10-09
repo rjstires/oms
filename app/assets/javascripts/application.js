@@ -16,6 +16,8 @@
 //= require bootstrap-sprockets
 //= require moment
 //= require bootstrap-datetimepicker
+//= require fullcalendar
+//= require chosen-jquery
 //= require_tree .
 
 $(document).on("page:load ready", function(){
@@ -42,15 +44,9 @@ function updatePrice()
     $("#order_line_site_fee").val(site_fee.toFixed(2));
     $("#order_line_contractor_payment").val(contractor_payment.toFixed(2));
 }
+
 $(document).on("change, keyup", "#order_line_sale", updatePrice);
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
 })
-
-$(document).on("page:load ready", function(){
-    $('.chosen-select').chosen({
-        allow_single_deselect: true,
-        no_results_text: "Derp! Nothing found!"
-    });
-});
