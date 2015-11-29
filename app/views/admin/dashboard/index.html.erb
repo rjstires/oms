@@ -1,5 +1,5 @@
 <% if @orders_dispatched.count > 0 %>
- <div class="row">
+<div class="row">
   <div class="col-sm-12 bootcards-list">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
@@ -18,7 +18,7 @@
 <%end %>
 
 <% if @orders_past_due.count > 0 %>
- <div class="row">
+<div class="row">
   <div class="col-sm-12 bootcards-list">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
@@ -34,32 +34,31 @@
     </div>
   </div>
 </div> 
-<% end %>
+<%end %>
 
-
-
-
-<div class="row">
 
 <% if @orders_lead.count > 0 %>
-  <div class="col-sm-4 bootcards-list">
+<div class="row">
+  <div class="col-sm-12 bootcards-list">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
         <h3 class="panel-title pull-left">Leads</h3>
       </div>
       <div class="list-group" id="team_details">
         <table class="table table-condensed">
-        <% @orders_lead.each do |order_line| %>
-          <%= render :partial => 'lead_row', locals: {order_line: order_line} %>
-        <% end %>
+          <% @orders_lead.each do |order_line| %>
+          <%= render :partial => 'admin/order_lines/order_line', locals: {order_line: order_line} %>
+          <% end %>
         </table>
       </div>
     </div>
-  </div> 
-<% end %>
+  </div>
+</div> 
+<%end %>
 
 <% if @orders_ready_to_dispatch.count > 0 %>
-  <div class="col-sm-4 bootcards-list">
+<div class="row">
+  <div class="col-sm-12 bootcards-list">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
         <h3 class="panel-title pull-left">Ready to Dispatch</h3>
@@ -67,59 +66,62 @@
       <div class="list-group" id="team_details">
         <table class="table table-condensed">
           <% @orders_ready_to_dispatch.each do |order_line| %>
-          <%= render :partial => 'lead_row', locals: {order_line: order_line} %>
+          <%= render :partial => 'admin/order_lines/order_line', locals: {order_line: order_line} %>
           <% end %>
         </table>
       </div>
     </div>
-  </div>  
-<% end %>
+  </div>
+</div> 
+<%end %>
 
 <% if @orders_team_payment_outstanding.count > 0 %>
-  <div class="col-sm-4 bootcards-list">
+<div class="row">
+  <div class="col-sm-12 bootcards-list">
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
-        <h3 class="panel-title pull-left">Teams Unpaid</h3>
+        <h3 class="panel-title pull-left">Outstanding Payments</h3>
       </div>
       <div class="list-group" id="team_details">
         <table class="table table-condensed">
           <% @orders_team_payment_outstanding.each do |order_line| %>
-          <%= render :partial => 'lead_row', locals: {order_line: order_line} %>
+          <%= render :partial => 'admin/order_lines/order_line', locals: {order_line: order_line} %>
           <% end %>
         </table>
       </div>
     </div>
   </div>
-<% end %>
+</div> 
+<%end %>
 
 <% if @teams_without_owner.count > 0 %>
-  <div class="col-sm-4 bootcards-list">
-    <div class="panel panel-default">
-      <div class="panel-heading clearfix">
-        <h3 class="panel-title pull-left">Unowned Teams</h3>
-      </div>
-      <div class="list-group" id="team_details">
-        <% @teams_without_owner.each do |team| %>
-        <%= render :partial => 'team_row', locals: {team: team} %>
-        <% end %>
-      </div>
+<div class="col-sm-4 bootcards-list">
+  <div class="panel panel-default">
+    <div class="panel-heading clearfix">
+      <h3 class="panel-title pull-left">Unowned Teams</h3>
+    </div>
+    <div class="list-group" id="team_details">
+      <% @teams_without_owner.each do |team| %>
+      <%= render :partial => 'team_row', locals: {team: team} %>
+      <% end %>
     </div>
   </div>
+</div>
 <% end %>
 
 <% if @teams_without_members.count > 0 %>
-  <div class="col-sm-4 bootcards-list">
-    <div class="panel panel-default">
-      <div class="panel-heading clearfix">
-        <h3 class="panel-title pull-left">Orphaned Teams</h3>
-      </div>
-      <div class="list-group" id="team_details">
-        <% @teams_without_members.each do |team| %>
-        <%= render :partial => 'team_row', locals: {team: team} %>
-        <% end %>
-      </div>
+<div class="col-sm-4 bootcards-list">
+  <div class="panel panel-default">
+    <div class="panel-heading clearfix">
+      <h3 class="panel-title pull-left">Orphaned Teams</h3>
+    </div>
+    <div class="list-group" id="team_details">
+      <% @teams_without_members.each do |team| %>
+      <%= render :partial => 'team_row', locals: {team: team} %>
+      <% end %>
     </div>
   </div>
+</div>
 <% end %>
 
 </div>
