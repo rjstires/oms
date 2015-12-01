@@ -12,41 +12,41 @@ class OrderLine < ActiveRecord::Base
     .include_customer
     .include_region
     .include_faction
-  }
+    }
 
   scope :lead,-> {
     where_order_not_paid
     .where_team_not_paid
     .where_not_scheduled
     .where_not_completed
-  }
+    }
 
   scope :ready_to_schedule,-> {
     where_order_paid
     .where_team_not_paid
     .where_not_scheduled
     .where_not_completed
-  }
+    }
 
   scope :scheduled,-> {
     where_order_paid
     .where_scheduled
     .where_not_completed
-  }
+    }
 
   scope :completed_pending_team_payment,-> {
     where_order_paid
     .where_team_not_paid
     .where_scheduled
     .where_not_scheduled
-  }
+    }
 
   scope :completed_order,-> {
     where_order_paid
     .where_team_not_paid
     .where_scheduled
     .where_scheduled
-  }
+    }
 
   # Include scopes
   scope :include_product,-> { includes(:product => [
@@ -57,7 +57,7 @@ class OrderLine < ActiveRecord::Base
     :loot_option,
     :mount
     ])
-  }
+    }
 
   scope :include_character,-> { includes(:character => [
     :armor_type,
@@ -65,7 +65,7 @@ class OrderLine < ActiveRecord::Base
     :primary_stat,
     :tier_token
     ])
-  }
+    }
 
   scope :include_team ,-> { includes(:team) }
   scope :include_customer ,-> { includes(:customer) }
@@ -79,8 +79,14 @@ class OrderLine < ActiveRecord::Base
 
   # Sorting Scopes
   scope :scheduled_at_asc, -> { order(scheduled_at: :asc) }
+  scope :scheduled_at_desc, -> { order(scheduled_at: :desc) }
+
+  scope :completed_at_asc, -> { order(completed_at: :asc) }
   scope :completed_at_desc, -> { order(completed_at: :desc) }
+
+  scope :created_at_asc, -> { order(created_at: :asc) }
   scope :created_at_desc, -> { order(created_at: :desc) }
+
 
   # Filtering
   scope :by_team, -> (team) { where(team: team) }
@@ -121,9 +127,9 @@ class OrderLine < ActiveRecord::Base
 
   # VALIDATION MACROS
   validates_presence_of :product, :character, :customer,
-                        :sale, :merchant_fee, :site_fee,
-                        :contractor_payment, :faction_id,
-                        :region_id
+  :sale, :merchant_fee, :site_fee,
+  :contractor_payment, :faction_id,
+  :region_id
   # CALLBACKS
 
   # OTHER MACROS
