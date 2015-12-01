@@ -86,6 +86,6 @@ class Team < ActiveRecord::Base
   end
 
   def display_realm
-    self.realm.titleize
+    "#{self.region.name.upcase}-#{self.realm.titleize}"
   end
 end

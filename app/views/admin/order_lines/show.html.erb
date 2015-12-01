@@ -1,7 +1,81 @@
-<p>
-  <strong>Name:</strong>
-  <%= @order_line.order %>
-</p>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="show-order order panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Order Details</h3>
+                    </div>
+                    <div class="panel-body">
+                      <p class="number"><span style="font-weight:bold;">Order Number:</span> <%= @order_line.order %></p>
+                      <p class="total"><span style="font-weight:bold;">Amount:</span> <%= number_to_currency @order_line.sale %></p>
+                      <p class="scheduled"><span style="font-weight:bold;"><%= order_status(@order_line) %>:</span> <%= order_date_display(@order_line) %></p>
+                      <p><a href="#">View in Shop</a></p>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="show-order client panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Client</h3>
+                    </div>
+                    <div class="panel-body">
+                      <p class="email"><span style="font-weight:bold;">Email:</span> <%= mail_to @order_line.customer.email %></p>
+                      <p class="battle-tag"><span style="font-weight:bold;">Battle Tag:</span> <%= @order_line.customer.battle_tag %></p>
+                      <p class="skype"><span style="font-weight:bold;">Skype:</span> <%= @order_line.customer.try(:skype) %></p>
+                      <p class="character"><span style="font-weight:bold;">Character:</span> <%= @order_line.character.display_name %></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="show-order team panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Team</h3>
+                    </div>
+                    <div class="panel-body">
+                      <p class="name"><span style="font-weight:bold;">Name:</span> <%= @order_line.team.display_name %></p>
+                      <p class="realm"><span style="font-weight:bold;">Realm:</span> <%= @order_line.team.display_realm %></p>
+                      <p class="payment-type"><span style="font-weight:bold;">Payment Type:</span> <%= @order_line.team.payment_type.display_name %></p>
+                      <p class="payment-address"><span style="font-weight:bold;">Payment Address:</span> <%= mail_to @order_line.team.payment_address%></p>
+                      <p class="payment-amount"><span style="font-weight:bold;">Payment:</span> <%= number_to_currency @order_line.contractor_payment %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="show-order details panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Service</h3>
+                    </div>
+                    <div class="panel-body">
+                      <table class="table table-condensed">
+                        <thead>
+                          <tr>
+                            <th>Category</th>
+                            <th>Zone</th>
+                            <th>Difficulty</th>
+                            <th>Loot Option</th>
+                            <th>Play Style</th>
+                            <th>Mount</th>
+                            <th>Service</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><%= @order_line.product.category.display_name %></td>
+                            <td><%= @order_line.product.zone.display_name %></td>
+                            <td><%= @order_line.product.difficulty.display_name %></td>
+                            <td><%= @order_line.product.loot_option.display_name %></td>
+                            <td><%= @order_line.product.play_style.display_name %></td>
+                            <td><%= @order_line.product.mount.display_name %></td>
+                            <td><%= @order_line.product.display_name %></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
 <%= link_to 'Edit', edit_admin_order_line_path(@order_line) %> |
 <%= link_to 'Back', admin_order_lines_path %>

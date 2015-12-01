@@ -48,6 +48,16 @@ module OrderLinesHelper
     date.to_s(:order_line)
   end
 
+  def order_status(order_line)
+    if !order_line.scheduled_at.blank?
+        "Scheduled"
+    elsif !order_line.completed_at.blank?
+        "Completed"
+    else
+        "Entered"
+    end
+  end
+
 end
 
 
