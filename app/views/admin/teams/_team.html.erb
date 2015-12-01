@@ -1,5 +1,5 @@
 <tr>
-  <td><%= link_to team.display_name, admin_team_path(team) %></td>
+  <td><%= team.display_name %></td>
   <td><%= team.display_alias %></td>
   <td><%= team.region.display_name %>-<%= team.display_realm %></td>
   <td><%= team.faction.display_name %></td>
@@ -12,6 +12,7 @@
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dLabel">
+        <li><%= link_to 'Show', admin_team_path(team) %></li>
         <li><%= link_to 'Edit', edit_admin_team_path(team) %></li>
         <li><%= link_to 'Destroy', admin_team_path(team), method: :delete, data: { confirm: 'Are you sure?' } %></li>
       </ul>
