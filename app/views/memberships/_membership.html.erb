@@ -1,12 +1,11 @@
           <div class="list-group-item">
             <div class="row">
               <div class="col-sm-8">
-                <i class="fa fa-camera-retro fa-4x pull-left"></i>
                 <% if membership.owner? %>
                 <p class="list-group-item-text">Owner</p>
                 <% else %>
                 <p class="list-group-item-text">Member</p>
-                <% end %>                
+                <% end %>
                 <h4 class="list-group-item-heading"><%= membership.user.display_name %>
                 </h4>
               </div>
