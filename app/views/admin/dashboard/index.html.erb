@@ -3,3 +3,5 @@
 <%= render :partial => 'order_lines_table', locals: {order_lines: @orders_past_due, name: 'Past Due'} %>
 
 <%= render :partial => 'order_lines_table', locals: {order_lines: @orders_ready_to_dispatch, name: 'Ready to Dispatch'} %>
+
+<%= render :partial => 'order_lines_table', locals: {order_lines: @orders_lead, name: 'Leads'} %>
