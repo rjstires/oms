@@ -9,38 +9,31 @@
       <% if order_line.dispatched? %>
         <li><%= link_to 'Send Confirmations', admin_order_line_send_confirmation_path(order_line) %></li>
       <% end %>
+        <li><%= link_to 'View in Shop', "https://www.boostingedge.com/wp-admin/post.php?post=#{order_line.order}&action=edit", target: "_blank" %></li>
         <li><%= link_to 'Edit', edit_admin_order_line_path(order_line) %></li>
         <li><%= link_to 'Destroy', admin_order_line_path(order_line), method: :delete, data: { confirm: 'Are you sure?' } %></li>
       </ul>
     </div>
   </td>
+  <td><%= link_to order_line.order, admin_order_line_path(order_line) %></td>
   <td>
-    <% if !order_line.scheduled_at.blank? %>
-    <%= order_line.scheduled_at %>
-    <% elsif !order_line.completed_at.blank? %>
-    <%= order_line.completed_at %>
-    <% else %>
-    <%= order_line.created_at %>
-    <% end %>
+    <%= order_date_display(order_line) %>
   </td>
-  <td><%= order_line.order %></td>
   <td><%= link_to order_line.customer.email, '#', :data => {:toggle=> 'modal', :target => "#customer_modal_#{order_line.customer.id}"} %></td>
   <td>
     <%= faction_sprite order_line.faction %>
     <%= character_sprite order_line.character %>
   </td>
-  <td>
-    <%= category_sprite order_line.product.category %>
-    <%= zone_sprite order_line.product.zone %>
-    <%= difficulty_sprite order_line.product.difficulty %>
-    <%= loot_option_sprite order_line.product.loot_option %>
-    <%= play_style_sprite order_line.product.play_style %>
-    <%= mount_sprite order_line.product.mount %>
-  </td>
+
+  <td><%= order_line.category.display_name %></td>
+  <td><%= order_line.product.zone.display_name %></td>
+  <td><%= order_line.product.difficulty.display_name %></td>
+  <td><%= order_line.product.loot_option.display_name %></td>
+  <td><%= order_line.product.mount.display_name %></td>
   <td><%= order_line.product.display_name %></td>
+
   <td><%= order_line.try(:team).try(:display_name) %></td>
+
   <td><%= number_to_currency order_line.sale%></td>
-  <td><%= number_to_currency order_line.site_fee %></td>
-  <td><%= number_to_currency order_line.contractor_payment %></td>
   <%= render :partial => "/order_lines/customer_details", locals: {customer: order_line.customer} %>
 </tr>
