@@ -6,21 +6,28 @@
         <h4 class="modal-title">Customer Details</h4>
       </div>
       <div class="modal-body">
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-        <%= customer.email %>
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <%= customer.email %>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-        <%= customer.try(:battle_tag) %>
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <%= customer.try(:battle_tag) %>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-        <%= customer.try(:skype) %>
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <%= customer.try(:skype) %>
+          </div>
         </div>
-      </div>
+        <% if current_user.admin? %>
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+            <%= link_to "More Details", admin_customer_path(customer) %>
+          </div>
+        </div>
+        <% end %>
       </div>
     </div>
   </div>
