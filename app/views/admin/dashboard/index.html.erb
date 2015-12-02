@@ -1,3 +1,28 @@
+<style type="text/css">
+.card {padding: 10px;}
+</style>
+
+<div class="col-md-4">
+  <div class="card panel panel-default">
+    <h3>Scheduled Orders</h3>
+    <p><%= @orders_dispatched.count %></p>
+  </div>
+</div>
+
+<div class="col-md-4">
+  <div class="card panel panel-default">
+    <h3>Pending Scheduling</h3>
+    <p><%= @orders_ready_to_dispatch.count %></p>
+  </div>
+</div>
+
+<div class="col-md-4">
+  <div class="card panel panel-default">
+    <h3>Unsettled Funds</h3>
+    <p><%= number_to_currency @unsettled_funds %></p>
+  </div>
+</div>
+
 <%= render :partial => 'order_lines_table', locals: {order_lines: @orders_dispatched, name: 'Dispached'} %>
 
 <%= render :partial => 'order_lines_table', locals: {order_lines: @orders_past_due, name: 'Past Due'} %>
