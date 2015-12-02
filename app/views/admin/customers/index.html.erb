@@ -1,18 +1,10 @@
-<div class="row">
-  <div class="col-sm-4 col-sm-offset-2  bootcards-list">
-    <div id="customersList">
-      <div class="panel panel-default">
-        <div class="list-group">
-          <%= render partial: 'customer', collection: @customers %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-4 bootcards-cards">
-    <%= render 'contactCard', object: @customer %>
-    <% if @completed_orders.count > 0 %>
-      <%= render 'recentOrdersCard', object: @completed_orders %>
-      <%= render 'customerTotalsCard' %>
-    <% end %>
-  </div>
+<div class="col-md-12">
+  <table class="table table-condensed">
+    <tr>
+      <th>Email Address</th>
+      <th>Battle Tag</th>
+      <th>Skype</th>
+    </tr>
+    <%= render @customers %>
+  </table>
 </div>

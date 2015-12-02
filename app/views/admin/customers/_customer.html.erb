@@ -1,11 +1,5 @@
-
-<%= link_to admin_customer_path(customer), class: 'list-group-item' do %>
-    <%= gravatar_tag customer.email, :size => 20, :html => { :class => "gravatar img-rounded pull-left" } %>
-    <h4 class="list-group-item-heading"><%= customer.email %></h4>
-    <% unless customer.battle_tag.blank? %>
-    <p class="list-group-item-text"><%= customer.try(:battle_tag) %> </p>
-    <% else %>
-    <p class="list-group-item-text">undefined</p>
-    <% end %>
-<% end %>
-  
+<tr>
+  <td><%= link_to customer.email, admin_customer_path(customer) %></td>
+  <td><%= customer.try(:battle_tag) %></td>
+  <td><%= customer.try(:skype) %></td>
+</tr>

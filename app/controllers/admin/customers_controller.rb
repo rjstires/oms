@@ -1,12 +1,12 @@
 class Admin::CustomersController < AdminController
   before_action :set_customer, only: [:index, :show, :edit, :update, :destroy]
-  before_action :get_customers, only: [:index, :show]
   before_action :set_order_totals, only: [:index, :show]
   before_action :set_recent_orders, only: [:index, :show]
 
   # GET /Customers
   # GET /Customers.json
   def index
+    @customers = Customer.all.order(email: :asc)
   end
 
   # GET /Customers/1
@@ -77,10 +77,6 @@ class Admin::CustomersController < AdminController
     def customer_params
       params.require(:customer).permit(:email, :battle_tag, :skype)
     end
-
-    def get_customers
-      @customers = Customer.all
-   end
 
    def set_recent_orders
       @completed_orders = @customer
