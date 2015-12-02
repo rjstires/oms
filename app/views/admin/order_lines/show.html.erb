@@ -84,6 +84,6 @@
 </div>
 <div class="col-md-12">
     <%= link_to "Edit", edit_admin_order_line_path(@order_line), class: 'btn btn-primary' %>
-    <%= link_to 'Complete', complete_admin_order_line_path(@order_line), data: { confirm: 'Are you sure?' }, class: 'btn btn-warning' %>
+    <%= link_to 'Complete', complete_admin_order_line_path(@order_line), data: { confirm: 'Are you sure?' }, class: 'btn btn-warning' if @order_line.status == "scheduled" %>
     <%= link_to 'Destroy', admin_order_line_path(@order_line), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 </div>
