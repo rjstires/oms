@@ -54,7 +54,7 @@
 	<div class="panel panel-default">
 		<table class="table table-condensed">
 			<tbody>
-				<% @customer.order_lines.group_by(&:team).each do |team, orders| %>
+				<% @customers_completed_orders.group_by(&:team).each do |team, orders| %>
 				<tr>
 					<th><%= team.display_name %></th>
 					<td><%= orders.count %></td>
