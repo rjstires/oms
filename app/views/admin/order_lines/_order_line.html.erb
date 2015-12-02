@@ -7,7 +7,7 @@
       </button>
       <ul class="dropdown-menu" aria-labelledby="dLabel">
       <% if order_line.dispatched? %>
-        <li><%= link_to 'Send Confirmations', admin_order_line_send_confirmation_path(order_line) %></li>
+        <li><%= link_to 'Send Confirmations', admin_order_line_send_confirmation_path(order_line), data: { confirm: 'Are you sure?' } %></li>
       <% end %>
         <li><%= link_to 'View in Shop', "https://www.boostingedge.com/wp-admin/post.php?post=#{order_line.order}&action=edit", target: "_blank" %></li>
         <li><%= link_to 'Edit', edit_admin_order_line_path(order_line) %></li>
