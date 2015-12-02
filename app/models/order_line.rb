@@ -157,6 +157,18 @@ class OrderLine < ActiveRecord::Base
     self.order_paid
   end
 
+  def status
+    if self.order_is_paid?
+      if self.completed?
+        "completed"
+      else
+        "scheduled"
+      end
+    else
+      "lead"
+    end
+  end
+
   def complete_order
     self.update_attributes(
       completed_at: Time.now,

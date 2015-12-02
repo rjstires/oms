@@ -36,28 +36,17 @@ module OrderLinesHelper
   end
 
   def order_date_display(order_line)
-    date = ''
-    if !order_line.scheduled_at.blank?
-        date = order_line.scheduled_at
-    elsif !order_line.completed_at.blank?
-        date = order_line.completed_at
-    else
-        date = order_line.created_at
-    end
 
-    date.to_s(:order_line)
-  end
-
-  def order_status(order_line)
-    if !order_line.scheduled_at.blank?
-        "Scheduled"
-    elsif !order_line.completed_at.blank?
-        "Completed"
+    case order_line.status
+    when "lead"
+      order_line.created_at.to_s(:order_line)
+    when "scheduled"
+      order_line.scheduled_at.to_s(:order_line)
+    when "completed"
+      order_line.completed_at.to_s(:order_line)
     else
-        "Entered"
+      order_line.created_at.to_s(:order_line)
     end
   end
 
 end
-
-
