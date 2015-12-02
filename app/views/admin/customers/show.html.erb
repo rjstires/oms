@@ -15,7 +15,7 @@
 			<% if @customer.skype.present? %>
 			<tr>
 				<th>Skype</th>
-				<td><%= @customer.skype %></td>
+				<td><%= skype_link(@customer.skype) %></td>
 			</tr>
 			<% end %>
 
