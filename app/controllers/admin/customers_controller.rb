@@ -12,7 +12,6 @@ class Admin::CustomersController < AdminController
   # GET /Customers/1
   # GET /Customers/1.json
   def show
-    render 'index'
   end
 
   # GET /Customers/new
@@ -84,11 +83,10 @@ class Admin::CustomersController < AdminController
    end
 
    def set_recent_orders
-      @recent_completed_orders = @customer
+      @completed_orders = @customer
         .order_lines
         .where_completed
         .completed_at_desc
-        .limit(5)
    end
 
     def set_order_totals

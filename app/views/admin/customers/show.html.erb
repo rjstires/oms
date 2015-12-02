@@ -1,41 +1,69 @@
-	  <div class="container bootcards-container" id="main">
-	  	<div id="contactCard">
-		  	<div class="panel panel-default">
-	  			<div class="panel-heading clearfix">
-	  				<h3 class="panel-title pull-left">Contact Details</h3>
-	  				<div class="btn-group pull-right visible-xs">
-	  					<a class="btn btn-primary" href="/contacts/eNK2QXWJa8E3/edit"
-	  					data-toggle="modal"
-	  					data-target="#editModal">
-	  					<i class="fa fa-pencil"></i>
-	  					<span>Edit</span>
-	  				</a>
-	  			</div>	
-	  			<%= link_to(edit_admin_customer_path(@customer), class: 'btn btn-primary pull-right hidden-xs') do %>
-	  			
-	  			<i class="fa fa-pencil"></i>
-	  			<span>Edit</span>
-	  		
-	  		<% end %>
-	  	</div>
-	  	<div class="list-group">
-				<%= mail_to(@customer.email, class: 'list-group-item') do %>
-					<label>Email</label>
-					<h4 class="list-group-item-heading"><%= @customer.email %></h4>
-				<% end %>
+<div class="col-md-6 customer-show">
+	<div class="panel panel-default">
+		<table class="table table-condensed">
+			<tr>
+				<td colspan="2"><h3><%= mail_to @customer.email %></h3></td>
+			</tr>
 
-				<div class="list-group-item">
-					<label>Battle Tag</label>
-					<h4 class="list-group-item-heading"><%= @customer.battle_tag %></h4>
-				</div>
+			<% if @customer.battle_tag.present? %>
+			<tr>
+				<th>Battle Tag</th>
+				<td><%= @customer.battle_tag %></td>
+			</tr>
+			<% end %>
 
-				<%= render :partial => "skype_list_item", locals: {customer: @customer} unless @customer.skype.nil? %>
+			<% if @customer.skype.present? %>
+			<tr>
+				<th>Skype</th>
+				<td><%= @customer.skype %></td>
+			</tr>
+			<% end %>
 
-	  	</div>
-
-	  </div>
+		</table>
 	</div>
 </div>
-<% if @completed_orders.count > 0 %>
-Order History	
+
+<% if @completed_orders.any? %>
+
+<div class="col-md-6 customer-show">
+	<div class="panel panel-default">
+		<table class="table table-hover">
+			<tbody>
+				<tr>
+					<th># Sales</th>
+					<td><%= @customers_completed_orders.count(:sale) %></td>
+				</tr>
+				<tr>
+					<th>Avg. Sale</th>
+					<td><%= number_to_currency @customers_completed_orders.average(:sale) %></td>
+				</tr>
+				<tr>
+					<th>Total Sales</th>
+					<td><%= number_to_currency @customers_completed_orders.sum(:sale) %> </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="col-md-12 customer-show">
+	<h3>Order History</h3>
+	<div class="panel panel-default">
+		<table class="table table-condensed">
+			<% @completed_orders.each do |order_line| %>
+			<tr>
+				<td><%= link_to "##{order_line.order}", admin_order_line_path(order_line) %></td>
+				<td><%= order_line.product.category.display_name %></td>
+				<td><%= order_line.product.difficulty.display_name %></td>
+				<td><%= order_line.product.zone.display_name %></td>
+				<td><%= order_line.product.display_name %></td>
+				<td><%= order_line.product.mount.display_name %></td>
+				<td><%= number_to_currency order_line.sale %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>
+
 <% end %>
+

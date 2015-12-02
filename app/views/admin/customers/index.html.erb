@@ -10,8 +10,8 @@
   </div>
   <div class="col-sm-4 bootcards-cards">
     <%= render 'contactCard', object: @customer %>
-    <% if @recent_completed_orders.count > 0 %>
-      <%= render 'recentOrdersCard', object: @recent_completed_orders %> 
+    <% if @completed_orders.count > 0 %>
+      <%= render 'recentOrdersCard', object: @completed_orders %>
       <%= render 'customerTotalsCard' %>
     <% end %>
   </div>
