@@ -5,7 +5,7 @@
                       <h3 class="panel-title">Order Details</h3>
                     </div>
                     <div class="panel-body">
-                      <p class="number"><span style="font-weight:bold;">Order Number:</span> <%= @order_line.order %></p>
+                      <p class="number"><span style="font-weight:bold;">Order Number:</span> <%= @order_line.try(:order) %></p>
                       <p class="total"><span style="font-weight:bold;">Amount:</span> <%= number_to_currency @order_line.sale %></p>
                       <p class="scheduled"><span style="font-weight:bold;"><%= order_status(@order_line) %>:</span> <%= order_date_display(@order_line) %></p>
                       <p><a href="#">View in Shop</a></p>
