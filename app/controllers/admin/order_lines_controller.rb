@@ -1,5 +1,5 @@
 class Admin::OrderLinesController < AdminController
-  before_action :set_order_line, only: [:show, :edit, :update, :destroy, :complete]
+  before_action :set_order_line, only: [:show, :edit, :update, :destroy, :complete, :send_confirmation]
 
   def index
 
@@ -19,14 +19,14 @@ class Admin::OrderLinesController < AdminController
   end
 
   def edit
-  end
+end
 
   def create
     @order_line = OrderLine.new(order_line_params)
 
     respond_to do |format|
       if @order_line.save!
-        format.html { redirect_to admin_dashboard_path, notice: 'Order line was successfully created.' }
+        format.html { redirect_to admin_order_line_path(@order_line), notice: 'Order line was successfully created.' }
         format.json { render :show, status: :created, location: @order_line }
       else
         format.html { render :new}
@@ -38,7 +38,7 @@ class Admin::OrderLinesController < AdminController
   def update
     respond_to do |format|
       if @order_line.update(order_line_params)
-        format.html { redirect_to admin_dashboard_path, notice: 'Order was successfully updated.' }
+        format.html { redirect_to admin_order_line_path(@order_line), notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order_line }
       else
         format.html { render :edit }
@@ -56,9 +56,9 @@ class Admin::OrderLinesController < AdminController
   end
   # GET /admin/order_lines/1/send_confirmation
   def send_confirmation
-    OrderMailer.confirmation_email(params[:order_line_id]).deliver_now
+    OrderMailer.confirmation_email(@order_line).deliver_now
     flash[:notice] = 'Email confirmation sent!'
-    redirect_to admin_dashboard_path
+    redirect_to admin_order_line_path(@order_line)
   end
 
   def complete

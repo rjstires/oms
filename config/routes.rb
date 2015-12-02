@@ -43,10 +43,10 @@ Rails.application.routes.draw do
     resources :order_line_statuses
     resources :order_lines do
 
-      get 'send_confirmation', to: 'order_lines#send_confirmation'
 
       member do
         get 'complete'
+        get 'send_confirmation'
       end
 
     end

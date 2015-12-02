@@ -1,0 +1,20 @@
+<div class="dropdown">
+  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default btn-xs">
+    <i class="fa fa-cogs"></i>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dLabel">
+    <li><%= link_to '<i class="fa fa-eye"></i> View'.html_safe, admin_order_line_path(order_line) %></li>
+    <li><%= link_to '<i class="fa fa-pencil"></i> Edit'.html_safe, edit_admin_order_line_path(order_line) %></li>
+    <li><%= link_to '<i class="fa fa-trash"></i> Destroy'.html_safe, admin_order_line_path(order_line), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+
+    <% if order_line.order.present? %>
+    <li><%= link_to '<i class="fa fa-shopping-cart"></i> Show in Shop'.html_safe, "https://www.boostingedge.com/wp-admin/post.php?post=#{order_line.order}&action=edit", target: "_blank" %></li>
+    <% end %>
+
+    <% if order_line.status == "scheduled" %>
+    <li><%= link_to '<i class="fa fa-envelope-o"></i> Mail Confirmations'.html_safe, send_confirmation_admin_order_line_path(order_line), data: { confirm: 'Are you sure?' } %></li>
+    <li><%= link_to '<i class="fa fa-check"></i> Mark Completed'.html_safe, complete_admin_order_line_path(order_line), data: { confirm: 'Are you sure?' } %></li>
+    <% end %>
+
+  </ul>
+</div>
