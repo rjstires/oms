@@ -1,25 +1,29 @@
-<style type="text/css">
-.card {padding: 10px;}
-</style>
-
-<div class="col-md-4">
-  <div class="card panel panel-default">
-    <h3>Scheduled Orders</h3>
-    <p><%= @orders_dispatched.count %></p>
-  </div>
-</div>
-
-<div class="col-md-4">
-  <div class="card panel panel-default">
-    <h3>Pending Scheduling</h3>
-    <p><%= @orders_ready_to_dispatch.count %></p>
-  </div>
-</div>
-
-<div class="col-md-4">
-  <div class="card panel panel-default">
-    <h3>Unsettled Funds</h3>
-    <p><%= number_to_currency @unsettled_funds %></p>
+<div class="cl-mcont">
+  <div class="row">
+    <div class="col-md-3 col-sm-6">
+      <div class="fd-tile detail clean tile-purple">
+        <div class="content"><h1 class="text-left"><%= @orders_dispatched.count %></h1><p>Scheduled Orders</p></div>
+        <div class="icon"><i class="fa fa-calendar-check-o"></i></div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="fd-tile detail clean tile-purple">
+        <div class="content"><h1 class="text-left"><%= @orders_ready_to_dispatch.count %></h1><p>Pending Scheduling</p></div>
+        <div class="icon"><i class="fa fa-calendar-times-o"></i></div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="fd-tile detail clean tile-purple">
+        <div class="content"><h1 class="text-left"><%= number_to_currency @unsettled_sale %></h1><p>Unsettled Funds</p></div>
+        <div class="icon"><i class="fa fa-usd"></i></div>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div class="fd-tile detail clean tile-purple">
+        <div class="content"><h1 class="text-left"><%= number_to_currency @unsettled_commission %></h1><p>Unsettled Commission</p></div>
+        <div class="icon"><i class="fa fa-usd"></i></div>
+      </div>
+    </div>
   </div>
 </div>
 
