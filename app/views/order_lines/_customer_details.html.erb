@@ -8,19 +8,21 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3">
-            <%= customer.email %>
+            <span style="font-weight: bold;">Email:</span> <%= mail_to customer.email %>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3">
-            <%= customer.try(:battle_tag) %>
+            <span style="font-weight: bold;">Battle Tag:</span> <%= customer.try(:battle_tag) %>
           </div>
         </div>
+        <% if customer.skype.present? %>
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3">
-            <%= customer.try(:skype) %>
+            <span style="font-weight: bold;">Skype:</span> <%= customer.skype %>
           </div>
         </div>
+        <% end %>
         <% if current_user.admin? %>
         <div class="row">
           <div class="col-sm-6 col-sm-offset-3">
