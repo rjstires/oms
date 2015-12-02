@@ -87,6 +87,9 @@ class OrderLine < ActiveRecord::Base
   scope :created_at_asc, -> { order(created_at: :asc) }
   scope :created_at_desc, -> { order(created_at: :desc) }
 
+  scope :order_asc, -> { order(order: :asc) }
+  scope :order_desc, -> { order(order: :desc) }
+
 
   # Filtering
   scope :by_team, -> (team) { where(team: team) }
