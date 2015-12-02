@@ -42,7 +42,13 @@ Rails.application.routes.draw do
     resources :mounts
     resources :order_line_statuses
     resources :order_lines do
+
       get 'send_confirmation', to: 'order_lines#send_confirmation'
+
+      member do
+        get 'complete'
+      end
+
     end
     resources :events do
       resources :slots

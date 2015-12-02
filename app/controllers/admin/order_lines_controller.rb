@@ -1,5 +1,5 @@
 class Admin::OrderLinesController < AdminController
-  before_action :set_order_line, only: [:show, :edit, :update, :destroy]
+  before_action :set_order_line, only: [:show, :edit, :update, :destroy, :complete]
 
   def index
 
@@ -38,7 +38,7 @@ class Admin::OrderLinesController < AdminController
   def update
     respond_to do |format|
       if @order_line.update(order_line_params)
-        format.html { redirect_to admin_dashboard_path, notice: 'Order line was successfully updated.' }
+        format.html { redirect_to admin_dashboard_path, notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: @order_line }
       else
         format.html { render :edit }
@@ -50,7 +50,7 @@ class Admin::OrderLinesController < AdminController
   def destroy
     @order_line.destroy
     respond_to do |format|
-      format.html { redirect_to admin_dashboard_path, notice: 'Order line was successfully destroyed.' }
+      format.html { redirect_to admin_dashboard_path, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -59,6 +59,14 @@ class Admin::OrderLinesController < AdminController
     OrderMailer.confirmation_email(params[:order_line_id]).deliver_now
     flash[:notice] = 'Email confirmation sent!'
     redirect_to admin_dashboard_path
+  end
+
+  def complete
+    respond_to do |format|
+      if @order_line.complete_order
+        format.html { redirect_to admin_order_line_path(@order_line), notice: 'Order has been completed.' }
+      end
+    end
   end
 
   private
