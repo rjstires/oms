@@ -5,11 +5,25 @@
         <h3 class="panel-title">Order Details</h3>
       </div>
       <div class="panel-body">
+
         <% if @order_line.order.present? %>
         <p class="number"><span style="font-weight:bold;">Order Number:</span> <%= @order_line.order %></p>
         <% end %>
+
         <p class="total"><span style="font-weight:bold;">Amount:</span> <%= number_to_currency @order_line.sale %></p>
-        <p class="scheduled"><span style="font-weight:bold;"><%= @order_line.status.titleize %>:</span> <%= order_date_display(@order_line) %></p>
+
+        <p class="date"><span style="font-weight:bold;">Created:</span> <%= @order_line.created_at.to_s(:order_line) %></p>
+
+        <% if @order_line.scheduled_at.present? %>
+        <p class="date"><span style="font-weight:bold;">Scheduled:</span> <%= @order_line.scheduled_at.to_s(:order_line) %></p>
+        <% end %>
+
+        <% if @order_line.completed_at.present? %>
+        <p class="date"><span style="font-weight:bold;">Completed:</span> <%= @order_line.completed_at.to_s(:order_line) %></p>
+        <% end %>
+
+        <p class="status"><span style="font-weight:bold;">Status:</span> <%= @order_line.status.titleize %></p>
+
         <p><a href="#">View in Shop</a></p>
 
       </div>

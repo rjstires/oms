@@ -142,7 +142,7 @@ class OrderLine < ActiveRecord::Base
   end
 
   def scheduled?
-    self.scheduled_at.present? && !self.completed?
+    self.scheduled_at.present?
   end
 
   def team_is_paid?
@@ -158,11 +158,16 @@ class OrderLine < ActiveRecord::Base
   end
 
   def status
+
     if self.order_is_paid?
-      if self.completed?
-        "completed"
+      if self.scheduled?
+        if self.completed?
+          "completed"
+        else
+          "scheduled"
+        end
       else
-        "scheduled"
+        "pending scheduling"
       end
     else
       "lead"
