@@ -29,7 +29,7 @@
     </ul>
   </nav>
   <div class="navbar navbar-inverse navbar-fixed-top">
-  <%= link_to "Boosting Edge, LLC", root_path, class: "navbar-brand" %>
+    <%= link_to "Boosting Edge, LLC", root_path, class: "navbar-brand" %>
     <div class="navbar-header pull-right">
       <a id="nav-expander" class="nav-expander fixed">
         <i class="fa fa-bars fa-lg white"></i>
@@ -41,14 +41,16 @@
     <div class="row">
       <div class="col-md-12">
         <%= yield %>
-        <hr>
       </div>
     </div>
-    <div class="col-md-12">
-      <p>&copy; Boosting Edge, LLC 2015</p>
-      <%= link_to 'Sign out', destroy_user_session_path,
-      method: :delete,
-      data: { confirm: 'Are you sure?' } if user_signed_in? %>
+    <div class="row">
+      <div class="col-md-12">
+        <hr>
+        <p>&copy; Boosting Edge, LLC 2015</p>
+        <%= link_to 'Sign out', destroy_user_session_path,
+        method: :delete,
+        data: { confirm: 'Are you sure?' } if user_signed_in? %>
+      </div>
     </div>
   </div>
   <script>
