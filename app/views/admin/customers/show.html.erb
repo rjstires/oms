@@ -1,8 +1,10 @@
-<div class="col-md-6 customer-show">
+<div class="col-md-4 customer-show">
+	<h3>Contacts</h3>
 	<div class="panel panel-default">
 		<table class="table table-condensed">
 			<tr>
-				<td colspan="2"><h3><%= mail_to @customer.email %></h3></td>
+				<th>Email</th>
+				<td colspan="2"><%= mail_to @customer.email %></td>
 			</tr>
 
 			<% if @customer.battle_tag.present? %>
@@ -25,7 +27,8 @@
 
 <% if @completed_orders.any? %>
 
-<div class="col-md-6 customer-show">
+<div class="col-md-4 customer-show">
+	<h3>Summary</h3>
 	<div class="panel panel-default">
 		<table class="table table-condensed">
 			<tbody>
@@ -46,6 +49,23 @@
 	</div>
 </div>
 
+<div class="col-md-4 customer-show">
+	<h3>Team History</h3>
+	<div class="panel panel-default">
+		<table class="table table-condensed">
+			<tbody>
+				<% @customer.order_lines.group_by(&:team).each do |team, orders| %>
+				<tr>
+					<th><%= team.display_name %></th>
+					<td><%= orders.count %></td>
+					<td><%= number_to_currency orders.sum(&:sale) %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
 <div class="col-md-12 customer-show">
 	<h3>Order History</h3>
 	<div class="panel panel-default">
@@ -54,6 +74,10 @@
 			<tr>
 				<td><%= link_to "##{order_line.order}", admin_order_line_path(order_line) %></td>
 				<td><%= order_line.completed_at.to_s(:order_line) %></td>
+				<td>
+					<%= faction_sprite(order_line.faction) %>
+					<%= character_sprite(order_line.character) %>
+				</td>
 				<td><%= order_line.product.category.display_name %></td>
 				<td><%= order_line.product.difficulty.display_name %></td>
 				<td><%= order_line.product.zone.display_name %></td>
