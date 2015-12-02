@@ -58,7 +58,7 @@
 				<tr>
 					<th><%= team.display_name %></th>
 					<td><%= orders.count %></td>
-					<td><%= number_to_currency orders.sum(&:sale) %></td>
+					<td><%= number_to_currency orders.sum(&:contractor_payment) %></td>
 				</tr>
 				<% end %>
 			</tbody>
