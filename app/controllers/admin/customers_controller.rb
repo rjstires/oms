@@ -6,7 +6,7 @@ class Admin::CustomersController < AdminController
   # GET /Customers
   # GET /Customers.json
   def index
-    @customers = Customer.all.order(email: :asc)
+    @customers = Customer.includes(:order_lines).order(email: :asc)
   end
 
   # GET /Customers/1
