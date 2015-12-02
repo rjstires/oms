@@ -14,10 +14,18 @@
   <nav>
     <ul class="list-unstyled main-menu">
       <li class="text-right"><a href="#" id="nav-close"></a></li>
-      <%= render partial: '/layouts/admin_links' %>
-      <%= render partial: '/layouts/team_links' %>
+      <%= render partial: '/layouts/admin_links' if user_signed_in? && current_user.admin? %>
+
       <%= render partial: '/layouts/sales_links' %>
+
+      <%= render partial: '/layouts/user_links' if user_signed_in? && current_user.admin? %>
+
+      <%= render partial: '/layouts/team_links' %>
+
+      <%= render partial: '/layouts/option_links' if user_signed_in? && current_user.admin? %>
+
       <%= render partial: '/layouts/account_links' %>
+
     </ul>
   </nav>
   <div class="navbar navbar-inverse navbar-fixed-top">
