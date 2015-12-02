@@ -55,7 +55,7 @@
         <p class="realm"><span style="font-weight:bold;">Realm:</span> <%= @order_line.team.display_realm %></p>
         <p class="payment-type"><span style="font-weight:bold;">Payment Type:</span> <%= @order_line.team.payment_type.display_name %></p>
         <p class="payment-address"><span style="font-weight:bold;">Payment Address:</span> <%= mail_to @order_line.team.payment_address%></p>
-        <p class="payment-amount"><span style="font-weight:bold;">Payment:</span> <%= number_to_currency @order_line.contractor_payment %></p>
+        <p class="payment-amount"><span style="font-weight:bold;">Payment:</span> <span class="team-paid <%= @order_line.team_paid %>"><%= number_to_currency @order_line.contractor_payment %></span></p>
       </div>
     </div>
   </div>
