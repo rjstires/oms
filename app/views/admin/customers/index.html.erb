@@ -1,10 +1,14 @@
 <div class="col-md-12">
   <table class="table table-condensed">
-    <tr>
-      <th>Email Address</th>
-      <th>Battle Tag</th>
-      <th>Skype</th>
-    </tr>
-    <%= render @customers %>
+    <thead>
+      <tr>
+        <th>Email Address</th>
+        <th>Battle Tag</th>
+        <th>Skype</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @customers %>
+    </tbody>
   </table>
 </div>
