@@ -1,0 +1,5 @@
+        <tr>
+        <td><%= event_slot.title %></td>
+        <td><%= event_slot.character_display %></td>
+        <td><%= render partial: 'admin/event_slots/dropdown_options', locals: {event_slot: event_slot} %></td>
+        </tr>

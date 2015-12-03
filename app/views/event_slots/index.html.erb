@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Event Slots</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Character</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event_slots.each do |event_slot| %>
+      <tr>
+        <td><%= event_slot.event %></td>
+        <td><%= event_slot.title %></td>
+        <td><%= event_slot.description %></td>
+        <td><%= event_slot.character %></td>
+        <td><%= link_to 'Show', event_slot %></td>
+        <td><%= link_to 'Edit', edit_event_slot_path(event_slot) %></td>
+        <td><%= link_to 'Destroy', event_slot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event slot', new_event_slot_path %>

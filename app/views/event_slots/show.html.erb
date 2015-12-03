@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @event_slot.event %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @event_slot.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event_slot.description %>
+</p>
+
+<p>
+  <strong>Character:</strong>
+  <%= @event_slot.character %>
+</p>
+
+<%= link_to 'Edit', edit_event_slot_path(@event_slot) %> |
+<%= link_to 'Back', event_slots_path %>

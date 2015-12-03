@@ -4,7 +4,7 @@ class Admin::EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events_by_date = Event.all.group_by(&:event_timestamp)
+    @events_by_date = Event.all.group_by {|e| e.event_timestamp.beginning_of_day}
   end
 
   # GET /events/1
@@ -28,7 +28,7 @@ class Admin::EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to admin_event_path(@event), notice: 'Event was successfully created.' }
+        format.html { redirect_to admin_events_url, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to admin_event_path(@event), notice: 'Event was successfully updated.' }
+        format.html { redirect_to admin_events_url, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class Admin::EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :cutoff_timestamp, :event_timestamp, :team_id, :character_id)
+      params.require(:event).permit(:cutoff_timestamp, :event_timestamp, :team_id, :category_id, :zone_id, :difficulty_id)
     end
 end

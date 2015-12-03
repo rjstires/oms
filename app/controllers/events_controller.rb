@@ -5,7 +5,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = @team.events
+    @events_by_date = @team.events.group_by {|e| e.event_timestamp.beginning_of_day}
   end
 
   # GET /events/1
@@ -74,6 +74,6 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:title, :description, :cutoff_timestamp, :event_timestamp, :team_id, :character_id)
+    params.require(:event).permit(:cutoff_timestamp, :event_timestamp, :team_id, :category_id, :zone_id, :difficulty_id)
   end
 end

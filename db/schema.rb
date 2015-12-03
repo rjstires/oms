@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203091713) do
+ActiveRecord::Schema.define(version: 20151203200246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,18 @@ ActiveRecord::Schema.define(version: 20151203091713) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "event_slots", force: :cascade do |t|
+    t.integer  "event_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "character_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "event_slots", ["character_id"], name: "index_event_slots_on_character_id", using: :btree
+  add_index "event_slots", ["event_id"], name: "index_event_slots_on_event_id", using: :btree
+
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
@@ -70,12 +82,18 @@ ActiveRecord::Schema.define(version: 20151203091713) do
     t.datetime "event_timestamp"
     t.integer  "team_id"
     t.integer  "character_id"
+    t.integer  "category_id"
+    t.integer  "zone_id"
+    t.integer  "difficulty_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
 
+  add_index "events", ["category_id"], name: "index_events_on_category_id", using: :btree
   add_index "events", ["character_id"], name: "index_events_on_character_id", using: :btree
+  add_index "events", ["difficulty_id"], name: "index_events_on_difficulty_id", using: :btree
   add_index "events", ["team_id"], name: "index_events_on_team_id", using: :btree
+  add_index "events", ["zone_id"], name: "index_events_on_zone_id", using: :btree
 
   create_table "factions", force: :cascade do |t|
     t.string   "name"
@@ -243,8 +261,13 @@ ActiveRecord::Schema.define(version: 20151203091713) do
   add_foreign_key "characters", "classifications"
   add_foreign_key "characters", "primary_stats"
   add_foreign_key "characters", "tier_tokens"
+  add_foreign_key "event_slots", "characters"
+  add_foreign_key "event_slots", "events"
+  add_foreign_key "events", "categories"
   add_foreign_key "events", "characters"
+  add_foreign_key "events", "difficulties"
   add_foreign_key "events", "teams"
+  add_foreign_key "events", "zones"
   add_foreign_key "memberships", "teams"
   add_foreign_key "memberships", "users"
   add_foreign_key "order_lines", "characters"

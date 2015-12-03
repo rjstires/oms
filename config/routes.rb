@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :event_slots
   resources :events
   get 'memberships/index'
 
@@ -17,9 +18,11 @@ Rails.application.routes.draw do
   end
 
   resources :teams do
-    resources :events
-    resources :order_lines, :path => :sales do
+    resources :events do
+      resources :event_slots
+    end
 
+    resources :order_lines, :path => :sales do
       member do
         get 'complete'
       end
@@ -35,7 +38,9 @@ Rails.application.routes.draw do
     resources :characters
     resources :customers
     resources :difficulties
-    resources :events
+    resources :events do
+      resources :event_slots
+    end
     resources :factions
     resources :loot_options
     resources :memberships
