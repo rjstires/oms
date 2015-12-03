@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @event.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Cutoff timestamp:</strong>
+  <%= @event.cutoff_timestamp.to_s(:datetime) %>
+</p>
+
+<p>
+  <strong>Event timestamp:</strong>
+  <%= @event.event_timestamp.to_s(:datetime) %>
+</p>
+
+<p>
+  <strong>Attnending:</strong>
+  <%= @event.display_character %>
+</p>
+
+<%= link_to 'Edit', edit_team_event_path(@team, @event) %> |
+<%= link_to 'Back', team_events_path(@team) %>

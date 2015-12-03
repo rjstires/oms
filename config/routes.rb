@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   get 'memberships/index'
 
   root 'landings#index'
@@ -16,19 +17,17 @@ Rails.application.routes.draw do
   end
 
   resources :teams do
+    resources :events
     resources :order_lines, :path => :sales do
-      get 'complete', to: 'order_lines#complete'
+
+      member do
+        get 'complete'
+      end
     end
   end
 
   namespace :admin do
     get 'dashboard', to: 'dashboard#index', as: '/'
-
-    get 'uploads', to: 'pages#uploads'
-    post 'customers/upload', to: 'customers#upload'
-    post 'order_lines/upload', to: 'order_lines#upload'
-    post 'teams/upload', to: 'teams#upload'
-    post 'users/upload', to: 'users#upload'
 
     resources :armor_types
     resources :categories
@@ -36,23 +35,12 @@ Rails.application.routes.draw do
     resources :characters
     resources :customers
     resources :difficulties
+    resources :events
     resources :factions
     resources :loot_options
     resources :memberships
     resources :mounts
     resources :order_line_statuses
-    resources :order_lines do
-
-
-      member do
-        get 'complete'
-        get 'send_confirmation'
-      end
-
-    end
-    resources :events do
-      resources :slots
-    end
     resources :payment_statuses
     resources :payment_types
     resources :play_styles
@@ -64,5 +52,13 @@ Rails.application.routes.draw do
     resources :tier_tokens
     resources :users
     resources :zones
+
+    resources :order_lines do
+      member do
+        get 'complete'
+        get 'send_confirmation'
+      end
+    end
   end
+
 end

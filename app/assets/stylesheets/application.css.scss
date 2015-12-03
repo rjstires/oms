@@ -114,3 +114,26 @@ span.team-paid.false {color: red;}
 .fd-tile.detail .icon:before {
     content: '';
 }
+
+ /**********************/
+ /**** admin/events ****/
+ /**********************/
+tr.event-row.faction-horde {
+  background-color: #FFE7E7;
+}
+
+tr.event-row.faction-alliance {
+  background-color: #D3E7FF;
+}
+td.datetime {
+  width: 180px;
+}
+td.title {
+  width: 225px;
+}
+td.team {
+  width: 175px;
+}
+td.character {
+  width: 175px;
+}

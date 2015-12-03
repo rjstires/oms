@@ -7,6 +7,8 @@ class Team < ActiveRecord::Base
 
   has_many :memberships, dependent: :destroy
 
+  has_many :events
+
   has_one :owner_membership, -> { where owner: true}, class_name: 'Membership'
   has_many :pending_memberships, -> { where confirmed: false}, class_name: 'Membership'
   has_many :approved_memberships, -> { where confirmed: true}, class_name: 'Membership'

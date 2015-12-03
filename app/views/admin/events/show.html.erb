@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @event.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @event.description %>
+</p>
+
+<p>
+  <strong>Cutoff timestamp:</strong>
+  <%= @event.cutoff_timestamp %>
+</p>
+
+<p>
+  <strong>Event timestamp:</strong>
+  <%= @event.event_timestamp %>
+</p>
+
+<p>
+  <strong>Team:</strong>
+  <%= @event.team.display_name %>
+</p>
+
+<p>
+  <strong>Character:</strong>
+  <%= @event.character.try(:display_alias) %>
+</p>
+
+<%= link_to 'Edit', edit_admin_event_path(@event) %> |
+<%= link_to 'Back', admin_events_path %>

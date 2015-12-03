@@ -1,6 +1,35 @@
-<% @events.each do |event| %>
-<p><%= event.to_s %></p>
-  <% event.slots.each do |slot| %>
-    <p><%= slot.to_s %></p>
-  <% end %>
-<% end %>
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Events</h1>
+
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Event</th>
+      <th>Cutoff</th>
+      <th>Attending</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <td><%= event.event_timestamp.to_s(:datetime) %></td>
+        <td><%= event.cutoff_timestamp.to_s(:datetime) %></td>
+        <td><%= event.display_character %></td>
+        <td><%= link_to 'Show', team_event_path(@team, event) %></td>
+        <td><%= link_to 'Edit', edit_team_event_path(@team, event) %></td>
+        <td><%= link_to 'Destroy', team_event_path(@team, event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event', new_team_event_path(@team) %>
