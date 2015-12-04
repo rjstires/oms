@@ -1,0 +1,31 @@
+// Place all the styles related to the event_slots controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.events-container {
+    margin-bottom: 100px;
+}
+
+.row.events-header {
+    font-weight: bold;
+    font-size: larger;
+}
+
+.row.events-event {
+    min-height: 30px;
+    padding: 8px 0px;
+    margin-bottom: 2px;
+}
+
+.row.events-event.alliance {
+    background-color: rgba(0,0,255,0.05);
+}
+
+.row.events-event.horde {
+        background-color: rgba(255, 0, 0, 0.09);
+}
+
+.row.events-slot-header {
+    font-size: medium;
+    font-weight: bold;
+}

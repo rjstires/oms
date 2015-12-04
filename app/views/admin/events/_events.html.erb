@@ -1,0 +1,12 @@
+  <div class="row events-event <%= event_row_class(events) %>">
+    <div class="col-md-2">
+      <%= render partial: 'dropdown_options', locals: {event: events} %>
+      <%= events.event_timestamp.strftime("%H:%M EST") %>
+    </div>
+    <div class="col-md-2"><%= events.cutoff_timestamp.to_s(:datetime) %></div>
+    <div class="col-md-2"><%= events.team.display_alias %></div>
+    <div class="col-md-2"><%= events.category.display_name %></div>
+    <div class="col-md-2"><%= events.zone.display_name %></div>
+    <div class="col-md-2"><%= events.difficulty.display_name %></div>
+  </div>
+  <%= render partial: "admin/event_slots/event_slot", collection: events.event_slots if events.event_slots.any? %>

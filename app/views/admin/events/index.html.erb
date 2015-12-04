@@ -1,40 +1,11 @@
 <% @events_by_date.each do |date, events| %>
-<h3><%= date.strftime("%A, %B %e %Y") %></h3>
-<table class="table table-condensed">
-  <tr>
-    <th>Time</th>
-    <th>Cutoff</th>
-    <th>Team</th>
-    <th>Category</th>
-    <th>Zone</th>
-    <th>Difficulty</th>
-    <th></th>
-  </tr>
-  <% events.each do |event| %>
-  <tr class="event-row faction-<%= event.team.faction.name %>">
-    <td class="datetime"><%= event.event_timestamp.strftime("%H:%M EST") %></td>
-    <td class="datetime"><%= event.cutoff_timestamp.to_s(:datetime) %></td>
-    <td class="team"><%= event.team.display_alias %></td>
-    <td class="category"><%= event.category.display_name %></td>
-    <td class="zone"><%= event.zone.display_name %></td>
-    <td class="difficulty"><%= event.difficulty.display_name %></td>
-    <td>
-      <%= render partial: 'dropdown_options', locals: {event: event} %>
-    </td>
-  </tr>
-  <% if event.event_slots.any? %>
-  <tr>
-    <td colspan="6">
-      <table class="table table-condensed">
-        <%= render partial: "admin/event_slots/event_slot", collection: event.event_slots %>
-      </table>
-    </td>
-  </tr>
-  <% end %>
-  <% end %>
-</table>
+<div class="panel panel-primary">
+  <div class="panel-heading"><%= date.strftime("%A, %B %e %Y") %></div>
+  <div class="panel-body">
+    <%= render partial: 'events', collection: events  %>
+  </div>
+  <!-- <div class="panel-footer">footer</div> -->
+</div>
 <% end %>
-
-<br>
 
 <%= link_to 'New Event', new_admin_event_path %>
