@@ -1,16 +1,32 @@
 <%= simple_form_for([:admin, @event]) do |f| %>
-  <%= f.error_notification %>
+<%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.association :team %>
-    <%= f.input :event_timestamp, :as => :string, :input_html => {class: 'form-control datetimepicker'} %>
-    <%= f.input :cutoff_timestamp, :as => :string, :input_html => {class: 'form-control datetimepicker'} %>
-    <%= f.association :category %>
-    <%= f.association :zone %>
-    <%= f.association :difficulty %>
+<div class="form-inputs">
+  <%= f.association :team, input_html: { class: 'chosen-select' } %>
+
+  <%= f.label :event_timestamp %>
+  <div class='input-group date datetimepicker'>
+    <%= f.input :event_timestamp, :as => :string, label: false %>
+    <span class="input-group-addon">
+      <span class="glyphicon glyphicon-calendar"></span>
+    </span>
+  </div>
+  
+  <%= f.label :cutoff_timestamp %>
+  <div class='input-group date datetimepicker'>
+    <%= f.input :cutoff_timestamp, :as => :string, label: false %>
+    <span class="input-group-addon">
+      <span class="glyphicon glyphicon-calendar"></span>
+    </span>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+  <%= f.association :category, input_html: { class: 'chosen-select' } %>
+  <%= f.association :zone, input_html: { class: 'chosen-select' } %>
+  <%= f.association :difficulty, input_html: { class: 'chosen-select' } %>
+</div>
+
+<div class="form-actions">
+  <%= f.button :submit %>
+</div>
 <% end %>
+  
