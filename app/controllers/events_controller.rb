@@ -29,7 +29,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to team_event_path(@team, @event), notice: 'Event was successfully created.' }
+        format.html { redirect_to team_events_url(@team), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
-        format.html { redirect_to team_event_path(@team, @event), notice: 'Event was successfully updated.' }
+        format.html { redirect_to team_events_url(@team), notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit }
@@ -74,6 +74,6 @@ class EventsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
-    params.require(:event).permit(:cutoff_timestamp, :event_timestamp, :team_id, :category_id, :zone_id, :difficulty_id)
+    params.require(:event).permit(:cutoff_timestamp, :event_timestamp, :category_id, :zone_id, :difficulty_id)
   end
 end

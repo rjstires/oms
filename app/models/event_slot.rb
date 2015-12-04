@@ -4,7 +4,7 @@ class EventSlot < ActiveRecord::Base
 
   def character_display
     if self.character.present?
-      self.character.display_name
+      "Attending: #{self.character.display_name}"
     else
       "Vacant"
     end

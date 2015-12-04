@@ -1,8 +1,7 @@
-<%= simple_form_for(@event_slot) do |f| %>
+<%= simple_form_for([:admin, @event, @event_slot]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :event %>
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.association :character %>

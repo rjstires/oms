@@ -1,11 +1,11 @@
+<%= link_to 'New Event', new_admin_event_path, class: 'btn btn-primary' %>
+<br>
 <% @events_by_date.each do |date, events| %>
 <div class="panel panel-primary">
   <div class="panel-heading"><%= date.strftime("%A, %B %e %Y") %></div>
   <div class="panel-body">
     <%= render partial: 'events', collection: events  %>
   </div>
-  <!-- <div class="panel-footer">footer</div> -->
 </div>
 <% end %>
 
-<%= link_to 'New Event', new_admin_event_path %>

@@ -1,0 +1,10 @@
+      <div class="dropdown">
+        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default btn-xs">
+          <i class="fa fa-cogs"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dLabel">
+          <li><%= link_to '<i class="fa fa-plus"></i> Add Slot'.html_safe, new_team_event_event_slot_path(event.team, event) %></li>
+          <li><%= link_to '<i class="fa fa-pencil"></i> Edit'.html_safe, edit_team_event_path(event.team, event) %></li>
+          <li><%= link_to '<i class="fa fa-trash"></i> Destroy'.html_safe, team_event_path(event.team, event), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        </ul>
+      </div>

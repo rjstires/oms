@@ -1,31 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Events</h1>
-
 <% @events_by_date.each do |date, events| %>
-<h3><%= date.strftime("%A, %B %e %Y") %></h3>
-<table class="table table-condensed">
-  <thead>
-    <tr>
-      <th>Time</th>
-      <th>Cutoff</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-<% events.each do |event| %>
-    <tr>
-      <td><%= event.event_timestamp.strftime("%H:%M EST") %></td>
-      <td><%= event.cutoff_timestamp.to_s(:datetime) %></td>
-      <td><%= link_to 'Show', team_event_path(@team, event) %></td>
-      <td><%= link_to 'Edit', edit_team_event_path(@team, event) %></td>
-      <td><%= link_to 'Destroy', team_event_path(@team, event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
+<div class="panel panel-primary">
+  <div class="panel-heading"><%= date.strftime("%A, %B %e %Y") %></div>
+  <div class="panel-body">
+    <%= render partial: 'events', collection: events  %>
+  </div>
+  <!-- <div class="panel-footer">footer</div> -->
+</div>
 <% end %>
 
-<br>
-
-<%= link_to 'New Event', new_team_event_path(@team) %>
+<%= link_to 'New Event', new_team_event_path %>
