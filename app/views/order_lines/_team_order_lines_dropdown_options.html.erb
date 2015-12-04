@@ -1,7 +1,0 @@
-              <%= content_tag :li, (link_to 'Show', team_order_line_path(order_line.team, order_line)) if can? :read, order_line %>
-              <%= content_tag :li, (link_to 'Edit', edit_team_order_line_path(order_line.team, order_line)) if can? :update, order_line  %>
-              <% unless order_line.is_completed? %>
-              <%= content_tag :li, (link_to 'Email Confirmation', team_order_line_send_confirmation_path(order_line.team, order_line)) if can? :send_confirmation, order_line  %>
-              <%= content_tag :li, (link_to 'Mark Completed', team_order_line_complete_path(order_line.team, order_line)) if can? :complete, order_line %>
-              <% end %>
-              <%= content_tag :li, (link_to 'Destroy', team_order_line_path(order_line.team, order_line), method: :delete, data: { confirm: 'Are you sure?' }) if can? :destroy, order_line  %>

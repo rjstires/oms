@@ -1,48 +1,15 @@
 <tr>
-  <td>
-    <% if !order_line.scheduled_at.blank? %>
-    <%= order_line.scheduled_at.to_s(:datetime) %>
-    <% elsif !order_line.completed_at.blank? %>
-    <%= order_line.completed_at.to_s(:datetime) %>
-    <% else %>
-    <%= order_line.created_at.to_s(:datetime)%>
-    <% end %>
-  </td>
-
-  <td>
-    <%= order_line.order %>
-  </td>
-
+  <td><%= order_date_display(order_line) %></td>
+  <td><%= order_line.order %></td>
   <td>
     <%= link_to order_line.customer.email, '#', :data => {:toggle=> 'modal', :target => "#customer_modal_#{order_line.customer.id}"} %>
   </td>
-
-  <td>
-    <%= faction_sprite order_line.faction %>
-    <%= character_sprite order_line.character %>
-  </td>
-
-  <td>
-  </td>
-
-  <td>
-    <%= order_line.product.display_name %>
-  </td>
-
-  <td>
-    <%= order_line.try(:team).try(:display_name) %>
-  </td>
-  <td>
-    <%= number_to_currency order_line.sale%>
-  </td>
-
-  <td>
-    <%= number_to_currency order_line.site_fee %>
-  </td>
-
-  <td>
-    <%= number_to_currency order_line.contractor_payment %>
-  </td>
-
+  <td><%= character_sprite order_line.character %></td>
+  <td><%= order_line.product.category.display_name %></td>
+  <td><%= order_line.product.difficulty.display_name %></td>
+  <td><%= order_line.product.zone.display_name %></td>
+  <td><%= order_line.product.display_name %></td>
+  <td><%= order_line.product.mount.display_name %></td>
+  <td><%= number_to_currency order_line.contractor_payment %></td>
   <%= render :partial => "/order_lines/customer_details", locals: {customer: order_line.customer} %>
 </tr>
