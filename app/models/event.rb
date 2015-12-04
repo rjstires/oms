@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
   belongs_to :zone
   belongs_to :difficulty
 
-  has_many :event_slots, dependent: :destory
+  has_many :event_slots, dependent: :destroy
 
   validates :team, :category, :zone, :difficulty, presence: true
 
