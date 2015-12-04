@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   default_scope {
-    includes(:team, :character, :category, :zone, :difficulty, :event_slots)
+    includes(:team, :category, :zone, :difficulty, :event_slots)
     .order(event_timestamp: :asc)
     .upcoming_events
   }
@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
 
   has_many :event_slots, dependent: :destory
 
-  validates :team, :character, :category, :zone, :difficulty, presence: true
+  validates :team, :category, :zone, :difficulty, presence: true
 
   scope :upcoming_events, -> { where('? > ?', :cutoff_timestamp, DateTime.now) }
 
