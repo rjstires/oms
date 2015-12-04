@@ -1,6 +1,5 @@
 class CreateEventSlots < ActiveRecord::Migration
 	def change
-	drop_table :event_slots
 		create_table :event_slots do |t|
 			t.references :event, index: true, foreign_key: true
 			t.string :title
