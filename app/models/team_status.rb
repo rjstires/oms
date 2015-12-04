@@ -8,6 +8,10 @@ class TeamStatus < ActiveRecord::Base
   # Scopes
   scope :by_name,->(v) { find_by name: v }
 
+  scope :pending, -> { where :name => 'pending'}
+  scope :active, -> { where :name => 'active'}
+  scope :inactive, -> { where :name => 'inactive'}
+
 	def downcase_fields
 		self.name.downcase
 	end

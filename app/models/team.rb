@@ -27,8 +27,9 @@ class Team < ActiveRecord::Base
   validates_uniqueness_of :name, message: "%{value} already exists."
   validates_uniqueness_of :name_alias, message: "%{value} already exists."
 
-
-
+  scope :is_pending,-> { joins(:team_status).merge(TeamStatus.pending) }
+  scope :is_active,-> { joins(:team_status).merge(TeamStatus.active) }
+  scope :is_inactive,-> { joins(:team_status).merge(TeamStatus.inactive) }
 
   def display_name
     self.name.titleize
