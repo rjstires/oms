@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
   default_scope {
-    includes(:event_slots, :character)
+    includes(:team, :character, :category, :zone, :difficulty, :event_slots)
     .order(event_timestamp: :asc)
     .upcoming_events
   }
