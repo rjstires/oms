@@ -11,8 +11,9 @@ class Event < ActiveRecord::Base
   belongs_to :zone
   belongs_to :difficulty
 
-  has_many :event_slots
+  has_many :event_slots, dependent: :destory
 
+  validates :team, :character, :category, :zone, :difficulty, presence: true
 
   scope :upcoming_events, -> { where('? > ?', :cutoff_timestamp, DateTime.now) }
 
