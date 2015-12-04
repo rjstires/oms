@@ -1,9 +1,12 @@
 class EventSlotsController < ApplicationController
   before_action :set_event_slot, only: [:show, :edit, :update, :destroy]
+  before_action :set_event
+  before_action :set_team
 
   # GET /event_slots/new
   def new
-    @event_slot = EventSlot.new
+    @event_slot = @event.event_slots.new
+
   end
 
   # GET /event_slots/1/edit
@@ -13,7 +16,7 @@ class EventSlotsController < ApplicationController
   # POST /event_slots
   # POST /event_slots.json
   def create
-    @event_slot = EventSlot.new(event_slot_params)
+    @event_slot = @event.event_slots.new(event_slot_params)
 
     respond_to do |format|
       if @event_slot.save
@@ -52,6 +55,14 @@ class EventSlotsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_team
+      @team = Team.find(params[:team_id])
+    end
+    
+    def set_event
+      @event = Event.find(params[:event_id])
+    end
+
     def set_event_slot
       @event_slot = EventSlot.find(params[:id])
     end
