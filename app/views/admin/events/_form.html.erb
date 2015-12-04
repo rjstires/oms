@@ -2,7 +2,7 @@
 <%= f.error_notification %>
 
 <div class="form-inputs">
-  <%= f.association :team, input_html: { class: 'chosen-select' } %>
+  <%= f.association :team, collection: @teams, input_html: { class: 'chosen-select' } %>
 
   <%= f.label :event_timestamp %>
   <div class='input-group date datetimepicker'>

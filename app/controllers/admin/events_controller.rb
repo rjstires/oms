@@ -15,6 +15,7 @@ class Admin::EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @teams = Team.order(name: :asc)
   end
 
   # GET /events/1/edit
