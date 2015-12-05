@@ -1,7 +1,7 @@
 <tr>
   <td><%= team.display_name %></td>
   <td><%= team.display_alias %></td>
-  <td><%= team.region.display_name %>-<%= team.display_realm %></td>
+  <td><%= team.display_realm %></td>
   <td><%= team.faction.display_name %></td>
   <td><%= team.payment_type.display_name %>: <%= team.payment_address %></td>
   <td><%= team.try(:owner).try(:display_name) %></td>
