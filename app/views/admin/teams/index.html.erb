@@ -6,7 +6,7 @@
 </div>
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
-    <%= link_to '<i class="fa fa-plus"></i> New'.html_safe, new_admin_team_path, :class => 'btn btn-primary btn-sm pull-right' %>    
+    <%= link_to '<i class="fa fa-plus"></i> New'.html_safe, new_admin_team_path, :class => 'btn btn-primary btn-sm pull-right' %>
   </div>
 </div>
 <div class="row">
@@ -25,12 +25,11 @@
           <th>Realm</th>
           <th>Faction</th>
           <th>Payment</th>
-          <th>Owner</th>
           <th colspan="2"></th>
         </tr>
       </thead>
       <tbody>
-        <%= render partial: 'team', collection: teams %>
+        <%= render teams %>
       </tbody>
       <% end %>
     </table>
