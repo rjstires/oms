@@ -1,18 +1,32 @@
 <% if user_signed_in? %>
-<!-- Begin team links -->
-<li><a href="#"><i class="fa fa-trophy"></i> Teams</a>
-  <ul class="list-unstyled">
-    <% if current_user.admin? %>
-    <li class="sub-nav"><%= link_to 'Create New', new_admin_team_path %></li>
-    <li class="sub-nav"><%= link_to 'View Teams', admin_teams_path %></li>
-    <li class="sub-nav"><%= link_to 'View Memberships', admin_memberships_path %></li>
-    <% else %>
-    <li class="sub-nav"><%= link_to 'Create New', new_team_path %></li>
-    <% current_user.approved_teams.each do |team| %>
-    <li class="sub-nav"><%= link_to team.display_name, team %></li>
-    <% end %>
-    <% end %>
-  </ul>
+<li><a href="#"><i class="fa fa-trophy"></i>  Teams</a>
+    <ul class="list-unstyled">
+
+        <% if current_user.admin? %>
+
+        <%= content_tag :li, class: 'sub-nav' do %>
+        <%= link_to 'Create Team', new_admin_team_path %>
+        <% end %>
+        <%= content_tag :li, class: 'sub-nav' do %>
+        <%= link_to 'Team Admin', admin_teams_path %>
+        <% end %>
+        <%= content_tag :li, class: 'sub-nav' do %>
+        <%= link_to 'Membership Admin', admin_memberships_path %>
+        <% end %>
+
+        <% end %>
+
+        <% if current_user.approved_teams.any? %>
+        <% current_user.approved_teams.each do |team| %>
+
+        <%= content_tag :li, class: 'sub-nav' do %>
+        <%= link_to team.display_name, team %>
+        <% end %>
+
+        <% end %>
+        <% else %>
+        <li class="sub-nav">no teams</li>
+        <% end %>
+    </ul>
 </li>
-<!-- End team links -->
 <% end %>
