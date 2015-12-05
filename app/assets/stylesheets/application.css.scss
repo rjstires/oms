@@ -10,107 +10,16 @@
 * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
 * file per style scope.
 *
-*= require jquery-ui
-*= require bootstrap-datetimepicker
-*= require fullcalendar
-*= require chosen
-*= require_tree .
+*= require bootstrap/dist/css/bootstrap.css
+*= require select2
+*= require font-awesome/css/font-awesome.css
+*= require jPushMenu/css/jPushMenu.css
+*= require nanoscroller/bin/css/nanoscroller.css
+*= require flat-dream/style
+*= require eonasdan-bootstrap-datetimepicker
 *= require_self
+*= require_tree .
 */
-.order-lines {white-space: nowrap;}
-body {font-size: 14px; padding-top: 80px;}
-.bottom-buffer { margin-bottom:10px; }
-.list-group-item .fa {float: left;}
-
-.list-group-item {padding: 10px 0px;}
-.event-modal-title {font-weight: bold;}
-
-.order-lines-table td { white-space: nowrap; }
-
-.customer-show .panel {
-  padding: 5px 15px;
-}
-span.team-paid.true {color: green;}
-span.team-paid.false {color: red;}
-
-/****************** Dashboard Tiles ******************/
-.fd-tile {
-    background-color: #fff;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.fd-tile.tile-purple {
-    background-color: #7761a7;
-    color: #fff;
-}
-
-.fd-tile.clean {
-    background-color: #fff;
-    color: #888;
-}
-
-.fd-tile.detail {
-    position: relative;
-    overflow: hidden;
-    border: solid 1px #DADADA;
-}
-
-.fd-tile .content {
-    padding: 10px;
-}
-
-.fd-tile.detail .content {
-    background: transparent;
-    padding: 10px 10px 13px;
-    display: inline-block;
-    position: relative;
-    z-index: 3;
-}
-
-.fd-tile .content h1 {
-    margin: 0 0 0;
-    font-weight: 300;
-    font-size: 40px;
-}
-
-.cl-mcont h1 {
-    line-height: 1.3em;
-}
-
-.text-left {
-    text-align: left;
-}
-
-.fd-tile.detail .icon {
-    display: block;
-    float: right;
-    height: 80px;
-    margin-bottom: 10px;
-    padding-left: 15px;
-    padding-top: 10px;
-    width: 80px;
-}
-.fd-tile.detail .icon {
-    display: block;
-    float: right;
-    height: 80px;
-    margin-bottom: 10px;
-    padding-left: 15px;
-    padding-top: 10px;
-    position: absolute;
-    right: 10px;
-    top: 0;
-    width: 80px;
-}
-
-
-.fd-tile.detail .icon i {
-    color: rgba(0, 0, 0, 0.05);
-    font-size: 100px;
-    line-height: 65px;
-}
-
-.fd-tile.detail .icon:before {
-    content: '';
+.select2-container--default .select2-selection--single {
+ border-radius: 0px;
 }

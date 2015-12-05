@@ -10,21 +10,23 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery-ui
-//= require jquery_ujs
-//= require bootstrap-sprockets
+//= require jquery/dist/jquery.js
+//= require jquery-ui/jquery-ui.js
+//= require jquery-ujs/src/rails.js
+//= require bootstrap/dist/js/bootstrap.js
 //= require moment
-//= require bootstrap-datetimepicker
-//= require fullcalendar
-//= require chosen-jquery
+//= require eonasdan-bootstrap-datetimepicker
+//= require select2
+//= require nanoscroller/bin/javascripts/jquery.nanoscroller.min.js
+//= require jPushMenu/js/jPushMenu.js
+//= require flat-dream/jquery.cookie.js
+//= require flat-dream/core.js
+//= require flat-dream/dashboard.js
 //= require_tree .
 
 $(document).on("page:load ready", function(){
-    $('.datetimepicker').datetimepicker({
-      format: 'YYYY-MM-DD HH:mm:ss',
-      showClose: true,
-    });
+    $(".datetime").datetimepicker({format: 'YYYY-MM-DD HH:mm'});
+    $('.select2').select2();
 });
 
 

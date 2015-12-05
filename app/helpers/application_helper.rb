@@ -4,12 +4,14 @@ module ApplicationHelper
 		"#{o.name.titleize} <span class=\"badge\"></span>".html_safe
 	end
 
-  def sub_nav_link(title, path, icon=nil)
+  def nav_link(title, path, klass=nil, icon=nil)
     icon = "<i class=\"fa fa-#{icon}\"></i>" if icon.present?
-    content_tag :li, class: 'sub-nav' do
+    content_tag :li, class: klass do
       link_to path do
-        "#{icon} #{title}".html_safe
+        "#{icon}<span>#{title}</span>".html_safe
       end
     end
   end
+
+
 end

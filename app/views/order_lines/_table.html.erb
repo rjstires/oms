@@ -1,10 +1,27 @@
 <% if order_lines.count > 0 %>
 <div class="row">
-  <div class="col-sm-12">
-    <h3><%= name %></h3>
-    <table class="table table-hover order-lines-table">
-      <%= render order_lines %>
-    </table>
+  <div class="col-md-12">
+    <div class="block-flat">
+      <h3><%= name %></h3>
+      <table class="no-border">
+        <thead class="no-border">
+          <th>Order #</th>
+          <th>Date</th>
+          <th>Customer</th>
+          <th>Character</th>
+          <th>Category</th>
+          <th>Difficulty</th>
+          <th>Zone</th>
+          <th>Service</th>
+          <th>Loot</th>
+          <th>Mount</th>
+          <th>Sale</th>
+        </thead>
+        <tbody class="no-border-y">
+          <%= render order_lines %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 <%end %>

@@ -1,39 +1,19 @@
-<div class="row cl-mcont">
+<div class="row">
+  <%= render partial: "shared/icon_panel", locals: {title: 'Scheduled Orders', number: @orders_dispatched.count, icon: 'calendar'} %>
 
-<%= render partial: "shared/icon_panel",
-  locals: {
-    title: 'Scheduled Orders',
-    number: @orders_dispatched.count,
-    icon: 'fa-calendar-check-o'}
-%>
+  <%= render partial: "shared/icon_panel", locals: {title: 'Pending Scheduling', number: @orders_ready_to_dispatch.count, icon: 'calendar-times-o'} %>
 
-<%= render partial: "shared/icon_panel",
-  locals: {
-    title: 'Pending Scheduling',
-    number: @orders_ready_to_dispatch.count,
-    icon: 'usd'}
-%>
+  <%= render partial: "shared/icon_panel", locals: {title: 'Unsettled Funds', number: number_to_currency(@unsettled_sales_total), icon: 'usd'} %>
 
-<%= render partial: "shared/icon_panel",
-  locals: {
-    title: 'Unsettled Funds',
-    number: number_to_currency(@unsettled_sales_total),
-    icon: 'usd'}
-%>
-
-<%= render partial: "shared/icon_panel",
-  locals: {
-    title: 'Unsettled Commission',
-    number: number_to_currency(@unsettled_sales_commission),
-    icon: 'usd'}
-%>
-
+  <%= render partial: "shared/icon_panel", locals: { title: 'Unsettled Commission', number: number_to_currency(@unsettled_sales_commission), icon: 'usd'} %>
 </div>
 
-<%= render :partial => 'order_lines/table', locals: {order_lines: @orders_dispatched, name: 'Dispached'} %>
+<div class="row">
+  <%= render :partial => 'admin/order_lines/table', locals: {order_lines: @orders_dispatched, name: 'Dispached'} %>
 
-<%= render :partial => 'order_lines/table', locals: {order_lines: @orders_past_due, name: 'Past Due'} %>
+  <%= render :partial => 'admin/order_lines/table', locals: {order_lines: @orders_past_due, name: 'Past Due'} %>
 
-<%= render :partial => 'order_lines/table', locals: {order_lines: @orders_ready_to_dispatch, name: 'Ready to Dispatch'} %>
+  <%= render :partial => 'admin/order_lines/table', locals: {order_lines: @orders_ready_to_dispatch, name: 'Ready to Dispatch'} %>
 
-<%= render :partial => 'order_lines/table', locals: {order_lines: @orders_lead, name: 'Leads'} %>
+  <%= render :partial => 'admin/order_lines/table', locals: {order_lines: @orders_lead, name: 'Leads'} %>
+</div>

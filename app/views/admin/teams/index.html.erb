@@ -1,37 +1,25 @@
-
+<% @teams_by_status.each do |status, teams| %>
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
-    <h2>Teams</h2>
+    <div class="block-flat">
+              <h3><%= status.titleize %></h3>
+      <table class="no-border">
+        <thead class="no-border">
+          <tr>
+            <th>Name</th>
+            <th>Alias</th>
+            <th>Realm</th>
+            <th>Faction</th>
+            <th>Payment</th>
+            <th>Owner</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody class="no-border-y">
+          <%= render teams %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-    <%= link_to '<i class="fa fa-plus"></i> New'.html_safe, new_admin_team_path, :class => 'btn btn-primary btn-sm pull-right' %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-    <table class="table table-striped">
-      <% @teams_by_status.each do |status, teams| %>
-      <thead>
-        <tr>
-          <th colspan="8">
-            <h3><%= status.titleize %></h3>
-          </th>
-        </tr>
-        <tr>
-          <th>Name</th>
-          <th>Alias</th>
-          <th>Realm</th>
-          <th>Faction</th>
-          <th>Payment</th>
-          <th colspan="2"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render teams %>
-      </tbody>
-      <% end %>
-    </table>
-  </div>
-</div>
+<% end %>

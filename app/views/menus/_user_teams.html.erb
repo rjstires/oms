@@ -1,0 +1,18 @@
+<% if user_signed_in? && current_user.approved_teams.any? %>
+<li><a href="#"><i class="fa fa-trophy"></i><span>My Teams</span></a>
+  <ul class="sub-menu">
+    <% current_user.approved_teams.order(name: :asc).each do |team| %>
+    <%= content_tag :li, class: 'sub-nav' do %>
+    <a href="#"><%= team.display_name %></a>
+    <ul class="sub-menu">
+
+      <%= nav_link('Dashboard', team, 'dashboard') %>
+      <%= nav_link('Sales', team_order_lines_path(team), 'diamond') %>
+      <%= nav_link('Schedule', team_events_path(team), 'calendar') %>
+      <!-- nav_link('Members', team_mebmers_path, 'users') -->
+    </ul>
+    <% end %>
+    <% end %>
+  </ul>
+</li>
+<% end %>

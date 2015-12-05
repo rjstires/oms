@@ -2,25 +2,22 @@
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
     <h2>Memberships</h2>
+    <div class="block-flat">
+      <%= link_to '<i class="fa fa-plus"></i> New'.html_safe, new_admin_membership_path, :class => 'btn btn-primary btn-sm pull-right' %>
+      <table class="no-border">
+        <thead class="no-border">
+          <tr>
+            <th>Name</th>
+            <th>Team</th>
+            <th>Confirmed?</th>
+            <th>Owner</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody class="no-border-y">
+        <%= render @memberships %>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <%= link_to '<i class="fa fa-plus"></i> New'.html_safe, new_admin_membership_path, :class => 'btn btn-primary btn-sm pull-right' %>    
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-4 col-md-offset-4">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render partial: 'membership', collection: @memberships %>
-      </tbody>
-    </table>
-  </div>
-</div>
