@@ -1,8 +1,9 @@
 class Admin::DashboardController < AdminController
   def index
     @incomplete_orders = OrderLine.where_order_paid.where_not_completed
-    @unsettled_sale = @incomplete_orders.sum(:sale).to_i
-    @unsettled_commission = @incomplete_orders.sum(:site_fee).to_i
+
+    @unsettled_sales_total = @incomplete_orders.sum(:sale).to_i
+    @unsettled_sales_commission = @incomplete_orders.sum(:site_fee).to_i
 
     @orders_dispatched = OrderLine.index_join.scheduled.upcoming_event.scheduled_at_asc
     @orders_ready_to_dispatch = OrderLine.index_join.ready_to_schedule.order_asc

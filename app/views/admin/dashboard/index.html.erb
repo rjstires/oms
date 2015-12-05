@@ -1,30 +1,33 @@
-<div class="cl-mcont">
-  <div class="row">
-    <div class="col-md-3 col-sm-6">
-      <div class="fd-tile detail clean tile-purple">
-        <div class="content"><h1 class="text-left"><%= @orders_dispatched.count %></h1><p>Scheduled Orders</p></div>
-        <div class="icon"><i class="fa fa-calendar-check-o"></i></div>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="fd-tile detail clean tile-purple">
-        <div class="content"><h1 class="text-left"><%= @orders_ready_to_dispatch.count %></h1><p>Pending Scheduling</p></div>
-        <div class="icon"><i class="fa fa-calendar-times-o"></i></div>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="fd-tile detail clean tile-purple">
-        <div class="content"><h1 class="text-left"><%= number_to_currency @unsettled_sale %></h1><p>Unsettled Funds</p></div>
-        <div class="icon"><i class="fa fa-usd"></i></div>
-      </div>
-    </div>
-    <div class="col-md-3 col-sm-6">
-      <div class="fd-tile detail clean tile-purple">
-        <div class="content"><h1 class="text-left"><%= number_to_currency @unsettled_commission %></h1><p>Unsettled Commission</p></div>
-        <div class="icon"><i class="fa fa-usd"></i></div>
-      </div>
-    </div>
-  </div>
+<div class="row cl-mcont">
+
+<%= render partial: "shared/icon_panel",
+  locals: {
+    title: 'Scheduled Orders',
+    number: @orders_dispatched.count,
+    icon: 'fa-calendar-check-o'}
+%>
+
+<%= render partial: "shared/icon_panel",
+  locals: {
+    title: 'Pending Scheduling',
+    number: @orders_ready_to_dispatch.count,
+    icon: 'usd'}
+%>
+
+<%= render partial: "shared/icon_panel",
+  locals: {
+    title: 'Unsettled Funds',
+    number: number_to_currency(@unsettled_sales_total),
+    icon: 'usd'}
+%>
+
+<%= render partial: "shared/icon_panel",
+  locals: {
+    title: 'Unsettled Commission',
+    number: number_to_currency(@unsettled_sales_commission),
+    icon: 'usd'}
+%>
+
 </div>
 
 <%= render :partial => 'order_lines_table', locals: {order_lines: @orders_dispatched, name: 'Dispached'} %>
