@@ -1,3 +1,44 @@
+<div class="row cl-mcont">
+
+<%= render partial: "shared/icon_panel",
+  locals: {
+    title: 'Scheduled Orders',
+    number: @orders_scheduled.count,
+    icon: 'calendar-check-o'}
+%>
+
+<%= render partial: "shared/icon_panel",
+  locals: {
+    title: 'Completed Orders',
+    number: @orders_completed.count,
+    icon: 'calendar-check-o'}
+%>
+
+<%= render partial: "shared/icon_panel",
+  locals: {
+    title: 'Montly Total',
+    number: number_to_currency(@monthly_total),
+    icon: 'usd'}
+%>
+
+<%= render partial: "shared/icon_panel",
+  locals: {
+    title: 'Lifetime Total',
+    number: number_to_currency(@lifetime_total),
+    icon: 'usd'}
+%>
+
+</div>
+
+<!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_dispatched, name: 'Dispached'} -->
+
+<!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_past_due, name: 'Past Due'} -->
+
+<!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_ready_to_dispatch, name: 'Ready to Dispatch'} -->
+
+<!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_lead, name: 'Leads'} -->
+
+
 <div class="row">
 
   <div class="col-sm-6 bootcards-list">

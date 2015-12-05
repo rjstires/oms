@@ -8,6 +8,15 @@ class TeamsController < ApplicationController
   def show
     @approved_memberships = @team.approved_memberships.all
     @pending_memberships = @team.pending_memberships.all
+
+    @orders_completed = @team.order_lines.where_completed
+    @orders_completed_this_month = @team.order_lines.completed_between(Time.now.beginning_of_month, Time.now)
+
+    @orders_scheduled = @team.order_lines.where_scheduled.where_not_completed
+
+
+    @monthly_total = @orders_completed_this_month.sum(:contractor_payment)
+    @lifetime_total = @orders_completed.sum(:contractor_payment)
   end
 
   def new

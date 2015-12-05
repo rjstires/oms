@@ -113,6 +113,10 @@ class OrderLine < ActiveRecord::Base
   scope :upcoming_event,-> { where('scheduled_at >= ?', Time.now) }
   scope :past_event,-> { where('scheduled_at < ?', Time.now) }
 
+  scope :completed_between, ->(start_date, end_date) {
+    where('completed_at >= ? AND completed_at <= ?', start_date, end_date)
+  }
+
   # CONSTANTS
 
   # ATTRIBUTE MACROS
