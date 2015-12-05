@@ -1,7 +1,7 @@
 <% if user_signed_in? && current_user.approved_teams.any? %>
 <li><a href="#"><i class="fa fa-trophy"></i>  My Teams</a>
   <ul class="list-unstyled">
-    <% current_user.approved_teams.each do |team| %>
+    <% current_user.approved_teams.order(name: :asc).each do |team| %>
     <%= content_tag :li, class: 'sub-nav' do %>
     <a href="#"><%= team.display_name %></a>
     <ul class="list-unstyled">
