@@ -59,5 +59,4 @@ Rails.application.configure do
 
   BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
 
-  config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif]
 end
