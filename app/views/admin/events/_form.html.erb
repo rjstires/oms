@@ -2,31 +2,20 @@
 <%= f.error_notification %>
 
 <div class="form-inputs">
-  <%= f.association :team, collection: @teams, input_html: { class: 'chosen-select' } %>
+  <%= f.association :team, collection: @teams, input_html: { class: 'select2' } %>
 
-  <%= f.label :event_timestamp %>
-  <div class='input-group date datetimepicker'>
-    <%= f.input :event_timestamp, :as => :string, label: false %>
-    <span class="input-group-addon">
-      <span class="glyphicon glyphicon-calendar"></span>
-    </span>
-  </div>
-  
-  <%= f.label :cutoff_timestamp %>
-  <div class='input-group date datetimepicker'>
-    <%= f.input :cutoff_timestamp, :as => :string, label: false %>
-    <span class="input-group-addon">
-      <span class="glyphicon glyphicon-calendar"></span>
-    </span>
-  </div>
 
-  <%= f.association :category, input_html: { class: 'chosen-select' } %>
-  <%= f.association :zone, input_html: { class: 'chosen-select' } %>
-  <%= f.association :difficulty, input_html: { class: 'chosen-select' } %>
+  <%= f.input :event_timestamp, :as => :string, :input_html => {class: 'datetime'} %>
+
+  <%= f.input :cutoff_timestamp, :as => :string, :input_html => {class: 'datetime'} %>
+
+  <%= f.association :category, :include_blank => true, input_html: { class: 'select2' } %>
+  <%= f.association :zone, :include_blank => true, input_html: { class: 'select2' } %>
+  <%= f.association :difficulty, :include_blank => true, input_html: { class: 'select2' } %>
 </div>
 
 <div class="form-actions">
   <%= f.button :submit %>
 </div>
 <% end %>
-  
+
