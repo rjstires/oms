@@ -1,8 +1,6 @@
 <li><a href="#"><i class="fa fa-cogs"></i>  Options</a>
      <ul class="list-unstyled">
-          <%= content_tag :li, class: 'sub-nav' do %>
-          <%= link_to 'Armor Types'.html_safe, admin_armor_types_path %>
-          <% end %>
+          <%= sub_nav_link('Armor Types', admin_armor_types_path) %>
 
           <%= content_tag :li, class: 'sub-nav' do %>
           <%= link_to 'Categories', admin_categories_path %>
