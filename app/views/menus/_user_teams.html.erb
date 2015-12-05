@@ -3,14 +3,13 @@
   <ul class="sub-menu">
     <% current_user.approved_teams.order(name: :asc).each do |team| %>
     <%= content_tag :li, class: 'sub-nav' do %>
-    <a href="#"><%= team.display_name %></a>
-    <ul class="sub-menu">
+    <%= link_to team.display_name, "#" %>
+    <%= content_tag :ul, class: 'sub-menu' do %>
 
-      <%= nav_link('Dashboard', team, 'dashboard') %>
-      <%= nav_link('Sales', team_order_lines_path(team), 'diamond') %>
-      <%= nav_link('Schedule', team_events_path(team), 'calendar') %>
-      <!-- nav_link('Members', team_mebmers_path, 'users') -->
-    </ul>
+    <%= nav_link('Dashboard', team, nil, 'dashboard') %>
+    <%= nav_link('Sales', team_order_lines_path(team), nil, 'diamond') %>
+    <%= nav_link('Schedule', team_events_path(team), nil, 'calendar') %>
+    <% end %>
     <% end %>
     <% end %>
   </ul>
