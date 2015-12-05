@@ -30,7 +30,7 @@
 
 </div>
 
-<!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_dispatched, name: 'Dispached'} -->
+<%= render :partial => 'order_lines/table', locals: {order_lines: @orders_scheduled, name: 'Upcoming Orders'} %>
 
 <!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_past_due, name: 'Past Due'} -->
 
