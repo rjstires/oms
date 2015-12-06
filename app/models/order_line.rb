@@ -1,10 +1,7 @@
 class OrderLine < ActiveRecord::Base
   include Filterable
 
-  # DEFAULT SCOPE
 
-
-  # MODEL SCOPES
   scope :index_join, -> {
     include_product
     .include_character
@@ -12,72 +9,33 @@ class OrderLine < ActiveRecord::Base
     .include_customer
     .include_region
     .include_faction
-    }
+  }
 
-  scope :lead,-> {
-    where_order_not_paid
-    .where_team_not_paid
-    .where_not_scheduled
-    .where_not_completed
-    }
+  scope :include_product,-> {
+    includes(:product => [
+      :category,
+      :difficulty,
+      :zone,
+      :play_style,
+      :loot_option,
+      :mount])
+  }
 
-  scope :ready_to_schedule,-> {
-    where_order_paid
-    .where_team_not_paid
-    .where_not_scheduled
-    .where_not_completed
-    }
-
-  scope :scheduled,-> {
-    where_order_paid
-    .where_scheduled
-    .where_not_completed
-    }
-
-  scope :completed_pending_team_payment,-> {
-    where_order_paid
-    .where_team_not_paid
-    .where_scheduled
-    .where_not_scheduled
-    }
-
-  scope :completed_order,-> {
-    where_order_paid
-    .where_team_not_paid
-    .where_scheduled
-    .where_scheduled
-    }
-
-  # Include scopes
-  scope :include_product,-> { includes(:product => [
-    :category,
-    :difficulty,
-    :zone,
-    :play_style,
-    :loot_option,
-    :mount
-    ])
-    }
-
-  scope :include_character,-> { includes(:character => [
-    :armor_type,
-    :classification,
-    :primary_stat,
-    :tier_token
-    ])
-    }
+  scope :include_character,-> {
+    includes(:character => [
+      :armor_type,
+      :classification,
+      :primary_stat,
+      :tier_token])
+  }
 
   scope :include_team ,-> { includes(:team) }
   scope :include_customer ,-> { includes(:customer) }
   scope :include_region ,-> { includes(:region) }
   scope :include_faction ,-> { includes(:faction) }
 
-  # Math scopts
-  scope :sale_total, -> { select('order_lines.*, SUM(order_lines.sale) as sale_sum') }
-  scope :sale_average, -> { select('AVG(order_lines.sale) as sale_average') }
-  scope :sale_count, -> { select('COUNT(order_lines.sale) as sale_count') }
 
-  # Sorting Scopes
+  #Sorting Scope
   scope :scheduled_at_asc, -> { order(scheduled_at: :asc) }
   scope :scheduled_at_desc, -> { order(scheduled_at: :desc) }
 
@@ -91,7 +49,7 @@ class OrderLine < ActiveRecord::Base
   scope :order_desc, -> { order(order: :desc) }
 
 
-  # Filtering
+
   scope :by_team, -> (team) { where(team: team) }
   scope :category, -> (id) { joins(:product).where(:products => {:category_id => id}) }
 
@@ -117,6 +75,45 @@ class OrderLine < ActiveRecord::Base
     where('completed_at >= ? AND completed_at <= ?', start_date, end_date)
   }
 
+  ## Compound Scopes
+  scope :leads,-> {
+    where_order_not_paid
+    .where_team_not_paid
+    .where_not_scheduled
+    .where_not_completed
+  }
+
+  scope :pending_scheduling,-> {
+    where_order_paid
+    .where_team_not_paid
+    .where_not_scheduled
+    .where_not_completed
+  }
+
+  scope :scheduled,-> {
+    where_order_paid
+    .where_scheduled
+    .where_not_completed
+  }
+
+  scope :completed_pending_team_payment,-> {
+    where_order_paid
+    .where_team_not_paid
+    .where_scheduled
+    .where_not_scheduled
+  }
+
+  scope :completed,-> {
+    where_order_paid
+    .where_team_not_paid
+    .where_scheduled
+    .where_scheduled
+  }
+
+  scope :unsettled,-> {
+
+  }
+
   # CONSTANTS
 
   # ATTRIBUTE MACROS
@@ -137,6 +134,7 @@ class OrderLine < ActiveRecord::Base
   :sale, :merchant_fee, :site_fee,
   :contractor_payment, :faction_id,
   :region_id
+
   # CALLBACKS
 
   # OTHER MACROS

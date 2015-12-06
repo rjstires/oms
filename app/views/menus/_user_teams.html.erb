@@ -7,7 +7,7 @@
     <%= content_tag :ul, class: 'sub-menu' do %>
 
     <%= nav_link('Dashboard', team, {icon: 'dashboard'}) %>
-    <%= nav_link('Sales', team_order_lines_path(team), {icon: 'diamond'}) %>
+    <%= nav_link('Sales', team_sales_path(team), {icon: 'diamond'}) %>
     <%= nav_link('Schedule', team_events_path(team), {icon: 'calendar'}) %>
     <% end %>
     <% end %>

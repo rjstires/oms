@@ -1,13 +1,8 @@
 Rails.application.routes.draw do
-  resources :event_slots
-  resources :events
-  get 'memberships/index'
-
   root 'landings#index'
-
   get 'dashboard', :to => 'pages#index'
-  get 'admin/dashboard', :to => 'admin/dashboard#index'
 
+  #get 'memberships/index'
 
   devise_for :users, :controllers => { :registrations => "user/registrations" }
   resources :users
@@ -22,15 +17,14 @@ Rails.application.routes.draw do
       resources :event_slots
     end
 
-    resources :order_lines, :path => :sales do
-      member do
-        get 'complete'
-      end
-    end
+    resources :order_lines, :path => :sales, :as => 'sales', :only => [:index]
   end
 
   namespace :admin do
-    get 'dashboard', to: 'dashboard#index', as: '/'
+    root to: "dashboard#index"
+    get 'leads', controller: :dashboard, action: :leads
+    get 'pending-scheduling', controller: :dashboard, action: :pending_scheduling
+    get 'scheduled', controller: :dashboard, action: :scheduled
 
     resources :armor_types
     resources :categories

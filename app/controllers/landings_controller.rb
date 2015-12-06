@@ -3,7 +3,7 @@ class LandingsController < ApplicationController
 
   def index
       path = 'dashboard'
-      path = 'admin_dashboard' if current_user.admin?
+      path = 'admin_root' if current_user.admin?
 
       redirect_to path.to_sym
   end
