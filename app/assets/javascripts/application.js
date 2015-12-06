@@ -27,6 +27,12 @@
 $(document).on("page:load ready", function(){
     $(".datetime").datetimepicker({format: 'YYYY-MM-DD HH:mm'});
     $('.select2').select2();
+
+    $('.table > tbody > tr.clickable').on('click', function(e){
+        window.location.href = $(this).data('url');
+
+    });
+
 });
 
 

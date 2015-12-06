@@ -49,7 +49,7 @@
           </thead>
           <tbody class="no-border-y">
             <% @upcoming_vacancies.each do | slot | %>
-            <tr class="<%= slot.event.team.faction.name %>">
+            <tr data-url="<%= team_events_url(slot.event.team) %>" class="<%= slot.event.team.faction.name %> clickable">
               <td><%= slot.event.event_timestamp.to_s(:datetime) %></td>
               <td><%= slot.event.category.display_name %></td>
               <td><%= slot.event.difficulty.display_name %></td>
