@@ -1,3 +1,4 @@
+<h3><%= @team.display_name %> Schedule</h3>
 <% @events_by_date.each do |date, events| %>
 <div class="panel panel-primary">
   <div class="panel-heading"><%= date.strftime("%A, %B %e %Y") %></div>
