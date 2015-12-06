@@ -12,6 +12,8 @@ class EventSlot < ActiveRecord::Base
       :zone,
       :team => [:faction],
       ])
+    .where('event_timestamp >= ?', Time.now)
+    .where(character: nil)
     .order('events.event_timestamp ASC')
     .limit(5)
   }
