@@ -1,19 +1,67 @@
 <div class="row">
-  <%= render partial: "shared/icon_panel", locals: {title: 'Scheduled Orders', number: @orders_dispatched.count, icon: 'calendar'} %>
 
-  <%= render partial: "shared/icon_panel", locals: {title: 'Pending Scheduling', number: @orders_ready_to_dispatch.count, icon: 'calendar-times-o'} %>
+  <%= render partial: "shared/icon_panel", locals: {
+    title: 'Scheduled Orders',
+    number: @orders_scheduled.count,
+    icon: 'calendar',
+    path: admin_scheduled_path
+  } %>
 
-  <%= render partial: "shared/icon_panel", locals: {title: 'Unsettled Funds', number: number_to_currency(@unsettled_sales_total), icon: 'usd'} %>
+  <%= render partial: "shared/icon_panel", locals: {
+    title: 'Pending Scheduling',
+    number: @orders_pending_scheduling.count,
+    icon: 'calendar-times-o',
+    path: admin_pending_scheduling_path
+  } %>
 
-  <%= render partial: "shared/icon_panel", locals: { title: 'Unsettled Commission', number: number_to_currency(@unsettled_sales_commission), icon: 'usd'} %>
+  <%= render partial: "shared/icon_panel", locals: {
+    title: 'Leads',
+    number: @orders_leads.count,
+    icon: 'calendar',
+    path: admin_leads_path
+  } %>
+
+  <%= render partial: "shared/icon_panel", locals: {
+    title: 'Unsettled Funds',
+    number: number_to_currency(@unsettled_sales_total),
+    icon: 'usd',
+  } %>
+
 </div>
 
 <div class="row">
-  <%= render :partial => 'admin/order_lines/table', locals: {order_lines: @orders_dispatched, name: 'Dispached'} %>
 
-  <%= render :partial => 'admin/order_lines/table', locals: {order_lines: @orders_past_due, name: 'Past Due'} %>
+  <div class="col-md-6">
+    <div class="block-flat">
+      <div class="header">
+        <h4>Upcoming Vacancies</h4>
+      </div>
+      <div class="content">
+      <table class="no-border table table-hover">
+          <thead class="no-border">
+            <tr>
+              <th>Date</th>
+              <th>Team</th>
+              <th>Category</th>
+              <th>Difficulty</th>
+              <th>Zone</th>
+            </tr>
+          </thead>
+          <tbody class="no-border-y">
+            <% @upcoming_vacancies.each do | slot | %>
+            <tr class="<%= slot.event.team.faction.name %>">
+              <td><%= slot.event.event_timestamp.to_s(:datetime) %></td>
+              <td><%= slot.event.category.display_name %></td>
+              <td><%= slot.event.difficulty.display_name %></td>
+              <td><%= slot.event.zone.display_name %></td>
+              <td><%= slot.title %></td>
+            </tr>
+            <% end %>
+          </tbody>
+          <tfoot class="no-border"></tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
 
-  <%= render :partial => 'admin/order_lines/table', locals: {order_lines: @orders_ready_to_dispatch, name: 'Ready to Dispatch'} %>
-
-  <%= render :partial => 'admin/order_lines/table', locals: {order_lines: @orders_lead, name: 'Leads'} %>
 </div>

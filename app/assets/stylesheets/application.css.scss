@@ -24,3 +24,56 @@
 .select2-container--default .select2-selection--single {
  border-radius: 0px;
 }
+
+table tbody tr.horde td {
+  background-color: rgba(255, 0, 0, 0.09);
+}
+
+table tbody tr.alliance td {
+  background-color: rgba(0,0,255,0.05);
+}
+
+.table > thead > tr > td.alliance,
+.table > tbody > tr > td.alliance,
+.table > tfoot > tr > td.alliance,
+.table > thead > tr > th.alliance,
+.table > tbody > tr > th.alliance,
+.table > tfoot > tr > th.alliance,
+.table > thead > tr.alliance > td,
+.table > tbody > tr.alliance > td,
+.table > tfoot > tr.alliance > td,
+.table > thead > tr.alliance > th,
+.table > tbody > tr.alliance > th,
+.table > tfoot > tr.alliance > th {
+  background-color: rgba(0,0,255,0.05);
+}
+.table-hover > tbody > tr > td.alliance:hover,
+.table-hover > tbody > tr > th.alliance:hover,
+.table-hover > tbody > tr.alliance:hover > td,
+.table-hover > tbody > tr:hover > .alliance,
+.table-hover > tbody > tr.alliance:hover > th {
+  background-color: rgba(0,0,255,0.08);
+}
+
+.table > thead > tr > td.horde,
+.table > tbody > tr > td.horde,
+.table > tfoot > tr > td.horde,
+.table > thead > tr > th.horde,
+.table > tbody > tr > th.horde,
+.table > tfoot > tr > th.horde,
+.table > thead > tr.horde > td,
+.table > tbody > tr.horde > td,
+.table > tfoot > tr.horde > td,
+.table > thead > tr.horde > th,
+.table > tbody > tr.horde > th,
+.table > tfoot > tr.horde > th {
+  background-color: rgba(255, 0, 0, 0.09);
+}
+.table-hover > tbody > tr > td.horde:hover,
+.table-hover > tbody > tr > th.horde:hover,
+.table-hover > tbody > tr.horde:hover > td,
+.table-hover > tbody > tr:hover > .horde,
+.table-hover > tbody > tr.horde:hover > th {
+  background-color: rgba(255, 0, 0, 0.12);
+}
+
