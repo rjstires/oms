@@ -35,7 +35,10 @@ $(document).on("page:load ready", function(){
 
     });
 
-    $('#admin-customers-table').dataTable();
+    $('.datatable').dataTable({
+        "pageLength": 15,
+        "lengthChange": false
+    });
 });
 
 
