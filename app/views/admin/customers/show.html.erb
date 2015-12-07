@@ -1,97 +1,131 @@
-<div class="col-md-4 customer-show">
-	<h3>Contacts</h3>
-	<div class="panel panel-default">
-		<table class="table table-condensed">
-			<tr>
-				<th>Email</th>
-				<td colspan="2"><%= mail_to @customer.email %></td>
-			</tr>
+<div class="row">
 
-			<% if @customer.battle_tag.present? %>
-			<tr>
-				<th>Battle Tag</th>
-				<td><%= @customer.battle_tag %></td>
-			</tr>
-			<% end %>
-
-			<% if @customer.skype.present? %>
-			<tr>
-				<th>Skype</th>
-				<td><%= skype_link(@customer.skype) %></td>
-			</tr>
-			<% end %>
-
-		</table>
+	<div class="col-md-4">
+		<div class="block-flat">
+			<h3>Contacts</h3>
+			<table class="no-border">
+				<tbody class="no-border-x">
+					<tr>
+						<th>Email</th>
+						<td colspan="2"><%= mail_to @customer.email %></td>
+					</tr>
+					<% if @customer.battle_tag.present? %>
+					<tr>
+						<th>Battle Tag</th>
+						<td><%= @customer.battle_tag %></td>
+					</tr>
+					<% end %>
+					<% if @customer.skype.present? %>
+					<tr>
+						<th>Skype</th>
+						<td><%= skype_link(@customer.skype) %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
 	</div>
-</div>
 
-<% if @completed_orders.any? %>
-
-<div class="col-md-4 customer-show">
-	<h3>Summary</h3>
-	<div class="panel panel-default">
-		<table class="table table-condensed">
-			<tbody>
-				<tr>
-					<th># Sales</th>
-					<td><%= @customers_completed_orders.count(:sale) %></td>
-				</tr>
-				<tr>
-					<th>Avg. Sale</th>
-					<td><%= number_to_currency @customers_completed_orders.average(:sale) %></td>
-				</tr>
-				<tr>
-					<th>Total Sales</th>
-					<td><%= number_to_currency @customers_completed_orders.sum(:sale) %> </td>
-				</tr>
-			</tbody>
-		</table>
+	<% if @completed_orders.any? %>
+	<div class="col-md-4">
+		<div class="block-flat">
+			<h3>Summary</h3>
+			<table class="no-border">
+				<tbody class="no-border-x">
+					<tr>
+						<th># Sales</th>
+						<td><%= @customers_completed_orders.count(:sale) %></td>
+					</tr>
+					<tr>
+						<th>Avg. Sale</th>
+						<td><%= number_to_currency @customers_completed_orders.average(:sale) %></td>
+					</tr>
+					<tr>
+						<th>Total Sales</th>
+						<td><%= number_to_currency @customers_completed_orders.sum(:sale) %> </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
-</div>
 
-<div class="col-md-4 customer-show">
-	<h3>Team History</h3>
-	<div class="panel panel-default">
-		<table class="table table-condensed">
-			<tbody>
-				<% @customers_completed_orders.group_by(&:team).each do |team, orders| %>
-				<tr>
-					<th><%= team.display_name %></th>
-					<td><%= orders.count %></td>
-					<td><%= number_to_currency orders.sum(&:contractor_payment) %></td>
-				</tr>
-				<% end %>
-			</tbody>
-		</table>
+	<div class="col-md-4">
+		<div class="block-flat">
+			<h3>Team History</h3>
+			<table class="no-border">
+				<thead class="no-border">
+					<tr>
+						<th>Team</th>
+						<th>#</th>
+						<th>Total $</th>
+					</tr>
+				</thead>
+				<tbody class="no-border-y">
+					<% @customers_completed_orders.group_by(&:team).each do |team, orders| %>
+					<tr>
+						<td><%= team.display_name %></td>
+						<td><%= orders.count %></td>
+						<td><%= number_to_currency orders.sum(&:contractor_payment) %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
 	</div>
-</div>
 
-<div class="col-md-12 customer-show">
-	<h3>Order History</h3>
-	<div class="panel panel-default">
-		<table class="table table-condensed">
-			<% @completed_orders.each do |order_line| %>
-			<tr>
-				<td><%= link_to "##{order_line.order}", admin_order_line_path(order_line) %></td>
-				<td><%= order_line.completed_at.to_s(:order_line) %></td>
-				<td>
-					<%= faction_sprite(order_line.faction) %>
-					<%= character_sprite(order_line.character) %>
-				</td>
-				<td><%= order_line.product.category.display_name %></td>
-				<td><%= order_line.product.difficulty.display_name %></td>
-				<td><%= order_line.product.zone.display_name %></td>
-				<td><%= order_line.product.display_name %></td>
-				<td><%= order_line.product.mount.display_name %></td>
-				<td style="text-align:right;"><%= number_to_currency order_line.sale %></td>
-			</tr>
-			<% end %>
-		</table>
-	</div>
-</div>
+  <div class="col-md-12">
+    <div class="block-flat">
+      <h3>Order History</h3>
+      <table class="no-border" id="admin-customers-order-history">
+        <thead class="no-border">
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Character</th>
+            <th>Category</th>
+            <th>Difficulty</th>
+            <th>Zone</th>
+            <th>Description</th>
+            <th>Mount</th>
+            <th>Sale</th>
+          </tr>
+        </thead>
+        <tbody class="no-border-y">
+          <% @completed_orders.each do |order_line| %>
+          <tr>
+            <td><%= link_to "##{order_line.order}", admin_order_line_path(order_line) %></td>
+            <td><%= order_line.completed_at.to_s(:order_line) %></td>
+            <td>
+              <%= faction_sprite(order_line.faction) %>
+              <%= character_sprite(order_line.character) %>
+            </td>
+            <td><%= order_line.product.category.display_name %></td>
+            <td><%= order_line.product.difficulty.display_name %></td>
+            <td><%= order_line.product.zone.display_name %></td>
+            <td><%= order_line.product.display_name %></td>
+            <td><%= order_line.product.mount.display_name %></td>
+            <td style="text-align:right;"><%= number_to_currency order_line.sale %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
 <% end %>
+</div>
 <div class="col-md-12">
 	<div class="btn-group">
 		<%= link_to "Edit", edit_admin_customer_path(@customer), class: 'btn btn-primary' %>
 	</div>
 </div>
+<% content_for :foot_js do %>
+$('#admin-customers-order-history').dataTable({
+    "pageLength": 5,
+    "lengthChange": false,
+    "order": [[ 1, 'asc' ]],
+    "columnDefs": [
+    { "orderable": false, "targets": 2 }
+  ]
+});
+<% end %>
