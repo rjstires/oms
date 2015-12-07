@@ -1,11 +1,40 @@
 
 <div class="row">
-  <div class="col-md-7">
+  <% if @duplicate_products.any? %>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="block-flat">
+      <div class="header">
+        <h4>Duplicate Products</h4>
+      </div>
+      <div class="content">
+        <table class="no-border table table-hover">
+          <thead class="no-border">
+            <tr>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Zone</th>
+              <th>Difficulty</th>
+              <th>Mount</th>
+              <th>Loot Option</th>
+              <th>Play Style</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="no-border-y">
+            <%= render partial: 'product', collection: @duplicate_products %>
+          </tbody>
+          <tfoot class="no-border"></tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="col-md-8 col-md-offset-2">
     <div class="block-flat">
       <div class="header">
         <div>
-          <h3>Products</h3>
-          <%= link_to '<i class="fa fa-plus"></i> New'.html_safe, new_admin_product_path, :class => 'btn btn-primary btn-sm pull-right' %>
+          <h3>Products <%= link_to '<i class="fa fa-plus"></i> New'.html_safe, new_admin_product_path, :class => 'btn btn-primary pull-right' %></h3>
         </div>
       </div>
       <div class="content">
@@ -29,13 +58,13 @@
       </div>
     </div>
   </div>
-<% content_for :foot_js do %>
-$().ready(function(){
+  <% content_for :foot_js do %>
+  $().ready(function(){
   $('#admin-products-index').dataTable({
   "columnDefs": [
-    { "orderable": false, "targets": 7 }
+  { "orderable": false, "targets": 7 }
   ],
   "order": [[ 1, 'asc' ], [ 2, 'asc' ], [3, 'asc']]
-  });
+});
 });
 <% end %>

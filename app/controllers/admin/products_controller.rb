@@ -3,14 +3,12 @@ class Admin::ProductsController < AdminController
 
   def search
     @products = Product.all.order(description: :asc)
-
     params[:data].each do |filter|
       key = filter[0]
       value = filter[1].to_sym
 
       eval("@products = @products.joins(:#{key}).merge(#{key.camelize}.by_name('#{value.to_s}'))")
     end
-
   end
 
   def index
@@ -18,6 +16,22 @@ class Admin::ProductsController < AdminController
     .includes(:category, :zone, :difficulty, :mount, :loot_option, :play_style)
     .order('categories.name ASC, zones.name ASC, difficulties.name ASC, mounts.name ASC, loot_options.name ASC, play_styles.name ASC, products.description ASC')
     .all
+
+    @duplicate_products = Product.select(
+      :description,
+      :category_id,
+      :zone_id,
+      :play_style_id,
+      :loot_option_id, :mount_id, :difficulty_id)
+    .group(
+      :description,
+      :category_id,
+      :zone_id,
+      :play_style_id,
+      :loot_option_id,
+      :mount_id,
+      :difficulty_id)
+    .having("count(*) > 1")
   end
 
   def show
@@ -65,11 +79,11 @@ class Admin::ProductsController < AdminController
   end
 
   private
-    def set_product
-      @product = ::Product.find(params[:id])
-    end
+  def set_product
+    @product = ::Product.find(params[:id])
+  end
 
-    def product_params
-      params.require(:product).permit(:description, :category_id, :zone_id, :difficulty_id, :loot_option_id, :mount_id, :play_style_id)
-    end
+  def product_params
+    params.require(:product).permit(:description, :category_id, :zone_id, :difficulty_id, :loot_option_id, :mount_id, :play_style_id)
+  end
 end
