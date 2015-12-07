@@ -1,89 +1,78 @@
 <h3><%= @team.display_name %> Dashboard</h3>
 <div class="row">
 
-<%= render partial: "shared/clean_tile",
-  locals: {
+  <%= render_clean_tile(
     title: 'Scheduled Orders',
     number: @orders_scheduled.count,
     icon: 'calendar-check-o'
-    color: 'concrete'
-  }
-%>
+  )%>
 
-<%= render partial: "shared/clean_tile",
-  locals: {
+  <%= render_clean_tile(
     title: 'Completed Orders',
     number: @orders_completed.count,
     icon: 'calendar-check-o'
-    color: 'concrete'
-  }
-%>
+  )%>
 
-<%= render partial: "shared/clean_tile",
-  locals: {
+  <%= render_clean_tile(
     title: 'Montly Total',
     number: number_to_currency(@monthly_total),
-    icon: 'usd'
-    color: 'concrete'
-  }
-%>
+    icon: 'usd',
+  )%>
 
-<%= render partial: "shared/clean_tile",
-  locals: {
+  <%= render_clean_tile(
     title: 'Lifetime Total',
     number: number_to_currency(@lifetime_total),
     icon: 'usd'
-    color: 'concrete'
-  }
-%>
-
-</div>
-
-<%= render :partial => 'order_lines/table', locals: {order_lines: @orders_scheduled, name: 'Upcoming Orders'} %>
-
-<!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_past_due, name: 'Past Due'} -->
-
-<!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_ready_to_dispatch, name: 'Ready to Dispatch'} -->
-
-<!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_lead, name: 'Leads'} -->
+  )%>
 
 
-<div class="row">
+    </div>
 
-  <div class="col-sm-6 bootcards-list">
-    <div class="panel panel-default">
-      <div class="panel-heading clearfix">
-        <h3 class="panel-title pull-left">Team Details</h3>
-        <%= link_to edit_team_path(@team), class: 'btn btn-primary btn-sm pull-right' do %>
-        <i class="fa fa-pencil"></i>
-        Edit
-        <% end %>
+    <%= render :partial => 'order_lines/table', locals: {order_lines: @orders_scheduled, name: 'Upcoming Orders'} %>
+
+    <!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_past_due, name: 'Past Due'} -->
+
+    <!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_ready_to_dispatch, name: 'Ready to Dispatch'} -->
+
+    <!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_lead, name: 'Leads'} -->
+
+
+    <div class="row">
+
+      <div class="col-sm-6 bootcards-list">
+        <div class="panel panel-default">
+          <div class="panel-heading clearfix">
+            <h3 class="panel-title pull-left">Team Details</h3>
+            <%= link_to edit_team_path(@team), class: 'btn btn-primary btn-sm pull-right' do %>
+            <i class="fa fa-pencil"></i>
+            Edit
+            <% end %>
+          </div>
+          <div class="list-group" id="team_details">
+            <%= render :partial => 'team_details', locals: {:team => @team} %>
+          </div>
+        </div>
       </div>
-      <div class="list-group" id="team_details">
-        <%= render :partial => 'team_details', locals: {:team => @team} %>
+
+      <div class="col-sm-6 bootcards-cards">
+        <div class="panel panel-default">
+          <div class="panel-heading clearfix">
+            <h3 class="panel-title pull-left">Members</h3>
+          </div>
+          <div class="list-group" id="approved_memberships">
+            <%= render partial: 'memberships/membership', collection: @approved_memberships %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 bootcards-cards">
+        <div class="panel panel-default">
+          <div class="panel-heading clearfix">
+            <h3 class="panel-title pull-left">Membership Requests</h3>
+          </div>
+          <div class="list-group" id="pending_memberships">
+            <%= render partial: 'memberships/membership', collection: @pending_memberships %>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="col-sm-6 bootcards-cards">
-    <div class="panel panel-default">
-      <div class="panel-heading clearfix">
-        <h3 class="panel-title pull-left">Members</h3>
-      </div>
-      <div class="list-group" id="approved_memberships">
-        <%= render partial: 'memberships/membership', collection: @approved_memberships %>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-6 bootcards-cards">
-    <div class="panel panel-default">
-      <div class="panel-heading clearfix">
-        <h3 class="panel-title pull-left">Membership Requests</h3>
-      </div>
-      <div class="list-group" id="pending_memberships">
-        <%= render partial: 'memberships/membership', collection: @pending_memberships %>
-      </div>
-    </div>
-  </div>
-</div>
