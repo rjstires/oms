@@ -5,7 +5,10 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events_by_date = @team.events.group_by {|e| e.event_timestamp.beginning_of_day}
+    @events_by_date = @team
+    .events
+    .upcoming_events
+    .group_by {|e| e.event_timestamp.beginning_of_day}
   end
 
   # GET /events/1
