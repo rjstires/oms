@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'landings#index'
   get 'dashboard', :to => 'pages#index'
 
+
   #get 'memberships/index'
 
   devise_for :users, :controllers => { :registrations => "user/registrations" }
@@ -44,7 +45,11 @@ Rails.application.routes.draw do
     resources :payment_types
     resources :play_styles
     resources :primary_stats
-    resources :products
+    resources :products do
+      collection do
+        get 'search'
+      end
+    end
     resources :regions
     resources :team_statuses
     resources :teams

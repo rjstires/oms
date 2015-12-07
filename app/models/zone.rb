@@ -6,7 +6,7 @@ class Zone < ActiveRecord::Base
 	validates_uniqueness_of :name, message: "%{value} already exists."
 
   # Scopes
-  scope :by_name,->(v) { find_by name: v }
+  scope :by_name,->(v) { where name: v }
 
 	def downcase_fields
 		self.name.downcase

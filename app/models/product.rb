@@ -26,9 +26,9 @@ class Product < ActiveRecord::Base
   end
 
   def to_label
-    "#{self.category.display_name} / #{self.difficulty.display_name} / #{self.loot_option.display_name} / #{self.mount.display_name} / #{self.play_style.display_name} / #{self.zone.display_name} / #{self.description}"
+    "#{self.category.display_name} #{self.difficulty.display_name} #{self.zone.display_name} #{self.description} #{self.loot_option.display_name} #{self.mount.display_name} #{self.play_style.display_name}"
   end
-  
+
   def self.select_list
     includes(:category, :zone, :play_style, :loot_option, :difficulty, :mount).all
   end

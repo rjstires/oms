@@ -15,11 +15,13 @@ class Admin::OrderLinesController < AdminController
   end
 
   def new
+    @title = 'Create Order';
     @order_line = ::OrderLine.new
   end
 
   def edit
-end
+    @title = 'Edit Order';
+  end
 
   def create
     @order_line = OrderLine.new(order_line_params)

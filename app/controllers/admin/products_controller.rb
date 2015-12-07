@@ -1,6 +1,18 @@
 class Admin::ProductsController < AdminController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  def search
+    @products = Product.all.order(description: :asc)
+
+    params[:data].each do |filter|
+      key = filter[0]
+      value = filter[1].to_sym
+
+      eval("@products = @products.joins(:#{key}).merge(#{key.camelize}.by_name('#{value.to_s}'))")
+    end
+
+  end
+
   def index
     @products = ::Product
     .includes(:category, :zone, :difficulty, :mount, :loot_option, :play_style)
