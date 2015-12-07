@@ -1,32 +1,40 @@
 <h3><%= @team.display_name %> Dashboard</h3>
 <div class="row">
 
-<%= render partial: "shared/icon_panel",
+<%= render partial: "shared/clean_tile",
   locals: {
     title: 'Scheduled Orders',
     number: @orders_scheduled.count,
-    icon: 'calendar-check-o'}
+    icon: 'calendar-check-o'
+    color: 'concrete'
+  }
 %>
 
-<%= render partial: "shared/icon_panel",
+<%= render partial: "shared/clean_tile",
   locals: {
     title: 'Completed Orders',
     number: @orders_completed.count,
-    icon: 'calendar-check-o'}
+    icon: 'calendar-check-o'
+    color: 'concrete'
+  }
 %>
 
-<%= render partial: "shared/icon_panel",
+<%= render partial: "shared/clean_tile",
   locals: {
     title: 'Montly Total',
     number: number_to_currency(@monthly_total),
-    icon: 'usd'}
+    icon: 'usd'
+    color: 'concrete'
+  }
 %>
 
-<%= render partial: "shared/icon_panel",
+<%= render partial: "shared/clean_tile",
   locals: {
     title: 'Lifetime Total',
     number: number_to_currency(@lifetime_total),
-    icon: 'usd'}
+    icon: 'usd'
+    color: 'concrete'
+  }
 %>
 
 </div>

@@ -1,67 +1,70 @@
 <div class="row">
 
-  <%= render partial: "shared/icon_panel", locals: {
+  <%= render_clean_tile(
     title: 'Scheduled Orders',
     number: @orders_scheduled.count,
     icon: 'calendar',
-    path: admin_scheduled_path
-  } %>
+    path: admin_scheduled_path,
+    )%>
 
-  <%= render partial: "shared/icon_panel", locals: {
+  <%= render_clean_tile(
     title: 'Pending Scheduling',
     number: @orders_pending_scheduling.count,
     icon: 'calendar-times-o',
-    path: admin_pending_scheduling_path
-  } %>
+    path: admin_pending_scheduling_path,
+    )%>
 
-  <%= render partial: "shared/icon_panel", locals: {
+  <%= render_clean_tile(
     title: 'Leads',
     number: @orders_leads.count,
     icon: 'calendar',
-    path: admin_leads_path
-  } %>
+    path: admin_leads_path,
+    )%>
 
-  <%= render partial: "shared/icon_panel", locals: {
-    title: 'Unsettled Funds',
+  <%= render_header_tile(
+    header: 'Unsettled Funds',
     number: number_to_currency(@unsettled_sales_total),
     icon: 'usd',
-  } %>
+    )%>
 
-</div>
-
-<div class="row">
-
-  <div class="col-md-6">
-    <div class="block-flat">
-      <div class="header">
-        <h4>Upcoming Vacancies</h4>
-      </div>
-      <div class="content">
-      <table class="no-border table table-hover">
-          <thead class="no-border">
-            <tr>
-              <th>Date</th>
-              <th>Team</th>
-              <th>Category</th>
-              <th>Difficulty</th>
-              <th>Zone</th>
-            </tr>
-          </thead>
-          <tbody class="no-border-y">
-            <% @upcoming_vacancies.each do | slot | %>
-            <tr data-url="<%= team_events_url(slot.event.team) %>" class="<%= slot.event.team.faction.name %> clickable">
-              <td><%= slot.event.event_timestamp.to_s(:datetime) %></td>
-              <td><%= slot.event.category.display_name %></td>
-              <td><%= slot.event.difficulty.display_name %></td>
-              <td><%= slot.event.zone.display_name %></td>
-              <td><%= slot.title %></td>
-            </tr>
-            <% end %>
-          </tbody>
-          <tfoot class="no-border"></tfoot>
-        </table>
-      </div>
-    </div>
   </div>
 
-</div>
+  <div class="row">
+
+    <div class="col-md-6">
+      <div class="block-flat">
+        <div class="header">
+          <h4>Upcoming Vacancies</h4>
+        </div>
+        <div class="content">
+          <table class="no-border table table-hover">
+            <thead class="no-border">
+              <tr>
+                <th>Date</th>
+                <th>Team</th>
+                <th>Category</th>
+                <th>Difficulty</th>
+                <th>Zone</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody class="no-border-y">
+              <% @upcoming_vacancies.each do | slot | %>
+              <tr data-url="<%= team_events_url(slot.event.team) %>"
+                class="<%= slot.event.team.faction.name %> clickable">
+                <td><%= slot.event.event_timestamp.to_s(:datetime) %></td>
+                <td><%= slot.event.team.display_name %></td>
+                <td><%= slot.event.category.display_name %></td>
+                <td><%= slot.event.difficulty.display_name %></td>
+                <td><%= slot.event.zone.display_name %></td>
+                <td><%= slot.title %></td>
+              </tr>
+              <% end %>
+            </tbody>
+            <tfoot class="no-border"></tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
