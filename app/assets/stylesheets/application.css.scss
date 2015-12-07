@@ -21,9 +21,18 @@
 *= require_tree .
 */
 
+.vertical-align {
+  display: flex;
+  align-items: center;
+}
 
 .select2-container--default .select2-selection--single {
- border-radius: 0px;
+   border-radius: 0px;
+   border: 1px solid #ccc;
+}
+
+.select2-container .select2-selection--single {
+    height: 34px;
 }
 
 table tbody tr.horde td {
