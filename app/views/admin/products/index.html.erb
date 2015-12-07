@@ -1,26 +1,41 @@
 
 <div class="row">
-  <div class="col-md-6 col-md-offset-4">
-    <h2>Products</h2>
+  <div class="col-md-7">
+    <div class="block-flat">
+      <div class="header">
+        <div>
+          <h3>Products</h3>
+          <%= link_to '<i class="fa fa-plus"></i> New'.html_safe, new_admin_product_path, :class => 'btn btn-primary btn-sm pull-right' %>
+        </div>
+      </div>
+      <div class="content">
+        <table class="no-border" id="admin-products-index">
+          <thead class="no-border">
+            <tr>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Zone</th>
+              <th>Difficulty</th>
+              <th>Mount</th>
+              <th>Loot Option</th>
+              <th>Play Style</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody class="no-border-y">
+            <%= render partial: 'product', collection: @products %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-6 col-md-offset-4">
-    <%= link_to '<i class="fa fa-plus"></i> New'.html_safe, new_admin_product_path, :class => 'btn btn-primary btn-sm pull-right' %>    
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6 col-md-offset-4">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render partial: 'product', collection: @products %>
-      </tbody>
-    </table>
-  </div>
-</div>
+<% content_for :foot_js do %>
+$().ready(function(){
+  $('#admin-products-index').dataTable({
+  "columnDefs": [
+    { "orderable": false, "targets": 7 }
+  ],
+  "order": [[ 1, 'asc' ], [ 2, 'asc' ], [3, 'asc']]
+  });
+});
+<% end %>

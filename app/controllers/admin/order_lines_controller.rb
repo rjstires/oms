@@ -2,7 +2,6 @@ class Admin::OrderLinesController < AdminController
   before_action :set_order_line, only: [:show, :edit, :update, :destroy, :complete, :send_confirmation]
 
   def index
-
     @completed_order_lines = ::OrderLine
     .index_join
     .where_completed

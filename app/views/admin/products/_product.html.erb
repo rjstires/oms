@@ -6,7 +6,16 @@
         <td><%= product.mount.display_name %></td>
         <td><%= product.loot_option.display_name %></td>
         <td><%= product.play_style.display_name %></td>
-        <td><%= link_to 'Edit', edit_admin_product_path(product) %></td>
-        <td><%= link_to 'Destroy', admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr
-      
+        <td>
+          <div class="dropdown">
+            <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default btn-xs">
+              <i class="fa fa-cogs"></i>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dLabel">
+          <li><%= link_to '<i class="fa fa-pencil"></i> Edit'.html_safe, '#' %></li>
+              <li><%= link_to '<i class="fa fa-trash"></i> Destroy'.html_safe, '#', method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          </ul>
+      </div>
+  </td>
+  </tr
+
