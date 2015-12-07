@@ -22,6 +22,8 @@
 //= require flat-dream/jquery.cookie.js
 //= require flat-dream/core.js
 //= require flat-dream/dashboard.js
+//= require datatables.net/js/jquery.dataTables
+//= require datatables.net-bs/js/dataTables.bootstrap
 //= require_tree .
 
 $(document).on("page:load ready", function(){
@@ -33,6 +35,7 @@ $(document).on("page:load ready", function(){
 
     });
 
+    $('#admin-customers-table').dataTable();
 });
 
 
