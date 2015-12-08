@@ -5,6 +5,7 @@
     number: @orders_scheduled.count,
     icon: 'calendar',
     path: admin_scheduled_path,
+    path_title: number_to_currency(@orders_scheduled.sum(:sale).to_i)
     )%>
 
   <%= render_clean_tile(
@@ -12,6 +13,7 @@
     number: @orders_pending_scheduling.count,
     icon: 'calendar-times-o',
     path: admin_pending_scheduling_path,
+    path_title: number_to_currency(@orders_pending_scheduling.sum(:sale).to_i)
     )%>
 
   <%= render_clean_tile(
@@ -19,6 +21,7 @@
     number: @orders_leads.count,
     icon: 'calendar',
     path: admin_leads_path,
+    path_title: number_to_currency(@orders_leads.sum(:sale).to_i)
     )%>
 
   <%= render_header_tile(
