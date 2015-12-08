@@ -15,7 +15,6 @@ class EventSlot < ActiveRecord::Base
     .where('events.event_timestamp >= ?', Time.now)
     .where(character: nil)
     .order('events.event_timestamp ASC')
-    .limit(5)
   }
 
   def character_display
