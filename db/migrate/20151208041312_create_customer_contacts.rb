@@ -15,7 +15,7 @@ class CreateCustomerContacts < ActiveRecord::Migration
     ## Copy existing Skype and Battle tag addresses to new table.
     Customer.all.each do |c|
 
-      unless c.battle_tag.nil?
+      unless c.battle_tag.blank?
         puts "Converting #{c.battle_tag}"
         @battle_tag = c.customer_contacts.new(
           ctype: CustomerContact.ctypes["battle_tag"],
@@ -30,7 +30,7 @@ class CreateCustomerContacts < ActiveRecord::Migration
 
       end
 
-      unless c.skype.nil?
+      unless c.skype.blank?
         puts "Converting #{c.skype}"
         @skype = c.customer_contacts.new(
           ctype: CustomerContact.ctypes["skype"], 
