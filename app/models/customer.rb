@@ -1,19 +1,12 @@
 class Customer < ActiveRecord::Base
   has_many :order_lines
   has_many :characters, through: :order_lines
-
+  has_many :customer_contacts, dependent: :destroy
+  
   validates_presence_of  :email, :battle_tag, message: "of customer must not be blank."
   validates_uniqueness_of :email, message: "%{value} already exists."
 
   require 'json'
-
-
-  # Customer
-  # .joins(:order_lines)
-  # .select('customers.*, SUM(order_lines.sale) AS total')
-  # .order('total DESC')
-  # .limit(5)
-  # .group('customers.id')
 
   def to_label
     self.email

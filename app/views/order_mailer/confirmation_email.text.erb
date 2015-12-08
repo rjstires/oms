@@ -15,8 +15,9 @@ Mount: <%= @order_line.product.mount.display_name %>
 
 Client Details
 Email: <%= @order_line.customer.email %>
-<%= "Battle Tag: #{ @order_line.customer.battle_tag }" unless @order_line.customer.battle_tag == "" %>
-<%= "Skype: #{ @order_line.customer.skype }" unless @order_line.customer.skype == "" %>
+<% @order_line.customer.customer_contacts.each do |contact| %>
+<%= contact.ctype.humanize.titleize %>: <%= contact.value %>
+<% end %>
 Character: <%= @order_line.character.display_name %>
 
 Guild Details

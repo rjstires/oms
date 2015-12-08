@@ -1,7 +1,5 @@
 <tr>
   <td><%= link_to customer.email, admin_customer_path(customer) %></td>
-  <td><%= customer.try(:battle_tag) %></td>
-  <td><%= skype_link(customer.skype) if customer.skype.present? %></td>
   <td><%= customer.order_lines.count %></td>
   <td><%= number_to_currency customer.order_lines.sum(:sale) %></td>
 </tr>

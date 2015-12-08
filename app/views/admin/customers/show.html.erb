@@ -6,21 +6,20 @@
 			<table class="no-border">
 				<tbody class="no-border-x">
 					<tr>
-						<th>Email</th>
-						<td colspan="2"><%= mail_to @customer.email %></td>
+						<th>Email (Primary)</th>
+						<td><%= @customer.email %></td>
 					</tr>
-					<% if @customer.battle_tag.present? %>
+					<% @customer.customer_contacts.each do |contact| %>
 					<tr>
-						<th>Battle Tag</th>
-						<td><%= @customer.battle_tag %></td>
+						<th><%= contact.display_type %></th>
+						<td><%= contact.value %></td>
 					</tr>
 					<% end %>
-					<% if @customer.skype.present? %>
 					<tr>
-						<th>Skype</th>
-						<td><%= skype_link(@customer.skype) %></td>
+						<td colspan="2">
+							<%= link_to 'New', new_admin_customer_contact_path(@customer) %>
+						</td>
 					</tr>
-					<% end %>
 				</tbody>
 			</table>
 		</div>
@@ -48,7 +47,6 @@
 			</table>
 		</div>
 	</div>
-
 	<div class="col-md-4">
 		<div class="block-flat">
 			<h3>Team History</h3>
@@ -72,7 +70,8 @@
 			</table>
 		</div>
 	</div>
-
+</div>
+<div class="row">
   <div class="col-md-12">
     <div class="block-flat">
       <h3>Order History</h3>
@@ -113,7 +112,6 @@
   </div>
 
 <% end %>
-</div>
 <div class="col-md-12">
 	<div class="btn-group">
 		<%= link_to "Edit", edit_admin_customer_path(@customer), class: 'btn btn-primary' %>

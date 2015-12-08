@@ -36,10 +36,16 @@
       </div>
       <div class="panel-body">
         <p class="email"><span style="font-weight:bold;">Email:</span> <%= mail_to @order_line.customer.email %></p>
-        <p class="battle-tag"><span style="font-weight:bold;">Battle Tag:</span> <%= @order_line.customer.battle_tag %></p>
-        <% if @order_line.customer.skype.present? %>
-        <p class="skype"><span style="font-weight:bold;">Skype:</span> <%= @order_line.customer.skype %></p>
+        
+        <% @order_line.customer.customer_contacts.each do |contact| %>
+        <p class="<%= contact.ctype %>">
+          <span style="font-weight:bold;">
+            <%= contact.ctype.humanize.titleize %>:
+          </span>
+          <%= contact.value %>
+        </p>
         <% end %>
+
         <p class="character"><span style="font-weight:bold;">Character:</span> <%= @order_line.character.display_name %></p>
       </div>
     </div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :customer_contacts
   root 'landings#index'
   get 'dashboard', :to => 'pages#index'
 
@@ -31,7 +32,9 @@ Rails.application.routes.draw do
     resources :categories
     resources :classifications
     resources :characters
-    resources :customers
+    resources :customers do
+      resources :customer_contacts, as: 'contacts', path: 'contacts', :only => [:new, :create, :edit, :update, :destroy]
+    end
     resources :difficulties
     resources :events do
       resources :event_slots

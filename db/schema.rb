@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203200246) do
+ActiveRecord::Schema.define(version: 20151208041312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,10 +49,18 @@ ActiveRecord::Schema.define(version: 20151203200246) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "customer_contacts", force: :cascade do |t|
+    t.integer  "customer_id", null: false
+    t.string   "value",       null: false
+    t.integer  "ctype",       null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "customer_contacts", ["customer_id"], name: "index_customer_contacts_on_customer_id", using: :btree
+
   create_table "customers", force: :cascade do |t|
     t.string   "email",      null: false
-    t.string   "battle_tag"
-    t.string   "skype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -261,6 +269,7 @@ ActiveRecord::Schema.define(version: 20151203200246) do
   add_foreign_key "characters", "classifications"
   add_foreign_key "characters", "primary_stats"
   add_foreign_key "characters", "tier_tokens"
+  add_foreign_key "customer_contacts", "customers"
   add_foreign_key "event_slots", "characters"
   add_foreign_key "event_slots", "events"
   add_foreign_key "events", "categories"

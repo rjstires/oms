@@ -294,7 +294,7 @@ Character.find_or_create_by!(spec: 'protection',
   customer_username = Faker::Internet.user_name(customer_name, %w(. _ -))
   customer_email = "#{customer_username}@example.com"
   customer_battletag = "#{customer_username}##{rand(9999)}"
-  customer_skype = "skype:#{customer_username}"
+  customer_skype = "#{customer_username}"
 
   customer = Customer.create!(
     email: customer_email,
@@ -357,7 +357,6 @@ end
 end
 
 
-
 def generate_sale_figures()
   hsh = {}
   hsh[:sale] = rand(1999)
@@ -367,7 +366,6 @@ def generate_sale_figures()
 
   hsh
 end
-
 
 
 # # lead
