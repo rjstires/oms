@@ -2,7 +2,10 @@ class Admin::ProductsController < AdminController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def search
-    @products = Product.all.order(description: :asc)
+    @products = Product
+      .includes(:category, :zone, :difficulty, :mount, :loot_option, :play_style)
+      .order(description: :asc)
+
     params[:data].each do |filter|
       key = filter[0]
       value = filter[1].to_sym
