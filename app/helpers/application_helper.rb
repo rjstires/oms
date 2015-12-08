@@ -39,14 +39,16 @@ module ApplicationHelper
       number: options.fetch(:number),
       icon: options.fetch(:icon),
       path: options.fetch(:path, nil),
+      path_title: options.fetch(:path_title, nil),
       color: options.fetch(:color, "concrete")
     }
   end
 
-  def render_clean_tile_details(path=nil)
+  def render_clean_tile_details(path=nil, path_title=nil)
     unless path.nil?
+      path_title ||= 'details'
       link_to path, class: 'details' do
-        "&nbsp;<span>DETAILS <i class=\"fa fa-arrow-circle-right pull-right\"></i></span>".html_safe
+        "&nbsp;<span>#{path_title} <i class=\"fa fa-arrow-circle-right pull-right\"></i></span>".html_safe
       end
     end
   end
