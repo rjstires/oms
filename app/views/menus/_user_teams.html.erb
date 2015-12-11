@@ -8,8 +8,9 @@
     <%= link_to team.display_name, "#" %>
     <%= content_tag :ul, class: 'sub-menu' do %>
 
-    <%= nav_link('Dashboard', team, {icon: 'dashboard'}) %>
-    <%= nav_link('Sales', team_sales_path(team), {icon: 'diamond'}) %>
+    <%= nav_link('Dashboard', dashboard_team_path(team), {icon: 'dashboard'}) %>
+    <%= nav_link('Details', team, {icon: 'eye'}) %>
+    <%= nav_link('Completed Orders', completed_orders_team_path(team), {icon: 'check'}) %>
     <%= nav_link('Schedule', team_events_path(team), {icon: 'calendar'}) %>
     <% end %>
     <% end %>

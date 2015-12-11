@@ -12,9 +12,10 @@
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dLabel">
-        <li><%= link_to '<i class="fa fa-dashboard"></i> Team Dashboard'.html_safe, team %></li>
-        <li><%= link_to '<i class="fa fa-calendar-o"></i> Team Events'.html_safe, team_events_path(team) %></li>
-        <li><%= link_to '<i class="fa fa-eye"></i> View'.html_safe, admin_team_path(team) %></li>
+        <li><%= link_to '<i class="fa fa-dashboard"></i> Dashboard'.html_safe, dashboard_team_path(team) %></li>
+        <li><%= link_to '<i class="fa fa-eye"></i> Details'.html_safe, team %></li>
+        <li><%= link_to '<i class="fa fa-check"></i> Completed Orders'.html_safe, completed_orders_team_path(team) %></li>
+        <li><%= link_to '<i class="fa fa-calendar-o"></i> Schedule'.html_safe, team_events_path(team) %></li>
         <li><%= link_to '<i class="fa fa-pencil"></i> Edit'.html_safe, edit_admin_team_path(team) %></li>
         <li><%= link_to '<i class="fa fa-trash"></i> Destroy'.html_safe, admin_team_path(team), method: :delete, data: { confirm: 'Are you sure?' } %></li>
       </ul>

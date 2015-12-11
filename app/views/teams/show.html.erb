@@ -1,78 +1,54 @@
-<h3><%= @team.display_name %> Dashboard</h3>
+
 <div class="row">
 
-  <%= render_clean_tile(
-    title: 'Scheduled Orders',
-    number: @orders_scheduled.count,
-    icon: 'calendar-check-o'
-  )%>
+  <div class="col-md-6">
+    <div class="block-flat">
+      <div class="header"><h3><%= @team.display_name %></h3></div>
+      <div class="content">
+        <div class="row">
+          <div class="col-md-2 col-md-offset-1"><span style="font-weight:bold;">Alias</span></div>
+          <div class="col-md-8"><%= @team.display_alias %></div>
 
-  <%= render_clean_tile(
-    title: 'Completed Orders',
-    number: @orders_completed.count,
-    icon: 'calendar-check-o'
-  )%>
+          <div class="col-md-2 col-md-offset-1"><span style="font-weight:bold;">Owner</span></div>
+          <div class="col-md-8"><%= link_to @team.owner.email, @team.owner %></div>
 
-  <%= render_clean_tile(
-    title: 'Montly Total',
-    number: number_to_currency(@monthly_total),
-    icon: 'usd',
-  )%>
+          <div class="col-md-2 col-md-offset-1"><span style="font-weight:bold;">Faction</span></div>
+          <div class="col-md-8"><%= @team.faction.display_name %></div>
 
-  <%= render_clean_tile(
-    title: 'Lifetime Total',
-    number: number_to_currency(@lifetime_total),
-    icon: 'usd'
-  )%>
+          <div class="col-md-2 col-md-offset-1"><span style="font-weight:bold;">Realm</span></div>
+          <div class="col-md-8"><%= @team.display_realm %></div>
 
-
-    </div>
-
-    <%= render :partial => 'order_lines/table', locals: {order_lines: @orders_scheduled, name: 'Upcoming Orders'} %>
-
-    <!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_past_due, name: 'Past Due'} -->
-
-    <!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_ready_to_dispatch, name: 'Ready to Dispatch'} -->
-
-    <!-- render :partial => 'order_lines_table', locals: {order_lines: @orders_lead, name: 'Leads'} -->
-
-
-    <div class="row">
-
-      <div class="col-sm-6 bootcards-list">
-        <div class="panel panel-default">
-          <div class="panel-heading clearfix">
-            <h3 class="panel-title pull-left">Team Details</h3>
-            <%= link_to edit_team_path(@team), class: 'btn btn-primary btn-sm pull-right' do %>
+          <div class="col-md-2 col-md-offset-1"><span style="font-weight:bold;">Payment</span></div>
+          <div class="col-md-8"><%= @team.payment_type.display_name %> to <%= @team.payment_address %></div>
+        </div>
+        <div class="row">
+          <div class="col-md-offset-3 col-md-8">
+            <%= link_to edit_team_path(@team), class: 'btn btn-default' do %>
             <i class="fa fa-pencil"></i>
             Edit
             <% end %>
-          </div>
-          <div class="list-group" id="team_details">
-            <%= render :partial => 'team_details', locals: {:team => @team} %>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6 bootcards-cards">
-        <div class="panel panel-default">
-          <div class="panel-heading clearfix">
-            <h3 class="panel-title pull-left">Members</h3>
-          </div>
-          <div class="list-group" id="approved_memberships">
-            <%= render partial: 'memberships/membership', collection: @approved_memberships %>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6 bootcards-cards">
-        <div class="panel panel-default">
-          <div class="panel-heading clearfix">
-            <h3 class="panel-title pull-left">Membership Requests</h3>
-          </div>
-          <div class="list-group" id="pending_memberships">
-            <%= render partial: 'memberships/membership', collection: @pending_memberships %>
+            <%= link_to @team, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' do %>
+            <i class="fa fa-trash"></i>
+            Delete
+            <% end %>
           </div>
         </div>
       </div>
     </div>
+  </div>
+
+
+  <div class="col-md-6">
+    <div class="block-flat">
+      <div class="header"><h3>Members</h3></div>
+      <div class="content" id="memberships">
+        <%= render partial: @memberships %>
+      </div>
+    </div>
+  </div>
+
+<!--
+  Owner
+  Approved
+  Pending
+ -->

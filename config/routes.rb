@@ -3,23 +3,27 @@ Rails.application.routes.draw do
   root 'landings#index'
   get 'dashboard', :to => 'pages#index'
 
-
-  #get 'memberships/index'
-
   devise_for :users, :controllers => { :registrations => "user/registrations" }
   resources :users
 
-  resources :memberships do
-    patch 'approve', to: 'memberships#approve'
-    patch 'remove', to: 'memberships#remove'
-  end
+  resources :teams, :except => [:index] do
 
-  resources :teams do
+    member do
+      get :dashboard
+      get :completed_orders
+    end
+
     resources :events do
       resources :event_slots
     end
 
-    resources :order_lines, :path => :sales, :as => 'sales', :only => [:index]
+    resources :memberships do
+      member do
+        post :approve
+        post :decline
+        post :promote
+      end
+    end
   end
 
   namespace :admin do
