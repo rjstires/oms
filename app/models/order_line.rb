@@ -30,7 +30,11 @@ class OrderLine < ActiveRecord::Base
   }
 
   scope :include_team ,-> { includes(:team) }
-  scope :include_customer ,-> { includes(:customer) }
+  scope :include_customer ,-> {
+    includes(:customer => [
+      :customer_contacts
+      ])
+  }
   scope :include_region ,-> { includes(:region) }
   scope :include_faction ,-> { includes(:faction) }
 
