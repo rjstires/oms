@@ -5,12 +5,18 @@ class EventSlotsController < ApplicationController
 
   # GET /event_slots/new
   def new
+    @page_title = 'Create Slot';
     @event_slot = @event.event_slots.new
+    render 'load_modal'
+  end
 
+  def show
   end
 
   # GET /event_slots/1/edit
   def edit
+    @page_title = 'Edit Slot';
+    render 'load_modal'
   end
 
   # POST /event_slots
@@ -20,11 +26,9 @@ class EventSlotsController < ApplicationController
 
     respond_to do |format|
       if @event_slot.save
-        format.html { redirect_to team_events_url(@team), notice: 'Slot was successfully created.' }
-        format.json { render :show, status: :created, location: @event_slot }
+        format.js { render :refresh, status: :created, location: [@team, @event, @event_slot] }
       else
-        format.html { render :new }
-        format.json { render json: @event_slot.errors, status: :unprocessable_entity }
+        format.js { render json: @event_slot.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -34,11 +38,9 @@ class EventSlotsController < ApplicationController
   def update
     respond_to do |format|
       if @event_slot.update(event_slot_params)
-        format.html { redirect_to team_events_url(@team), notice: 'Slot was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event_slot }
+        format.js { render :refresh, status: :ok, location: [@team, @event, @event_slot] }
       else
-        format.html { render :edit }
-        format.json { render json: @event_slot.errors, status: :unprocessable_entity }
+        format.js { render json: @event_slot.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,8 +50,7 @@ class EventSlotsController < ApplicationController
   def destroy
     @event_slot.destroy
     respond_to do |format|
-      format.html { redirect_to team_events_url(@team), notice: 'Slot was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js { render :destroy }
     end
   end
 
@@ -58,7 +59,7 @@ class EventSlotsController < ApplicationController
     def set_team
       @team = Team.find(params[:team_id])
     end
-    
+
     def set_event
       @event = Event.find(params[:event_id])
     end
@@ -71,4 +72,4 @@ class EventSlotsController < ApplicationController
     def event_slot_params
       params.require(:event_slot).permit(:event_id, :title, :description, :character_id)
     end
-end
+  end

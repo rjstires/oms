@@ -1,0 +1,3 @@
+$('#modal-holder').modal('hide');
+$('#event_container').html('<%= j (render partial: @event) %>');
+$('#calendar').fullCalendar( 'refetchEvents' )

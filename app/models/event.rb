@@ -15,4 +15,8 @@ class Event < ActiveRecord::Base
 
   scope :upcoming_events, -> { where('events.event_timestamp >= ?', Time.now) }
 
+  def calendar_title
+    "#{self.difficulty.display_name}: #{self.zone.display_name}"
+  end
+
 end

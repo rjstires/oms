@@ -1,12 +1,50 @@
-<h3><%= @team.display_name %> Schedule</h3>
-<% @events_by_date.each do |date, events| %>
-<div class="panel panel-primary">
-  <div class="panel-heading"><%= date.strftime("%A, %B %e %Y") %></div>
-  <div class="panel-body">
-    <%= render partial: 'events', collection: events  %>
-  </div>
-  <!-- <div class="panel-footer">footer</div> -->
+<div class="row">
+	<div class="col-md-12">
+		<div class="block-flat">
+			<div class="heading"><h3><%= @team.display_name %> Schedule</h3></div>
+			<div class="content">
+				<div class="row">
+					<div class="col-md-12">
+						<p>Welcome to the new Scheduler. This software was built to help teams communicate their sales desires with Boosting Edge. This system was designed around the sales of raid content, but other content can be scheduled as well. For the sake of this explanation we assume your name is Jarvis and you are the sales manager for Jarvis' Deadbeats, a heroic raiding team. You came here to schedule a heroic Hellfire Citadel on Jan 1st 2016 at 20:00 EST. You have sold one spot on your own to a frost Mage, and you have two vacancies to sell.</p>
+
+						<h5> Events</h5>
+						<p>An event is as simple as a date, start time, category, zone, and difficulty for the event. For our example, we create an Event for 2016-01-01 20:00, selecting the raiding category, heroic difficulty, and hellfire citadel zone.</p>
+
+						<h5> Event Slots</h5>
+						<p>An event slot is a potential or existing carry. For our example we've sold a full clear to a frost Mage. We will add a slot; titling it "Full Clear", leaving the description blank (we have no special instructions), and selecting Mage (Frost) in the drop-down. Now for each of our vacancies, we will add a new slot; titling it "full clear" (or otherwise), setting any notes we may have, and leaving the Character /
+						Vacancy drop-down on Vacant.</p>
+
+						<p>	That's it. We're now immediatly aware that you have two spots available, and you have a frost Mage attending. The attending characters are crucial. Knowing who is already attending prevents us from over scheduling, and scheduling characters of conflictig gear types.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<%= link_to 'New Event', new_team_event_path(@team), class: 'btn btn-primary', remote: true %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
+<div class="row">
+	<div class="col-md-7" id="calendar_container">
+		<div class="block-flat">
+			<div class="content">
+				<div id='calendar'></div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-5">
+		<div class="block-flat">
+			<h3>Event</h3>
+			<div class="content" id="event_container">
+				<%= render partial: 'default_event' %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% content_for :foot_js do %>
+<%= render partial: 'events/script.js' %>
 <% end %>
 
-<%= link_to 'New Event', new_team_event_path %>
