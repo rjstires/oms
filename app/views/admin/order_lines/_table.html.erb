@@ -20,7 +20,7 @@
           <th>Sale</th>
         </thead>
         <tbody class="no-border-y">
-          <%= render order_lines %>
+          <%= render partial: 'admin/order_lines/order_line', collection: order_lines %>
         </tbody>
       </table>
     </div>
