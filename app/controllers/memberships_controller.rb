@@ -1,10 +1,10 @@
 class MembershipsController < ApplicationController
   load_and_authorize_resource
   before_action :set_membership, except: :index
-  before_action :set_team, only: :index
+  before_action :set_team, only: [:index]
 
   def index
-    @memberships = @team.memberships.all.order(owner: :desc, confirmed: :desc)
+    @memberships = @team.memberships.includes(:user).all.order(owner: :desc, confirmed: :desc)
   end
 
   def approve

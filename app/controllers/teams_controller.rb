@@ -20,7 +20,7 @@ class TeamsController < ApplicationController
     end
 
     def show
-      @memberships = @team.memberships.all.order(owner: :desc, confirmed: :desc)
+      @memberships = @team.memberships.includes(:user).all.order(owner: :desc, confirmed: :desc)
     end
 
     def new
