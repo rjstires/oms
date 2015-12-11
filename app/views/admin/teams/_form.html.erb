@@ -1,13 +1,79 @@
-<%= simple_form_for([:admin, @team]) do |f| %>
-<div class="form-inputs">
-	<%= f.input :name %>
-	<%= f.input :name_alias %>
-	<%= f.association :region %>
-	<%= f.input :realm %>
-	<%= f.association :faction %>
-	<%= f.input :payment_address %>
-	<%= f.association :payment_type %>
-	<%= f.association :team_status %>
-	<%= f.button :submit, 'Save' %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="block-flat">
+      <div class="header"><h3><%= @page_title || 'Team' %></h3></div>
+      <div class="content">
+
+      <%= form_for([:admin, @team], html: {class:'form-horizontal', role: 'form'}) do |f| %>
+        <% if @team.errors.any? %>
+        <ul>
+          <% @team.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+        <% end %>
+        <div class="form-group">
+          <%= f.label :name, 'Name', class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
+            <%= f.text_field :name, placeholder: 'Team name', class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :name_alias, 'Alias', class: 'col-sm-4 control-label required' %>
+          <div class="col-sm-8">
+            <%= f.text_field :name_alias, placeholder: 'An alias for your team', class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :region_id, 'Region', class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
+            <%= f.collection_select :region_id, Region.all, :id, :display_name, {prompt: 'Select a region'}, {class: 'form-control select2'} %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :faction_id, 'Faction', class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
+            <%= f.collection_select :faction_id, Faction.all, :id, :display_name, {prompt: 'Select a faction'}, {class: 'form-control select2'} %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :realm, 'Realm', class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
+            <%= f.text_field :realm, placeholder: 'Realm', class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :payment_type_id, 'Payment Type', class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
+            <%= f.collection_select :payment_type_id, PaymentType.all, :id, :display_name, {prompt: 'Select a payment type'}, {class: 'form-control select2'} %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :payment_address, 'Payment Address', class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
+            <%= f.text_field :payment_address, placeholder: 'Payment address', class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :team_status_id, 'Payment Type', class: 'col-sm-4 control-label' %>
+          <div class="col-sm-8">
+            <%= f.collection_select :team_status_id, TeamStatus.all, :id, :display_name, {prompt: 'Select a team status'}, {class: 'form-control select2'} %>
+          </div>
+        </div>
+
+        <div class="col-sm-offset-2">
+          <%= f.button 'Create Team', class: 'btn btn-primary' %>
+        </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-<% end %>
