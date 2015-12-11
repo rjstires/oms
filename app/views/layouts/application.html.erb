@@ -16,21 +16,28 @@
     <script src="../../assets/js/html5shiv.js"></script>
     <script src="../../assets/js/respond.min.js"></script>
     <![endif]-->
-</head>
-<body class="animated">
-  <div id="cl-wrapper">
-    <%= render "menus/sidebar" %>
-    <div class="container-fluid" id="pcont">
-      <%= render "menus/navbar" %>
-      <div class="cl-mcont">
-        <%= yield %>
+  </head>
+  <body class="animated">
+    <div id="cl-wrapper">
+      <%= render "menus/sidebar" %>
+      <div class="container-fluid" id="pcont">
+        <%= render "menus/navbar" %>
+        <div class="cl-mcont">
+          <div id="error-holder"></div>
+          <%= yield %>
+        </div>
       </div>
     </div>
-  </div>
-  <div id="modal-holder"></div>
-  <%= javascript_include_tag "application" %>
-  <script type="text/javascript">
-    <%= content_for :foot_js %>
-  </script>
-</body>
-</html>
+    <div class="modal fade colored-header" id="modal-holder" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+      <div class="modal-content" id="modal-contents">
+
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <%= javascript_include_tag "application" %>
+    <script type="text/javascript">
+      <%= content_for :foot_js %>
+    </script>
+  </body>
+  </html>

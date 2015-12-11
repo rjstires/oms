@@ -1,0 +1,16 @@
+$().ready(function(){
+	$('#calendar').fullCalendar({
+		header: {
+			left: 'title',
+			center: '',
+			right: 'today, prev,next',
+		},
+		events: '<%= team_events_url(@team) %>',
+		eventClick: function(calEvent, jsEvent, view) {
+			$.ajax({url: calEvent.eventPath })
+			.success(function(results){
+				console.log(results);
+			});
+		}
+	});
+});

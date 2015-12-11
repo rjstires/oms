@@ -1,6 +1,5 @@
-<div class="row events-slot <%= event_slot_row_class(event_slot) %>">
-	<div class="col-md-3 col-md-offset-1">
-		<%= render partial: 'event_slots/dropdown_options', locals: {event_slot: event_slot} %> <%= event_slot.title %>
-	</div>
-	<div class="col-md-3"><%= event_slot.character_display %></div>
-</div>
+<tr>
+	<td><%= render partial: 'event_slots/dropdown_options', locals: {event_slot: event_slot} %></td>
+	<td><%= event_slot.title %></td>
+	<td><%= event_slot.character_display %></td>
+</tr>

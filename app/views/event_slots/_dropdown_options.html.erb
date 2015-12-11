@@ -3,7 +3,7 @@
           <i class="fa fa-cogs"></i>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dLabel">
-          <li><%= link_to '<i class="fa fa-pencil"></i> Edit'.html_safe, edit_team_event_event_slot_path(event_slot.event.team, event_slot.event, event_slot) %></li>
-          <li><%= link_to '<i class="fa fa-trash"></i> Destroy'.html_safe, team_event_event_slot_path(event_slot.event.team, event_slot.event, event_slot), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <li><%= link_to '<i class="fa fa-pencil"></i> Edit'.html_safe, edit_team_event_event_slot_path(event_slot.event.team, event_slot.event, event_slot), remote: true %></li>
+          <li><%= link_to '<i class="fa fa-trash"></i> Destroy'.html_safe, team_event_event_slot_path(event_slot.event.team, event_slot.event, event_slot), remote: true, method: :delete, data: { confirm: 'Are you sure?' } %></li>
         </ul>
       </div>

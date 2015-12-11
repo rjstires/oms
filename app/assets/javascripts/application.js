@@ -24,6 +24,7 @@
 //= require flat-dream/dashboard.js
 //= require datatables.net/js/jquery.dataTables
 //= require datatables.net-bs/js/dataTables.bootstrap
+//= require fullcalendar
 //= require_tree .
 
 $(document).on("page:load ready", function(){

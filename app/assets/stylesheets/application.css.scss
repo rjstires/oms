@@ -17,6 +17,7 @@
 *= require flat-dream/style
 *= require eonasdan-bootstrap-datetimepicker
 *= require datatables.net-bs/css/dataTables.bootstrap
+*= require fullcalendar
 *= require_self
 *= require_tree .
 */
@@ -33,6 +34,11 @@
 
 .select2-container .select2-selection--single {
     height: 34px;
+}
+
+.select2-container {
+width: 100% !important;
+padding: 0;
 }
 
 table tbody tr.horde td {
@@ -95,4 +101,8 @@ table tbody tr.alliance td {
 .input-group {
     margin-bottom: 15px;
     margin-top: 10px;
+}
+
+.fc-day-grid-event .fc-content {
+    cursor: pointer;
 }

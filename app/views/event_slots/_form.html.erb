@@ -1,13 +1,29 @@
-<%= simple_form_for([@team, @event, @event_slot]) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :description %>
-    <%= f.association :character, input_html: { class: 'select2' } %>
+<div class="modal-header">
+  <h3><%= @page_title || 'Event Slot' %></h3>
+  <button type="button" class="close md-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+</div>
+<%= form_for([@team, @event, @event_slot], remote: true, html: {class:'form-horizontal', role: 'form'}) do |f| %>
+<div class="modal-body form">
+  <div class="form-group">
+    <%= f.label :title, 'Title', class: 'col-sm-3 control-label' %>
+    <div class="col-sm-9">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <%= f.label :description, 'Description', class: 'col-sm-3 control-label' %>
+    <div class="col-sm-9">
+      <%= f.text_field :description, class: 'form-control' %>
+    </div>
   </div>
+  <div class="form-group">
+    <%= f.label :character_id, 'Character / Vacancy', class: 'col-sm-3 control-label' %>
+    <div class="col-sm-9">
+      <%= f.collection_select :character_id, Character.all, :id, :display_name, {prompt: 'Vacant'}, {class: 'form-control select2'} %>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <%= f.button 'Create Slot', class: 'btn btn-primary' %>
+</div>
 <% end %>

@@ -1,0 +1,28 @@
+<p><%= @event.event_timestamp.to_s(:datetime) %></p>
+<h3><%= @event.calendar_title %></h3>
+<table class="no-border">
+	<% if @event.event_slots.any? %>
+	<thead class="no-border">
+		<tr>
+			<th></th>
+			<th>Title</th>
+			<th>Attending</th>
+		</tr>
+	</thead>
+	<tbody class="no-border-y">
+		<tr>
+			<%= render @event.event_slots %>
+		</tr>
+	</tbody>
+	<% else %>
+	<tr>
+		<td colspan="3" class="text-center">There are no slots for this event.</td>
+	</tr>
+	<% end %>
+</table>
+<div class="footer text-right">
+	<br>
+	<%= link_to 'Add Slot', new_team_event_event_slot_path(@team, @event), remote: true, class:'btn btn-primary' %>
+	<%= link_to 'Edit', edit_team_event_path(@team, @event), remote: true, class:'btn btn-default' %>
+	<%= link_to 'Delete', team_event_path(@team, @event), remote: true, method: :delete, class:'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+</div>
