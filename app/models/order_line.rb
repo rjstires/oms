@@ -30,11 +30,13 @@ class OrderLine < ActiveRecord::Base
   }
 
   scope :include_team ,-> { includes(:team) }
+
   scope :include_customer ,-> {
     includes(:customer => [
       :customer_contacts
       ])
   }
+
   scope :include_region ,-> { includes(:region) }
   scope :include_faction ,-> { includes(:faction) }
 
@@ -57,20 +59,20 @@ class OrderLine < ActiveRecord::Base
   scope :by_team, -> (team) { where(team: team) }
   scope :category, -> (id) { joins(:product).where(:products => {:category_id => id}) }
 
-  scope :where_completed, -> { where.not(completed_at: nil) }
-  scope :where_not_completed, -> { where(completed_at: nil) }
+  scope :where_order_paid, -> { where(order_paid: true) }
+  scope :where_order_not_paid, -> { where(order_paid: false) }
 
   scope :where_scheduled, -> { where.not(scheduled_at: nil) }
   scope :where_not_scheduled, -> { where(scheduled_at: nil) }
 
-  scope :where_order_paid, -> { where(order_paid: true) }
-  scope :where_order_not_paid, -> { where(order_paid: false) }
+  scope :where_assigned_to_team, -> { where.not(team_id: nil) }
+  scope :where_not_assigned_to_team, -> { where(team_id: nil) }
+  
+  scope :where_completed, -> { where.not(completed_at: nil) }
+  scope :where_not_completed, -> { where(completed_at: nil) }
 
   scope :where_team_paid, -> { where(team_paid: true) }
   scope :where_team_not_paid, -> { where(team_paid: false) }
-
-  scope :where_assigned_to_team, -> { where.not(team_id: nil) }
-  scope :where_not_assigned_to_team, -> { where(team_id: nil) }
 
   scope :upcoming_event,-> { where('scheduled_at >= ?', Time.now) }
   scope :past_event,-> { where('scheduled_at < ?', Time.now) }
@@ -109,13 +111,14 @@ class OrderLine < ActiveRecord::Base
 
   scope :completed,-> {
     where_order_paid
-    .where_team_not_paid
     .where_scheduled
-    .where_scheduled
+    .where_completed
+    .where_team_paid
   }
 
   scope :unsettled,-> {
-
+    where_order_paid
+    .where_not_completed
   }
 
   # CONSTANTS
