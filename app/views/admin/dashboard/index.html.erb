@@ -33,8 +33,66 @@
   </div>
 
   <div class="row">
+    <div class="col-md-4">
+      <div class="block-flat">
+        <div class="header">
+          <h4>Top 5 Teams</h4>
+        </div>
+        <div class="content">
+          <table class="no-border table table-hover" id="admin-team-totals">
+            <thead class="no-border">
+              <tr>
+                <th>Team</th>
+                <th>Count</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody class="no-border-y">
+              <% @team_totals.each do | team | %>
+              <tr>
+                <td><%= team.name.titleize %></td>
+                <td><%= team.count %></td>
+                <td><%= number_to_currency team.sum %></td>
+              </tr>
+              <% end %>
+            </tbody>
+            <tfoot class="no-border"></tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
 
-    <div class="col-md-7">
+    <div class="col-md-4">
+      <div class="block-flat">
+        <div class="header">
+          <h4>Top 5 Clients</h4>
+        </div>
+        <div class="content">
+        <table class="no-border table table-hover" id="admin-customer-totals">
+            <thead class="no-border">
+              <tr>
+                <th>Client</th>
+                <th>Count</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody class="no-border-y">
+              <% @customer_totals.each do | customer | %>
+              <tr>
+                <td><%= customer.email %></td>
+                <td><%= customer.count %></td>
+                <td><%= number_to_currency customer.sum %></td>
+              </tr>
+              <% end %>
+            </tbody>
+            <tfoot class="no-border"></tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
       <div class="block-flat">
         <div class="header">
           <h4>Upcoming Vacancies</h4>
@@ -69,14 +127,13 @@
         </div>
       </div>
     </div>
-
   </div>
 
   <% content_for :foot_js do %>
   $().ready(function(){
-    $('#admin-dashboard-vacancies').dataTable({
-      "order": [[ 0, 'asc' ], [ 1, 'asc' ]],
-      "pageLength": 5,
-    });
-  });
+  $('#admin-dashboard-vacancies').dataTable({
+  "order": [[ 0, 'asc' ], [ 1, 'asc' ]],
+  "pageLength": 5,
+});
+});
 <% end %>

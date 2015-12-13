@@ -9,6 +9,22 @@ class Admin::DashboardController < AdminController
     # Flat Block queries
     @upcoming_vacancies = EventSlot.upcoming_vacancies
 
+    @team_totals = OrderLine
+    .joins(:team)
+    .select('SUM(order_lines.sale) as sum, COUNT(order_lines.id) as count, teams.name as name')
+    .where_completed
+    .order('sum DESC')
+    .group('teams.name')
+    .limit(5)
+
+    @customer_totals = OrderLine
+    .joins(:customer)
+    .select('SUM(order_lines.sale) as sum, COUNT(order_lines.id) as count, customers.email as email')
+    .where_completed
+    .order('sum DESC')
+    .group('customers.email')
+    .limit(5)
+
     store_location
   end
 
