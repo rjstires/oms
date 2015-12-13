@@ -1,0 +1,15 @@
+<tr>
+  <td><%= render partial: 'admin/order_lines/dropdown_menu', locals: {order_line: order_line} %></td>
+  <td><%= order_date_display(order_line) %></td>
+  <td><%= link_to order_line.customer.email, '#', :data => {:toggle=> 'modal', :target => "#customer_modal_#{order_line.customer.id}"} %></td>
+  <td><%= faction_sprite order_line.faction %> <%= character_sprite order_line.character %></td>
+  <td><%= order_line.product.category.display_name %></td>
+  <td><%= order_line.product.zone.display_name %></td>
+  <td><%= order_line.product.difficulty.display_name %></td>
+  <td><%= order_line.product.loot_option.display_name %></td>
+  <td><%= order_line.product.mount.display_name %></td>
+  <td><%= order_line.product.display_name %></td>
+  <td><%= order_line.try(:team).try(:display_name) %></td>
+  <td><%= number_to_currency order_line.sale%></td>
+  <%= render :partial => "/customers/customer_details_modal", locals: {customer: order_line.customer} %>
+</tr>

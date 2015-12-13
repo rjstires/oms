@@ -43,6 +43,5 @@ class Admin::DashboardController < AdminController
   def leads
     @name = "Leads";
     @order_lines = OrderLine.index_join.leads.created_at_asc
-    render 'admin/dashboard/table_view'
   end
 end

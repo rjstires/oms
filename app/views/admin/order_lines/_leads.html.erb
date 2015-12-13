@@ -1,0 +1,28 @@
+<% if order_lines.count > 0 %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="block-flat">
+      <h3><%= name %></h3>
+      <table class="no-border datatable">
+        <thead class="no-border">
+          <th>&nbsp;</th>
+          <th>Date</th>
+          <th>Customer</th>
+          <th>Character</th>
+          <th>Category</th>
+          <th>Difficulty</th>
+          <th>Zone</th>
+          <th>Loot</th>
+          <th>Mount</th>
+          <th>Service</th>
+          <th>Team</th>
+          <th>Sale</th>
+        </thead>
+        <tbody class="no-border-y">
+          <%= render partial: 'admin/order_lines/lead', collection: order_lines, as: 'order_line' %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%end %>

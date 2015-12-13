@@ -64,7 +64,12 @@ Rails.application.routes.draw do
     resources :users
     resources :zones
 
-    resources :order_lines do
+    resources :order_lines, except: [:index] do
+
+      collection do
+        get :completed
+      end
+
       member do
         get 'complete'
         get 'send_confirmation'
