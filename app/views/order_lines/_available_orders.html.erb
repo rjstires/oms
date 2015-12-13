@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="block-flat">
+      <div class="header">
+        <h3><%= name %></h3>
+      </div>
+      <div class="content">
+        <% if order_lines.count > 0 %>
+        <table class="no-border table hover datatable">
+          <thead class="no-border">
+            <th>Order #</th>
+            <th>Date</th>
+            <th>Character</th>
+            <th>Category</th>
+            <th>Difficulty</th>
+            <th>Zone</th>
+            <th>Service</th>
+            <th>Loot</th>
+            <th>Mount</th>
+            <th>Sale</th>
+          </thead>
+          <tbody class="no-border-y">
+            <%= render partial: 'order_lines/available_order', collection: order_lines, as: :order_line %>
+          </tbody>
+        </table>
+        <% else %>
+        No orders to display.
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

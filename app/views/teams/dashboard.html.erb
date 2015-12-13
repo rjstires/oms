@@ -5,27 +5,36 @@
     title: 'Scheduled Orders',
     number: @orders_scheduled.count,
     icon: 'calendar-check-o'
-    )%>
+    ) %>
 
   <%= render_clean_tile(
     title: 'Completed Orders',
     number: @orders_completed.count,
     icon: 'calendar-check-o'
-    )%>
+    ) %>
 
   <%= render_clean_tile(
     title: 'Montly Total',
     number: number_to_currency(@monthly_total),
     icon: 'usd',
-    )%>
+    ) %>
 
   <%= render_clean_tile(
     title: 'Lifetime Total',
     number: number_to_currency(@lifetime_total),
     icon: 'usd'
-    )%>
-
+    ) %>
 
   </div>
 
-  <%= render :partial => 'order_lines/table', locals: {order_lines: @orders_scheduled, name: 'Upcoming Orders'} %>
+  <%= render :partial => 'order_lines/table',
+  locals: {
+    order_lines: @orders_scheduled, 
+    name: 'Upcoming Orders'
+  } %>
+
+  <%= render :partial => 'order_lines/available_orders',
+  locals: {
+    order_lines: @available_orders, 
+    name: 'Available Orders'
+  } %>

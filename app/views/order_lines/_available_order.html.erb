@@ -1,0 +1,12 @@
+<tr>
+  <td><%= order_line.order %></td>
+  <td><%= order_date_display(order_line) %></td>
+  <td><%= character_sprite order_line.character %></td>
+  <td><%= order_line.product.category.display_name %></td>
+  <td><%= order_line.product.difficulty.display_name %></td>
+  <td><%= order_line.product.zone.display_name %></td>
+  <td><%= order_line.product.display_name %></td>
+  <td><%= order_line.product.loot_option.display_name %></td>
+  <td><%= order_line.product.mount.display_name %></td>
+  <td><%= number_to_currency order_line.contractor_payment %></td>
+</tr>

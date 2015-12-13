@@ -62,4 +62,5 @@ module ApplicationHelper
       color: options.fetch(:color, "concrete")
     }
   end
+
 end

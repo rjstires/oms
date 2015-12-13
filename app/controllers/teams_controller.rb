@@ -13,6 +13,8 @@ class TeamsController < ApplicationController
       @orders_scheduled = @team.order_lines.where_scheduled.where_not_completed
       @monthly_total = @orders_completed_this_month.sum(:contractor_payment)
       @lifetime_total = @orders_completed.sum(:contractor_payment)
+
+      @available_orders = OrderLine.pending_scheduling.where(faction: @team.faction).created_at_asc
     end
 
     def completed_orders
