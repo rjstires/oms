@@ -77,8 +77,8 @@ Rails.application.configure do
     domain: 'oms.boostingedge.com',
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: 'jarvis.dresden@gmail.com',
-    password: 'e3ADpm*K*y!4'
+    user_name: ENV['send_mail_address'],
+    password: ENV['send_mail_password']
   }
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
