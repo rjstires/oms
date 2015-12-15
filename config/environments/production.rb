@@ -77,8 +77,8 @@ Rails.application.configure do
     domain: 'oms.boostingedge.com',
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV['send_mail_address'],
-    password: ENV['send_mail_password']
+    user_name: ENV['SEND_MAIL_ADDRESS'],
+    password: ENV['SEND_MAIL_PASSWORD']
   }
 
   # ActionMailer Config
