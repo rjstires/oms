@@ -2,9 +2,10 @@ class CustomerContact < ActiveRecord::Base
   enum ctype: {
     skype: 0,
     battle_tag: 1,
-    aim: 2,
-    icq: 3,
-    yahoo: 4,
+    mobile: 2,
+    aim: 3,
+    icq: 4,
+    yahoo: 5,
   }
 
   belongs_to :customer
