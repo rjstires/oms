@@ -68,7 +68,7 @@
           <h4>Top 5 Clients</h4>
         </div>
         <div class="content">
-        <table class="no-border table table-hover" id="admin-customer-totals">
+          <table class="no-border table table-hover" id="admin-customer-totals">
             <thead class="no-border">
               <tr>
                 <th>Client</th>
@@ -107,18 +107,35 @@
                 <th>Difficulty</th>
                 <th>Zone</th>
                 <th>Description</th>
+                <th></th>
               </tr>
             </thead>
+            <tfoot class="no-border">
+              <tr>
+                <th>Date</th>
+                <th>Team</th>
+                <th>Category</th>
+                <th>Difficulty</th>
+                <th>Zone</th>
+                <th>Description</th>
+                <th></th>
+              </tr>
+            </tfoot>
             <tbody class="no-border-y">
               <% @upcoming_vacancies.each do | slot | %>
               <tr data-url="<%= team_events_url(slot.event.team) %>"
-                class="<%= slot.event.team.faction.name %> clickable">
+                class="<%= slot.event.team.faction.name %>">
                 <td><%= slot.event.event_timestamp.to_s(:datetime) %></td>
                 <td><%= slot.event.team.display_name %></td>
                 <td><%= slot.event.category.display_name %></td>
                 <td><%= slot.event.difficulty.display_name %></td>
                 <td><%= slot.event.zone.display_name %></td>
                 <td><%= slot.title %></td>
+                <td class="text-center">
+                  <%= link_to team_events_path(slot.event.team), class: 'btn btn-default btn-xs' do %>
+                  <i class="fa fa-eye"></i>
+                  <% end %>
+                </td>
               </tr>
               <% end %>
             </tbody>
@@ -129,11 +146,32 @@
     </div>
   </div>
 
-  <% content_for :foot_js do %>
-  $().ready(function(){
-  $('#admin-dashboard-vacancies').dataTable({
-  "order": [[ 0, 'asc' ], [ 1, 'asc' ]],
-  "pageLength": 5,
-});
+<% content_for :foot_js do %>
+$().ready(function(){
+
+  $('#admin-dashboard-vacancies tfoot th').each( function () {
+    var title = $(this).text();
+    $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+  } );
+
+  var table = $('#admin-dashboard-vacancies').DataTable({
+    "order": [[ 0, 'asc' ], [ 1, 'asc' ]],
+    "pageLength": 10,
+    "columnDefs": [
+    { "orderable": false, "targets": 6 }
+    ]
+  });
+
+  table.columns().every( function () {
+    var that = this;
+
+    $( 'input', this.footer() ).on( 'keyup change', function () {
+      if ( that.search() !== this.value ) {
+        that
+        .search( this.value )
+        .draw();
+      }
+    } );
+  } );
 });
 <% end %>
