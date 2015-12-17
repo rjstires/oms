@@ -39,6 +39,6 @@ module Oms
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
 
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components', 'fonts')
   end
 end
