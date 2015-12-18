@@ -67,7 +67,7 @@ class OrderLine < ActiveRecord::Base
 
   scope :where_assigned_to_team, -> { where.not(team_id: nil) }
   scope :where_not_assigned_to_team, -> { where(team_id: nil) }
-  
+
   scope :where_completed, -> { where.not(completed_at: nil) }
   scope :where_not_completed, -> { where(completed_at: nil) }
 
@@ -134,6 +134,11 @@ class OrderLine < ActiveRecord::Base
   belongs_to :faction
 
   has_one :category, through: :product
+  has_one :zone, through: :product
+  has_one :difficulty, through: :product
+  has_one :play_style, through: :product
+  has_one :loot_option, through: :product
+  has_one :mount, through: :product
 
 
   # VALIDATION MACROS
