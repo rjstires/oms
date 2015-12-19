@@ -1,7 +1,7 @@
 class AdminMailer < BaseMandrillMailer
 
   def new_registration(user)
-    subject = "[Boosting Edge, LLC] New user notification."
+    subject = "New user notification."
 
     to = User.admin.pluck(:email)
 

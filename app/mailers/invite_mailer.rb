@@ -1,6 +1,6 @@
 class InviteMailer < BaseMandrillMailer
   def new_user_invite(invite)
-    subject = "[Boosting Edge, LLC] You have been invited to join #{invite.team.display_name}"
+    subject = "You have been invited to join #{invite.team.display_name}"
     merge_vars = {
       "RECIPIENT_EMAIL" => invite.email,
       "SENDER_NAME" => invite.sender.name,
@@ -13,7 +13,7 @@ class InviteMailer < BaseMandrillMailer
   end
 
   def existing_user_invite(invite)
-    subject = "[Boosting Edge, LLC] You have been added to #{invite.team.display_name}"
+    subject = "You have been added to #{invite.team.display_name}"
     merge_vars = {
       "RECIPIENT_EMAIL" => invite.email,
       "SENDER_NAME" => invite.sender.name,
