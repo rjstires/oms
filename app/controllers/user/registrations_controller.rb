@@ -10,31 +10,31 @@ class User::RegistrationsController < Devise::RegistrationsController
     super
     @token = params[:invite_token]
     if @user.persisted?
+      AdminMailer.new_registration(@user).deliver
+
       if @token != nil
        team =  Invite.find_by_token(@token).team
        team.approved_memberships.create(user: @user)
      end
-   else
-    AdminMailer.new_registration(@user).deliver
-  end
-end
+   end
+ end
 
-protected
+ protected
 
-def update_sanitized_params
- devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(
-  :name,
-  :email,
-  :battle_tag,
-  :skype,
-  :password,
-  :password_confirmation
-  )}
-end
+ def update_sanitized_params
+   devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(
+    :name,
+    :email,
+    :battle_tag,
+    :skype,
+    :password,
+    :password_confirmation
+    )}
+ end
 
-private
+ private
 
-def after_inactive_sign_up_path_for(resource)
+ def after_inactive_sign_up_path_for(resource)
   new_user_session_path
 end
 end
