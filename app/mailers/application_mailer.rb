@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'No Reply <noreply@boostingedge.com>'
+  default from: 'Boosting Edge, LLC <noreply@boostingedge.com>'
   layout 'mailer'
 end
