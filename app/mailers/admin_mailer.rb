@@ -6,8 +6,8 @@ class AdminMailer < BaseMandrillMailer
     to = User.admin.pluck(:email)
 
     merge_vars = {
-      "USER_NAME" => user.email,
-      "USER_EMAIL" => user.name,
+      "USER_EMAIL" => user.email,
+      "USER_NAME" => user.name,
       "PATH" => admin_user_path(user),
     }
 
