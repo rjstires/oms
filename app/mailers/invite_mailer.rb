@@ -8,7 +8,7 @@ class InviteMailer < BaseMandrillMailer
       "PATH" => new_user_registration_path(invite_token: invite.token),
     }
 
-    body = mandrill_template("new_user_invite, merge_vars")
+    body = mandrill_template("new_user_invite", merge_vars)
     send_mail(invite.email, subject, body)
   end
 
@@ -21,7 +21,7 @@ class InviteMailer < BaseMandrillMailer
       "PATH" => team_url(invite.team),
     }
 
-    body = mandrill_template("existing_user_invite, merge_vars")
+    body = mandrill_template("existing_user_invite", merge_vars)
     send_mail(invite.email, subject, body)
   end
 
