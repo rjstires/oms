@@ -2,6 +2,9 @@ class AdminMailer < BaseMandrillMailer
 
   def new_registration(user)
     subject = "[Boosting Edge, LLC] New user notification."
+
+    to = User.admin.pluck(:email)
+
     merge_vars = {
       "USER_NAME" => user.email,
       "USER_EMAIL" => user.name,
@@ -9,6 +12,6 @@ class AdminMailer < BaseMandrillMailer
     }
 
     body = mandrill_template("admin_new_user", merge_vars)
-    send_mail(user.email, subject, body)
+    send_mail(to, subject, body)
   end
 end
