@@ -23,8 +23,8 @@ module Oms
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
     config.assets.initialize_on_precompile = false
+
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib)
 
@@ -39,6 +39,6 @@ module Oms
       g.fixture_replacement :factory_girl, :dir => "spec/factories"
     end
 
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'components', 'fonts')
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components', 'fonts', 'images')
   end
 end
