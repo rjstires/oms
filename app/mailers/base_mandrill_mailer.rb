@@ -4,8 +4,8 @@ require "mandrill"
 
 class BaseMandrillMailer < ActionMailer::Base
   default(
-    from: "admin@boostingedge.com",
-    reply_to: "jarvis.dresden@gmail.com"
+    from: "BoostingEdge.com <admin@boostingedge.com>",
+    reply_to: "Robert Stires <jarvis.dresden@gmail.com>"
   )
 
   private
