@@ -5,7 +5,7 @@ class InviteMailer < BaseMandrillMailer
       "RECIPIENT_EMAIL" => invite.email,
       "SENDER_NAME" => invite.sender.name,
       "TEAM_NAME" => invite.team.display_name,
-      "PATH" => new_user_registration_path(invite_token: invite.token),
+      "PATH" => new_user_registration_url(invite_token: invite.token),
     }
 
     body = mandrill_template("new_user_invite", merge_vars)
