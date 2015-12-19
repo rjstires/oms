@@ -5,7 +5,7 @@ class AdminMailer < BaseMandrillMailer
     merge_vars = {
       "USER_NAME" => user.email,
       "USER_EMAIL" => user.name,
-      "PATH" => admim_user_path(user),
+      "PATH" => admin_user_path(user),
     }
 
     body = mandrill_template("new_user_invite", merge_vars)
