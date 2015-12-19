@@ -21,7 +21,7 @@
       <div class="container-fluid" id="pcont">
         <%= render "menus/navbar" %>
         <div class="cl-mcont">
-          <div id="error-holder"></div>
+          <%= render partial: 'layouts/messages' %>
           <%= yield %>
         </div>
       </div>
