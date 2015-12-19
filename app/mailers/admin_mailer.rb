@@ -8,7 +8,7 @@ class AdminMailer < BaseMandrillMailer
       "PATH" => admin_user_path(user),
     }
 
-    body = mandrill_template("new_user_invite", merge_vars)
+    body = mandrill_template("admin_new_user", merge_vars)
     send_mail(user.email, subject, body)
   end
 end
