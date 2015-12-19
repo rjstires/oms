@@ -1,0 +1,17 @@
+<div class="modal-header">
+  <h3><%= @page_title || 'Invite a Member' %></h3>
+  <button type="button" class="close md-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+</div>
+<%= form_for([@team, @invite], html: {class:'form-horizontal', role: 'form'}) do |f| %>
+<div class="modal-body form">
+  <div class="form-group">
+    <%= f.label :email, 'Email', class: 'col-sm-3 control-label' %>
+    <div class="col-sm-9">
+      <%= f.text_field :email, class: 'form-control', autofocus: true %>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <%= f.button class: 'btn btn-primary' %>
+</div>
+<% end %>

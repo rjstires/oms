@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
   resources :customer_contacts
   root 'landings#index'
@@ -6,7 +7,10 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "user/registrations", sessions: 'user/sessions' }
   resources :users
 
+
   resources :teams, :except => [:index] do
+
+    resources :invites
 
     member do
       get :dashboard

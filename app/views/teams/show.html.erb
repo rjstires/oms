@@ -40,15 +40,10 @@
 
   <div class="col-md-6">
     <div class="block-flat">
-      <div class="header"><h3>Members</h3></div>
+      <div class="header"> <h3>Members</h3> </div>
       <div class="content" id="memberships">
         <%= render partial: @memberships %>
       </div>
+      <div class="footer"> <%= link_to "Invite Member", new_team_invite_path(@team), remote: true, class: 'btn btn-primary' %> </div>
     </div>
   </div>
-
-<!--
-  Owner
-  Approved
-  Pending
- -->

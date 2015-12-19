@@ -1,0 +1,5 @@
+$('#modal-contents').html('<%= j render partial: 'form' %>');
+$('#modal-holder').modal('toggle');
+$('.modal').on('shown.bs.modal', function() {
+  $(this).find('[autofocus]').focus();
+});

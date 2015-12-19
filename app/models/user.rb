@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :pending_teams, through: :pending_memberships, source: :team
   has_many :approved_teams, through: :approved_memberships, source: :team
 
+  has_many :invitations, :class_name => "Invite", :foreign_key => 'recipient_id'
+  has_many :sent_invites, :class_name => "Invite", :foreign_key => 'sender_id'
 
   validates :name, :battle_tag, presence: true
   validates_uniqueness_of :battle_tag, message: "%{value} already exists."
@@ -26,7 +28,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable,
-    :recoverable, :rememberable, :trackable, :validatable
+  :recoverable, :rememberable, :trackable, :validatable
 
   def teams_id_list
     self.approved_memberships.pluck(:team_id)

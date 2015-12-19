@@ -1,29 +1,40 @@
 class User::RegistrationsController < Devise::RegistrationsController
   before_action :update_sanitized_params
 
-  def create
+  def new
+    @token = params[:invite_token]
     super
-    if @user.persisted?
-      AdminMailer.new_registration(@user).deliver
-    end
   end
 
-  protected
+  def create
+    super
+    @token = params[:invite_token]
+    if @user.persisted?
+      if @token != nil
+       team =  Invite.find_by_token(@token).team
+       team.approved_memberships.create(user: @user)
+     end
+   else
+    AdminMailer.new_registration(@user).deliver
+  end
+end
 
-  def update_sanitized_params
-   devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(
-    :name,
-    :email,
-    :battle_tag,
-    :skype,
-    :password,
-    :password_confirmation
-    )}
- end
+protected
 
- private
+def update_sanitized_params
+ devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(
+  :name,
+  :email,
+  :battle_tag,
+  :skype,
+  :password,
+  :password_confirmation
+  )}
+end
 
- def after_inactive_sign_up_path_for(resource)
+private
+
+def after_inactive_sign_up_path_for(resource)
   new_user_session_path
 end
 end

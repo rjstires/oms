@@ -21,6 +21,7 @@ class Team < ActiveRecord::Base
   has_many :categories,-> {distinct()}, through: :order_lines
   has_many :order_line_statuses, through: :order_lines
 
+  has_many :invites
 
   validates_presence_of :name, :name_alias, :region, :faction, :realm, :payment_type, :payment_address, :team_status, presence: true, message: "of team must not be blank."
 

@@ -1,0 +1,51 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style type="text/css">
+    img {outline:none; text-decoration:none; -ms-interpolation-mode: bicubic;}
+    a img {border:none;}
+    .image_fix {display:block;}
+    a:link { text-decoration: underline; }
+    a:visited { }
+    a:hover { color: orange; text-decoration: none; }
+    a:active { }
+    body {font-size: 12px; font-family: 'Calibri'; src: url(https://fonts.gstatic.com/l/font?kit=dEAeIibzqg3XNP23d2zoow) format('woff2'); font-style: normal; font-weight: 400;}
+    td {font-size: 12px;}
+    h3 { font-size: 18px; font-family: 'Calibri'; src: url(https://fonts.gstatic.com/l/font?kit=dEAeIibzqg3XNP23d2zoow) format('woff2'); font-style: normal; font-weight: bold; margin-bottom: 0px; margin-top: 0px;}
+    p {margin-top: 5px;}
+    .label {padding-left: 10px;padding: 2px;font-size: 12px;font-weight: bold;}
+  </style>
+</head>
+<body style="margin: 0; padding: 0;">
+  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+    <tr>
+      <td align="center">
+        <table border="0" cellspacing="0" cellpadding="0" width="640px" style="border-left: solid 1px #CCCCCC; border-right: solid 1px #CCCCCC;">
+          <tr>
+            <td colspan="2" align="left"><!-- Header -->
+              <img src ="http://www.boostingedge.com/wp-content/uploads/2014/08/LogoLight1.png" />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="padding: 10px;"><!-- Text Body -->
+              <h3>You've been added!</h3>
+              <p><%= @invite.sender.name %> has added you to <%= link_to @invite.team.display_name, team_path(@invite.team) %>!</p>
+              <p>This is a notification and you are not required to take any action.</p>
+            </td>
+          </tr>
+          <tr>&nbsp;</tr>
+          <tr>
+            <td colspan="2" align="center"><!-- Footer -->
+              <img src ="http://boostingedge.com/images/email_footer.png" />
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
