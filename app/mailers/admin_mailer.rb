@@ -9,6 +9,6 @@ class AdminMailer < BaseMandrillMailer
     }
 
     body = mandrill_template("new_user_invite", merge_vars)
-    send_mail(invite.email, subject, body)
+    send_mail(user.email, subject, body)
   end
 end
