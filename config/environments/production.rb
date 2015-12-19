@@ -72,14 +72,16 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
 
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: 'oms.boostingedge.com',
-    authentication: "plain",
+    address: ENV.fetch("SMTP_ADDRESS"),
+    authentication: :plain
+    domain: ENV.fetch("SMTP_DOMAIN"),
     enable_starttls_auto: true,
-    user_name: ENV['SEND_MAIL_ADDRESS'],
-    password: ENV['SEND_MAIL_PASSWORD']
+    password: ENV.fetch("SMTP_PASSWORD"),
+    port: "587",
+    user_name: ENV.fetch("SMTP_USERNAME")
   }
+
+  config.action_mailer.default_url_options = { host: ENV["SMTP_DOMAIN"] }
 
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
