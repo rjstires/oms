@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'landings#index'
   get 'dashboard', :to => 'pages#index'
 
-  devise_for :users, :controllers => { :registrations => "user/registrations" }
+  devise_for :users, :controllers => { :registrations => "user/registrations", sessions: 'user/sessions' }
   resources :users
 
   resources :teams, :except => [:index] do
