@@ -26,7 +26,7 @@ class Admin::OrderLinesController < AdminController
     @order_line = OrderLine.new(order_line_params)
 
     respond_to do |format|
-      if @order_line.save!
+      if @order_line.save
         format.html { redirect_to admin_order_line_path(@order_line), notice: 'Order line was successfully created.' }
         format.json { render :show, status: :created, location: @order_line }
       else
