@@ -42,13 +42,13 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.action_mailer.smtp_settings = {
-    address: "mail.boostingedge.com",
-    port: 25,
-    domain: 'boostingedge.com',
-    authentication: "plain",
+    address: ENV.fetch("SMTP_ADDRESS"),
+    authentication: :plain,
+    domain: ENV.fetch("SMTP_DOMAIN"),
     enable_starttls_auto: true,
-    user_name: 'noreply@boostingedge.com',
-    password: 'password'
+    password: ENV.fetch("SMTP_PASSWORD"),
+    port: "587",
+    user_name: ENV.fetch("SMTP_USERNAME")
   }
 
   # ActionMailer Config
@@ -57,7 +57,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # Send email in development mode?
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = true
 
   BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
 
