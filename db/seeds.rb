@@ -296,11 +296,9 @@ Character.find_or_create_by!(spec: 'protection',
   customer_battletag = "#{customer_username}##{rand(9999)}"
   customer_skype = "#{customer_username}"
 
-  customer = Customer.create!(
-    email: customer_email,
-    battle_tag: customer_battletag,
-    skype: customer_skype,
-    )
+  customer = Customer.create!(email: customer_email)
+  customer.customer_contacts.create(ctype: :battle_tag, value: customer_battletag)
+  customer.customer_contacts.create(ctype: :skype, value: customer_skype)
   p "Created customer #{customer.id}."
 end
 
