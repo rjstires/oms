@@ -1,7 +1,6 @@
-class OrderMailer < ApplicationMailer
-  default from: 'Scheduling <noreply@boostingedge.com>', bcc: 'Jarvis Dresden <jarvis.dresden@gmail.com>'
+class OrderMailer < BaseMandrillMailer
 
-  def confirmation_email(order_line_id)
+  def scheduling_confirmation(order_line_id)
     @order_line = OrderLine
     .joins(
       :customer,
@@ -27,4 +26,18 @@ class OrderMailer < ApplicationMailer
     @subject =  "[BoostingEdge.com] #{@content_title} Scheduling Confirmation (##{@order_line.order})"
     mail(to: @email_list, subject: @subject)
   end
+
+  def order_complete(order)
+    subject = "Order #{order.order} has been completed."
+
+    to = order.customer.email
+
+    merge_vars = {
+      "ORDER_NUMBER" => order.order
+    }
+
+    body = mandrill_template("order_complete", merge_vars)
+    send_mail(to, subject, body)
+  end
+
 end
