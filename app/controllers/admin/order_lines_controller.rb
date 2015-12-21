@@ -15,7 +15,7 @@ class Admin::OrderLinesController < AdminController
 
   def new
     @title = 'Create Order';
-    @order_line = ::OrderLine.new
+    @order_line = OrderLine.new
   end
 
   def edit
@@ -55,22 +55,27 @@ class Admin::OrderLinesController < AdminController
       format.json { head :no_content }
     end
   end
+
   # GET /admin/order_lines/1/send_confirmation
   def send_confirmation
-    OrderMailer.confirmation_email(@order_line).deliver_now
-    flash[:notice] = 'Email confirmation sent!'
-    redirect_to admin_order_line_path(@order_line)
+    OrderMailer.scheduling_confirmation(@order_line).deliver_now
+    redirect_to admin_order_line_path(@order_line), notice: 'Scheduling confirmation sent.'
   end
 
   def complete
-    respond_to do |format|
-      if @order_line.complete_order
-        format.html { redirect_to admin_order_line_path(@order_line), notice: 'Order has been completed.' }
-      end
+    if @order_line.complete_order
+
+#      Paypal.send_payment(
+#        target: @order_line.team.payment_address,
+#        order: @order_linse.order,
+#        amount: @order_linse.contractor_payment,
+#      )
+      OrderMailer.order_complete(@order_line).deliver_now
+      redirect_to admin_order_line_path(@order_line), notice: 'Order has been completed.'
+
     end
   end
 
-  private
   private
   def set_order_line
     @order_line = ::OrderLine.find(params[:id])
