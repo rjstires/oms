@@ -48,9 +48,6 @@ class CreateCustomerContacts < ActiveRecord::Migration
     if errors.count > 0
       puts "Error(s) ~~~~~~~~~~~~~~~~"
       errors.map { |e| puts e  }
-    else
-      remove_column  :customers, :skype
-      remove_column  :customers, :battle_tag
     end
   end
 
