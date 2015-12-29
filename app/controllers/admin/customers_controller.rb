@@ -6,7 +6,10 @@ class Admin::CustomersController < AdminController
   # GET /Customers
   # GET /Customers.json
   def index
-    @customers = Customer.includes(:order_lines).order(email: :asc)
+    @customers = Customer
+      .joins(:order_lines)
+      .select('customers.*, SUM(order_lines.id) as sum_orders, COUNT(order_lines.id) as count_orders')
+      .group('customers.id')
   end
 
   # GET /Customers/1

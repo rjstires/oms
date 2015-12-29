@@ -9,7 +9,7 @@
           <th>Total</th>
         </thead>
         <tbody class="no-border-y">
-          <% if @customers.count > 0 %>
+          <% if @customers.any? %>
           <%= render @customers %>
           <% else %>
           <tr>

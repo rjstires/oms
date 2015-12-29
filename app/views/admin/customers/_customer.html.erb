@@ -1,5 +1,5 @@
 <tr>
   <td><%= link_to customer.email, admin_customer_path(customer) %></td>
-  <td><%= customer.order_lines.count %></td>
-  <td><%= number_to_currency customer.order_lines.sum(:sale) %></td>
+  <td><%= customer.count_orders %></td>
+  <td><%= number_to_currency customer.sum_orders %></td>
 </tr>

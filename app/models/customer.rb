@@ -30,4 +30,12 @@ class Customer < ActiveRecord::Base
     ActiveSupport::JSON.decode( File.read( f.path ) )
   end
 
+  def first_battle_tag
+    customer_contacts.where(ctype: 'battle_tag').first
+  end
+
+  def first_skype
+    customer_contacts.where(ctype: 'skype').first
+  end
+
 end
