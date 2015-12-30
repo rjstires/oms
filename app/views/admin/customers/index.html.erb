@@ -5,11 +5,9 @@
       <table class="no-border datatable">
         <thead class="no-border">
           <th>Email Address</th>
-          <th>Orders</th>
-          <th>Total</th>
         </thead>
         <tbody class="no-border-y">
-          <% if @customers.any? %>
+          <% if @customers.count > 0 %>
           <%= render @customers %>
           <% else %>
           <tr>

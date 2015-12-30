@@ -6,10 +6,7 @@ class Admin::CustomersController < AdminController
   # GET /Customers
   # GET /Customers.json
   def index
-    @customers = Customer
-      .joins(:order_lines)
-      .select('customers.*, SUM(order_lines.id) as sum_orders, COUNT(order_lines.id) as count_orders')
-      .group('customers.id')
+    @customers = Customer.all.order(email: :asc)
 
     @skype_contacts = CustomerContact.joins(:customer).where(ctype: 'skype')
   end
