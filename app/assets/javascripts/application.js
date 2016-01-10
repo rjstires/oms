@@ -43,19 +43,24 @@ $(document).on("page:load ready", function(){
 });
 
 
-function updatePrice()
-{
+function updatePrice() {
+    /*
+    This needs to be better.
+    */
+
     var sale = parseFloat($("#order_line_sale").val());
-    var merchant_fee = sale * 0.03;
-    var site_fee = sale * 0.194
-    var contractor_payment = sale * 0.776
-    $("#order_line_merchant_fee").val(merchant_fee.toFixed(2));
-    $("#order_line_site_fee").val(site_fee.toFixed(2));
-    $("#order_line_contractor_payment").val(contractor_payment.toFixed(2));
+    var merchant_fee = (sale * 0.029) + 0.30;
+    var net_sale = sale - merchant_fee;
+    var site_fee = net_sale * 0.20;
+    var contractor_payment = net_sale * 0.80;
+
+    $("#order_line_merchant_fee").val( merchant_fee.toFixed(2) );
+    $("#order_line_site_fee").val( site_fee.toFixed(2) );
+    $("#order_line_contractor_payment").val( contractor_payment.toFixed(2) );
 }
 
 $(document).on("change, keyup", "#order_line_sale", updatePrice);
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
-})
+});
