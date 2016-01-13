@@ -35,8 +35,8 @@
         <h3 class="panel-title">Client</h3>
       </div>
       <div class="panel-body">
-        <p class="email"><span style="font-weight:bold;">Email:</span> <%= mail_to @order_line.customer.email %></p>
-        
+        <p class="email"><span style="font-weight:bold;">Email:</span> <%= link_to @order_line.customer.email, [:admin, @order_line.customer] %></p>
+
         <% @order_line.customer.customer_contacts.each do |contact| %>
         <p class="<%= contact.ctype %>">
           <span style="font-weight:bold;">
@@ -46,7 +46,7 @@
         </p>
         <% end %>
 
-        <p class="character"><span style="font-weight:bold;">Character:</span> <%= @order_line.character.display_name %></p>
+        <%= @order_line.character.display_name %>
       </div>
     </div>
   </div>
@@ -57,7 +57,7 @@
         <h3 class="panel-title">Team</h3>
       </div>
       <div class="panel-body">
-        <p class="name"><span style="font-weight:bold;">Name:</span> <%= @order_line.team.display_name %></p>
+        <p class="name"><span style="font-weight:bold;">Name:</span> <%= link_to @order_line.team.display_name, @order_line.team %></p>
         <p class="realm"><span style="font-weight:bold;">Realm:</span> <%= @order_line.team.display_realm %></p>
         <p class="payment-type"><span style="font-weight:bold;">Payment Type:</span> <%= @order_line.team.payment_type.display_name %></p>
         <p class="payment-address"><span style="font-weight:bold;">Payment Address:</span> <%= mail_to @order_line.team.payment_address%></p>
