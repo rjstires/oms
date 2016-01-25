@@ -5,6 +5,6 @@ require File.expand_path('../application', __FILE__)
 Rails.application.initialize!
 
 Time::DATE_FORMATS[:datetime] = "%b %d, %Y at %l:%M %p"
-Time::DATE_FORMATS[:order_line] = "%m/%d/%Y %l:%M %p"
+Time::DATE_FORMATS[:order_line] = "%Y/%m/%d %l:%M %p"
 Time::DATE_FORMATS[:short_date] = "%m/%d/%Y"
 Time::DATE_FORMATS[:long_datetime] = "%A, %B %e %Y at %H:%M EST"
